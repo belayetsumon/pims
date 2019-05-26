@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Administration
+
+                    <small></small>
+                </h1>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Settings </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/settings/lookupindex}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="col-sm-6">
+
+                            <!-- Default box -->
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Privilege </h3>
+
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/privilege/save}" th:object="${privilege}" method="post"  class="form-horizontal">
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Module<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-8">                   
+                                                    <select class="form-control " th:field="*{module}" >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" modules :${modules}"
+                                                                th:value=" ${modules.id}" 
+                                                                th:text="${modules.name}"> Select One</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('module')}" th:errors="*{module}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />   
+                                            <label for="name" class=" control-label col-sm-3 "> Name<span class="text-red"> * </span></label>
+                                            <input type="text" class="form-contro col-sm-8"  th:field="*{name}"   />
+
+                                            <span  class="help-block text-red col-sm-8" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">First Name Error</span>
+                                        </div>
+                                        <div class="row">
+                                            <label for="name" class=" control-label col-sm-3"> Slug <span class="text-red"> * </span></label>
+                                            <input type="text" class="form-contro col-sm-8"  th:field="*{slug}"   />
+
+                                            <span  class="help-block text-red col-sm-8" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">First Name Error</span>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="box-tools">
+                                                <div class="btn-group text-center">
+                                                    <button type="submit" class="btn  btn-primary btn-xs">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-12">    
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Role  List</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Module Name</th>
+                                            <th>Name</th>
+                                            <th>Slug</th>
+                                            <th>Edit</th>
+                                            <th style="width: 40px">Delete</th>
+                                        </tr>
+                                        <tr th:each="list,status:${list}">
+                                            <td th:text="${status.count}">2.</td>
+                                            <td th:text="${list.module.name}">Chakma</td>
+                                            <td th:text="${list.name}">Chakma</td>
+                                            <td th:text="${list.slug}">Chakma</td>
+                                            <td>
+                                                <a th:href="@{/privilege/edit/{id} (id=${list.id})}" > Edit</a>
+                                            </td>
+                                            <td> <a th:href="@{/privilege/delete/{id} (id=${list.id})}" > Delete </a></td>
+                                        </tr>                              
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>                      
+                        </div>             
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="box-tools pull-right">
+
+                        </div>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

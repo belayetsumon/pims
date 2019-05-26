@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout-home">
+    <div layout:fragment = "main_content">
+      
+
+        <section   class=""style="padding: 40px 0px 100px 0px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 ">
+                        <h1 class="text-center">
+                            Our Client</h1>
+                        <div class=" row justify-content-center" style="padding: 20px 0px 80px 0px">
+                            <div class="col-md-7 text-center"> We respect our Clients .
+                            </div></div></div>
+
+                <div class="login-box-body">
+                <!--    <p class="login-box-msg">Sign in to start your session</p>-->
+        <div class="alert alert-danger" th:if="${param.error}">
+            Invalid User Name or Password. Please try again.   
+            
+        </div>
+        <div class="alert alert-warning" th:if="${param.logout}">
+            You have been logged out.
+        </div>
+                <form th:action="@{/users/login}"  method="post">
+                    <div class="form-group has-feedback">
+                        <input type="text"  name="username"   required class="form-control" placeholder="Govt. Id" />
+                       
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" name="password"  class="form-control" placeholder="Password" required />
+                        <span>User belayetsumon passwoed bangladesh</span>
+                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </div>
+                    <div class="row">
+<!--                        <div class="col-xs-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox" /> Remember Me
+                                </label>
+                            </div>
+                        </div>-->
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        </div>
+                        
+                    </div>
+                </form>
+
+                <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                </div>
+                <!-- /.social-auth-links -->
+
+                <a th:href="@{/forgotpassword/userforgotpassword}"  class="btn btn-block btn-social btn-facebook btn-flat"> I forgot my password</a><br/>
+               <a th:href="@{/users/uregistrations}" class="btn btn-block btn-social btn-google btn-flat"> Register a new employee</a>
+
+            </div>
+
+                </div>  
+            </div>
+        </section>
+
+    </div>
+</div>

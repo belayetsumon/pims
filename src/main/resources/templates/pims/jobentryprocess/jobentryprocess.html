@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Job Entry Process </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/details/detailsinfo/{id} (id=${jobEntryProcess.governmentId.id})}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">   
+                        </div>   
+
+                        <div class="col-sm-7">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Job Entry Process </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/jobentryprocess/save/{id} (id=${jobEntryProcess.governmentId.id})}" th:object="${jobEntryProcess}" method="post" class="form-horizontal">
+
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control"  th:field="*{governmentId}" />
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Authority:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{authority}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" authority :${authority}"
+                                                                th:value=" ${authority}" 
+                                                                th:text="${authority}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('authority')}" th:errors="*{authority}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Designation :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{designation}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" designation :${designation}"
+                                                                th:value=" ${designation.id}" 
+                                                                th:text="${designation.name}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('designation')}" th:errors="*{designation}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Post Type:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{postType}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" postType :${postType}"
+                                                                th:value=" ${postType}" 
+                                                                th:text="${postType}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postType')}" th:errors="*{postType}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Exam Type :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{examType}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" examType :${examType}"
+                                                                th:value=" ${examType}" 
+                                                                th:text="${examType}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('examType')}" th:errors="*{examType}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Grade : <span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{grade}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" grade :${grade}"
+                                                                th:value=" ${grade}" 
+                                                                th:text="${grade}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Batch :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{batch}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" batch :${batch}"
+                                                                th:value=" ${batch.id}" 
+                                                                th:text="${batch.name}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('batch')}" th:errors="*{batch}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Exam Title :<span class="text-red">  </span></label>
+                                                <div class="col-sm-8">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{examTitle}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('examTitle')}" th:errors="*{examTitle}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Exam Government Order No :<span class="text-red">  </span></label>
+                                                <div class="col-sm-8">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{examGovernmentOrderNo}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('examGovernmentOrderNo')}" th:errors="*{examGovernmentOrderNo}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">  Exam Date  :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-8">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{examDate}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('examDate')}" th:errors="*{examDate}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">  Result Date :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-8">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{resultDate}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('resultDate')}" th:errors="*{resultDate}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Merit No :<span class="text-red">  </span></label>
+                                                <div class="col-sm-8">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{meritNo}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('meritNo')}" th:errors="*{meritNo}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Selection Type :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{selectionType}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" selectionType :${selectionType}"
+                                                                th:value=" ${selectionType}" 
+                                                                th:text="${selectionType}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('selectionType')}" th:errors="*{selectionType}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Quota<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{quota}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" quota :${quota}"
+                                                                th:value=" ${quota}" 
+                                                                th:text="${quota}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('quota')}" th:errors="*{quota}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">  Job Confirmation Date :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-8">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{jobConfirmationDate}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('jobConfirmationDate')}" th:errors="*{jobConfirmationDate}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">  Job Confirmation Serial No :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-8">    
+                                                    <div class="input-group" >
+
+                                                        <input type="text"   class="form-control  " th:field="*{jobConfirmationSerialNo}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('jobConfirmationSerialNo')}" th:errors="*{jobConfirmationSerialNo}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Freedom Fighter Certificate No:<span class="text-red"> </span></label>
+                                                <div class="col-sm-8">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{freedomFighterCertificateNo}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('freedomFighterCertificateNo')}" th:errors="*{freedomFighterCertificateNo}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class="btn-group text-center">
+
+                                                        <button type="submit" class="btn  btn-warning">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-5">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Job Entry Process  List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div th:each="list,status:${list}">
+                                        <table class="table table-bordered">
+                                            <tr >
+                                                <th>
+                                                    <a th:href="@{/jobentryprocess/edit/{id} (id=${list.id})}" > Edit</a>
+                                                </th>
+                                                <td> <a th:href="@{/jobentryprocess/delete/{id} (id=${list.id})}" > Delete </a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th> Government ID </th>
+                                                <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                            </tr> 
+                                            <tr>
+                                                <th> Authority</th>
+                                                <td th:text="${list.authority}">Chakma</td>
+                                            </tr>  
+
+                                            <tr>
+                                                <th> Designation       </th>
+                                                <td th:text="${list.designation.name}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Exam Type     </th>
+                                                <td th:text="${list.examType}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>  Grade </th>
+                                                <td th:text="${list.grade}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Batch    </th>
+                                                <td th:text="${list.batch}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>    Exam Title </th>
+                                                <td th:text="${list.examTitle}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>       Exam Government Order No  </th>
+                                                <td th:text="${list.examGovernmentOrderNo}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Exam Date   </th>
+                                                <td th:text="${list.examDate}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Result Date   </th>
+                                                <td th:text="${list.resultDate}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Merit No   </th>
+                                                <td th:text="${list.meritNo}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>    Selection Type   </th>
+                                                <td th:text="${list.selectionType}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Quota  </th>
+                                                <td th:text="${list.quota}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Job Confirmation Date:   </th>
+                                                <td th:text="${list.jobConfirmationDate}">Chakma</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>   Job Confirmation Order No      </th>
+                                                <td th:text="${list.jobConfirmationOrderNo}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Job Confirmation Serial No   </th>
+                                                <td th:text="${list.jobConfirmationSerialNo}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>   Freedom Fighter Certificate No    </th>
+                                                <td th:text="${list.freedomFighterCertificateNo}">Chakma</td>
+                                            </tr>
+                                               <tr>
+                                                <th>   Created    </th>
+                                                <td > <span th:text="${list.createdOn}">Chakma</span><br>
+                                                <span th:text="${list.createdBy}">Chakma</span> </td>
+                                            </tr>
+                                            
+                                              <tr>
+                                                <th>   updated   </th>
+                                                <td><span th:text="${list.updatedOn}">Chakma</span><br>
+                                                <span th:text="${list.updatedBy}">Chakma</span><br></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>                      
+                        </div>             
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

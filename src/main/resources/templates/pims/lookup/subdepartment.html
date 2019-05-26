@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Administration
+
+                    <small></small>
+                </h1>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Settings </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/settings/lookupindex}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="col-sm-6">
+
+                            <!-- Default box -->
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Sub Department </h3>
+
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/subdepartment/save}" th:object="${subDepartment}" method="post">
+                                        <input type="hidden" class="form-control"  th:field="*{id}" />
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Department<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-8">                   
+                                                    <select class="form-control " th:field="*{department}" id="departments" >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" department :${department}"
+                                                               th:value=" ${department.id}" 
+                                                        th:text="${department.name}"> Select One</option>
+
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('department')}" th:errors="*{department}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <br/>
+                                            <label for="name" class=" col-sm-4  control-label"> Sub Department<span class="text-red"> * </span></label>
+                                            <div class="col-sm-8">
+                                            <input type="text" class="form-control "  th:field="*{name}"   />
+
+                                            <span  class="help-block text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">First Name Error</span>
+                                   </div>
+                                        </div>
+                                                 <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class="btn-group text-center">
+                                                             <br/>
+                                                        <button type="submit" class="btn  btn-primary btn-xs">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </form>
+                                </div>
+
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-12">    
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Sub Department  List</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Department</th>
+                                            <th>Sub Department</th>
+                                            <th>Edit</th>
+                                            <th style="width: 40px">Delete</th>
+                                        </tr>
+                                        <tr th:each="lists,status:${list}">
+                                            <td th:text="${status.count}">2.</td>
+                                             <td th:text="${lists.department.name}">Chakma</td>
+                                            <td th:text="${lists.name}">Chakma</td>
+                                            <td>
+                                                <a th:href="@{/subdepartment/edit/{id} (id=${lists.id})}" > Edit</a>
+                                            </td>
+                                            <td> <a th:href="@{/subdepartment/delete/{id} (id=${lists.id})}" > Delete </a></td>
+                                        </tr>                                
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>                      
+                        </div>             
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="box-tools pull-right">
+
+                        </div>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

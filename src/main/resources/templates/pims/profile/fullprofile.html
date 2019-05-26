@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary" id="myTable">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Full Profile</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <!--                                <a th:href="@{/details/detailsinfo/{id} (id=${postingRecordInformation.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="box box-warning ">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> Government  ID: <span th:text="${employee.governmentId}"></span> </h3>
+                                <div class="box-tools pull-right">
+                                    <div class="btn-group">
+                                        <a th:href="@{/profile/createprofilepdf/{e_id}(e_id=${employee.id})}"  class="btn btn-danger btn-xs"><b>Create PDF</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-sm-2">
+                                    <span  th:if="${ not #lists.isEmpty(employee.profileImage)}">  
+                                        <img  class="profile-user-img img-responsive" th:src="@{/files/}+${employee.profileImage.imageName}" width="100px"  height="100px"/>
+                                    </span>
+
+                                    <span  th:if="${ #lists.isEmpty(employee.profileImage)}">  
+                                        <img class="profile-user-img img-responsive" th:src="@{/images/profile.png}" alt="User profile picture"/>
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th> Name </th>
+                                            <td><span th:text="${employee.name}"></span></td>
+                                        </tr> 
+                                        <tr>
+                                            <th> Designation </th>
+                                            <td><span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
+                                                    <span th:text="${employee.presentJob.postingDesignation.name}"></span>
+                                                </span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> Department </th>
+                                            <td><span  th:if="${ not #lists.isEmpty(employee.department.name)}">  
+                                                    <span th:text="${employee.department.name}"></span>  </span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> Sub-Department </th>
+                                            <td> <span  th:if="${ not #lists.isEmpty(employee.subDepartment.name)}">  
+
+                                                    <span th:text="${employee.subDepartment.name}"></span></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> Posting Location </th>
+                                            <td>    <span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
+
+                                                    <span th:text="${employee.presentJob.presentPostingLocation.name}">
+
+                                                    </span>
+
+                                                </span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> Employee Status </th>
+                                            <td>      <span  th:if="${ not #lists.isEmpty(employee.generalInformation)}">
+                                                    <span th:text="${employee.generalInformation.employeeStatus}">
+                                                    </span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div class="col-sm-2">
+                                    <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th> Date of Birth </th>
+                                        <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${ employee.generalInformation.dateofBirth}"></span></td>
+
+                                        <th> Joining Date </th>
+                                        <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${ employee.firstJoiningInformation.dateFirstJoining}"></span></td>
+
+                                        <th> LPR Date </th>
+                                        <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${employee.generalInformation.lPRDate}"></span></td>
+
+                                        <th> Retirement Date </th>
+                                        <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}"  th:text="${employee.retirementPension.startDate}"></span> </td>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="box box-success  ">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> 1.General Information  List</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="box-body">
+                                <div th:each="list,status:${generalInformation}">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th> Government ID :</th>
+                                            <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                            <th> Name :</th>
+                                            <td th:text="${list.name}">Chakma</td>
+                                            <th>  Father's Name :      </th>
+                                            <td th:text="${list.fathersName}">Chakma</td>
+                                        </tr> 
+                                        <tr>
+                                            <th>     Mother's Name :    </th>
+                                            <td th:text="${list.mothersName}">Chakma</td>
+                                            <th>        Home District:  </th>
+                                            <td th:text="${list.homeDistrict}">Chakma</td>
+                                            <th>     Date Of Birth :    </th>
+                                            <td th:text="${list.dateofBirth}">Chakma</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>    Country Of Birth : </th>
+                                            <td th:text="${list.birthCountry}">Chakma</td>
+                                            <th>       Birth Certificate Number :  </th>
+                                            <td th:text="${list.birthCertificateNumber}">Chakma</td>
+                                            <th>      Gender   : </th>
+                                            <td th:text="${list.gender}">Chakma</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>      Marital Status   : </th>
+                                            <td th:text="${list.maritalStatus}">Chakma</td>
+                                            <th>      Religion   : </th>
+                                            <td th:text="${list.religion}">Chakma</td>
+                                            <th>      Ethnic Identity   : </th>
+                                            <td th:text="${list.ethnicIdentity}">Chakma</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>      Nationality  :</th>
+                                            <td th:text="${list.nationality}">Chakma</td>
+                                            <th>      Blood Group :   </th>
+                                            <td th:text="${list.bloodGroup}">Chakma</td>
+                                            <th>   Driving Licence :    </th>
+                                            <td th:text="${list.drivingLicence}">Chakma</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>      Passport No : </th>
+                                            <td th:text="${list.passportNo}">Chakma</td>
+                                            <th>   National Id No  :  </th>
+                                            <td th:text="${list.nid}">Chakma</td>
+                                            <th>   TIN   No :</th>
+                                            <td th:text="${list.tin}">Chakma</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>     L. . R. Date   :  </th>
+                                            <td th:text="${list.lPRDate}">Chakma</td>
+                                            <th>     Employee Status   :  </th>
+                                            <td th:text="${list.employeeStatus}">Chakma</td>
+                                            <th>       </th>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+
+
+                        </div>                     
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>2.Address List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body" style="overflow-x: scroll;">
+
+                                    <table class="table table-bordered " >
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Address Type  </th>
+                                                <th>Village / Road   </th>
+                                                <th> Post Office</th>
+                                                <th> District</th>
+                                                <th> Upzilla / Thana</th>
+                                                <th> Email</th>
+                                                <th> Web Mail</th>
+                                                <th> Mobile</th>
+                                                <th> Telephone </th>
+                                                <th> Fax </th>
+                                                <th> PABX </th>
+                                                <th> Facebook ID </th>
+                                                <th> Linkdin ID</th>
+                                                <th>WhatsUp ID</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${addressInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.addressType}">BCS</td> 
+                                            <td th:text="${list.village}">BCS</td>
+                                            <td th:text="${list.postOffice}">BCS</td> 
+                                            <td th:text="${list.district}">BCS</td> 
+                                            <td th:text="${list.upazila.name}">BCS</td> 
+                                            <td th:text="${list.email}">BCS</td>
+                                            <td th:text="${list.webmail}">BCS</td>
+                                            <td th:text="${list.mobile}">BCS</td>
+                                            <td th:text="${list.telphone}">BCS</td> 
+                                            <td th:text="${list.fax}">BCS</td> 
+                                            <td th:text="${list.pabx}">BCS</td>  
+                                            <td th:text="${list.facebookId}">BCS</td>
+                                            <td th:text="${list.linkdin}">BCS</td>
+                                            <td th:text="${list.whatup}">BCS</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div> 
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 3.Spouse Information List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body" style="overflow-x: scroll;">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Spouse Name</th>
+                                                <th>Date of Birth </th>
+                                                <th>Country Of Birth</th>
+                                                <th>Birth Certificate / Reg No</th>
+                                                <th>National Id No</th>
+                                                <th>Date of Marriage</th>
+                                                <th>Marriage Registration No</th>
+                                                <th>Passport No</th>
+                                                <th>Ethnic Identity</th>
+                                                <th>Nationality</th>
+                                                <th>District </th>
+                                                <th>Occupation </th>
+                                                <th>Organization </th>
+                                                <th>Designation </th>
+                                                <th>Location</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${spousName}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.spouseName}">BCS</td> 
+                                            <td th:text="${list.dateofBirth}">BCS</td> 
+                                            <td th:text="${list.birthCountry}">BCS</td> 
+                                            <td th:text="${list.birthCertificateNumber}">BCS</td>
+                                            <td th:text="${list.nid}">BCS</td>
+                                            <td th:text="${list.dateofMarriage}">BCS</td>
+                                            <td th:text="${list.marriageRegistrationNo}">BCS</td>
+                                            <td th:text="${list.passportNo}">BCS</td>
+                                            <td th:text="${list.ethnicIdentity}">BCS</td>
+                                            <td th:text="${list.nationality}">BCS</td>
+                                            <td th:text="${list.district}">BCS</td>
+                                            <td th:text="${list.occupation}">BCS</td>
+                                            <td th:text="${list.organization}">BCS</td>
+                                            <td th:text="${list.designation}">BCS</td>
+                                            <td th:text="${list.location}">BCS</td>                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>4.Children List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body" style="overflow-x: scroll;">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+
+                                                <th>Name  </th>
+                                                <th>Gender  </th>
+                                                <th> Date of Birth </th>
+                                                <th> Country Of Birth</th>
+                                                <th> Birth Certificate/ Reg No </th>
+                                                <th> National Id No</th>
+                                                <th> Passport No </th>
+                                                <th> Ethnic Identity</th>
+                                                <th> Nationality</th>
+                                                <th> Psychical Status</th>
+                                                <th> Schooling </th>
+                                                <th> Education Level</th>
+                                                <th> Marital Status</th>
+                                                <th> Employment </th>
+                                                <th> Remarks </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${childrenInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+
+                                            <td th:text="${list.childName}">BCS</td> 
+                                            <td th:text="${list.gender}">BCS</td>
+                                            <td th:text="${list.dateofBirth}">BCS</td>
+                                            <td th:text="${list.birthCountry}">BCS</td>
+                                            <td th:text="${list.birthCertificateNumber}">BCS</td>   
+                                            <td th:text="${list.nid}">BCS</td>   
+                                            <td th:text="${list.passportNo}">BCS</td>   
+                                            <td th:text="${list.ethnicIdentity}">BCS</td> 
+                                            <td th:text="${list.nationality}">BCS</td> 
+                                            <td th:text="${list.psychicalStatus}">BCS</td>   
+                                            <td th:text="${list.schooling}">BCS</td>
+                                            <td th:text="${list.educationLevel}">BCS</td>  
+                                            <td th:text="${list.maritalStatus}">BCS</td>  
+                                            <td th:text="${list.emplyment}">BCS</td>  
+                                            <td th:text="${list.remarks}">BCS</td>  
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>5.Education Information List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Name of Institution  </th>
+                                                <th>Principal Subject</th>
+                                                <th> Certificate / Degree</th>
+                                                <th> Year</th>
+                                                <th> Board or University</th>
+                                                <th> Division / Class</th>
+                                                <th> GPA</th>
+                                                <th> GPA Point</th>
+                                                <th> Distinction</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${educationalInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.nameOfInstitution}">BCS</td> 
+                                            <td th:text="${list.principalSubject}">BCS</td>
+                                            <td th:text="${list.certificateDegree}">BCS</td>  
+                                            <td th:text="${list.year}">BCS</td> 
+                                            <td th:text="${list.boardoruniversity}">BCS</td>
+                                            <td th:text="${list.divisionClass}">BCS</td>    
+                                            <td th:text="${list.gPA}">BCS</td>    
+                                            <td th:text="${list.gPAPoint}">BCS</td>    
+                                            <td th:text="${list.distinction}">BCS</td>   
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>6.Additional  Qualifications </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Qualifications </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${additionalQualification}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.qualification}">BCS</td>   
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>   
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>7. Language Information </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+
+
+                                        <table class="table table-bordered ">
+                                            <thead class=" box box-success  box-solid">
+                                                <tr>  
+                                                    <th>Sr. no.</th> 
+                                                    <th>Language</th>
+                                                    <th>Skill</th>
+                                                    <th>Proficiency</th>
+                                                </tr>
+                                            </thead>
+                                            <tr  th:each="list,status:${languageInformation}">
+                                                <td th:text="${ status.count}">2 </td> 
+                                                <td th:text="${list.language}">BCS</td> 
+                                                <td th:text="${list.skill}">BCS</td> 
+                                                <td th:text="${list.proficiency}">BCS</td> 
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>                   
+
+
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 8.Job Entry Process</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div th:each="list,status:${jobentryprocess}">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th> Authority</th>
+                                                <td th:text="${list.authority}">Chakma</td>
+                                                <th> Designation       </th>
+                                                <td th:text="${list.designation.name}">Chakma</td>
+                                                <th>     Exam Type     </th>
+                                                <td th:text="${list.examType}">Chakma</td>
+                                            </tr>  
+                                            <tr>
+                                                <th>  Grade </th>
+                                                <td th:text="${list.grade}">Chakma</td>
+                                                <th>     Batch    </th>
+                                                <td th:text="${list.batch}">Chakma</td>
+                                                <th>    Exam Title </th>
+                                                <td th:text="${list.examTitle}">Chakma</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>       Exam Government Order No  </th>
+                                                <td th:text="${list.examGovernmentOrderNo}">Chakma</td>
+                                                <th>      Exam Date   </th>
+                                                <td th:text="${list.examDate}">Chakma</td>
+
+                                                <th>      Result Date   </th>
+                                                <td th:text="${list.resultDate}">Chakma</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>      Merit No   </th>
+                                                <td th:text="${list.meritNo}">Chakma</td>
+                                                <th>    Selection Type   </th>
+                                                <td th:text="${list.selectionType}">Chakma</td>
+                                                <th>      Quota  </th>
+                                                <td th:text="${list.quota}">Chakma</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>      Job Confirmation Date:   </th>
+                                                <td th:text="${list.jobConfirmationDate}">Chakma</td>
+                                                <th>   Job Confirmation Order No      </th>
+                                                <td th:text="${list.jobConfirmationOrderNo}">Chakma</td>
+                                                <th>      Job Confirmation Serial No   </th>
+                                                <td th:text="${list.jobConfirmationSerialNo}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>   Freedom Fighter Certificate No    </th>
+                                                <td th:text="${list.freedomFighterCertificateNo}">Chakma</td>
+                                                <th></th>
+                                                <td></td>
+                                                <th></th>
+                                                <td> </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>   
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 9.First Job </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <div>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>Government ID </th>
+                                                    <th>Post Rank/Order of precedence</th>
+                                                    <th>Posting Type</th>
+                                                    <th> First Posting Designation     </th>
+                                                    <th>First Joining Office Location    </th>
+                                                    <th>First Joining Date</th>
+                                                    <th>Date of Gazetted  </th>
+                                                    <th>Grade </th>
+                                                    <th>Remarks  </th>
+                                                </tr>
+                                                <tr  th:each="list,status:${firstjoininginformation}">
+                                                    <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                                    <td th:text="${list.postingRank.name}">Chakma</td>
+                                                    <td th:text="${list.postingType}">Chakma</td>
+                                                    <td th:text="${list.firstPostingDesignation.name}">Chakma</td>
+                                                    <td th:text="${list.firstJoiningOfficeLocation.name}">Chakma</td>
+                                                    <td th:text="${list.dateFirstJoining}">Chakma</td>
+                                                    <td th:text="${list.dateofGazetted}">Chakma</td>
+                                                    <td th:text="${list.grade}">Chakma</td>
+                                                    <td th:text="${list.remarks}">Chakma</td>
+                                                </tr> 
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 10.Present Job</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <table class="table table-bordered">
+                                            <tr >
+
+                                                <th> Government ID </th>
+                                                <th> Posting Reason</th>
+                                                <th> Posting Type</th>
+                                                <th> Designation     </th>
+                                                <th>Office Location    </th>
+                                                <th>Joining Date</th>
+                                                <th>Date of Gazetted  </th>
+                                                <th>Present Posting Rank </th>
+                                                <th>Grade </th>
+                                                <th>Remarks  </th>
+
+                                            </tr>
+
+                                            <tr  th:each="list,status:${presentjob}" >
+                                                <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                                <td th:text="${list.postingReason}">Chakma</td>
+                                                <td th:text="${list.postingType}">Chakma</td>
+                                                <td th:text="${list.postingDesignation.name}">Chakma</td>
+                                                <td th:text="${list.presentPostingLocation.name}">Chakma</td>
+                                                <td th:text="${list.dateJoining}">Chakma</td>
+                                                <td th:text="${list.dateofGazetted}">Chakma</td>
+                                                <td th:text="${list.presentPostingRank.name}">Chakma</td>
+                                                <td th:text="${list.grade}">Chakma</td>
+                                                <td th:text="${list.remarks}">Chakma</td>
+                                            </tr> 
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>   
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 11.Posting Record Information</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <table class="table table-bordered ">
+                                            <thead class=" box box-success  box-solid">
+                                                <tr>  
+                                                    <th>Sr. no.</th> 
+                                                    <th> Posting Reason</th>
+                                                    <th>Posting Rank/Order of precedence : </th>
+                                                    <th>Posting Type</th>
+                                                    <th>Designation</th>
+                                                    <th>Office Location</th>
+                                                    <th>Country</th>
+
+                                                    <th>Period From</th>
+                                                    <th>Period To</th>
+                                                    <th>Scale/Grade</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tr  th:each="list,status:${postingRecordInformation}">
+                                                <td th:text="${ status.count}">2 </td> 
+                                                <td th:text="${list.postingReason}">Chakma</td>
+                                                <td th:text="${list.postingRank.name}">BCS</td> 
+                                                <td th:text="${list.postingType}">BCS</td> 
+                                                <td th:text="${list.postingDesignation.name}">BCS</td> 
+                                                <td th:text="${list.postingLocation.name}">BCS</td> 
+                                                <td th:text="${list.country}">BCS</td> 
+
+
+                                                <td th:text="${list.periodFrom}">BCS</td>
+                                                <td th:text="${list.periodTo}">BCS</td>
+                                                <td th:text="${list.scale}">BCS</td>
+                                            </tr>
+                                        </table>       
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>12. Promotions Information</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <table class="table table-bordered ">
+                                            <thead class=" box box-success  box-solid">
+                                                <tr>  
+                                                    <th>Sr. no.</th> 
+                                                    <th>Date of Promotion</th>
+                                                    <th>Govt Order Date</th>
+                                                    <th>Nature Of Promotions</th>
+                                                    <th>Posting Rank/Order of precedence </th>
+                                                    <th>Posting Type:</th>
+                                                    <th>Designation </th>
+                                                    <th>Office Location</th>
+                                                    <th>Country</th>
+                                                    <th>Scale / Grade</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tr  th:each="list,status:${promotionsInformation}">
+                                                <td th:text="${ status.count}">2 </td> 
+                                                <td th:text="${list.dateofPromotion}">BCS</td> 
+                                                <td th:text="${list.govtOrderDate}">BCS</td> 
+                                                <td th:text="${list.natureOfPromotions}">BCS</td> 
+                                                <td th:text="${list.postingRank.name}">BCS</td>
+                                                <td th:text="${list.postingType}">BCS</td>
+                                                <td th:text="${list.postingDesignation.name}">BCS</td>
+                                                <td th:text="${list.postingLocation.name}">BCS</td>
+                                                <td th:text="${list.country}">BCS</td>
+                                                <td th:text="${list.scale}">BCS</td>
+                                            </tr>
+
+
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>   
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>13. Magisterial Power </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <table class="table table-bordered ">
+                                            <thead class=" box box-success  box-solid">
+                                                <tr>  
+                                                    <th>Sr. no.</th> 
+                                                    <th>Magisterial Power</th>
+                                                    <th>From Date</th>
+                                                    <th>End Date</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tr  th:each="list,status:${magisterialPower}">
+                                                <td th:text="${ status.count}">2 </td> 
+                                                <td th:text="${list.magisterialpower}">BCS</td> 
+                                                <td th:text="${list.fromDate}">BCS</td>
+                                                <td th:text="${list.endDate}">BCS</td>
+
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>   
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 14.Selection Grade Information </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <table class="table table-bordered ">
+                                            <thead class=" box box-success  box-solid">
+                                                <tr>  
+                                                    <th>Sr. no.</th> 
+                                                    <th>Date of Promotion</th>
+                                                    <th>Gov't Order Date</th>
+                                                    <th>Nature Of Promotions</th>
+                                                    <th>Posting Rank/Order of precedence </th>
+                                                    <th>Posting Type:</th>
+                                                    <th>Designation </th>
+                                                    <th>Office Location</th>
+                                                    <th>Country</th>
+                                                    <th>Scale / Grade</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tr  th:each="list,status:${selectionGrade}">
+                                                <td th:text="${ status.count}">2 </td> 
+                                                <td th:text="${list.dateofPromotion}">BCS</td> 
+                                                <td th:text="${list.govtOrderDate}">BCS</td> 
+                                                <td th:text="${list.natureOfPromotions}">BCS</td> 
+                                                <td th:text="${list.postingRank.name}">BCS</td>
+                                                <td th:text="${list.postingType}">BCS</td>
+                                                <td th:text="${list.postingDesignation.name}">BCS</td>
+                                                <td th:text="${list.postingLocation.name}">BCS</td>
+                                                <td th:text="${list.country}">BCS</td>
+                                                <td th:text="${list.scale}">BCS</td>
+
+                                            </tr>
+
+
+                                        </table>        
+
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>   
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>15. Posting Abroad Information</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Posting Rank/Order of precedence : </th>
+                                                <th>Posting Type</th>
+                                                <th>Designation</th>
+                                                <th>Office Location</th>
+                                                <th>Country</th>
+                                                <th>Period From</th>
+                                                <th>Period To</th>
+                                                <th>Scale/Grade</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${postingAbroadInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.postingRank.name}">BCS</td> 
+                                            <td th:text="${list.postingType}">BCS</td> 
+                                            <td th:text="${list.postingDesignation.name}">BCS</td> 
+                                            <td th:text="${list.postingLocation.name}">BCS</td> 
+                                            <td th:text="${list.country}">BCS</td> 
+                                            <td th:text="${list.periodFrom}">BCS</td>
+                                            <td th:text="${list.periodTo}">BCS</td>
+                                            <td th:text="${list.scale}">BCS</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>16.Foreign Training List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Training Title  </th>
+                                                <th>Country</th>
+                                                <th> Training Institute</th>
+                                                <th> Position</th>
+                                                <th> Period From</th>
+                                                <th> Period To</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${foreignTrainingInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.typeofTraining}">BCS</td> 
+                                            <td th:text="${list.country}">BCS</td>
+                                            <td th:text="${list.trainingInstitute}">BCS</td>  
+                                            <td th:text="${list.position}">BCS</td> 
+                                            <td th:text="${list.periodFrom}">BCS</td>    
+                                            <td th:text="${list.periodTo}">BCS</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>17. In Service Training List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Training Title </th>
+                                                <th>Training Type</th>
+                                                <th>Training Institute</th>
+                                                <th>Position</th>
+                                                <th>Period From</th>
+                                                <th>Period To</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${inServiceTrainingInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.trainingTitle}">BCS</td> 
+                                            <td th:text="${list.trainingType}">BCS</td>
+                                            <td th:text="${list.trainingInstitute}">BCS</td>
+                                            <td th:text="${list.position}">BCS</td>
+                                            <td th:text="${list.periodFrom}">BCS</td>
+                                            <td th:text="${list.periodTo}">BCS</td>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div> 
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 18.Other Service Training List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Name of the Employer</th>
+                                                <th>Address</th>
+                                                <th>Type of Service</th>
+                                                <th>Position</th>
+                                                <th>Period From</th>
+                                                <th>Period To</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${otherServiceInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.nameoftheEmployer}">BCS</td> 
+                                            <td th:text="${list.address}">BCS</td> 
+                                            <td th:text="${list.typeofService}">BCS</td> 
+                                            <td th:text="${list.position}">BCS</td> 
+                                            <td th:text="${list.periodFrom}">BCS</td>
+                                            <td th:text="${list.periodTo}">BCS</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>19.Honors and Award List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Title of Award </th>
+                                                <th>Ground</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${honorsAndAwardInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.titleOfAward}">BCS</td> 
+                                            <td th:text="${list.ground}">BCS</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>20.Disciplinary Action List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr> 
+                                                <th>Sr. no.</th> 
+                                                <th>Nature of Offence   </th>
+                                                <th>Punishment Nature</th>
+                                                <th> Punishment:</th> 
+                                                <th> Order Date:</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${disciplinaryAction}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.natureofOffence}">BCS</td> 
+                                            <td th:text="${list.punishmentNature}">BCS</td>
+                                            <td th:text="${list.punishment}">BCS</td>  
+                                            <td th:text="${list.oderDate}">BCS</td>       
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 21.Leave  Information </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Government Order No </th>
+                                                <th>Leave Type</th>
+                                                <th>Leave Approved Length</th>
+                                                <th>Leave Start Date</th>
+                                                <th>Join Date</th>
+                                                <th>Total Enjoy Day</th>
+                                                <th>Status</th>
+                                                <th>Remark</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${leaveinfo}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.governmentOrderNo}">BCS</td> 
+                                            <td th:text="${list.leaveType}">BCS</td> 
+                                            <td th:text="${list.leaveApprovedLength}">BCS</td> 
+                                            <td th:text="${list.leaveStartDate}">BCS</td> 
+                                            <td th:text="${list.joinDate}">BCS</td> 
+                                            <td th:text="${list.totalEnjoyDay}">BCS</td>
+                                            <td th:text="${list.status}">BCS</td>
+                                            <td th:text="${list.remark}">BCS</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 22.Publications Information </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Publication Type</th>
+                                                <th>Title</th>
+                                                <th>Publication Year </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${publicationInformation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.publicationType}">BCS</td> 
+                                            <td th:text="${list.title}">BCS</td> 
+                                            <td th:text="${list.publicationYear}">BCS</td> 
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>23.Professional Organization Membership </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Regulatory Body</th>
+                                                <th>Registration No</th>
+                                                <th>Registration Date</th>
+                                                <th>last Renewal Date</th>
+                                                <th>Remarks</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${membership}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.regulatoryBody}">BCS</td> 
+                                            <td th:text="${list.registrationNo}">BCS</td> 
+                                            <td th:text="${list.registrationDate}">BCS</td> 
+                                            <td th:text="${list.lastRenewaalDate}">BCS</td> 
+                                            <td th:text="${list.remarks}">BCS</td> 
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 24.ACR </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Posting Rank/Order of precedence </th>
+                                                <th>Posting Type  </th>
+                                                <th>Designation   </th>
+                                                <th>Office Location   </th> 
+                                                <th>Year   </th>
+                                                <th>Period From  </th>
+                                                <th>Period To  </th>
+                                                <th>Remarks  </th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${acr}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.postingRank.name}">BCS</td>   
+                                            <td th:text="${list.postingType}">BCS</td>   
+                                            <td th:text="${list.postingDesignation.name}">BCS</td>   
+                                            <td th:text="${list.postingLocation.name}">BCS</td>   
+                                            <td th:text="${list.year}">BCS</td>   
+                                            <td th:text="${list.periodFrom}">BCS</td>   
+                                            <td th:text="${list.periodTo}">BCS</td>   
+                                            <td th:text="${list.remarks}">BCS</td>                                             
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> 25.Retirement and Pension</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>L.P.R Date</th>
+                                                <th>Retirement Type</th>
+                                                <th>Start Date</th>
+                                                <th>Nominee</th>
+                                                <th>Remarks</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${retirementpension}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.lprDate}">BCS</td> 
+                                            <td th:text="${list.retirementType}">BCS</td> 
+                                            <td th:text="${list.startDate}">BCS</td> 
+                                            <td th:text="${list.nominee}">BCS</td> 
+                                            <td th:text="${list.remarks}">BCS</td> 
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div> 
+
+
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

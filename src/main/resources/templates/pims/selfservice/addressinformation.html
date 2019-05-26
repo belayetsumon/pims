@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Address / Contact Information </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/selfservice/index}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid  ">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Address Information </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/selfservice_addressinformation/save/{id} (id=${addressInformation.governmentId.id})}" th:object="${addressInformation}" method="post" class="form-horizontal">
+                                        
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Address Type :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-7">                   
+                                                    <select class="form-control  "   th:field="*{addressType}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" addresstype :${addresstype}"
+                                                                th:value=" ${addresstype}" 
+                                                                th:text="${addresstype}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('addressType')}" th:errors="*{addressType}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Village / Road :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{village}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('village')}" th:errors="*{village}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Post Office :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{postOffice}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postOffice')}" th:errors="*{postOffice}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> District :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-7">                   
+                                                    <select class="form-control  "   th:field="*{district}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" district :${district}"
+                                                                th:value=" ${district}" 
+                                                                th:text="${district}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('district')}" th:errors="*{district}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label">Upzilla / Thana :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-7">                   
+                                                    <select class="form-control  "   th:field="*{upazila}"  >
+                                                        <option value=" "> Select one</option>
+                                                       <option th:each =" thana :${thana}"
+                                                                th:value=" ${thana.id}" 
+                                                                th:text="${thana.name}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('upazila')}" th:errors="*{upazila}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Email :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{email}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Web Mail :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{webmail}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('webmail')}" th:errors="*{webmail}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Mobile :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{mobile}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Telephone  :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{telphone}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('telphone')}" th:errors="*{telphone}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Fax :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{fax}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('fax')}" th:errors="*{fax}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">PABX :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{pabx}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('pabx')}" th:errors="*{pabx}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Facebook ID :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{facebookId}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('facebookId')}" th:errors="*{facebookId}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Linkdin ID :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{linkdin}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('linkdin')}" th:errors="*{linkdin}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Whatsup ID :<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{whatup}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('whatup')}" th:errors="*{whatup}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class=" text-center">
+                                                        <br/>
+                                                        <button type="submit" class="btn  btn-primary">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Address / Contact List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <div th:each="list,status:${list}">
+                                        <div class="col-sm-4">
+                                            <table class="table table-bordered">
+
+                                                <tr class=" bg-maroon">
+                                                    <th th:text="${list.addressType}">BCS</th> 
+                                                    <th>Address   </th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Action
+                                                    </th>
+                                                    <td>
+                                                        <a  class=" btn  btn-xs bg-maroon" th:href="@{/selfservice_addressinformation/edit/{id} (id=${list.id})}" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+
+                                                        <a class=" btn  btn-xs bg-red" th:href="@{/selfservice_addressinformation/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <th>Village / Road   </th>
+                                                    <td th:text="${list.village}">BCS</td>
+                                                </tr><tr>
+                                                    <th> Post Office</th>
+                                                    <td th:text="${list.postOffice}">BCS</td> 
+                                                </tr><tr>
+                                                    <th> District</th>
+                                                    <td th:text="${list.district}">BCS</td> 
+                                                </tr><tr>
+                                                    <th> Upzilla / Thana</th>
+                                                    <td th:text="${list.upazila.name}">BCS</td> 
+                                                </tr><tr>
+                                                    <th> Email</th>
+                                                    <td th:text="${list.email}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Web Mail</th>
+                                                    <td th:text="${list.webmail}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Mobile</th>
+                                                    <td th:text="${list.mobile}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Telphone</th>
+                                                    <td th:text="${list.telphone}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Fax</th>
+                                                    <td th:text="${list.fax}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> PABX</th>
+                                                    <td th:text="${list.pabx}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Facebook Id</th>
+                                                    <td th:text="${list.facebookId}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Linkdin Id</th>
+                                                    <td th:text="${list.linkdin}">BCS</td>   
+                                                </tr><tr>
+                                                    <th> Whatsup Id</th>
+                                                    <td th:text="${list.whatup}">BCS</td>   
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <th> Created On</th>
+                                                    <td th:text="${list.createdOn}">BCS</td>   
+                                                </tr>
+                                                <tr>
+                                                    <th> Created By</th>
+                                                    <td th:text="${list.createdBy}">BCS</td>   
+                                                </tr>
+                                                <tr>
+                                                    <th> Updated On</th>
+                                                    <td th:text="${list.updatedOn}">BCS</td>   
+                                                </tr>
+                                                <tr>
+                                                    <th> Updated By</th>
+                                                    <td th:text="${list.updatedBy}">BCS</td>   
+                                                </tr>
+
+                                            </table>
+
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>  
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "p"
+        },
+        "th:src": {
+            "context": "img"
+        },
+        "th:replace": {},
+        "th:fragment": {
+            "context": "div"
+        }
+    }
+}

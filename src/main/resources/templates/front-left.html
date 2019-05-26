@@ -1,0 +1,39 @@
+
+<div  th:fragment="nav-left">
+    <aside class="main-sidebar" >
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+<!--                 <li sec:authorize="hasAuthority('HOME_VISIT')"><a th:href="@{/lookupdashboards/homevisit}"><i class="fa fa-circle-o"></i> Home Visit Settings</a></li>-->
+                <li>
+                    <a th:href="@{/}"> <i class="fa fa-home"></i> <span>Home</span></a> 
+                </li>
+                <li sec:authorize="hasAuthority('admin_dashboards')"> 
+                    <a th:href="@{/dashboards/index}"> <i class="fa  fa-user"></i><span> Administrator Dashboards</span></a> 
+                </li>
+
+                <li>
+                    <a th:href="@{/selfservice/index}">  <i class="fa fa-id-card"></i> <span> Your Profile</span></a> 
+                </li>
+                
+<!--                <li>
+                    <a th:href="@{/directory/directory}"> <i class="fa fa-users"></i> <span>Employee Directory</span></a> 
+                </li>-->
+                <li sec:authorize="hasAuthority('change_password')"> 
+                    <a th:href="@{/changepassword/changepassword}"><i class="fa  fa-edit"></i><span>Change Password</span></a> 
+                </li>
+                <li class="treeview">
+                    <a th:href="@{/users/logout}">
+                             <i class="fa fa-user-times"></i>
+                        <span>
+                        Logout</span>
+
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+        <!-- =============================================== -->
+    </aside>
+</div>

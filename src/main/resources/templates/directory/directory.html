@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Employee Directory
+                </h1>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Total Employee:</h3>
+
+                        <div class="box-tools pull-right">
+
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="box  box-warning box-solid">
+                                <div class="box-header">
+                                    <h3 class="box-title"> Search By Post/Rank </h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body ">
+                                    <form class="form-inline text-center" th:action="@{/directory/directory}" >
+                                        <div class="form-group">
+                                                   <select class="form-control  "   name = "postingRank"   >
+                                                <option value=" "> Select one</option>
+                                                <option th:each =" postingranks :${postingrank}"
+                                                        th:value=" ${postingranks.id}" 
+                                                        th:text="${postingranks.name}"> Select one</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-flat bg-maroon ">Search</button>
+                                    </form>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                            <div class="box box-success box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Search By Location </h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body ">
+                                    <form class="form-inline text-center" th:action="@{/directory/directory}" >
+                                        <div class="form-group">
+                                                <select class="form-control  "   name = "presentPostingLocation"   >
+                                                <option value=" "> Select one</option>
+                                                <option th:each =" presentpostinglocations :${presentpostinglocation}"
+                                                        th:value=" ${presentpostinglocations.id}" 
+                                                        th:text="${presentpostinglocations.name}"> Select one</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-flat bg-maroon ">Search</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="box box-success box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Search By Blood Group </h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body ">
+                                    <form class="form-inline text-center" th:action="@{/directory/directory}" >
+                                        <div class="form-group">
+                                            <select class="form-control  "   name = "bloodGroup"   >
+                                                <option value=" "> Select one</option>
+                                                <option th:each =" bloodgroups :${bloodgroup}"
+                                                        th:value=" ${bloodgroups}" 
+                                                        th:text="${bloodgroups}"> Select one</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-flat bg-maroon ">Search</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <!-- /.box -->
+                            <div class="box  box-warning box-solid">
+                                <div class="box-header">
+                                    <h3 class="box-title"> Search By Designation </h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body ">
+                                    <form class="form-inline text-center" th:action="@{/directory/directory}" >
+                                        <div class="form-group">
+
+                                            <select class="form-control  "   name = "postingDesignation"   >
+                                                <option value=" "> Select one</option>
+                                                <option th:each =" postingdesignations :${postingdesignation}"
+                                                        th:value=" ${postingdesignations.id}" 
+                                                        th:text="${postingdesignations.name}"> Select one</option>
+                                            </select>
+
+
+                                        </div>
+                                        <button type="submit" class="btn btn-flat bg-maroon ">Search</button>
+                                    </form>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+
+                        </div>  
+
+                            
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget box-solid widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-yellow">
+                                    <div class="widget-user-image">
+                                        <!--                                        <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">-->
+                                        <img class="img-circle img-responsive" th:src="@{/images/yyy.jpg}" alt="User profile picture"/>
+                                    </div>
+                                    <!-- /.widget-user-image -->
+                                    <h3 class="widget-user-username">Md Salam Mahamud</h3>
+                                    <h5 class="widget-user-desc">Commissioner</h5>
+                                </div>
+                                <div class="box-footer no-padding">
+                                    <ul class="nav nav-stacked">
+                                        <li><a href="#">Mobile <span class="pull-right badge bg-blue">0188xxxxxxxx</span></a></li>
+                                        <li><a href="#">Phone <span class="pull-right badge bg-aqua">02999999</span></a></li>
+                                        <li><a href="#">Whats up <span class="pull-right badge bg-green">0188xxxxx</span></a></li>
+                                        <li><a href="#">Facebook <span class="pull-right badge bg-red">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Email <span class="pull-right badge bg-yellow">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Blood Group <span class="pull-right badge bg-red">O+</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget box-solid widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-yellow">
+                                    <div class="widget-user-image">
+                                        <img class="img-circle img-responsive" th:src="@{/images/yyy.jpg}" alt="User profile picture"/>
+                                        <!--                                        <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">-->
+                                    </div>
+                                    <!-- /.widget-user-image -->
+                                    <h3 class="widget-user-username">Md Jamaal Uddin</h3>
+                                    <h5 class="widget-user-desc">Commissioner</h5>
+                                </div>
+                                <div class="box-footer no-padding">
+                                    <ul class="nav nav-stacked">
+                                        <li><a href="#">Mobile <span class="pull-right badge bg-blue">0188xxxxxxxx</span></a></li>
+                                        <li><a href="#">Phone <span class="pull-right badge bg-aqua">02999999</span></a></li>
+                                        <li><a href="#">Whats up <span class="pull-right badge bg-green">0188xxxxx</span></a></li>
+                                        <li><a href="#">Facebook <span class="pull-right badge bg-red">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Email <span class="pull-right badge bg-yellow">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Blood Group <span class="pull-right badge bg-red">O+</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget box-solid widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-yellow">
+                                    <div class="widget-user-image">
+                                        <img class="img-circle img-responsive" th:src="@{/images/yyy.jpg}" alt="User profile picture"/>
+                                        <!--                                        <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">-->
+                                    </div>
+                                    <!-- /.widget-user-image -->
+                                    <h3 class="widget-user-username">Kamal Hossain</h3>
+                                    <h5 class="widget-user-desc">Commissioner</h5>
+                                </div>
+                                <div class="box-footer no-padding">
+                                    <ul class="nav nav-stacked">
+                                        <li><a href="#">Mobile <span class="pull-right badge bg-blue">0188xxxxxxxx</span></a></li>
+                                        <li><a href="#">Phone <span class="pull-right badge bg-aqua">02999999</span></a></li>
+                                        <li><a href="#">Whats up <span class="pull-right badge bg-green">0188xxxxx</span></a></li>
+                                        <li><a href="#">Facebook <span class="pull-right badge bg-red">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Email <span class="pull-right badge bg-yellow">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Blood Group <span class="pull-right badge bg-red">O+</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget box-solid widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-yellow">
+                                    <div class="widget-user-image">
+                                        <img class="img-circle img-responsive" th:src="@{/images/yyy.jpg}" alt="User profile picture"/>
+                                        <!--                                        <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">-->
+                                    </div>
+                                    <!-- /.widget-user-image -->
+                                    <h3 class="widget-user-username">Kamal Hossain</h3>
+                                    <h5 class="widget-user-desc">Commissioner</h5>
+                                </div>
+                                <div class="box-footer no-padding">
+                                    <ul class="nav nav-stacked">
+                                        <li><a href="#">Mobile <span class="pull-right badge bg-blue">0188xxxxxxxx</span></a></li>
+                                        <li><a href="#">Phone <span class="pull-right badge bg-aqua">02999999</span></a></li>
+                                        <li><a href="#">Whats up <span class="pull-right badge bg-green">0188xxxxx</span></a></li>
+                                        <li><a href="#">Facebook <span class="pull-right badge bg-red">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Email <span class="pull-right badge bg-yellow">you@yahoo.com</span></a></li>
+                                        <li><a href="#">Blood Group <span class="pull-right badge bg-red">O+</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                            </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="box-tools pull-right">
+
+                            </div>
+                        </div>
+                        <!-- /.box-footer-->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

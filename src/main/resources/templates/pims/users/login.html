@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-view-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" >
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+
+                </h1>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                    
+                    <div class="box box-success ">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"> Login </h3>
+                            <div class="box-tools pull-right">
+                                <div class="btn-group">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="col-sm-6">
+                                 <img th:src="@{/images/dscc-building.jpg}"  class="img-thumbnail " />
+                            </div>
+                            <div class="col-sm-4">
+                                <h3 class="box-title text-center"> Please provide your user name  and password </h3>
+                                <!--    <p class="login-box-msg">Sign in to start your session</p>-->
+                                <div class="alert alert-danger" th:if="${param.error}">
+                                    Invalid User Name or Password. Please try again.   
+
+                                </div>
+                                <div class="alert alert-warning" th:if="${param.logout}">
+                                    You have been logged out.
+                                </div>
+                                <form th:action="@{/users/login}"  method="post">
+                                    <div class="form-group has-feedback">
+                                        <input type="text"  name="username"   required class="form-control" placeholder="Govt. Id" />
+
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <input type="password" name="password"  class="form-control" placeholder="Password" required />
+                                        
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-xs-4">
+                                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                                <div class="social-auth-links text-center">
+                                    <p>- OR -</p>
+                                </div>
+                                <!-- /.social-auth-links -->
+
+                                <a th:href="@{/forgotpassword/userforgotpassword}"  class="btn btn-block btn-social btn-facebook btn-flat"> I forgot my password</a><br/>
+                                <a th:href="@{/users/front-registrations}" class="btn btn-block btn-social btn-google btn-flat"> Register a new employee</a>
+                            </div>   
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="box-tools pull-right">
+                                <div class="btn-group">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-footer-->
+                    </div>           
+                    </div>
+
+
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

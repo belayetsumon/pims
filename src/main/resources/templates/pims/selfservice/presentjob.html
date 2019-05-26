@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Present Posting Information </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/selfservice/index}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">   
+                        </div>   
+
+                        <div class="col-sm-8">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Present Posting  Information</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/selfservice_presentjob/save/{id} (id=${presentJob.governmentId.id})}" th:object="${presentJob}" method="post" class="form-horizontal">
+
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control"  th:field="*{governmentId}" />
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Posting Reason  : <span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{postingReason}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" postingreason :${postingreason}"
+                                                                th:value=" ${postingreason}" 
+                                                                th:text="${postingreason}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingReason')}" th:errors="*{postingReason}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Posting Rank/Order of precedence : <span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{presentPostingRank}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" grade :${postingrank}"
+                                                                th:value=" ${grade.id}" 
+                                                                th:text="${grade.name}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('presentPostingRank')}" th:errors="*{presentPostingRank}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Posting Type:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{postingType}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" postingType :${postingType}"
+                                                                th:value=" ${postingType}" 
+                                                                th:text="${postingType}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingType')}" th:errors="*{postingType}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Designation :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{postingDesignation}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" postingDesignation :${firstPostingDesignation}"
+                                                                th:value=" ${postingDesignation.id}" 
+                                                                th:text="${postingDesignation.name}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingDesignation')}" th:errors="*{postingDesignation}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Office Location :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{presentPostingLocation}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" postinglocation :${postinglocation}"
+                                                                th:value=" ${postinglocation.id}" 
+                                                                th:text="${postinglocation.name}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('presentPostingLocation')}" th:errors="*{postingDesignation}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Present Post Joining  Date  :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{dateJoining}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('dateJoining')}" th:errors="*{dateJoining}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">  Date of Gazetted :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{dateofGazetted}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('dateofGazetted')}" th:errors="*{dateofGazetted}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Scale / Grade : <span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{grade}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" grade :${grade}"
+                                                                th:value=" ${grade}" 
+                                                                th:text="${grade}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div> 
+
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">Remarks :<span class="text-red"> </span></label>
+                                                <div class="col-sm-6">                    
+                                                    <textarea   cols="5" rows="5"  class="form-control  "    th:field="*{remarks}"  >      </textarea> 
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('remarks')}" th:errors="*{remarks}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class="btn-group text-center">
+                                                        <button type="submit" class="btn  btn-warning">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Present Posting Information</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="overflow-x: scroll">
+
+                                    <table class="table table-bordered">
+                                        <tr >
+
+                                            <th> Government ID </th>
+                                            <th> Posting Reason</th>
+                                            <th> Posting Type</th>
+                                            <th> Designation     </th>
+                                             <th>Present Posting Rank </th>
+                                            <th>Office Location    </th>
+                                            <th>Joining Date</th>
+                                            <th>Date of Gazetted  </th>
+                                           
+                                            <th>Grade </th>
+                                            <th>Remarks  </th>
+                                            <th>Created </th>
+                                            <th>Updated</th>
+                                            <th>Edit</th>
+                                            <th>Delete
+                                            </th>
+                                        </tr>
+
+                                        <tr  th:each="list,status:${list}" >
+                                            <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                             <td th:text="${list.postingReason}">Chakma</td>
+                                            <td th:text="${list.postingType}">Chakma</td>
+                                            <td th:text="${list.postingDesignation.name}">Chakma</td>
+                                                 <td th:text="${list.presentPostingRank.name}">Chakma</td>
+                                            <td th:text="${list.presentPostingLocation.name}">Chakma</td>
+                                            <td th:text="${list.dateJoining}">Chakma</td>
+                                            <td th:text="${list.dateofGazetted}">Chakma</td>
+                                       
+                                            <td th:text="${list.grade}">Chakma</td>
+                                            <td th:text="${list.remarks}">Chakma</td>
+                                                <td>Created:<span th:text="${list.createdOn}"></span><br/>
+                                                Created By:<span th:text="${list.createdBy}"></span>
+                                            </td><td>
+                                                Updated:<span th:text="${list.updatedOn}"></span><br/>
+                                                Updated By:<span th:text="${list.updatedBy}"></span></td>
+                                            
+                                            <td> <a th:href="@{/selfservice_presentjob/edit/{id} (id=${list.id})}" > Edit</a> </td>
+                                            <td> <a th:href="@{/selfservice_presentjob/delete/{id} (id=${list.id})}" > Delete </a> </td>
+                                        </tr> 
+                                    </table>
+
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>                      
+                        </div>             
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

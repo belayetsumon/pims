@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Address / Contact List</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body " style="overflow-x: scroll">
+
+                        <table class="table table-bordered table-" id="myTableId">
+
+                                                <thead>
+                                                    <tr class=" bg-green">
+                                                        <th>Address   </th>
+                                                       <th>Village / Road   </th>
+                                                        <th> Post Office</th>
+                                                        <th> District</th>
+                                                        <th> Upzilla / Thana</th>
+                                                        <th> Email</th>
+                                                        <th> Web Mail</th>
+                                                        <th> Mobile</th>
+                                                        <th> Telephone</th>
+                                                        <th> Fax</th>
+                                                        <th> PABX</th>
+                                                        <th> Facebook Id</th>
+                                                        <th> Linkdin Id</th>
+                                                        <th> Whatsup Id</th>
+                                           
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr th:each="list,status:${list}">
+                                                        <td th:text="${list.addressType}">BCS</td> 
+                                                        <td th:text="${list.village}">BCS</td>
+                                                        <td th:text="${list.postOffice}">BCS</td> 
+                                                        <td th:text="${list.district}">BCS</td> 
+                                                        <td th:text="${list.upazila.name}">BCS</td> 
+                                                        <td th:text="${list.email}">BCS</td> 
+                                                        <td th:text="${list.webmail}">BCS</td>   
+                                                        <td th:text="${list.mobile}">BCS</td>   
+                                                        <td th:text="${list.telphone}">BCS</td>  
+                                                        <td th:text="${list.fax}">BCS</td> 
+                                                        <td th:text="${list.pabx}">BCS</td> 
+                                                        <td th:text="${list.facebookId}">BCS</td> 
+                                                        <td th:text="${list.linkdin}">BCS</td> 
+                                                        <td th:text="${list.whatup}">BCS</td>  
+                                                      
+                                                    </tr>
+
+                                                </tbody>  
+
+
+                                            </table>
+
+                     
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

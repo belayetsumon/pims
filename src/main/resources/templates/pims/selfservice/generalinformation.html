@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> General Informations </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/selfservice/index}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">   
+                        </div>   
+
+                        <div class="col-sm-6">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit General Informations </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/selfservice_generalinformation/save/{id} (id=${generalInformation.governmentId.id})}" th:object="${generalInformation}" method="post" class="form-horizontal">
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control"  th:field="*{governmentId}" />
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Employee Name :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{name}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+
+                                                <label for="name" class="col-sm-4 control-label"> Father's Name :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{fathersName}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Mother's Name :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{mothersName}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('mothersName')}" th:errors="*{mothersName}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Home District :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{homeDistrict}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" district :${district}"
+                                                                th:value=" ${district}" 
+                                                                th:text="${district}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('homeDistrict')}" th:errors="*{homeDistrict}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">  Date of Birth  :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-7">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{dateofBirth}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('dateofBirth')}" th:errors="*{dateofBirth}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Country Of Birth:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{birthCountry}"  >
+<!--                                                        <option value=" "> Select one</option>-->
+                                                        <option th:each =" birthCountry :${birthcountry}"
+                                                                th:value=" ${birthCountry}" 
+                                                                th:text="${birthCountry}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('birthCountry')}" th:errors="*{birthCountry}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Birth Certificate / Reg:  No :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{birthCertificateNumber}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('birthCertificateNumber')}" th:errors="*{birthCertificateNumber}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Gender:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{gender}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" gender :${gender}"
+                                                                th:value=" ${gender}" 
+                                                                th:text="${gender}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Marital Status:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{maritalStatus}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" maritalStatus :${maritalStatus}"
+                                                                th:value=" ${maritalStatus}" 
+                                                                th:text="${maritalStatus}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('maritalStatus')}" th:errors="*{maritalStatus}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Religion:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{religion}">
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" religion :${religion}"
+                                                                th:value=" ${religion}" 
+                                                                th:text="${religion}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('religion')}" th:errors="*{religion}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Ethnic Identity:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{ethnicIdentity}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each ="ethnicIdentitys:${ethnicIdentitys}"
+                                                                th:value=" ${ethnicIdentitys}" 
+                                                                th:text="${ethnicIdentitys}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('ethnicIdentity')}" th:errors="*{ethnicIdentity}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Nationality:<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{nationality}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label">Blood Group:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{bloodGroup}"  >
+<!--                                                        <option value=" "> Select one </option>-->
+                                                        <option th:each =" bloodgroupes :${bloodgroups}" th:value=" ${bloodgroupes}"  th:text="${bloodgroupes}"> Select one </option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('bloodGroup')}" th:errors="*{bloodGroup}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Driving License  :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{drivingLicence}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('drivingLicence')}" th:errors="*{drivingLicence}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Passport No :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{passportNo}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('passportNo')}" th:errors="*{passportNo}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>                                     
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> National Id No :<span class="text-red">*  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{nid}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        
+                                             <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> TIN No :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{tin}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('tin')}" th:errors="*{tin}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">  L. P .R .Date  :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-7">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{lPRDate}"    />                
+                                                    </div>  
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('lPRDate')}" th:errors="*{lPRDate}">First Name Error</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> Employee Status:<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{employeeStatus}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" employeestatus :${employeestatus}"
+                                                                th:value=" ${employeestatus}" 
+                                                                th:text="${employeestatus}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('employeeStatus')}" th:errors="*{employeeStatus}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class="btn-group text-center">
+
+                                                        <button type="submit" class="btn  btn-warning">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-6">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>General Information  List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div th:each="list,status:${list}">
+                                        <table class="table table-bordered">
+                                            <tr >
+                                                <th>
+                                                    <a th:href="@{/selfservice_generalinformation/edit/{id} (id=${list.id})}" > Edit</a>
+                                                </th>
+                                                <td> <a th:href="@{/selfservice_generalinformation/delete/{id} (id=${list.id})}" > Delete </a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th> Government ID </th>
+                                                <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                            </tr> 
+                                            <tr>
+                                                <th> Name</th>
+                                                <td th:text="${list.name}">Chakma</td>
+                                            </tr>  
+
+                                            <tr>
+                                                <th>  Father's Name        </th>
+                                                <td th:text="${list.fathersName}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Mother's Name     </th>
+                                                <td th:text="${list.mothersName}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>        Home District  </th>
+                                                <td th:text="${list.homeDistrict}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Date Of Birth     </th>
+                                                <td th:text="${list.dateofBirth}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>    Country Of Birth  </th>
+                                                <td th:text="${list.birthCountry}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>       Birth Certificate/  Registration Number   </th>
+                                                <td th:text="${list.birthCertificateNumber}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Gender    </th>
+                                                <td th:text="${list.gender}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Marital Status    </th>
+                                                <td th:text="${list.maritalStatus}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Religion    </th>
+                                                <td th:text="${list.religion}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Ethnic Identity    </th>
+                                                <td th:text="${list.ethnicIdentity}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Nationality  </th>
+                                                <td th:text="${list.nationality}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Blood Group :   </th>
+                                                <td th:text="${list.bloodGroup}">Chakma</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>   Driving Licence       </th>
+                                                <td th:text="${list.drivingLicence}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>      Passport No    </th>
+                                                <td th:text="${list.passportNo}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>   National Id No    </th>
+                                                <td th:text="${list.nid}">Chakma</td>
+                                            </tr>
+                                                <tr>
+                                                <th>   TIN   No </th>
+                                                <td th:text="${list.tin}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     L. . R. Date     </th>
+                                                <td th:text="${list.lPRDate}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Employee Status     </th>
+                                                <td th:text="${list.employeeStatus}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>    Version   </th>
+                                                <td th:text="${list.version}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Created On    </th>
+                                                <td th:text="${list.createdOn}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>    Created By     </th>
+                                                <td th:text="${list.createdBy}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Updated On   </th>
+                                                <td th:text="${list.updatedOn}">Chakma</td>
+                                            </tr>
+                                            <tr>
+                                                <th>     Updated By    </th>
+                                                <td th:text="${list.updatedBy}">Chakma</td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>                      
+                        </div>             
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

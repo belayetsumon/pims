@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Employee By Department</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <div class="col-sm-12 col-md-12 col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Department  List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <table class="table">
+                                        <tr>
+                                            <th >#</th> 
+                                            <th >Department</th>
+                                            <th >Subdepartment</th> 
+                                           
+                                        </tr>
+                                        <tr  th:each="department,status:${department}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${department.name}">BCS</td> 
+                                            <td >
+
+                                                <table class="table">
+                                                        <tr>
+                                            <th >#</th> 
+                                            <th >Name</th>
+                                            <th >Total</th> 
+                                           
+                                        </tr>
+                                                    <tr th:each="subDepartment,status:${department.subDepartment}">
+                                                        <td th:text="${ status.count}">2 </td> 
+                                                        <td th:text="${subDepartment.name}"> BCS</td> 
+                                                        <td th:text="${subDepartment.subDepartment.size()}"> BCS</td> 
+                                                    </tr>
+                                                    <tr>
+                                                        <th> Total</th> 
+                                                      <td th:text="${department.department.size()}">BCS</td> 
+                                                      <td></td>
+                                                    </tr>
+                                                    
+                                                </table>
+
+
+                                            </td> 
+                                          
+                                        </tr>
+
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>                      
+                        </div>  
+<!--                        <div class="col-sm-6 col-md-6 col-xs-6">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Search by Department</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+
+                                </div>
+                            </div>                      
+                        </div>-->
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

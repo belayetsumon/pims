@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<div 
+    xmlns:th="http://www.thymeleaf.org" 
+    
+    xmlns:ddl="http://www.thymeleaf.org/dandelion"
+    
+    xmlns:dt="http://www.thymeleaf.org/dandelion/datatables"
+    
+    layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+
+        <!-- Content Wrapper. Contains page content -->
+
+        <div class="content-wrapper">
+
+            <!-- Content Header (Page header) -->
+
+            <section class="content-header">
+
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Test Report</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a href="" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Test Report </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table  class="table table-bordered " id="myTableId">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Name</th>
+                                                <th>Father name</th>
+                                                <th>Mother Name</th>
+                                                <th>District</th>
+                                                <th>Mobile</th>
+                                                <th>Created</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr  th:each="list:${list.content}">
+                                                <td th:text="${list.id}">2 </td> 
+                                                <td th:text="${list.name}">BCS</td> 
+                                                <td th:text="${list.fathername}">BCS</td> 
+                                                <td th:text="${list.mothername}">BCS</td> 
+                                                <td th:text="${list.district}">BCS</td>
+                                                <td th:text="${list.mobile}">BCS</td>
+                                                <td th:text="${list.created}">BCS</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                  <div class="box-footer clearfix">
+                                   
+                                          
+                                    <ul class="pagination" id="">
+                                        
+                                        <li>
+                                            <a  type="button" class="btn btn-primary" href="" tabindex="-1"> <span class="col-sm-2"> Page <span th:text="${currentPage}"> </span> of <span th:text="${list.totalPages}"> </span> </span></a>                   
+                                        </li> 
+                                        
+                                        <li>
+                                            <a  type="button" class="btn btn-primary" th:href="@{/testmodel/index(page=${0})}" tabindex="-1">First</a>                   
+                                        </li>
+
+                                        <li>
+                                            <a th:class="${currentPage == 0} ? 'btn btn-primary disabled' :'btn btn-primary '" th:href="@{/mytest/index(page=${currentPage-1})}" tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item " id="">
+                                        <th:block th:each="i: ${#numbers.sequence(startPage, endPage)}">
+                                            <span th:if="${currentPage == i}" class="selected"> <span th:text="${i}"></span> </span> 
+                                            <span th:unless="${currentPage == i}">
+                                                <a th:href="@{/testmodel/index(page=${i})}"><span th:text="${i}"></span></a>
+                                            </span>
+                                        </th:block>
+                                        </li>
+
+                                        <li class="page-item " >
+                                            <a href="#">...</a>
+                                        </li>
+
+                                        <li>
+                                            <a  th:class="${currentPage == list.totalPages-1} ? 'btn btn-primary disabled' :'btn btn-primary '" th:href="@{/testmodel/index(page=${currentPage+1})}" >Next</a>
+                                        </li>
+
+                                        <li>                        
+                                            <a class="btn btn-primary" th:href="@{/testmodel/index(page=${list.totalPages-1})}">Last</a></li>
+                                    </ul>
+                                                    </div>
+
+                            </div>
+                            </div>                      
+                        </div>  
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

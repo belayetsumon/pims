@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Language Information</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/details/detailsinfo/{id} (id=${languageInformation.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <div class="col-sm-7 col-md-7 col-sm-offset-3 col-md-offset-3">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid  ">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Language</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/language/save/{id} (id=${languageInformation.governmentId.id})}" th:object="${languageInformation}" method="post" class="form-horizontal">
+
+
+
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>   
+
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
+                                        </div>                         
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-3 control-label"> Language Name :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-4">                   
+                                                    <select class="form-control  "   th:field="*{language}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" languagename :${languagename}"
+                                                                th:value=" ${languagename}" 
+                                                                th:text="${languagename}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('language')}" th:errors="*{language}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Skill :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-8">
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}">First Name Error</span>
+                                                    <ul class="list-inline">
+                                                        <li th:each="languageskill : ${languageskill}" >
+                                                            <input type="checkbox" th:field="*{skill}"  th:value="${languageskill}" />
+                                                            <label  th:text="${languageskill}">Admin</label>
+                                                        </li>
+                                                    </ul>                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label"> Proficiency :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-4">                   
+                                                    <select class="form-control "   th:field="*{proficiency}" >
+
+                                                        <option value=" "> Select one </option>
+
+                                                        <option th:each ="proficiencys :${proficiencys}"
+
+                                                                th:value=" ${proficiencys}" 
+
+                                                                th:text="${proficiencys}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('proficiency')}" th:errors="*{proficiency}">First Name Error</span>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class=" text-center">
+                                                        <br/>
+                                                        <button type="submit" class="btn  btn-primary">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Language Information List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Language</th>
+                                                <th>Skill</th>
+                                                <th>Proficiency</th>
+                                                <th>Created</th>
+                                                <th>Updated</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tr  th:each="list,status:${list}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.language}">BCS</td> 
+                                            <td th:text="${list.skill}">BCS</td> 
+                                            <td th:text="${list.proficiency}">BCS</td> 
+                                            <td>Created:<span th:text="${list.createdOn}"></span><br/>
+                                                Created By:<span th:text="${list.createdBy}"></span>
+                                            </td>
+                                            <td>
+                                                Updated:<span th:text="${list.updatedOn}"></span><br/>
+                                                Updated By:<span th:text="${list.updatedBy}"></span>
+                                            </td>
+                                            <td> <!--  <button class=" btn  btn-xs bg-orange"> <i class="fa fa-eye" aria-hidden="true"></i> </button> -->
+                                                <a  class=" btn  btn-xs bg-maroon" th:href="@{/language/edit/{id} (id=${list.id})}" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+                                            </td>
+                                            <td>
+                                                <a class=" btn  btn-xs bg-red" th:href="@{/language/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

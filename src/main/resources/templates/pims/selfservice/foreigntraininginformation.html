@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Foreign Training </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/selfservice/index}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid  ">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Foreign Training</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/selfservice_foreigntraininginformation/save/{id} (id=${foreignTrainingInformation.governmentId.id})}" th:object="${foreignTrainingInformation}" method="post" class="form-horizontal">
+
+
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>  
+
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
+                                        </div>                         
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">Training Title  :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{typeofTraining}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('typeofTraining')}" th:errors="*{typeofTraining}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Country :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-6">                   
+                                                    <select class="form-control  "   th:field="*{country}"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" birthCountry :${birthcountry}"
+                                                                th:value=" ${birthCountry}" 
+                                                                th:text="${birthCountry}"> Select one</option>
+                                                    </select>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('country')}" th:errors="*{country}">First Name Error</span>
+                                                </div>                     
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Training Institute Name:<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{trainingInstitute}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('trainingInstitute')}" th:errors="*{trainingInstitute}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Position :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">    
+
+                                                    <input type="text"  class="form-control  " th:field="*{position}"    />                
+
+
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Period From:<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{periodFrom}"    />                
+                                                    </div>  
+
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('periodFrom')}" th:errors="*{periodFrom}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Period To:<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text"   placeholder="dd/mm/yyyy" class="form-control  " th:field="*{periodTo}"    />                
+                                                    </div>  
+
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('periodTo')}" th:errors="*{periodTo}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class=" text-center">
+                                                        <br/>
+                                                        <button type="submit" class="btn  btn-primary">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Foreign Training List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Training Title  </th>
+                                                <th>Country</th>
+                                                <th> Training Institute Name</th>
+                                                <th> Position</th>
+                                                <th> Period From</th>
+                                                <th> Period To</th>
+                                                <th>Created</th>
+                                                <th>Updated</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${list}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.typeofTraining}">BCS</td> 
+                                            <td th:text="${list.country}">BCS</td>
+                                            <td th:text="${list.trainingInstitute}">BCS</td>  
+                                            <td th:text="${list.position}">BCS</td> 
+                                            <td th:text="${list.periodFrom}">BCS</td>    
+                                            <td th:text="${list.periodTo}">BCS</td>  
+                                                        
+                                            <td>Created:<span th:text="${list.createdOn}"></span><br/>
+                                                Created By:<span th:text="${list.createdBy}"></span>
+                                            </td><td>
+                                                Updated:<span th:text="${list.updatedOn}"></span><br/>
+                                                Updated By:<span th:text="${list.updatedBy}"></span></td>
+                                            <td>
+                                                <!--                                        <button class=" btn  btn-xs bg-orange"> <i class="fa fa-eye" aria-hidden="true"></i> </button> -->
+                                                <a  class=" btn  btn-xs bg-maroon" th:href="@{/selfservice_foreigntraininginformation/edit/{id} (id=${list.id})}" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+                                            </td><td>
+                                                <a class=" btn  btn-xs bg-red" th:href="@{/selfservice_foreigntraininginformation/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                            </td>
+
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

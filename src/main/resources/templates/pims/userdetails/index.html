@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" >
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Employee Details Information
+
+                </h1>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+
+                <div class="row">
+                <div class="box box-warning ">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Government  ID:<span th:text="${users.governmentId}"></span> </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-3">
+                            <img class="profile-user-img img-responsive img-circle" th:src="@{/images/profile.png}" alt="User profile picture"/>
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                        <div class="col-sm-4 pull-right">
+                            <a th:href="@{/profile/fullprofile/{e_id}(e_id=${users.id})}"  class="btn btn-danger btn-block"><b> Full Profile</b> </a>
+                            <a href="#" class="btn btn-success btn-block"><b>Short Profile</b></a>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>           
+                    
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+
+                            <span class="info-box-icon bg-aqua"> <i class="fa fa-certificate" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+
+                                <span class="info-box-text"> <span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span></span>
+
+                                <span class="info-box-number"><a  th:href="@{/reasons/index}">  Additional Qualification </a></span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"> <span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                                <span class="info-box-number">     <a  th:href="@{/religion/index}" > 
+                                        Address  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-child" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"> <span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span></span>
+                                <span class="info-box-number">  <a  th:href="@{/maritalstatus/index}" >
+
+                                        Children </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-yellow"><i class="fa fa-gavel" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span></span>
+                                <span class="info-box-number"><a  th:href="@{/husbandsstatus/index}">
+                                        Disciplinary Action</a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-maroon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span></span>
+                                <span class="info-box-number"><a  th:href="@{/relations/index}">Educational  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-navy"><i class="fa fa-plane" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span></span>
+                                <span class="info-box-number"><a  th:href="@{/ethnicIdentity/index}" type="button"> 
+                                        Foriegn Training  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-olive"><i class="fa fa-book" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"> <a  th:href="@{/}"> 
+                                        General Information</a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-orange"><i class="fa fa-gift" aria-hidden="true"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index} "> Honours  And Award  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-purple"><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}" > 
+                                        In-Service Training</a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-file" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}" >
+                                        Long profile</a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-gavel" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"> <a  th:href="@{/educationtype/index}" >
+                                        Magistrial Power </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-maroon"><i class="fa fa-th" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}" >
+                                        Other Service  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-navy"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"> <a  th:href="@{/educationtype/index}" >
+                                        Posting Abroad </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-olive"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}"> Posting  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-orange"><i class="fa fa-language" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}"  >
+                                        Language  </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-purple"><i class="fa fa-book" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}">
+                                        Publication </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red"><i class="fa fa-database" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}" >
+                            Selection Grade </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-yellow"><i class="fa fa-history" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number">    <a  th:href="@{/educationtype/index}" >
+                            Service History </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-light-blue"><i class="fa fa-female" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number"><a  th:href="@{/educationtype/index}"  type="button" >
+                            Spouse </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-folder-o" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number">   <a  th:href="@{/educationtype/index}" >
+                            Short Profile </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-maroon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number">                        
+                        <a  th:href="@{/educationtype/index}" >Profile Image </a></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+<!--                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-navy"><i class="fa fa-google-plus"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number">41,410</span>
+                            </div>
+                             /.info-box-content 
+                        </div>
+                         /.info-box 
+                    </div>-->
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+<!--                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-orange"><i class="ion ion-ios-cart-outline"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number">760</span>
+                            </div>
+                             /.info-box-content 
+                        </div>
+                         /.info-box 
+                    </div>-->
+                    <!-- /.col -->
+<!--                   <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"><span class="badge bg-green pull-right"> <i class="fa fa-check" aria-hidden="true"></i> </span></span>
+                                <span class="info-box-number">2,000</span>
+                            </div>
+                             /.info-box-content 
+                        </div>
+                         /.info-box 
+                    </div>-->
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

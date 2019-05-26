@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Educational Information </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/selfservice/index}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid  ">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Educational Information</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/selfservice_educationalInformation/save/{id} (id=${educationalInformation.governmentId.id})}" th:object="${educationalInformation}" method="post" class="form-horizontal">
+
+
+
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                                            <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
+                                        </div>                         
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Name of Institution  :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{nameOfInstitution}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nameOfInstitution')}" th:errors="*{nameOfInstitution}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Principal Subject :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{principalSubject}"  />
+                                                    <span  class="help-block " > Ex: N/A, HR, Accounting, Math etc.</span>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('principalSubject')}" th:errors="*{principalSubject}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Certificate / Degree:<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{certificateDegree}"  />   
+                                                    <span  class="help-block " > Ex: PSC, S.S.C, H.S.C,Diploma, B.SC ,MA , Phd etc.</span>
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('certificateDegree')}" th:errors="*{certificateDegree}">First Name Error</span>
+                                                </div>                            
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Year :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">    
+
+                                                    <input type="number"  min="1950" max="2050" class="form-control  " th:field="*{year}"    />                
+                                                    <span  class="help-block " > Ex: 2001, 2002, 2003 etc.</span>
+
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Board or University :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">    
+
+                                                    <input type="text"   class="form-control  " th:field="*{boardoruniversity}"    />  
+
+                                                    <span  class="help-block " > Dhaka Board, Dhaka University</span>
+
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('boardoruniversity')}" th:errors="*{boardoruniversity}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Division / Class:<span class="text-red"> </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{divisionClass}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('divisionClass')}" th:errors="*{divisionClass}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> GPA :<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{gPA}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('gPA')}" th:errors="*{gPA}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> GPAPoint:<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{gPAPoint}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('gPAPoint')}" th:errors="*{gPAPoint}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Distinction:<span class="text-red">  </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{distinction}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('distinction')}" th:errors="*{distinction}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class=" text-center">
+                                                        <br/>
+                                                        <button type="submit" class="btn  btn-primary">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+
+                        <div class="col-sm-12 col-md-12col-xs-12">    
+                            <div class="box box-success  box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Education Information List</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+
+                                    <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>Name of Institution  </th>
+                                                <th>Principal Subject</th>
+                                                <th> Certificate / Degree</th>
+                                                <th> Year</th>
+                                                <th> Board or University</th>
+                                                <th> Division / Class</th>
+                                                <th> GPA</th>
+                                                <th> GPA Point</th>
+                                                <th> Distinction</th>
+                                                <th>Created</th>
+                                                <th>Updated</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${list}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.nameOfInstitution}">BCS</td> 
+                                            <td th:text="${list.principalSubject}">BCS</td>
+                                            <td th:text="${list.certificateDegree}">BCS</td>  
+                                            <td th:text="${list.year}">BCS</td> 
+                                            <td th:text="${list.boardoruniversity}">BCS</td>
+                                            <td th:text="${list.divisionClass}">BCS</td>    
+                                            <td th:text="${list.gPA}">BCS</td>    
+                                            <td th:text="${list.gPAPoint}">BCS</td>    
+                                            <td th:text="${list.distinction}">BCS</td>  
+                                            <td>Created:<span th:text="${list.createdOn}"></span><br/>
+                                                Created By:<span th:text="${list.createdBy}"></span>
+                                            </td><td>
+                                                Updated:<span th:text="${list.updatedOn}"></span><br/>
+                                                Updated By:<span th:text="${list.updatedBy}"></span></td>
+
+                                            <td>
+                                                <!--                                                <button class=" btn  btn-xs bg-orange"> <i class="fa fa-eye" aria-hidden="true"></i> </button> -->
+                                                <a  class=" btn  btn-xs bg-maroon" th:href="@{/selfservice_educationalInformation/edit/{id} (id=${list.id})}" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+                                            </td><td>
+                                                <a class=" btn  btn-xs bg-red" th:href="@{/selfservice_educationalInformation/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                            </td>
+
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </div>                      
+                        </div>  
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

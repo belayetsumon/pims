@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="front-view-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" >
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+
+
+                </h1>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="box box-success ">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Recover Your Password  </h3>
+                                <div class="box-tools pull-right">
+                                    <div class="btn-group">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+
+                                <div class="col-sm-6">
+                                    <img th:src="@{/images/dscc-building.jpg}"  class="img-thumbnail " />
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"> </h3>
+                                        <div class="box-tools pull-right">
+                                            <div class="btn-group">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p  class="alert bg-green" th:text="${user}"></p>
+
+                                    <a   th:href="@{/users/login}" type="button" class="btn btn-primary btn-block btn-flat">Back</a>
+
+
+                                </div>
+
+
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="box-tools pull-right">
+                                    <div class="btn-group">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer-->
+                        </div>           
+
+
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

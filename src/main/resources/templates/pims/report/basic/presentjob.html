@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Personal Information Management System
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Present Posting/ Disposting Information</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  ">
+                        <table class="table table-bordered" id="myTableId">
+                            <thead>
+                                <tr  class="bg-green">
+                                    <th> Government ID </th>
+                                    <th> Posting Reason</th>
+                                    <th> Posting Type</th>
+                                    <th> Designation     </th>
+                                    <th>Present Posting Rank </th>
+                                    <th>Office Location    </th>
+                                    <th>Joining Date</th>
+                                    <th>Date of Gazetted  </th>
+                                    <th>Grade </th>
+                                    <th>Remarks  </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  th:each="list,status:${list}" >
+                                    <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                                    <td th:text="${list.postingReason}">Chakma</td>
+                                    <td th:text="${list.postingType}">Chakma</td>
+                                    <td th:text="${list.postingDesignation.name}">Chakma</td>
+                                    <td th:text="${list.presentPostingRank.name}">Chakma</td>
+                                    <td th:text="${list.presentPostingLocation.name}">Chakma</td>
+                                    <td th:text="${list.dateJoining}">Chakma</td>
+                                    <td th:text="${list.dateofGazetted}">Chakma</td>
+
+                                    <td th:text="${list.grade}">Chakma</td>
+                                    <td th:text="${list.remarks}">Chakma</td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

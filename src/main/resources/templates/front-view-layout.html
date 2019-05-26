@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>PIMS | Personal Informations Management System</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <!-- Bootstrap 3.3.6 -->
+        <link th:href="@{/css/apps.css}"  rel="stylesheet" type="text/css"  />
+        
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <!-- Theme style -->
+        <link th:href="@{/webjars/adminlte/2.3.11/dist/css/AdminLTE.min.css}"   rel="stylesheet" type="text/css"  />
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link th:href="@{/webjars/adminlte/2.3.11/dist/css/skins/_all-skins.min.css}" href="/plugins/admin-lte/dist/css/skins/_all-skins.min.css"  rel="stylesheet" type="text/css"  />
+
+    </head>
+    <body class="hold-transition skin-black-light layout-top-nav">
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <div th:replace="front-view-header">
+
+                <!-- Header  -->
+
+            </div>
+       
+            
+            <div layout:fragment="main_content">
+                <div  th:replace="admin_content">
+
+                </div> 
+            </div>
+            <!-- /.content-wrapper -->
+            <div th:replace="front-view-footer">        
+
+
+            </div>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <!--        <script type="text/javascript" th:src="@{/plugins/jQuery/jquery-2.2.3.min.js}">...</script>-->
+        <script   type="text/javascript"  th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>   
+
+        <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}"></script>
+
+        <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+        <!-- Bootstrap 3.3.6 -->
+
+         <!-- AdminLTE App -->
+        <script th:src="@{/webjars/adminlte/2.3.11/dist/js/app.min.js}">...</script>
+
+        <script th:src="@{/webjars/datatables/1.10.6/datatables.js}"></script>
+
+        <script th:src="@{/js/apps.js}">...</script>
+
+        <script th:src="@{/js/bootstrap_date.js}">...</script>
+<!--        <script th:src="@{/js/ajax.js}">...</script>-->
+
+    </body>
+</html>

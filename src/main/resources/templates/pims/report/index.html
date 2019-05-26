@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" >
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Report
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Report List</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+
+                                <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="box box-primary box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Basic Report</h3>
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <a  th:href="@{/basicreport/generalinformation}" class="btn btn-danger btn-block "><b> 1.General Information  </b></a>
+
+                                    <a  th:href="@{/basicreport/addressinformation}" class="btn btn-success  btn-block"><b>2.Address </b></a>
+
+                                    <a  th:href="@{/basicreport/spouse}"  class="btn btn-danger  btn-block"><b> 3.Spouse </b></a>
+
+                                    <a  th:href="@{/basicreport/childreninformation}" class="btn btn-success  btn-block"><b>4.Children </b></a>
+
+                                    <a  th:href="@{/basicreport/educationalInformation}"  class="btn btn-danger  btn-block"><b> 5. Educational </b></a>
+
+                                    <a  th:href="@{/basicreport/additionalqualification}" class="btn btn-success  btn-block"><b> 6.Additional Qualifications </b></a>
+
+                                    <a  th:href="@{/basicreport/language}" class="btn btn-danger  btn-block"><b> 7.Language  </b></a>
+
+                                    <a  th:href="@{/basicreport/jobentryprocess}" class="btn btn-success  btn-block"><b>8.Job Entry Process </b></a>
+
+                                    <a  th:href="@{/basicreport/firstjoininginformation}" class="btn btn-danger  btn-block"><b> 9. First Job  </b></a>
+
+                                    <a  th:href="@{/basicreport/presentjob}" class="btn btn-success  btn-block"><b>10.Present Job </b></a>
+
+                                    <a  th:href="@{/basicreport/postingrecordinformation}"  class="btn btn-danger  btn-block"><b> 11. Posting Record Information </b></a>
+
+                                    <a  th:href="@{/basicreport/promotionsinformation}" class="btn btn-success  btn-block"><b>12.Promotions Information </b></a>
+
+                                    <a  th:href="@{/basicreport/magisterialpower}" class="btn btn-success  btn-block"><b>14.Magistrial Power</b></a> 
+
+                                    <a  th:href="@{/basicreport/selectiongrade}"  class="btn btn-danger  btn-block"><b> 15. Selection Grade </b></a>
+
+                                    <a  th:href="@{/basicreport/postingabroadinformation}"  class="btn btn-success  btn-block"><b>16.Posting Abroad</b></a>  
+
+                                    <a  th:href="@{/basicreport/foreigntraininginformation}"   class="btn btn-danger  btn-block"><b> 17. Foreign Training Information  </b></a>
+
+                                    <a  th:href="@{/basicreport/inservicetraininginformation}"  class="btn btn-success  btn-block"><b>18.In-Service Training</b></a>  
+
+                                    <a  th:href="@{/basicreport/otherserviceinformation}"  class="btn btn-danger  btn-block"><b> 19. Other Service  </b></a>
+
+                                    <a  th:href="@{/basicreport/honorsandawardinformation}" class="btn btn-success  btn-block"><b>20.Honours And Award </b></a>  
+
+                                    <a  th:href="@{/basicreport/disciplinaryaction}"  class="btn btn-danger  btn-block"><b> 21. Disciplinary Action </b></a>
+
+                                    <a  th:href="@{/basicreport/leaveinfo}" class="btn btn-success  btn-block"><b>22.Leave</b></a> 
+
+                                    <a  th:href="@{/basicreport/publication}" class="btn btn-danger  btn-block"><b> 23. Publication  </b></a>
+
+                                    <a  th:href="@{/basicreport/membership}" class="btn btn-success  btn-block"><b>24.Professional Organization Membership</b></a>
+
+                                    <a  th:href="@{/basicreport/retirementpension}"  class="btn btn-danger  btn-block"><b> 25. Retirement and Pension </b></a>
+                                    <a  th:href="@{/basicreport/acr}"  class="btn btn-success btn-block"><b> 26.ACR </b></a>                      
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+
+                            <!-- Default box -->
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="box box-primary  box-solid ">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Basic Report(Empty)</h3>
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <a  th:href="@{/basicempty/generalinformation}" class="btn btn-danger  btn-block"> <b> 1.General Information  </b></a>
+                                    <a  th:href="@{/basicempty/addressinformation}"  class="btn btn-success  btn-block"><b>2.Address </b></a>
+                                    <a  th:href="@{/basicempty/spouse}"   class="btn btn-danger  btn-block"><b> 3.Spouse </b></a>
+                                    <a  th:href="@{/basicempty/childreninformation}" class="btn btn-success  btn-block"><b>4.Children </b></a>
+                                    <a  th:href="@{/basicempty/educationalInformation}"  class="btn btn-danger  btn-block"><b> 5. Educational </b></a>
+                                    <a  th:href="@{/basicempty/additionalqualification}" class="btn btn-success  btn-block"><b> 6.Additional Qualifications </b></a>
+                                    <a  th:href="@{/basicempty/language}"  class="btn btn-danger  btn-block"><b> 7.Language  </b></a>
+                                    <a  th:href="@{/basicempty/jobentryprocess}" class="btn btn-success  btn-block"><b>8.Job Entry Process </b></a>
+                                    <a  th:href="@{/basicempty/firstjoininginformation}"  class="btn btn-danger  btn-block"><b> 9. First Job  </b></a>
+                                    <a  th:href="@{/basicempty/presentjob}" class="btn btn-success  btn-block"><b>10.Present Job </b></a>
+                                    <a  th:href="@{/basicempty/postingrecordinformation}"  class="btn btn-danger  btn-block"><b> 11. Posting Record Information </b></a>
+                                    <a  th:href="@{/basicempty/promotionsinformation}" class="btn btn-success  btn-block"><b>12.Promotions Information </b></a>
+                                    <a  th:href="@{/basicempty/magisterialpower}" class="btn btn-success  btn-block"><b>14.Magistrial Power</b></a> 
+                                    <a  th:href="@{/basicempty/selectiongrade}"  class="btn btn-danger  btn-block"><b> 15. Selection Grade </b></a>
+                                    <a  th:href="@{/basicempty/postingabroadinformation}" class="btn btn-success  btn-block"><b>16.Posting Abroad</b></a>  
+                                    <a  th:href="@{/basicempty/foreigntraininginformation}"  class="btn btn-danger  btn-block"><b> 17. Foreign Training Information  </b></a>
+                                    <a  th:href="@{/basicempty/inservicetraininginformation}" class="btn btn-success  btn-block"><b>18.In-Service Training</b></a>  
+                                    <a  th:href="@{/basicempty/otherserviceinformation}"  class="btn btn-danger  btn-block"><b> 19. Other Service  </b></a>
+                                    <a  th:href="@{/basicempty/honorsandawardinformation}"  class="btn btn-success  btn-block"> <b>20.Honours And Award </b></a>  
+                                    <a  th:href="@{/basicempty/disciplinaryaction}"  class="btn btn-danger  btn-block"><b> 21. Disciplinary Action </b></a>
+                                    <a  th:href="@{/basicempty/leaveinfo}" class="btn btn-success  btn-block"><b>22.Leave</b></a> 
+                                    <a  th:href="@{/basicempty/publication}"  class="btn btn-danger  btn-block"><b> 23. Publication  </b></a>
+                                    <a  th:href="@{/basicempty/membership}" class="btn btn-success  btn-block"><b>24.Professional Organization Membership</b></a>
+                                    <a  th:href="@{/basicempty/retirementpension}" class="btn btn-danger  btn-block"><b> 25. Retirement and Pension </b></a>                        
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+
+                            <!-- Default box -->
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="box box-primary box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Classified Report</h3>
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                   <a  th:href="@{/classified/departmentindex}"   class="btn btn-danger btn-block "><b> 1.Employee by Department  </b></a>
+
+                                  <a  th:href="@{/classified/departmentindex}"   class="btn btn-success  btn-block"><b>2.Employee by Sub department</b></a>
+                                   <a  th:href="@{/classified/districtindex}"   class="btn btn-danger  btn-block"><b> 3.Employee by District</b></a>
+                                    <a  th:href="@{/classified/religionindex}"  class="btn btn-success  btn-block"><b>4.Employee by religion</b></a>
+                                     <a  th:href="@{/classified/designationindex}" class="btn btn-danger  btn-block"><b> 5. Employee by Designation </b></a>
+                                    <a  th:href="@{/classified/postindex}" class="btn btn-success  btn-block"><b> 6. Employee by post/rank</b></a>
+                                    <a  th:href="@{/classified/locationindex}"   class="btn btn-danger  btn-block"><b> 7.Employee by posting location  </b></a>
+                                    <a  href="#" class="btn btn-success  btn-block"><b>8.Employee by batch</b></a>
+                                    <a  th:href="@{/classified/lprindex}" class="btn btn-danger  btn-block"><b> 9. Employee by LPR(Year) </b></a>
+                                  <a  th:href="@{/classified/leaveindex}" class="btn btn-success  btn-block"><b>10.Employee by Present Leave</b></a>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+
+                            <!-- Default box -->
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="box box-primary box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> User/Employee</h3>
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <a href=""  class="btn btn-danger btn-block "><b> 1.Active </b></a>
+                                    <a href="#" class="btn btn-success  btn-block"><b>2.Pending </b></a>
+                                    <a href=""  class="btn btn-danger  btn-block"><b> 3.Block </b></a>                      
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="box-tools pull-right">
+                                        <div class="btn-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+
+                            <!-- Default box -->
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="box-tools pull-right">
+
+                        </div>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

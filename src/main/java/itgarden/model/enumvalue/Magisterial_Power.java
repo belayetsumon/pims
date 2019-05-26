@@ -1,0 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package itgarden.model.enumvalue;
+
+/**
+ *
+ * @author Md Belayet Hossin
+ */
+public enum Magisterial_Power {
+First_Class,
+Second_Class,
+Third_Class
+}
