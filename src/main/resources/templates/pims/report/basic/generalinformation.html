@@ -26,50 +26,54 @@
                     </div>
                     <div class="box-body  "style="overflow-x: scroll">
 
-                                    <table   class="table table-bordered " id="myTableId" >
-                                        <thead class=" box box-success  box-solid">
-                                            <tr class="bg-green">  
-                                                <th>G.ID </th>
-                                                <th>Name</th>
-                                                <th>Home District </th>
-                                                <th> DOB</th>
-                                                <th> Country Of Birth </th>
+                        <table   class="table table-bordered " id="myTableId" >
+                            <thead class=" box box-success  box-solid">
+                                <tr class="bg-green">  
+                                    <th>G.ID </th>
+                                    <th>Name</th>
+                                    <th>Father's Name</th>
+                                    <th>Mother's Name  </th>
+                                    <th> Home District </th>
+                                    <th> Date Of Birth </th>
+                                    <th> Country Of Birth </th>
+                                    <th>Birth Certificate No  </th>
+                                    <th> Gender </th>
+                                    <th> Marital Status </th>
+                                    <th> Religion  </th>
+                                    <th> Ethnic Identity</th>
+                                    <th> Nationality </th>
+                                    <th> Blood Group </th>
+                                    <th> Driving Licence </th>
+                                    <th> Passport No   </th>
+                                    <th> National Id No   </th>
+                                    <th>  TIN No    </th>
+                                    <th> L. . R. Date    </th>
+                                    <th> Employee Status    </th>
+                                </tr>
+                            </thead>
+                            <tbody>                                         
+                                <tr th:each="list,status:${list}">
+                                    <td th:text="${list.governmentId.governmentId}"> </td> 
+                                    <td th:text="${list.name}"></td> 
+                                    <td th:text="${list.homeDistrict}"> </td> 
+                                    <td th:text="${list.dateofBirth}"></td> 
+                                    <td th:text="${list.birthCountry}"></td> 
 
-                                                <th> Gender </th>
-                                                <th>Marital Status  </th>
-                                                <th> Religion </th>
-                                                <th> Ethnic Identity </th>
-                                                <th> Nationality  </th>
-                                                <th> Blood Group</th>
-                                                <th> Passport No </th>
-                                                <th> National Id No </th>
-                                                <th> L. P. R. Date</th>
-                                                <th> Employee Status  </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>                                         
-                                            <tr th:each="list,status:${list}">
-                                                <td th:text="${list.governmentId.governmentId}"> </td> 
-                                                <td th:text="${list.name}"></td> 
-                                                <td th:text="${list.homeDistrict}"> </td> 
-                                                <td th:text="${list.dateofBirth}"></td> 
-                                                <td th:text="${list.birthCountry}"></td> 
-                                                
-                                                <td th:text="${list.gender}"></td> 
-                                                <td th:text="${list.maritalStatus}"></td> 
-                                                <td  th:text="${list.religion}"> </td> 
-                                                <td th:text="${list.ethnicIdentity}"></td> 
-                                                  <td  th:text="${list.nationality}"> </td> 
-                                                <td th:text="${list.bloodGroup}"> </td> 
-                                              
-                                                 <td th:text="${list.passportNo}"></td> 
-                                                <td th:text="${list.nid}"></td> 
-                                                <td th:text="${list.lPRDate}"></td> 
-                                                <td th:text="${list.employeeStatus}"></td> 
-                                                                                 </tr>
-                                        </tbody>
-                                    </table>
-                         </div>
+                                    <td th:text="${list.gender}"></td> 
+                                    <td th:text="${list.maritalStatus}"></td> 
+                                    <td  th:text="${list.religion}"> </td> 
+                                    <td th:text="${list.ethnicIdentity}"></td> 
+                                    <td  th:text="${list.nationality}"> </td> 
+                                    <td th:text="${list.bloodGroup}"> </td> 
+
+                                    <td th:text="${list.passportNo}"></td> 
+                                    <td th:text="${list.nid}"></td> 
+                                    <td th:text="${list.lPRDate}"></td> 
+                                    <td th:text="${list.employeeStatus}"></td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
                 </div>
