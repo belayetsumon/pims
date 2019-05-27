@@ -31,7 +31,8 @@
                                                 <th>Sr. no.</th> 
                                                 <th>Magisterial Power</th>
                                                 <th>From Date</th>
-                                                <th>End Date</th>
+                                                <th>End Date</th> 
+                                                 <th> Details </th>
                                
 
                                             </tr>
@@ -42,6 +43,7 @@
                                             <td th:text="${list.magisterialpower}">BCS</td> 
                                             <td th:text="${list.fromDate}">BCS</td>
                                             <td th:text="${list.endDate}">BCS</td>
+                                            <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                                         </tr>
 
 

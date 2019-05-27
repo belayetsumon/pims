@@ -36,7 +36,8 @@
                                     <th> Division / Class</th>
                                     <th> GPA</th>
                                     <th> GPAPoint</th>
-                                    <th> Distinction</th>
+                                    <th> Distinction</th
+                                     <th> Details </th>
                                 </tr>
                             </thead>
 
@@ -50,6 +51,7 @@
                                 <td th:text="${list.gPA}">BCS</td>    
                                 <td th:text="${list.gPAPoint}">BCS</td>    
                                 <td th:text="${list.distinction}">BCS</td>  
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                                </tr>
 
 

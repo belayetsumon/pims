@@ -36,6 +36,7 @@
                                     <th> Position</th>
                                     <th> Period From</th>
                                     <th> Period To</th>
+                                     <th> Details </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,6 +48,7 @@
                                     <td th:text="${list.position}">BCS</td> 
                                     <td th:text="${list.periodFrom}">BCS</td>    
                                     <td th:text="${list.periodTo}">BCS</td>
+                                    <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                                 </tr>
                             </tbody>
                         </table>

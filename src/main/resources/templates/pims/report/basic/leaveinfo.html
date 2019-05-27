@@ -36,7 +36,8 @@
                                     <th>Join Date</th>
                                     <th>Total Enjoy Day</th>
                                     <th>Status</th>
-                                    <th>Remark</th>
+                                    <th>Remark</th> 
+                                     <th> Details </th>
 
                                 </tr>
                             </thead>
@@ -50,7 +51,8 @@
                                     <td th:text="${list.joinDate}">BCS</td> 
                                     <td th:text="${list.totalEnjoyDay}">BCS</td>
                                     <td th:text="${list.status}">BCS</td>
-                                    <td th:text="${list.remark}">BCS</td>                                        </tr>
+                                    <td th:text="${list.remark}">BCS</td>     
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> </tr>
                             </tbody>
                         </table>
                     </div>

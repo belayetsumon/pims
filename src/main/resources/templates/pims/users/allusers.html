@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Employee  List  
+                    New Employee  List 
                 </h1>
             </section>
 
@@ -29,40 +29,40 @@
 
                         <table id="basictable" class="table table-bordered">
                             <thead>
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Govt Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile</th>
-                                <th>Department</th>
-                                <th>SubDepartment</th>
-                                <!--                                <th>Role</th>-->
-                                <th>Status</th>
-                                   <th>View</th>
-                                <th>Edit</th>
-                                <th style="width: 40px">Delete</th>
-                            </tr>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Govt Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Department</th>
+                                    <th>SubDepartment</th>
+                                    <!--                                <th>Role</th>-->
+                                    <th>Status</th>
+                                    <th>View</th>
+                                    <th>Edit</th>
+                                    <th style="width: 40px">Delete</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="alluser,status:${alluser}">
-                                <td th:text="${status.count}">2.</td>
-                                <td th:text="${alluser.governmentId}">Chakma</td>
-                                <td th:text="${alluser.name}">Chakma</td>
-                                <td th:text="${alluser.email}">Chakma</td>
-                                <td th:text="${alluser.mobile}">Chakma</td>
-                                <td th:text="${alluser.department.name}">Chakma</td>
-                                <td th:text="${alluser.subDepartment.name}">Chakma</td>
-                                <!--                                <td th:text="${alluser.role.name}">Chakma</td>-->
-                                <td th:text="${alluser.status}">Chakma</td>  
-                                   <td>
-                                    <a type="button" class="btn  btn-success btn-xs bg-green" th:href="@{/users/view/{uid} (uid=${alluser.id})}" > View</a>
-                                </td>
-                                <td>
-                                    <a type="button" class="btn  btn-warning btn-xs bg-maroon" th:href="@{/users/edit/{id} (id=${alluser.id})}" > Edit</a>
-                                </td>
-                                <td> <a  type="button" class="btn  btn-warning btn-xs bg-red " th:href="@{/users/delete/{id} (id=${alluser.id})}" > Delete </a></td>
-                            </tr>
+                                <tr th:each="alluser,status:${alluser}">
+                                    <td th:text="${status.count}">2.</td>
+                                    <td th:text="${alluser.governmentId}">Chakma</td>
+                                    <td th:text="${alluser.name}">Chakma</td>
+                                    <td th:text="${alluser.email}">Chakma</td>
+                                    <td th:text="${alluser.mobile}">Chakma</td>
+                                    <td th:text="${alluser.department.name}">Chakma</td>
+                                    <td th:text="${alluser.subDepartment.name}">Chakma</td>
+                                    <!--                                <td th:text="${alluser.role.name}">Chakma</td>-->
+                                    <td th:text="${alluser.status}">Chakma</td>  
+                                    <td>
+                                        <a type="button" class="btn  btn-success btn-xs bg-green" th:href="@{/users/view/{uid} (uid=${alluser.id})}" > View</a>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn  btn-warning btn-xs bg-maroon" th:href="@{/users/edit/{id} (id=${alluser.id})}" > Edit</a>
+                                    </td>
+                                    <td> <a  type="button" class="btn  btn-warning btn-xs bg-red " th:href="@{/users/delete/{id} (id=${alluser.id})}" > Delete </a></td>
+                                </tr>
                             </tbody>
                         </table>
 

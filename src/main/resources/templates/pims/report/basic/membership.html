@@ -33,6 +33,7 @@
                                     <th>Registration Date</th>
                                     <th>last Renewal Date</th>
                                     <th>Remarks</th>
+                                     <th> Details </th>
                                 </tr>
                             </thead>
                             <tr  th:each="list,status:${list}">
@@ -42,6 +43,7 @@
                                 <td th:text="${list.registrationDate}">BCS</td> 
                                 <td th:text="${list.lastRenewaalDate}">BCS</td> 
                                 <td th:text="${list.remarks}">BCS</td> 
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                             </tr>
                         </table>
 

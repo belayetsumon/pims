@@ -38,6 +38,7 @@
                                     <th> Date of Gazetted  </th>
                                     <th> Grade </th>
                                     <th> Remarks  </th>
+                                     <th> Details </th>
                                 </tr> 
                             </thead>
                             <tbody>
@@ -51,6 +52,7 @@
                                     <td th:text="${list.dateofGazetted}">Chakma</td>
                                     <td th:text="${list.grade}">Chakma</td>
                                     <td th:text="${list.remarks}">Chakma</td>
+                                    <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                                 </tr>
                             </tbody>
                         </table>

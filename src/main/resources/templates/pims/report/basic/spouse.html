@@ -28,37 +28,60 @@
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Publication Information List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Publication Information List. Total:<span th:text="${list.size()}"></span></h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="box-body">
-                                    <table  id="basictable" class="table table-bordered ">
+                                <div class="box-body" style="overflow-x:  scroll">
+                                 
+                                       <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
                                                 <th>Sr. no.</th> 
                                                 <th>Spouse Name</th>
-                                                <th>District</th>
-                                                <th>Occupation</th>
-                                                <th>Organization</th>
-                                                <th>Designation</th>
+                                                <th>Date of Birth </th>
+                                                <th>Country Of Birth</th>
+                                                <th>Birth Certificate / Reg No</th>
+                                                <th>National Id No</th>
+                                                <th>Date of Marriage</th>
+                                                <th>Marriage Registration No</th>
+                                                <th>Passport No</th>
+                                                <th>Ethnic Identity</th>
+                                                <th>Nationality</th>
+                                                <th>District </th>
+                                                <th>Occupation </th>
+                                                <th>Organization </th>
+                                                <th>Designation </th>
                                                 <th>Location</th>
+                                                 <th> Details </th>
+                                             
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr  th:each="list,status:${list}">
-                                                <td th:text="${ status.count}">2 </td> 
-                                                <td th:text="${list.spouseName}">BCS</td> 
-                                                <td th:text="${list.district}">BCS</td> 
-                                                <td th:text="${list.occupation}">BCS</td> 
-                                                <td th:text="${list.organization}">BCS</td>
-                                                <td th:text="${list.designation}">BCS</td>
-                                                <td th:text="${list.location}">BCS</td>
-                                            </tr>
-                                        </tbody>
+
+                                        <tr  th:each="list,status:${list}">
+                                           <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${list.spouseName}">BCS</td> 
+                                            <td th:text="${list.dateofBirth}">BCS</td> 
+                                            <td th:text="${list.birthCountry}">BCS</td> 
+                                            <td th:text="${list.birthCertificateNumber}">BCS</td>
+                                            <td th:text="${list.nid}">BCS</td>
+                                            <td th:text="${list.dateofMarriage}">BCS</td>
+                                            <td th:text="${list.marriageRegistrationNo}">BCS</td>
+                                            <td th:text="${list.passportNo}">BCS</td>
+                                            <td th:text="${list.ethnicIdentity}">BCS</td>
+                                            <td th:text="${list.nationality}">BCS</td>
+                                            <td th:text="${list.district}">BCS</td>
+                                            <td th:text="${list.occupation}">BCS</td>
+                                            <td th:text="${list.organization}">BCS</td>
+                                            <td th:text="${list.designation}">BCS</td>
+                                            <td th:text="${list.location}">BCS</td>
+
+
+                                        </tr>
+
 
                                     </table>
                                 </div>

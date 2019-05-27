@@ -38,6 +38,7 @@
                                     <th> Marital Status</th>
                                     <th> Employment</th>
                                     <th> Remarks</th>
+                                     <th> Details </th>
 
                                 </tr>
                             </thead>
@@ -51,7 +52,8 @@
                                 <td th:text="${list.educationLevel}">BCS</td>   
                                 <td th:text="${list.maritalStatus}">BCS</td>   
                                 <td th:text="${list.emplyment}">BCS</td>   
-                                <td th:text="${list.remarks}">BCS</td>   
+                                <td th:text="${list.remarks}">BCS</td>  
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                             </tr>
 
 

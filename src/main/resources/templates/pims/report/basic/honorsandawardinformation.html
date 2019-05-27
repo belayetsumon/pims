@@ -30,7 +30,8 @@
                                 <tr class="bg-green">  
                                     <th>Sr. no.</th> 
                                     <th>Title of Award </th>
-                                    <th>Ground</th>
+                                    <th>Ground</th> 
+                                     <th> Details </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,6 +39,7 @@
                                     <td th:text="${ status.count}">2 </td> 
                                     <td th:text="${list.titleOfAward}">BCS</td> 
                                     <td th:text="${list.ground}">BCS</td>
+                                    <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                                 </tr>
                             </tbody>
                         </table>

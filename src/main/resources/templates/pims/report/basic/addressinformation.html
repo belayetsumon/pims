@@ -44,6 +44,7 @@
                                                         <th> Facebook Id</th>
                                                         <th> Linkdin Id</th>
                                                         <th> Whatsup Id</th>
+                                                         <th> Details </th>
                                            
                                                     </tr>
                                                 </thead>
@@ -64,7 +65,7 @@
                                                         <td th:text="${list.facebookId}">BCS</td> 
                                                         <td th:text="${list.linkdin}">BCS</td> 
                                                         <td th:text="${list.whatup}">BCS</td>  
-                                                      
+                                                      <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                                                     </tr>
 
                                                 </tbody>  

@@ -33,7 +33,8 @@
                                     <th>Retirement Type</th>
                                     <th>Start Date</th>
                                     <th>Nominee</th>
-                                    <th>Remarks</th>
+                                    <th>Remarks</th> 
+                                     <th> Details </th>
 
                                 </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                 <td th:text="${list.startDate}">BCS</td> 
                                 <td th:text="${list.nominee}">BCS</td> 
                                 <td th:text="${list.remarks}">BCS</td> 
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
                             </tr>
                         </table>
                     </div>
