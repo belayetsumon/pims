@@ -53,7 +53,7 @@ public class Users {
     @Email(message = "*Please provide a valid Email")
     private String email;
 
-    private String mobile;
+     private String mobile;
 
     @Column(length = 60)
     private String password;

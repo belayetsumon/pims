@@ -31,6 +31,8 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     Users findByGovernmentIdAndStatus(String governmentId, Status status);
 
     Users findByEmail(String email);
+    
+    Users findByMobile(String mobile);
 
     @Modifying
     @Transactional

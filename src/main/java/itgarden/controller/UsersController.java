@@ -5,6 +5,7 @@
  */
 package itgarden.controller;
 
+import itgarden.componant.UserValidator;
 import itgarden.model.Users;
 import itgarden.model.enumvalue.Status;
 import itgarden.model.lookup.Role;
@@ -22,7 +23,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,6 +53,9 @@ public class UsersController {
     @Autowired
     RoleRepository roleRepository;
     
+    @Autowired
+    UserValidator  userValidator;
+    
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("alluser", usersRepository.findAll());
@@ -75,6 +78,8 @@ public class UsersController {
         model.addAttribute("users", usersRepository.findById(uid));
         return "pims/users/view";
     }
+    
+    
     
     @RequestMapping("/registrations")
     public String registrations(Model model, Users users) {
@@ -205,6 +210,9 @@ public class UsersController {
     
     @RequestMapping("/front-registrations-save")
     public String usave(Model model, @Valid Users users, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        
+        
+        userValidator.validate(users, bindingResult);
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("department", departmentRepository.findAll());
