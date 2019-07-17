@@ -226,7 +226,7 @@ public class UsersController {
         users.setStatus(Status.Pending);
         users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
         usersRepository.save(users);
-        redirectAttributes.addAttribute("success", " Congratulations you have successfully registered. please contact with system adminstrator.");
-        return "redirect:pims/users/front-registrations";
+        redirectAttributes.addFlashAttribute("success", " Congratulations you have successfully registered. please contact with system adminstrator.");
+        return "redirect:/users/login";
     }
 }
