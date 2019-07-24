@@ -12,8 +12,10 @@
                             </h1><h2>Personal Information Management System </h2></td>
                         <td>
                             <a th:href="@{/profile/createprofilepdf/{e_id}(e_id=${employee.id})}" style="flot:right;">PDF Download</a>
-                            <span onclick="window.print();">Print</span></td>
-                    </tr>
+                            <span onclick="window.print();">Print</span>
+                        <span onclick="pdfgenerator()">PDF</span>
+                        </td>
+                    </tr> 
 
                 </table>
                 <hr/>        
@@ -78,10 +80,8 @@
                                     <img  class=" img-responsive" th:src="@{/files/}+${employee.profileImage.imageName}" width="150px"  height="150px"/>
                                 </span>
                                 <span  th:if="${ #lists.isEmpty(employee.profileImage)}">  
-                                    <img class="profile-user-img img-responsive" th:src="@{/images/profile.png}" alt="User profile picture"/>
+                                    <img class="profile-user-img img-responsive" th:src="@{/images/profile.png}" alt="User profile picture" width="150px"  height="150px"/>
                                 </span></td>
-
-
                         </tr>
                     </table>   
                     <table class="boxborder">

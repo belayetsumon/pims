@@ -5,6 +5,7 @@
  */
 package itgarden.model.lookup;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import itgarden.model.enumvalue.District;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,6 +31,7 @@ public class Thana {
 
     @NotNull(message = "*Please selecct district.")
     @Enumerated(EnumType.STRING)
+    
     private District district;
 
     @NotEmpty(message = "This field cannot be blank.")

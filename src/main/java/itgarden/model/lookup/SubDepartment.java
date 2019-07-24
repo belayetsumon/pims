@@ -5,6 +5,7 @@
  */
 package itgarden.model.lookup;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import itgarden.model.Users;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class SubDepartment {
     @NotNull(message = "This field cannot be blank.")
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
+    @JsonIgnore
     private Department department;
 
     @NotEmpty(message = "This field cannot be blank.")
@@ -43,6 +45,7 @@ public class SubDepartment {
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "subDepartment")
+    @JsonIgnore
     public List<Users> subDepartment = new ArrayList<>();
 
     public SubDepartment(Long id, Department department, String name) {

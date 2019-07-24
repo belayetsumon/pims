@@ -7,6 +7,7 @@ package itgarden.repository;
 
 import itgarden.model.AddressInformation;
 import itgarden.model.Users;
+import itgarden.model.enumvalue.AddressType;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -19,4 +20,6 @@ public interface AddressInformationRepository extends JpaRepository<AddressInfor
     List<AddressInformation> findByGovernmentIdOrderByIdDesc(Users governmentId);
 
     List<AddressInformation> findAllByOrderByIdDesc();
+    
+    AddressInformation findByGovernmentIdAndAddressType(Users governmentId, AddressType addressType );
 }

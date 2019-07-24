@@ -38,7 +38,7 @@
                                     
                                     <img th:src="@{/images/dscc-building.jpg}"  class="img-thumbnail " />
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-sm-6">
                                     <div class="box-header with-border">
                                         <h3 class="box-title"> </h3>
                                         <div class="box-tools pull-right">
@@ -73,7 +73,7 @@
                                                 <div class="form-group">
                                                     <label  class=" control-label" for="name"> Government ID/File No <span class="text-red"> *</span> :</label>
 
-                                                    <input type="text" class="form-control"    th:field="*{governmentId}"  required />
+                                                    <input type="text"  minlength="5"class="form-control"    th:field="*{governmentId}"  required />
 
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('governmentId')}" th:errors="*{governmentId}">Book Name</span>
 
@@ -83,7 +83,7 @@
                                             <div class="row"> 
                                                 <div class="form-group">
                                                     <label  class=" control-label" for="name">Name<span class="text-red"> *</span> :</label>
-                                                    <input type="text" class="form-control"    th:field="*{name}"   required />
+                                                    <input type="text" minlength="5" class="form-control"    th:field="*{name}"   required />
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Book Name</span>
 
                                                 </div>
@@ -162,7 +162,7 @@
                                                 <div class="form-group">
                                                     <label  class=" control-label" for="password">Password<span class="text-red"> *</span> :</label>
 
-                                                    <input type="text" class="form-control"   th:field="*{password}" required />
+                                                    <input type="text" minlength="5" class="form-control"   th:field="*{password}" required />
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Book Name</span>
 
                                                 </div>
