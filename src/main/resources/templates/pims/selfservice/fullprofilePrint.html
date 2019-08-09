@@ -2,7 +2,7 @@
 <div xmlns:th="http://www.thymeleaf.org" layout:decorator="print-layout">
     <div layout:fragment = "main_content">
         <!-- Content Wrapper. Contains page content -->
-        <div class="page">
+        <div class="page" id="printDiv">
             <div clss="subpage">
                 <table class="table table-bordered">
                     <tr>
@@ -11,9 +11,9 @@
                                 Dhaka South City Corporation
                             </h1><h2>Personal Information Management System </h2></td>
                         <td>
-                            <a th:href="@{/profile/createprofilepdf/{e_id}(e_id=${employee.id})}" style="flot:right;">PDF Download</a>
-                            <span onclick="window.print();">Print</span>
-                        <span onclick="pdfgenerator()">PDF</span>
+<!--                            <a th:href="@{/profile/createprofilepdf/{e_id}(e_id=${employee.id})}" style="flot:right;">PDF Download</a>-->
+                            <button onclick="window.print();">Print</button>
+                            <button id="pdfDownloader" >PDF</button>
                         </td>
                     </tr> 
 
@@ -24,7 +24,7 @@
 
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"> Government  ID: <span th:text="${employee.governmentId}"></span> </h3>
+                    <h3 class="box-title"> Government  ID: <span id="govtId" th:text="${employee.governmentId}"></span> </h3>
                     <div class="box-tools pull-right">
 
                     </div>

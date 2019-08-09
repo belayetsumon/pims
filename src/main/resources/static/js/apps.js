@@ -10,12 +10,12 @@ $(document).ready(function () {
             url: "/subdepartment/bydepartment/" + department,
             dataType: 'json',
             success: function (data) {
-                var slctSubcat=$('#subDepartment'), option="Select One";
+                var slctSubcat = $('#subDepartment'), option = "Select One";
                 slctSubcat.empty();
-             for(var i=0; i<data.length; i++){
-                option = option + "<option value='"+data[i].id + "'>"+data[i].name + "</option>";
-            }
-            slctSubcat.append(option);
+                for (var i = 0; i < data.length; i++) {
+                    option = option + "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                }
+                slctSubcat.append(option);
             }, //success
 
             error: function (e) {
@@ -42,12 +42,12 @@ $(document).ready(function () {
             url: "/thana/bydistrict/" + district,
             dataType: 'json',
             success: function (data) {
-                var slctSubcat=$('#upazila'), option="Select One";
+                var slctSubcat = $('#upazila'), option = "Select One";
                 slctSubcat.empty();
-             for(var i=0; i<data.length; i++){
-                option = option + "<option value='"+data[i].id + "'>"+data[i].name + "</option>";
-            }
-            slctSubcat.append(option);
+                for (var i = 0; i < data.length; i++) {
+                    option = option + "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                }
+                slctSubcat.append(option);
             }, //success
 
             error: function (e) {
@@ -72,15 +72,23 @@ $(document).ready(function () {
 });
 
 
-//// Js PDF 
+/// qr code generator 
 
-function pdfgenerator(){
+var emp_name = document.getElementById("emp_name").innerText;
+var emp_mobile = document.getElementById("emp_mobile").value;
 
-var pdf = new jsPDF('p', 'mm', 'a4');
+var final_value = 'Name :'+emp_name+'Mobile :'+emp_mobile;
 
-pdf.setFontSize(20);
-pdf.setFont("times");
-pdf.setFontType("bold");
-pdf.setTextColor(255, 0, 0);
-pdf.text(10,10, 'This is a 20pt Times Bold red string');
-}
+$('#exa').qrcode({
+    render: "table",
+    text: final_value,
+    background: "#ffffff",
+    foreground: "#000000",
+    width: 90,
+    height: 90,
+    correctLevel: QRErrorCorrectLevel.H
+});
+
+//jQuery('#qrcodeCanvas').qrcode({
+//		text	: "https://www.jqueryscript.net"
+//	});

@@ -24,6 +24,7 @@ import itgarden.repository.PostingRankRepository;
 import itgarden.repository.PresentPostingLocationRepository;
 import itgarden.repository.UsersRepository;
 import itgarden.service.LoggedUserService;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -111,8 +112,9 @@ public class GeneralInformationSelfserviceController {
         model.addAttribute("list", generalInformationRepository.findByGovernmentIdOrderByIdDesc(users));
         generalInformation.setGovernmentId(users);
 
-        usersRepository.findById(e_id);
-        generalInformation.setName(generalInformation.getName());
+        Optional<Users> username = usersRepository.findById(e_id);
+        
+        generalInformation.setName(username.get().getName());
 
         return "pims/selfservice/generalinformation";
     }
@@ -121,6 +123,8 @@ public class GeneralInformationSelfserviceController {
     public String edit(Model model, @PathVariable Long id, GeneralInformation generalInformation) {
 
         model.addAttribute("generalInformation", generalInformationRepository.getOne(id));
+        
+        
 
         model.addAttribute("list", generalInformationRepository.findAll());
 

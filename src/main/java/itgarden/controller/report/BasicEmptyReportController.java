@@ -27,6 +27,12 @@ public class BasicEmptyReportController {
         model.addAttribute("list", usersRepository.findByGeneralInformationIsNotNullOrderByIdDesc());
         return "/pims/report/empty/generalinformation";
     }
+    
+//    @RequestMapping("/generalinformation")
+//    public String generalinformation(Model model) {
+//        model.addAttribute("list", usersRepository.findByGeneralInformationIsNotNullOrderByIdDesc());
+//        return "/pims/report/empty/generalinformation";
+//    }
 
     @RequestMapping("/addressinformation")
     public String addressinformation(Model model) {

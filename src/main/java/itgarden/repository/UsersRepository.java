@@ -39,25 +39,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     @Query("UPDATE Users  SET password=:password WHERE governmentId= :governmentId ")
     public void changePassword(@Param("governmentId") String governmentId, @Param("password") String password);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE Users  SET name=:name,email=:email,"
-            + "mobile=:mobile,"
-            + "department=:department,subDepartment=:subDepartment,"
-            + " role=:role ,"
-            + " status=:status,"
-            + "remarks=:remarks WHERE governmentId= :governmentId ")
-
-    public void updateUsers(@Param("governmentId") String governmentId,
-            @Param("name") String name,
-            @Param("email") String email,
-            @Param("mobile") String mobile,
-            @Param("department") Department department,
-            @Param("subDepartment") SubDepartment subDepartment,
-            @Param("role") Set<Role> role,
-            @Param("status") Status status,
-            @Param("remarks") String remarks
-    );
+   
 
     List<Users> findByStatus(Status status);
 
@@ -114,8 +96,67 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     List<Users> findBySelectionGradeIsNotNullOrderByIdDesc();
 
     List<Users> findBySpousNameIsNotNullOrderByIdDesc();
+    
+    List<Users> findByAcrIsNotNullOrderByIdDesc();
 
     // directory 
     List<Users> findByGeneralInformationBloodGroupOrPresentJobPresentPostingRankOrPresentJobPresentPostingLocationOrPresentJobPostingDesignation(GeneralInformation bloodGroup, PresentJob presentPostingRank, PresentJob presentPostingLocation, PresentJob postingDesignation);
 
+    
+    /// null cheke
+    
+    
+    List<Users> findByGeneralInformationIsNullOrderByIdDesc();
+
+    List<Users> findByProfileImageIsNullOrderByIdDesc();
+
+    List<Users> findByAdditionalQualificationIsNullOrderByIdDesc();
+
+    List<Users> findByAddressInformationIsNullOrderByIdDesc();
+
+    List<Users> findByChildrenInformationIsNullOrderByIdDesc();
+
+    List<Users> findByDisciplinaryActionDetailsIsNullOrderByIdDesc();
+
+    List<Users> findByEducationalInformationIsNullOrderByIdDesc();
+
+    List<Users> findByFirstJoiningInformationIsNullOrderByIdDesc();
+
+    List<Users> findByForeignTrainingInformationIsNullOrderByIdDesc();
+
+    List<Users> findByForeignTravelIsNullOrderByIdDesc();
+
+    List<Users> findByHonorsandawardIsNullOrderByIdDesc();
+
+    List<Users> findByInServiceTrainingInformationIsNullOrderByIdDesc();
+
+    List<Users> findByJobEntryProcessIsNullOrderByIdDesc();
+
+    List<Users> findByLanguageinfoIsNullOrderByIdDesc();
+
+    List<Users> findByLeaveinfoIsNullOrderByIdDesc();
+
+    List<Users> findByMagisterialPowerIsNullOrderByIdDesc();
+
+    List<Users> findByMembershipIsNullOrderByIdDesc();
+
+    List<Users> findByOtherServiceInformationIsNullOrderByIdDesc();
+
+    List<Users> findByPostingAbroadInformationIsNullOrderByIdDesc();
+
+    List<Users> findByPostingRecordInformationIsNullOrderByIdDesc();
+
+    List<Users> findByPresentJobIsNullOrderByIdDesc();
+
+    List<Users> findByPromotionsInformationIsNullOrderByIdDesc();
+
+    List<Users> findByPublicationInformationIsNullOrderByIdDesc();
+
+    List<Users> findByRetirementPensionIsNullOrderByIdDesc();
+
+    List<Users> findBySelectionGradeIsNullOrderByIdDesc();
+
+    List<Users> findBySpousNameIsNullOrderByIdDesc();
+    
+     List<Users> findByAcrIsNullOrderByIdDesc();
 }

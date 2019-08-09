@@ -36,7 +36,7 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th> Name </th>
-                                    <td><span th:text="${employee.name}"></span></td>
+                                    <td><span  id="emp_name" th:text="${employee.name}"></span></td>
                                 </tr> 
                                 <tr>
                                     <th> Designation </th>
@@ -80,29 +80,32 @@
 
                         </div>
                         <div class="col-sm-2">
-                            <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>
+                            <!--                            <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>-->
+
+                            <input type="hidden" id="emp_mobile" name="mobile" class="form-control  "    th:value="${employee.mobile}"  />        
+                            <div  class="profile-user-img " id="exa"> </div>
                         </div>
                     </div>
 
                     <div class="box-footer">
-                       
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th> Date of Birth </th>
-                                    <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${ employee.generalInformation.dateofBirth}"></span></td>
 
-                                    <th> Joining Date </th>
-                                    <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${ employee.firstJoiningInformation.dateFirstJoining}"></span></td>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th> Date of Birth </th>
+                                <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${ employee.generalInformation.dateofBirth}"></span></td>
 
-                                    <th> LPR Date </th>
-                                    <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${employee.generalInformation.lPRDate}"></span></td>
+                                <th> Joining Date </th>
+                                <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${ employee.firstJoiningInformation.dateFirstJoining}"></span></td>
 
-                                    <th> Retirement Date </th>
-                                    <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}"  th:text="${employee.retirementPension.startDate}"></span> </td>
-                                </tr>
-                            </table>
+                                <th> LPR Date </th>
+                                <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${employee.generalInformation.lPRDate}"></span></td>
 
-                     
+                                <th> Retirement Date </th>
+                                <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}"  th:text="${employee.retirementPension.startDate}"></span> </td>
+                            </tr>
+                        </table>
+
+
                     </div>
                 </div>
 

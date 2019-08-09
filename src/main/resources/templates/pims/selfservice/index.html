@@ -36,7 +36,7 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th> Name </th>
-                                    <td><span th:text="${employee.name}"></span></td>
+                                    <td><span id="emp_name" th:text="${employee.name}"></span></td>
                                 </tr> 
                                 <tr>
                                     <th> Designation </th>
@@ -80,7 +80,9 @@
 
                         </div>
                         <div class="col-sm-2">
-                            <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>
+<!--                            <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>-->
+                       <input type="hidden" id="emp_mobile" name="mobile" class="form-control  "    th:value="${employee.mobile}"  />        
+                        <div  class="profile-user-img " id="exa"></div>
                         </div>
                     </div>
 

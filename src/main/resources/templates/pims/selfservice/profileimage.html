@@ -29,55 +29,56 @@
 
                         <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
 
-                           <div th:if="${#lists.isEmpty(list)}">
-                            <!-- Default box -->
-                            <div class="box box-warning box-solid  ">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"> Add / Image</h3>
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <form action="#" enctype="multipart/form-data" th:action="@{/selfservice_profileimage/save/{id} (id=${profileImage.governmentId.id})}" th:object="${profileImage}" method="post" class="form-horizontal">
-                                        <div class="row">
-                                            <input type="hidden" class="form-control"  th:field="*{id}" />
-                                            <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
-
+                            <div th:if="${#lists.isEmpty(list)}">
+                                <!-- Default box -->
+                                <div class="box box-warning box-solid  ">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"> Add / Image</h3>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                            </button>
                                         </div>
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Add Image :<span class="text-red">  </span></label>
-                                                <div class="col-sm-7">                    
-                                                    <input type="file"  class=""    name="pic"                                           
-                                                    data-validation=" dimension mime size"
+                                    </div>
+                                    <div class="box-body">
+                                        <form action="#" enctype="multipart/form-data" th:action="@{/selfservice_profileimage/save/{id} (id=${profileImage.governmentId.id})}" th:object="${profileImage}" method="post" class="form-horizontal">
+                                            <div class="row">
+                                                <input type="hidden" class="form-control"  th:field="*{id}" />
+                                                <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label for="name" class="col-sm-4 control-label"> Add Image :<span class="text-red">  </span></label>
+                                                    <div class="col-sm-7">                    
+                                                        <input type="file"  class=""    name="pic"                                           
+                                                               data-validation=" dimension mime size"
                                                                data-validation-dimension="min150x150"
 
                                                                data-validation-allowing="jpg, png, gif"
                                                                data-validation-max-size="100kb"/> 
-                                                    <h5 class="help-block has-error text-red" th:text="${message}" > </h5>
-                                                </div>    
+                                                        <h5 class="help-block "  > Image size 150px X 150px .</h5>
+                                                        <h5 class="help-block has-error text-red" th:text="${message}" > </h5>
+                                                    </div>    
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="text-center" >
-                                                <div class="box-tools">
-                                                    <div class=" text-center">
-                                                        <br/>
-                                                        <button type="submit" class="btn  btn-primary btn-xs">Upload</button>
+                                            <div class="row">
+                                                <div class="text-center" >
+                                                    <div class="box-tools">
+                                                        <div class=" text-center">
+                                                            <br/>
+                                                            <button type="submit" class="btn  btn-primary btn-xs">Upload</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
+                                <!-- /.box -->              
                             </div>
-                            <!-- /.box -->              
                         </div>
-                            </div>
 
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
@@ -95,7 +96,7 @@
                                     <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                
+
                                                 <th>Image </th>
                                                 <th>Audit  </th>
                                                 <th>
@@ -105,10 +106,10 @@
                                         </thead>
 
                                         <tr  th:each="list,status:${list}">
-                                             <td>
-                                              
+                                            <td>
+
                                                 <img  class="img-responsive" th:src="@{/files/}+${list.imageName}" width="100px"  height="100px"/>
-                                            
+
                                             </td>   
                                             <td>
                                                 Created: <span th:text="${list.createdOn}"></span><br/>

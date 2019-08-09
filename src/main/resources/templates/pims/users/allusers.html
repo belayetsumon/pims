@@ -20,7 +20,7 @@
                         <h3 class="box-title"> Total Employee :  <span th:text="${alluser.size()}"></span></h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/users/registrations}" type="button" class="btn  btn-warning btn-default bg-green">New Employee Registration</a>
+                                <!--                                <a th:href="@{/users/registrations}" type="button" class="btn  btn-warning btn-default bg-green">New Employee Registration</a>-->
                                 <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-default">Close</a>
                             </div>
                         </div>
@@ -57,6 +57,7 @@
                                     <td th:text="${alluser.status}">Chakma</td>  
                                     <td>
                                         <a type="button" class="btn  btn-success btn-xs bg-green" th:href="@{/users/view/{uid} (uid=${alluser.id})}" > View</a>
+
                                     </td>
                                     <td>
                                         <a type="button" class="btn  btn-warning btn-xs bg-maroon" th:href="@{/users/edit/{id} (id=${alluser.id})}" > Edit</a>

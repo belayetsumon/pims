@@ -42,8 +42,8 @@ public class ThanaController {
 
     @RequestMapping("/edit/{id}")
     public String edit(Model model, @PathVariable Long id, Thana thana) {
-        model.addAttribute("subDepartment", thanaRepository.findById(id));
-        model.addAttribute("district", District.values());
+        model.addAttribute("thana", thanaRepository.findById(id));
+       model.addAttribute("districts", District.values());
         model.addAttribute("thanas", thanaRepository.findAll());
         return "pims/lookup/thana";
     }
@@ -52,7 +52,7 @@ public class ThanaController {
     public String save(Model model, @Valid Thana thana, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("district", District.values());
+           model.addAttribute("districts", District.values());
             model.addAttribute("thanas", thanaRepository.findAll());
             return "pims/lookup/thana";
         }

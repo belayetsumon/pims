@@ -5,22 +5,27 @@
  */
 package itgarden.model.lookup;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import itgarden.model.PresentJob;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author Md Belayet Hossin
  */
-
-
 @Entity
-@Table(name="l_posting_designation")
+@Table(name = "l_posting_designation")
 public class PostingDesignation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,12 +33,18 @@ public class PostingDesignation {
     @NotEmpty(message = "This field cannot be blank.")
     public String name;
 
-    public PostingDesignation(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "postingDesignation")
+    @JsonIgnore
+    public List<PresentJob> presentjob;
 
     public PostingDesignation() {
+    }
+
+    public PostingDesignation(Long id, String name, List<PresentJob> presentjob) {
+        this.id = id;
+        this.name = name;
+        this.presentjob = presentjob;
     }
 
     public Long getId() {
@@ -51,6 +62,13 @@ public class PostingDesignation {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-   }
+
+    public List<PresentJob> getPresentjob() {
+        return presentjob;
+    }
+
+    public void setPresentjob(List<PresentJob> presentjob) {
+        this.presentjob = presentjob;
+    }
+
+}
