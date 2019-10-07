@@ -9,6 +9,7 @@ import itgarden.model.lookup.PresentPostingLocation;
 import itgarden.repository.PresentPostingLocationRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,27 +21,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Md Belayet Hossin
  */
 @Controller
- @RequestMapping("/presentpostinglocation")
+@RequestMapping("/presentpostinglocation")
+@PreAuthorize("hasAuthority('presentpostinglocation')")
 public class PresentPostingLocationController {
-    
+
     @Autowired
     PresentPostingLocationRepository presentPostingLocationRepository;
-    
+
     @RequestMapping("/index")
-    public String index(Model model, PresentPostingLocation  presentPostingLocation) {
+    public String index(Model model, PresentPostingLocation presentPostingLocation) {
         model.addAttribute("list", presentPostingLocationRepository.findAll());
         return "pims/lookup/presentpostinglocation";
     }
 
     @RequestMapping("/edit/{id}")
-    public String edit(Model model, @PathVariable Long id, PresentPostingLocation  presentPostingLocation) {
+    public String edit(Model model, @PathVariable Long id, PresentPostingLocation presentPostingLocation) {
         model.addAttribute("presentPostingLocation", presentPostingLocationRepository.findById(id));
         model.addAttribute("list", presentPostingLocationRepository.findAll());
         return "pims/lookup/presentpostinglocation";
     }
 
     @RequestMapping("/save")
-    public String save(Model model, @Valid PresentPostingLocation  presentPostingLocation, BindingResult bindingResult) {
+    public String save(Model model, @Valid PresentPostingLocation presentPostingLocation, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("list", presentPostingLocationRepository.findAll());
             return "pims/lookup/presentpostinglocation";
@@ -50,7 +52,7 @@ public class PresentPostingLocationController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable Long id, PresentPostingLocation  presentPostingLocation) {
+    public String delete(Model model, @PathVariable Long id, PresentPostingLocation presentPostingLocation) {
         presentPostingLocationRepository.deleteById(id);
         return "redirect:/presentpostinglocation/index";
     }

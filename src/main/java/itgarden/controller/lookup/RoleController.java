@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/role")
+//@PreAuthorize("hasAuthority('privilege')")
 public class RoleController {
 
     @Autowired

@@ -53,9 +53,6 @@ public class UsersDetails implements UserDetailsService{
             
         }
         
-        
-        
-        
         return new org.springframework.security.core.userdetails.User(user.getGovernmentId(), user.getPassword(), grantedAuthorities);
     }
 

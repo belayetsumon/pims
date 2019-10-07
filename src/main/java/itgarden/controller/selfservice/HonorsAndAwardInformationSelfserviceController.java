@@ -11,6 +11,7 @@ import itgarden.repository.HonorsAndAwardInformationRepository;
 import itgarden.service.LoggedUserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/selfservice_honorsandawardinformation")
+@PreAuthorize("hasAuthority('selfservice_honorsandawardinformation')")
 public class HonorsAndAwardInformationSelfserviceController {
 
     @Autowired

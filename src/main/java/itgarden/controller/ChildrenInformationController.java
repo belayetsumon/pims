@@ -17,6 +17,7 @@ import itgarden.repository.ChildrenInformationRepository;
 import itgarden.service.LoggedUserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,12 +32,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/childreninformation")
+@PreAuthorize("hasAuthority('childreninformation')")
 public class ChildrenInformationController {
 
     @Autowired
     ChildrenInformationRepository childrenInformationRepository;
-
-  
 
     @Autowired
     LoggedUserService loggedUserService;
@@ -100,7 +100,7 @@ public class ChildrenInformationController {
 
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable Long id, ChildrenInformation childrenInformation, RedirectAttributes redirectAttrs) {
-       childrenInformation= childrenInformationRepository.getOne(id);
+        childrenInformation = childrenInformationRepository.getOne(id);
         redirectAttrs.addAttribute("e_id", childrenInformation.getGovernmentId());
         childrenInformationRepository.deleteById(id);
         return "redirect:/childreninformation/index/{e_id}";

@@ -142,7 +142,9 @@
                                                 <div class="form-group">
                                                     <label  class=" control-label" for="name">Email<span class="text-red"> </span> :</label>
 
-                                                    <input type="text" class="form-control"    th:field="*{email}"   />
+                                                    <input type="email"  
+                                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                                           class="form-control"    th:field="*{email}"   />
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Book Name</span>
 
                                                 </div>

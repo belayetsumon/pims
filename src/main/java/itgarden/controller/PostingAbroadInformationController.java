@@ -17,6 +17,7 @@ import itgarden.repository.PresentPostingLocationRepository;
 import itgarden.service.LoggedUserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/postingabroadinformation")
+@PreAuthorize("hasAuthority('postingabroadinformation')")
 public class PostingAbroadInformationController {
 
     @Autowired
@@ -44,7 +46,7 @@ public class PostingAbroadInformationController {
 
     @Autowired
     PostingRankRepository postingRankRepository;
-    
+
     @Autowired
     LoggedUserService loggedUserService;
 
@@ -116,7 +118,7 @@ public class PostingAbroadInformationController {
             model.addAttribute("grade", Selectiongrade.values());
             return "pims/postingabroadinformation/postingabroadinformation";
         }
-        
+
         postingAbroadInformation.setCreatedBy(loggedUserService.activeUserNameAndGovernmentId());
         postingAbroadInformation.setUpdatedBy(loggedUserService.activeUserNameAndGovernmentId());
         postingAbroadInformationRepository.save(postingAbroadInformation);
@@ -125,7 +127,7 @@ public class PostingAbroadInformationController {
 
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable Long id, PostingAbroadInformation postingAbroadInformation, RedirectAttributes redirectAttrs) {
-       postingAbroadInformation = postingAbroadInformationRepository.getOne(id);
+        postingAbroadInformation = postingAbroadInformationRepository.getOne(id);
         redirectAttrs.addAttribute("e_id", postingAbroadInformation.getGovernmentId());
         postingAbroadInformationRepository.deleteById(id);
         return "redirect:/postingabroadinformation/index/{e_id}";

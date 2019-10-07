@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/thana")
+//@PreAuthorize("hasAuthority('privilege')")
 public class ThanaController {
 
     @Autowired
@@ -43,7 +44,7 @@ public class ThanaController {
     @RequestMapping("/edit/{id}")
     public String edit(Model model, @PathVariable Long id, Thana thana) {
         model.addAttribute("thana", thanaRepository.findById(id));
-       model.addAttribute("districts", District.values());
+        model.addAttribute("districts", District.values());
         model.addAttribute("thanas", thanaRepository.findAll());
         return "pims/lookup/thana";
     }
@@ -52,7 +53,7 @@ public class ThanaController {
     public String save(Model model, @Valid Thana thana, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-           model.addAttribute("districts", District.values());
+            model.addAttribute("districts", District.values());
             model.addAttribute("thanas", thanaRepository.findAll());
             return "pims/lookup/thana";
         }
@@ -66,9 +67,9 @@ public class ThanaController {
         return "redirect:/thana/index";
     }
 
- @RequestMapping(value = "/bydistrict/{district}", method = RequestMethod.GET, produces = "application/json")
- @ResponseBody
-    public   List<Thana> bydistrict(@PathVariable District district, Thana thana) {
+    @RequestMapping(value = "/bydistrict/{district}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<Thana> bydistrict(@PathVariable District district, Thana thana) {
 
         List<Thana> thanalist = thanaRepository.findByDistrict(district);
         return thanalist;

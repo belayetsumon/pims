@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/dashboards")
+@PreAuthorize("hasAuthority('dashboards')")
 public class DashboardsController {
 
     @Autowired

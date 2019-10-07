@@ -33,6 +33,7 @@ import itgarden.repository.ServiceHistoriesRepository;
 import itgarden.repository.SpousNameRepository;
 import itgarden.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/basicreport")
+@PreAuthorize("hasAuthority('basicreport')")
 public class BasicReportController {
 
     @Autowired

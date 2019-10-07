@@ -8,6 +8,7 @@ package itgarden.controller;
 import itgarden.model.Users;
 import itgarden.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("usersprofile")
+@PreAuthorize("hasAuthority('usersprofile')")
 public class UsersProfileController {
 
     @Autowired
