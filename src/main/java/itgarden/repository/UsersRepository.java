@@ -100,7 +100,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     List<Users> findByAcrIsNotNullOrderByIdDesc();
 
     // directory 
-    List<Users> findByGeneralInformationBloodGroupOrPresentJobPresentPostingRankOrPresentJobPresentPostingLocationOrPresentJobPostingDesignation(GeneralInformation bloodGroup, PresentJob presentPostingRank, PresentJob presentPostingLocation, PresentJob postingDesignation);
+    
 
     
     /// null cheke

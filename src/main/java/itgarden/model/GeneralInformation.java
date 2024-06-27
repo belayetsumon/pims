@@ -13,7 +13,7 @@ import itgarden.model.enumvalue.EthnicIdentity;
 import itgarden.model.enumvalue.Gender;
 import itgarden.model.enumvalue.MaritalStatus;
 import itgarden.model.enumvalue.Religion;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -23,10 +23,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.Temporal;
+import javax.validation.constraints.*;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -47,18 +48,31 @@ public class GeneralInformation {
     @NotEmpty(message = "*Please provide your name")
     private String name;
 
+    @NotEmpty(message = "*Please provide your name bangla")
+    private String nameBangla;
+
     @NotEmpty(message = "*Please provide your father's name")
     private String fathersName;
 
+    @NotEmpty(message = "*Please provide your father's name bangla")
+    private String fathersNameBangla;
+
     @NotEmpty(message = "*Please provide your mother's name")
     private String mothersName;
+
+    @NotEmpty(message = "*Please provide your mother's name bangla")
+    private String mothersNameBangla;
 
     @NotNull(message = " * Home district cannot be blank.")
     @Enumerated(EnumType.STRING)
     private District homeDistrict;
 
-    @NotEmpty(message = "*Please provide your date of birth.")
-    private String dateofBirth;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*Please provide your date of birth.")
+    @Past
+    private Date dateofBirth;
 
     @NotNull(message = " *Country of  cannot be blank.")
     @Enumerated(EnumType.STRING)
@@ -83,8 +97,8 @@ public class GeneralInformation {
     @Enumerated(EnumType.STRING)
     private EthnicIdentity ethnicIdentity;
 
-    @NotEmpty(message = " *Nationality cannot be blank.")
-    private String nationality;
+//    @NotEmpty(message = " *Nationality cannot be blank.")
+//    private String nationality;
 
     @NotNull(message = "*Blood Group cannot be blank.")
     @Enumerated(EnumType.STRING)
@@ -98,11 +112,14 @@ public class GeneralInformation {
     @Size(min = 13, max = 17, message = " Please provide value Minimum 13 digit maximum 17 digit")
     @Column(unique = true)
     private String nid;
-    
-     private String tin;
 
-    @NotEmpty(message = "*Please provide your LPR Date")
-    private String lPRDate;  // LPR Date
+    private String tin;
+
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+
+    private Date lPRDate;  // LPR Date
 
     @NotNull(message = "*Employee Status cannot be blank.")
     @Enumerated(EnumType.STRING)
@@ -129,7 +146,7 @@ public class GeneralInformation {
 
     @Column(name = "updated_by", insertable = false, updatable = true)
     //@LastModifiedBy
-    private String updatedBy ;
+    private String updatedBy;
 
     /**
      * ***************** End Auditor ********************************
@@ -137,12 +154,15 @@ public class GeneralInformation {
     public GeneralInformation() {
     }
 
-    public GeneralInformation(Long id, Users governmentId, String name, String fathersName, String mothersName, District homeDistrict, String dateofBirth, BirthCountry birthCountry, String birthCertificateNumber, Gender gender, MaritalStatus maritalStatus, Religion religion, EthnicIdentity ethnicIdentity, String nationality, BloodGroup bloodGroup, String drivingLicence, String passportNo, String nid, String tin, String lPRDate, EmployeeStatus employeeStatus, long version, String createdBy, String updatedBy) {
+    public GeneralInformation(Long id, Users governmentId, String name, String nameBangla, String fathersName, String fathersNameBangla, String mothersName, String mothersNameBangla, District homeDistrict, Date dateofBirth, BirthCountry birthCountry, String birthCertificateNumber, Gender gender, MaritalStatus maritalStatus, Religion religion, EthnicIdentity ethnicIdentity, BloodGroup bloodGroup, String drivingLicence, String passportNo, String nid, String tin, Date lPRDate, EmployeeStatus employeeStatus, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.name = name;
+        this.nameBangla = nameBangla;
         this.fathersName = fathersName;
+        this.fathersNameBangla = fathersNameBangla;
         this.mothersName = mothersName;
+        this.mothersNameBangla = mothersNameBangla;
         this.homeDistrict = homeDistrict;
         this.dateofBirth = dateofBirth;
         this.birthCountry = birthCountry;
@@ -151,7 +171,6 @@ public class GeneralInformation {
         this.maritalStatus = maritalStatus;
         this.religion = religion;
         this.ethnicIdentity = ethnicIdentity;
-        this.nationality = nationality;
         this.bloodGroup = bloodGroup;
         this.drivingLicence = drivingLicence;
         this.passportNo = passportNo;
@@ -164,15 +183,6 @@ public class GeneralInformation {
         this.updatedBy = updatedBy;
     }
 
-    public String getTin() {
-        return tin;
-    }
-
-    public void setTin(String tin) {
-        this.tin = tin;
-    }
-
-    
     public Long getId() {
         return id;
     }
@@ -197,12 +207,28 @@ public class GeneralInformation {
         this.name = name;
     }
 
+    public String getNameBangla() {
+        return nameBangla;
+    }
+
+    public void setNameBangla(String nameBangla) {
+        this.nameBangla = nameBangla;
+    }
+
     public String getFathersName() {
         return fathersName;
     }
 
     public void setFathersName(String fathersName) {
         this.fathersName = fathersName;
+    }
+
+    public String getFathersNameBangla() {
+        return fathersNameBangla;
+    }
+
+    public void setFathersNameBangla(String fathersNameBangla) {
+        this.fathersNameBangla = fathersNameBangla;
     }
 
     public String getMothersName() {
@@ -213,6 +239,14 @@ public class GeneralInformation {
         this.mothersName = mothersName;
     }
 
+    public String getMothersNameBangla() {
+        return mothersNameBangla;
+    }
+
+    public void setMothersNameBangla(String mothersNameBangla) {
+        this.mothersNameBangla = mothersNameBangla;
+    }
+
     public District getHomeDistrict() {
         return homeDistrict;
     }
@@ -221,11 +255,11 @@ public class GeneralInformation {
         this.homeDistrict = homeDistrict;
     }
 
-    public String getDateofBirth() {
+    public Date getDateofBirth() {
         return dateofBirth;
     }
 
-    public void setDateofBirth(String dateofBirth) {
+    public void setDateofBirth(Date dateofBirth) {
         this.dateofBirth = dateofBirth;
     }
 
@@ -277,14 +311,6 @@ public class GeneralInformation {
         this.ethnicIdentity = ethnicIdentity;
     }
 
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
     public BloodGroup getBloodGroup() {
         return bloodGroup;
     }
@@ -317,11 +343,19 @@ public class GeneralInformation {
         this.nid = nid;
     }
 
-    public String getlPRDate() {
+    public String getTin() {
+        return tin;
+    }
+
+    public void setTin(String tin) {
+        this.tin = tin;
+    }
+
+    public Date getlPRDate() {
         return lPRDate;
     }
 
-    public void setlPRDate(String lPRDate) {
+    public void setlPRDate(Date lPRDate) {
         this.lPRDate = lPRDate;
     }
 
@@ -372,5 +406,6 @@ public class GeneralInformation {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
- 
+
+    
 }

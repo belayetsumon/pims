@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                    ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Foreign Training </h3>
+                        <h3 class="box-title"> বৈদেশিক প্রশিক্ষনের তথ্য   </h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/details/detailsinfo/{id} (id=${foreignTrainingInformation.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/details/detailsinfo/{id} (id=${foreignTrainingInformation.governmentId.id})}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <!-- Default box -->
                             <div class="box box-warning box-solid  ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Foreign Training</h3>
+                                    <h3 class="box-title">বৈদেশিক প্রশিক্ষনের তথ্য   যোগ/সম্পাদনা করুন</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -55,7 +55,7 @@
                                         </div>                         
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label">Training Title  :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label">প্রশিক্ষণের শিরোনাম  :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{typeofTraining}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('typeofTraining')}" th:errors="*{typeofTraining}">First Name Error</span>
@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Country :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> দেশ  :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{country}"  >
                                                         <option value=" "> Select one</option>
@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Training Institute Name:<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> প্রশিক্ষণ ইনস্টিটিউট নাম :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{trainingInstitute}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('trainingInstitute')}" th:errors="*{trainingInstitute}">First Name Error</span>
@@ -88,7 +88,7 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Position :<span class="text-red">  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> অবস্থান :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">    
 
                                                     <input type="text"  class="form-control  " th:field="*{position}"    />                
@@ -102,7 +102,7 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Period From:<span class="text-red">  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> প্রশিক্ষণ শুরুর তারিখ :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Period To:<span class="text-red">  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> প্রশিক্ষণ শেষের  তারিখ  :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -152,7 +152,7 @@
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Foreign Training List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>বৈদেশিক প্রশিক্ষনের তথ্য  </h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -165,13 +165,13 @@
                                     <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                <th>Sr. no.</th> 
-                                                <th>Training Title  </th>
-                                                <th>Country</th>
-                                                <th> Training Institute Name</th>
-                                                <th> Position</th>
-                                                <th> Period From</th>
-                                                <th> Period To</th>
+                                                <th>নং .</th> 
+                                                <th>প্রশিক্ষণের শিরোনাম  </th>
+                                                <th>দেশ</th>
+                                                <th>প্রশিক্ষণ ইনস্টিটিউট নাম</th>
+                                                <th> অবস্থান</th>
+                                                <th> প্রশিক্ষণ শুরুর তারিখ</th>
+                                                <th> প্রশিক্ষণ শেষের তারিখ</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                                 <th>Edit</th>

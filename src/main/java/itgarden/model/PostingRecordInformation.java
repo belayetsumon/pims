@@ -5,14 +5,11 @@
  */
 package itgarden.model;
 
-import itgarden.model.enumvalue.BirthCountry;
 import itgarden.model.enumvalue.PostingReason;
 import itgarden.model.enumvalue.PostingType;
 import itgarden.model.lookup.PostingDesignation;
-import itgarden.model.lookup.PostingRank;
 import itgarden.model.lookup.PresentPostingLocation;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,9 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -44,11 +39,7 @@ public class PostingRecordInformation {
 
     @NotNull(message = " *Posting reason cannot be blank.")
     @Enumerated(EnumType.STRING)
-    PostingReason  postingReason;
-    
-    @NotNull(message = "This field cannot be blank.")
-    @ManyToOne(optional = true)
-    private PostingRank postingRank;  // Present Posting Rank  : DY. SECRETARY
+    PostingReason postingReason;
 
     @NotNull(message = " *Posting type cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
@@ -62,15 +53,21 @@ public class PostingRecordInformation {
     @ManyToOne(optional = false)
     private PresentPostingLocation postingLocation;  // DHAKA
 
-    @NotNull(message = " *Country of  cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    private BirthCountry country;
+//    @NotNull(message = " *Country of  cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    private BirthCountry country;
 
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date periodFrom;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String periodFrom;
-
-    private String periodTo;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date periodTo;
 
     private String scale;
 
@@ -105,15 +102,13 @@ public class PostingRecordInformation {
     public PostingRecordInformation() {
     }
 
-    public PostingRecordInformation(Long id, Users governmentId, PostingReason postingReason, PostingRank postingRank, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, BirthCountry country, String periodFrom, String periodTo, String scale, String status, long version, String createdBy, String updatedBy) {
+    public PostingRecordInformation(Long id, Users governmentId, PostingReason postingReason, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, Date periodFrom, Date periodTo, String scale, String status, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.postingReason = postingReason;
-        this.postingRank = postingRank;
         this.postingType = postingType;
         this.postingDesignation = postingDesignation;
         this.postingLocation = postingLocation;
-        this.country = country;
         this.periodFrom = periodFrom;
         this.periodTo = periodTo;
         this.scale = scale;
@@ -122,7 +117,6 @@ public class PostingRecordInformation {
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
     }
-
 
     public Long getId() {
         return id;
@@ -146,14 +140,6 @@ public class PostingRecordInformation {
 
     public void setPostingReason(PostingReason postingReason) {
         this.postingReason = postingReason;
-    }
-
-    public PostingRank getPostingRank() {
-        return postingRank;
-    }
-
-    public void setPostingRank(PostingRank postingRank) {
-        this.postingRank = postingRank;
     }
 
     public PostingType getPostingType() {
@@ -180,28 +166,19 @@ public class PostingRecordInformation {
         this.postingLocation = postingLocation;
     }
 
-    
-    public BirthCountry getCountry() {
-        return country;
-    }
-
-    public void setCountry(BirthCountry country) {
-        this.country = country;
-    }
-
-    public String getPeriodFrom() {
+    public Date getPeriodFrom() {
         return periodFrom;
     }
 
-    public void setPeriodFrom(String periodFrom) {
+    public void setPeriodFrom(Date periodFrom) {
         this.periodFrom = periodFrom;
     }
 
-    public String getPeriodTo() {
+    public Date getPeriodTo() {
         return periodTo;
     }
 
-    public void setPeriodTo(String periodTo) {
+    public void setPeriodTo(Date periodTo) {
         this.periodTo = periodTo;
     }
 
@@ -261,5 +238,6 @@ public class PostingRecordInformation {
         this.updatedBy = updatedBy;
     }
 
+    
     
 }

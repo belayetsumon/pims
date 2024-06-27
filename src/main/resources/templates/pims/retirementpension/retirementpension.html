@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                       ব্যক্তিগত তথ্য ব্যবস্থাপনা সিস্টেম 
                     <small></small>
                 </h1>
             </section>
@@ -17,19 +17,19 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Retirement   Information</h3>
+                        <h3 class="box-title"> অবসরকালীন পেনশনের তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/details/detailsinfo/{id} (id=${retirementPension.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/details/detailsinfo/{id} (id=${retirementPension.governmentId.id})}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
                     <div class="box-body  ">
-                        <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+                        <div class="col-sm-7 col-md-7 col-sm-offset-2 col-md-offset-2">
                             <!-- Default box -->
                             <div class="box box-warning box-solid  ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Retirement Pension Information</h3>
+                                    <h3 class="box-title"> অবসরকালীন পেনশন তথ্য যোগ/সম্পাদনা করুন</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -51,10 +51,20 @@
                                         <div class="row">
                                             <input type="hidden" class="form-control"  th:field="*{id}" />
                                             <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
-                                        </div>                         
+                                        </div>
+                                        
+<!--                                             <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">নাম   :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-8">    
+                                                    <span th:text="${name.name}"></span> 
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>-->
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">   LPR Date :<span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-3 control-label">   অবসর উত্তর ছুটির তারিখ  :<span class="text-red">  *  </span> </label>
                                                 <div class="col-sm-8">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -68,7 +78,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Retirement Type:<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-3 control-label"> অবসর গ্রহণের ধরণ :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{retirementType}"  >
                                                         <option value=" "> Select one</option>
@@ -83,7 +93,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">   Start Date  :<span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-3 control-label"> অবসর গ্রহণ   শুরুর তারিখ  :<span class="text-red">  *  </span> </label>
                                                 <div class="col-sm-8">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -95,9 +105,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        
+<!--                                        <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">   Nominee  :<span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-3 control-label">   নমিনি   :<span class="text-red">   * </span> </label>
                                                 <div class="col-sm-8">    
                                                     <div class="input-group " >
                                                         <input type="text"    class="form-control  " th:field="*{nominee}"    />                
@@ -105,10 +116,11 @@
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nominee')}" th:errors="*{nominee}">First Name Error</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
+                                        
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">Remarks :<span class="text-red"> </span></label>
+                                                <label for="name" class="col-sm-3 control-label">মন্তব্য  :<span class="text-red"> </span></label>
                                                 <div class="col-sm-6">                    
                                                     <textarea   cols="5" rows="5"  class="form-control  "    th:field="*{remarks}"  >      </textarea> 
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('remarks')}" th:errors="*{remarks}">First Name Error</span>
@@ -130,26 +142,27 @@
                             </div>
                             <!-- /.box -->              
                         </div>
+                        
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Retirement Pension  Information List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> অবসরকালীন পেনশনের তথ্য</h3>
                                     <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                       
                                     </div>
                                 </div>
                                 <div class="box-body">
                                     <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                <th>Sr. no.</th> 
-                                                <th>L.P.R Date</th>
-                                                <th>Retirement Type</th>
-                                                <th>Start Date</th>
-                                                <th>Nominee</th>
-                                                <th>Remarks</th>
+                                                <th>নং</th> 
+                                                <th>পি.আর.এল. তারিখ </th>
+                                                <th>অবসর গ্রহণের ধরণ</th>
+                                                <th> অবসর গ্রহণ  শুরুর তারিখ </th>
+                                     
+                                                <th>মন্তব্য</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                                 <th>Edit</th>
@@ -161,7 +174,7 @@
                                             <td th:text="${list.lprDate}">BCS</td> 
                                             <td th:text="${list.retirementType}">BCS</td> 
                                             <td th:text="${list.startDate}">BCS</td> 
-                                            <td th:text="${list.nominee}">BCS</td> 
+                                      
                                             <td th:text="${list.remarks}">BCS</td> 
                                             <td>Created:<span th:text="${list.createdOn}"></span><br/>
                                                 Created By:<span th:text="${list.createdBy}"></span>

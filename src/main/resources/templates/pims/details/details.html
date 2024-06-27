@@ -6,7 +6,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Employee Details Information
+                  কর্মকর্তা/কর্মচারী তথ্য
                 </h1>
             </section>
 
@@ -14,10 +14,11 @@
             <section class="content">
                 <div class="box box-warning ">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Government  ID: <span th:text="${employee.governmentId}"></span> </h3>
+                        <h3 class="box-title"> পরিচিতি নম্বর  (IDN): <span th:text="${employee.governmentId}"></span> </h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/profile/fullprofile/{e_id}(e_id=${employee.id})}"  class="btn btn-danger btn-xs"><b>Full Profile</b></a>
+                          <a th:href="@{/profile/fullprofile/{e_id}(e_id=${employee.id})}"       class="btn btn-success btn-xs"><b>সম্পূর্ণ তথ্যাবলী  </b></a>
+                                <a th:href="@{/profile/profilelist}"   class="btn btn-danger btn-xs"><b>বন্ধ </b></a>
                             </div>
                         </div>
                     </div>
@@ -35,31 +36,31 @@
 
                             <table class="table table-bordered">
                                 <tr>
-                                    <th> Name </th>
+                                    <th> নাম  </th>
                                     <td><span  id="emp_name" th:text="${employee.name}"></span></td>
                                 </tr> 
                                 <tr>
-                                    <th> Designation </th>
+                                    <th> পদবি  </th>
                                     <td><span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
                                             <span th:text="${employee.presentJob.postingDesignation.name}"></span>
                                         </span></td>
                                 </tr>
 
                                 <tr>
-                                    <th> Department </th>
+                                    <th> বিভাগ  </th>
                                     <td><span  th:if="${ not #lists.isEmpty(employee.department.name)}">  
                                             <span th:text="${employee.department.name}"></span>  </span></td>
                                 </tr>
 
                                 <tr>
-                                    <th> Sub-Department </th>
+                                    <th> উপ বিভাগ </th>
                                     <td> <span  th:if="${ not #lists.isEmpty(employee.subDepartment.name)}">  
 
                                             <span th:text="${employee.subDepartment.name}"></span></span></td>
                                 </tr>
 
                                 <tr>
-                                    <th> Posting Location </th>
+                                    <th> পদায়নকৃত কর্মস্থল   </th>
                                     <td>    <span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
 
                                             <span th:text="${employee.presentJob.presentPostingLocation.name}">
@@ -70,7 +71,7 @@
                                 </tr>
 
                                 <tr>
-                                    <th> Employee Status </th>
+                                    <th>চাকরির বর্তমান অবস্থা  </th>
                                     <td>      <span  th:if="${ not #lists.isEmpty(employee.generalInformation)}">
                                             <span th:text="${employee.generalInformation.employeeStatus}">
                                             </span></span>
@@ -89,21 +90,21 @@
 
                     <div class="box-footer">
 
-                        <table class="table table-bordered">
-                            <tr>
-                                <th> Date of Birth </th>
-                                <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${ employee.generalInformation.dateofBirth}"></span></td>
+                              <table class="table table-bordered">
+                                   <tr>
+                                <th> জন্ম তারিখ </th>
+                                <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"   th:text="${#dates.format(employee.generalInformation.dateofBirth, 'dd/MM/yyyy')}"></span></td>
 
-                                <th> Joining Date </th>
-                                <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${ employee.firstJoiningInformation.dateFirstJoining}"></span></td>
+                                <th> যোগদান তারিখ </th>
+                                <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${#dates.format(employee.firstJoiningInformation.dateFirstJoining, 'dd/MM/yyyy')}"></span></td>
 
-                                <th> LPR Date </th>
-                                <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${employee.generalInformation.lPRDate}"></span></td>
+                                <th> অবসর উত্তর ছুটির তারিখ   </th>
+                                <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${#dates.format(employee.generalInformation.lPRDate, 'dd/MM/yyyy')}"></span></td>
 
-                                <th> Retirement Date </th>
-                                <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}"  th:text="${employee.retirementPension.startDate}"></span> </td>
+                                <th> অবসর গ্রহণের তারিখ  </th>
+                                <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}" th:text="${#dates.format(employee.retirementPension.startDate, 'dd/MM/yyyy')}"></span> </td>
                             </tr>
-                        </table>
+                                </table>
 
 
                     </div>
@@ -121,7 +122,7 @@
                     <div class="box-body">
                         <a   class="btn btn-app"th:href="@{/generalinformation/index/{e_id}(e_id=${employee.id})}"> 
                             <i class="fas fa-book fa-2x"></i> <br> 
-                            1.  General Information
+                            ১.  সাধারণ তথ্য
 
                             <span th:if="${ not #lists.isEmpty(employee.generalInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.generalInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
@@ -133,160 +134,168 @@
                                 <i class="fa fa-times" aria-hidden="true"></i> </span>
 
                             <i class="fas fa-user-alt fa-2x"></i><br>
-                            2.Profile Image </a>
+                          ২.প্রোফাইল ছবি </a>
 
                         <a class="btn btn-app" th:href="@{/addressinformation/index/{e_id}(e_id=${employee.id})}" > 
                             <span th:if="${ not #lists.isEmpty(employee.addressInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.addressInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-map-marker-alt fa-2x"></i><br>
-                            3.  Address  </a>
+                          ৩.  ঠিকানা   </a>
 
                         <a  class="btn btn-app" th:href="@{/spouse/index/{e_id}(e_id=${employee.id})}">
 
                             <span th:if="${ not #lists.isEmpty(employee.spousName)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.spousName)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-female fa-2x"></i><br>
-                            4. Spouse </a>
+                           ৪. স্বামী / স্ত্রী </a>
 
                         <a  class="btn btn-app" th:href="@{/childreninformation/index/{e_id}(e_id=${employee.id})}" >
 
                             <span th:if="${ not #lists.isEmpty(employee.childrenInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.childrenInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-child fa-2x"></i><br>
-                            5. Children</a>
+                         ৫. সন্তানের তথ্য </a>
 
                         <a class="btn btn-app" th:href="@{/educationalInformation/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.educationalInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.educationalInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-university fa-2x"></i><br>
-                            6.Education </a>
+                      ৬.শিক্ষা  </a>
 
-                        <a class="btn btn-app"  th:href="@{/jobentryprocess/index/{e_id}(e_id=${employee.id})}"> 
+<!--                        <a class="btn btn-app"  th:href="@{/jobentryprocess/index/{e_id}(e_id=${employee.id})}"> 
                             <span th:if="${ not #lists.isEmpty(employee.jobEntryProcess)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.jobEntryProcess)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-briefcase fa-2x"></i><br>
-                            7. Job Entry Process </a>
+                            7. চাকরির এণ্ট্রি প্রক্রিয়া  </a>-->
 
-                        <a  class="btn btn-app" th:href="@{/firstjoininginformation/index/{e_id}(e_id=${employee.id})}"> 
+
+
+
+                      <a  class="btn btn-app" th:href="@{/firstjoininginformation/index/{e_id}(e_id=${employee.id})}"> 
 
                             <span th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.firstJoiningInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-briefcase fa-2x"></i><br>
-                            8.   First Job  </a>
+                           ৭.  চাকরি স্থায়ী করণের তথ্য  </a>
+
+
+<!--                       <a  class="btn btn-app" th:href="@{/firstjoininginformation/index/{e_id}(e_id=${employee.id})}"> 
+
+                            <span th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                            <span th:if="${#lists.isEmpty(employee.firstJoiningInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                            <i class="fas fa-briefcase fa-2x"></i><br>
+                           ৭.  প্রথম যোগদানের তথ্য  </a>-->
+
+
 
                         <a class="btn btn-app" th:href="@{/presentjob/index/{e_id}(e_id=${employee.id})}"> 
                             <span th:if="${ not #lists.isEmpty(employee.presentJob)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.presentJob)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-briefcase fa-2x"></i><br>
-                            9.  Present Job  </a>
+                        ৮.  বর্তমান চাকরী  </a>
 
                         <a class="btn btn-app" th:href="@{/postingrecordinformation/index/{e_id}(e_id=${employee.id})}">  
 
                             <span th:if="${ not #lists.isEmpty(employee.postingRecordInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.postingRecordInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-history fa-2x"></i> <br> 
-                            10. Posting Record Information </a>
+                           ৯. পদায়ন ও বদলি সংক্রান্ত তথ্য  </a>
 
                         <a  class="btn btn-app" th:href="@{/acr/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.acr)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.acr)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-key fa-2x"></i><br>
-                            11.ACR
+                        ১০.বার্ষিক গোপনীয় অনুবেদন 
                         </a>
 
                         <a  class="btn btn-app" th:href="@{/promotionsinformation/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.promotionsInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.promotionsInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>           
                             <i class="fas fa-check-circle fa-2x"></i><br>
-                            12. Promotions Information </a>
+                     ১১. পদোন্নতি সংক্রান্ত তথ্য </a>
 
-                        <a class="btn btn-app" th:href="@{/selectiongrade/index/{e_id}(e_id=${employee.id})}">
+<!--                        <a class="btn btn-app" th:href="@{/selectiongrade/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.selectionGrade)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.selectionGrade)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>                     
                             <i class="fas fa-mouse-pointer fa-2x"></i><br>
-                            13.  Selection Grade </a>
+                            13.  সিলেকশন গ্রেড </a>-->
 
                         <a  class="btn btn-app" th:href="@{/leaveinfo/index/{e_id}(e_id=${employee.id})}">
 
                             <span th:if="${ not #lists.isEmpty(employee.leaveinfo)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.leaveinfo)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-backspace fa-2x"></i><br>
-                            14.  Leave</a>
+                   ১২.  ছুটি </a>
 
                         <a  class="btn btn-app" th:href="@{/foreigntraininginformation/index/{e_id}(e_id=${employee.id})}"> 
 
                             <span th:if="${ not #lists.isEmpty(employee.foreignTrainingInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.foreignTrainingInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-plane-departure fa-2x"></i><br>
-                            15. Foreign Training Information  </a>
+                          ১৩. বৈদেশিক প্রশিক্ষনের তথ্য  </a>
                         <a  class="btn btn-app" th:href="@{/inservicetraininginformation/index/{e_id}(e_id=${employee.id})}"> 
 
                             <span th:if="${ not #lists.isEmpty(employee.inServiceTrainingInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.inServiceTrainingInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
-                            16. In-Service Training </a>
-                        <a class="btn btn-app" th:href="@{/postingabroadinformation/index/{e_id}(e_id=${employee.id})}">
+                     ১৪. অভ্যান্তরিন প্রশিক্ষনের  তথ্য </a>
+<!--                        <a class="btn btn-app" th:href="@{/postingabroadinformation/index/{e_id}(e_id=${employee.id})}">
 
                             <span th:if="${ not #lists.isEmpty(employee.postingAbroadInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.postingAbroadInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-plane fa-2x"></i><br>
-                            17.Posting Abroad </a>
+                            17.বিদেশে পোস্টিং  </a>-->
 
-                        <a class="btn btn-app" th:href="@{/otherserviceinformation/index/{e_id}(e_id=${employee.id})}">
+<!--                        <a class="btn btn-app" th:href="@{/otherserviceinformation/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.otherServiceInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.otherServiceInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>    
                             <i class="fas fa-cog fa-2x"></i><br>
-                            18. Other Service  </a>
+                            18. অন্যান্য চাকরি  </a>-->
 
                         <a class="btn btn-app" th:href="@{/honorsandawardinformation/index/{e_id}(e_id=${employee.id})}"> 
 
                             <span th:if="${ not #lists.isEmpty(employee.honorsandaward)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.honorsandaward)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-award fa-2x"></i><br>
-                            19. Honours  And Award  </a>
+                          ১৫. সম্মাননা ও পুরস্কার </a>
                         <a class="btn btn-app" th:href="@{/additionalqualification/index/{e_id}(e_id=${employee.id})}">
 
                             <span th:if="${ not #lists.isEmpty(employee.additionalQualification)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.additionalQualification)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-graduation-cap fa-2x"></i><br>
-                            20. Additional Qualifications </a>
+                          ১৬. অতিরিক্ত যোগ্যতা </a>
 
                         <a  class="btn btn-app" th:href="@{/language/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.languageinfo)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.languageinfo)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>    
                             <i class="fas fa-language fa-2x"></i><br>
-                            21. Language  </a>
+                          ১৭. ভাষা  </a>
 
-                        <a class="btn btn-app" th:href="@{/magisterialpower/index/{e_id}(e_id=${employee.id})}">
+                        <a class="btn btn-app" th:href="@{/disciplinaryaction/index/{e_id}(e_id=${employee.id})}">
 
-                            <span th:if="${ not #lists.isEmpty(employee.magisterialPower)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.magisterialPower)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-balance-scale  fa-2x"></i><br>
-                            22.  Magistrial Power </a>
-
-                        <a  class="btn btn-app" th:href="@{/disciplinaryaction/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.disciplinaryActionDetails)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.disciplinaryActionDetails)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-pencil-alt fa-2x"></i><br>
-                            23  Disciplinary Action</a>
+                            <i class="fas fa-balance-scale  fa-2x"></i><br>
+
+                       ১৮ বিভাগীয় ব্যবস্থা </a>
 
 
                         <a class="btn btn-app"  th:href="@{/publication/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.publicationInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.publicationInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-book-open fa-2x"></i><br>                           
-                            24.   Publication </a>
+                    ১৯.   প্রকাশনা  </a>
 
                         <a  class="btn btn-app" th:href="@{/membership/index/{e_id}(e_id=${employee.id})}">
                             <span th:if="${ not #lists.isEmpty(employee.membership)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
                             <span th:if="${#lists.isEmpty(employee.membership)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-user-friends fa-2x"></i><br>
-                            25.Professional Organization Membership</a>
+                         ২০.পেশাদার সংগঠনের সদস্য পদের তথ্য</a>
                         <a class="btn btn-app" th:href="@{/retirementpension/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.membership)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.membership)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                            <span th:if="${ not #lists.isEmpty(employee.retirementPension)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                            <span th:if="${#lists.isEmpty(employee.retirementPension)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
                             <i class="fas fa-handshake fa-2x"></i><br> 
-                            26.Retirement and Pension</a>
+                       ২১.অবসর ও পেনশন </a>
 
                     </div><!-- /.box-body -->
                     <div class="box-footer">

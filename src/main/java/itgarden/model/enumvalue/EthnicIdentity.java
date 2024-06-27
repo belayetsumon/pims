@@ -10,19 +10,5 @@ package itgarden.model.enumvalue;
  * @author Md Belayet Hossin
  */
 public enum EthnicIdentity {
-    Banglali,
-    Chakma,
-    Marma,
-    Tripura,
-    Tanchangya,
-    Khumi,
-    Mro,
-    Lushi,
-    Khiang,
-    Garos,
-    Manipuri,
-    Santals,
-    Khasi,
-    Jaintia,
-    Khajons,Others,NA
+  General,Tribal,Others,NA
 }

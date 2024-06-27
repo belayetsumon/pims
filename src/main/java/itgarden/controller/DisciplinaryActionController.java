@@ -8,6 +8,7 @@ package itgarden.controller;
 import itgarden.model.DisciplinaryActionDetails;
 import itgarden.model.Users;
 import itgarden.repository.DisciplinaryActionDetailsRepository;
+import itgarden.repository.UsersRepository;
 import itgarden.service.LoggedUserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class DisciplinaryActionController {
     @Autowired
     LoggedUserService loggedUserService;
 
+    @Autowired
+    UsersRepository usersRepository;
+
     @RequestMapping("/index/{e_id}")
     public String index(Model model, @PathVariable Long e_id, DisciplinaryActionDetails disciplinaryActionDetails) {
 
@@ -43,6 +47,8 @@ public class DisciplinaryActionController {
         users.setId(e_id);
 
         disciplinaryActionDetails.setGovernmentId(users);
+        
+        model.addAttribute("username",usersRepository.getOne(e_id));
 
         model.addAttribute("list", disciplinaryActionDetailsRepository.findByGovernmentIdOrderByIdDesc(users));
 
@@ -80,7 +86,7 @@ public class DisciplinaryActionController {
 
             return "pims/disciplinaryaction/disciplinaryaction";
         }
-        
+
         disciplinaryActionDetails.setCreatedBy(loggedUserService.activeUserNameAndGovernmentId());
         disciplinaryActionDetails.setUpdatedBy(loggedUserService.activeUserNameAndGovernmentId());
         disciplinaryActionDetailsRepository.save(disciplinaryActionDetails);

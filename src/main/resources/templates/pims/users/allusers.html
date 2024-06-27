@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    New Employee  List 
+           কর্মকর্তা/কর্মচারী
                 </h1>
             </section>
 
@@ -17,31 +17,31 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Total Employee :  <span th:text="${alluser.size()}"></span></h3>
+                        <h3 class="box-title"> মোট কর্মচারী :  <span th:text="${alluser.size()}"></span></h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <!--                                <a th:href="@{/users/registrations}" type="button" class="btn  btn-warning btn-default bg-green">New Employee Registration</a>-->
-                                <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-default">Close</a>
+                                <a th:href="@{/users/registrations}" type="button" class="btn  btn-warning btn-default bg-green">নতুন নিবন্ধন</a>
+                                <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-default">বন্ধ</a>
                             </div>
                         </div>
                     </div>
                     <div class="box-body">
 
-                        <table id="basictable" class="table table-bordered">
+                        <table id="myTableId" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
-                                    <th>Govt Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Department</th>
-                                    <th>SubDepartment</th>
+                                    <th>সনাক্তকরণ নম্বর</th>
+                                    <th>নাম </th>
+                                    <th>ইমেল </th>
+                                    <th>মুঠোফোন নাম্বার</th>
+                                    <th>বিভাগ</th>
+                                    <th>উপ বিভাগ</th>
                                     <!--                                <th>Role</th>-->
-                                    <th>Status</th>
-                                    <th>View</th>
-                                    <th>Edit</th>
-                                    <th style="width: 40px">Delete</th>
+                                    <th>অবস্থা</th>
+                                    <th>বিস্তারিত</th>
+                                    <th>সম্পাদনা</th>
+                                    <th style="width: 40px">মুছে ফেলা</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,18 +56,16 @@
                                     <!--                                <td th:text="${alluser.role.name}">Chakma</td>-->
                                     <td th:text="${alluser.status}">Chakma</td>  
                                     <td>
-                                        <a type="button" class="btn  btn-success btn-xs bg-green" th:href="@{/users/view/{uid} (uid=${alluser.id})}" > View</a>
+                                        <a type="button" class="btn  btn-success btn-xs bg-green" th:href="@{/users/view/{uid} (uid=${alluser.id})}" > বিস্তারিত</a>
 
                                     </td>
                                     <td>
-                                        <a type="button" class="btn  btn-warning btn-xs bg-maroon" th:href="@{/users/edit/{id} (id=${alluser.id})}" > Edit</a>
+                                        <a type="button" class="btn  btn-warning btn-xs bg-maroon" th:href="@{/users/edit/{id} (id=${alluser.id})}" > সম্পাদনা</a>
                                     </td>
-                                    <td> <a  type="button" class="btn  btn-warning btn-xs bg-red " th:href="@{/users/delete/{id} (id=${alluser.id})}" > Delete </a></td>
+                                    <td> <a  type="button" class="btn  btn-warning btn-xs bg-red " th:href="@{/users/delete/{id} (id=${alluser.id})}" > মুছে ফেলা </a></td>
                                 </tr>
                             </tbody>
                         </table>
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">

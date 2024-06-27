@@ -41,9 +41,7 @@ public class PostingAbroadInformation {
     @ManyToOne(optional = true)
     private Users governmentId;
 
-    @NotNull(message = "This field cannot be blank.")
-    @ManyToOne(optional = true)
-    private PostingRank postingRank;  // Present Posting Rank  : DY. SECRETARY
+  
 
     @NotNull(message = " *Posting type cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
@@ -93,10 +91,9 @@ public class PostingAbroadInformation {
     //@LastModifiedBy
     private String updatedBy;
 
-    public PostingAbroadInformation(Long id, Users governmentId, PostingRank postingRank, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, BirthCountry country, String periodFrom, String periodTo, String scale, String status, long version, String createdBy, String updatedBy) {
+    public PostingAbroadInformation(Long id, Users governmentId, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, BirthCountry country, String periodFrom, String periodTo, String scale, String status, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
-        this.postingRank = postingRank;
         this.postingType = postingType;
         this.postingDesignation = postingDesignation;
         this.postingLocation = postingLocation;
@@ -109,8 +106,6 @@ public class PostingAbroadInformation {
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
     }
-
-   
 
     public PostingAbroadInformation() {
     }
@@ -129,14 +124,6 @@ public class PostingAbroadInformation {
 
     public void setGovernmentId(Users governmentId) {
         this.governmentId = governmentId;
-    }
-
-    public PostingRank getPostingRank() {
-        return postingRank;
-    }
-
-    public void setPostingRank(PostingRank postingRank) {
-        this.postingRank = postingRank;
     }
 
     public PostingType getPostingType() {
@@ -243,8 +230,4 @@ public class PostingAbroadInformation {
         this.updatedBy = updatedBy;
     }
 
-   
-    /**
-     * ***************** End Auditor ********************************
-     */
 }

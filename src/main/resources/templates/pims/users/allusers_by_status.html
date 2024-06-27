@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Employee  List  
+                 এমপ্লয়ী লিস্ট
                 </h1>
             </section>
 
@@ -17,7 +17,7 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Total Employee : <!-- <span th:text="${alluser.size()}"></span> --> </h3>
+                        <h3 class="box-title"> টোটাল এমপ্লয়ী: <!-- <span th:text="${alluser.size()}"></span> --> </h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
 
@@ -29,7 +29,7 @@
                         <form class=" text-center forrm-inline"  th:action="@{/users/userbystatus}" >
                            
                                 <div class="form-group ">
-                                    <label for="name" class="col-sm-5 control-label"> Search By Status<span class="text-red">  </span> </label>
+                                    <label for="name" class="col-sm-5 control-label"> সার্চ বাই  স্টেটাস<span class="text-red">  </span> </label>
                                     <div class="col-sm-3">    
                                         <select class="form-control  "  name ="status">
                                             <option value=" "> Select one</option>
@@ -41,24 +41,24 @@
                                                          
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-flat bg-maroon">Search</button>
+                            <button type="submit" class="btn btn-flat bg-maroon">সার্চ </button>
                         </form> 
                         </div>
                         <div class="box-body">
                         <table class="table table-bordered">
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Govt Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile</th>
-                                <th>Department</th>
-                                <th>SubDepartment</th>
+                                <th>আইডি </th>
+                                <th>নাম</th>
+                                <th>ইমেইল</th>
+                                <th>মোবাইল</th>
+                                <th>ডিপার্টমেন্ট</th>
+                                <th>সাব ডিপার্টমেন্ট</th>
                                 <!--                                <th>Role</th>-->
-                                <th>Status</th>
-                                <th>View</th>
-                                <th>Edit</th>
-                                <th style="width: 40px">Delete</th>
+                                <th>স্টেটাস</th>
+                                <th>ভিউ</th>
+                                <th>এডিট</th>
+                                <th style="width: 40px">ডিলিট</th>
                             </tr>
                             <tr th:each="alluser,status:${alluser}">
                                 <td th:text="${status.count}">2.</td>

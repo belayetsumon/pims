@@ -17,6 +17,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface PresentJobRepository extends JpaRepository<PresentJob, Long> {
 
+    PresentJob findByGovernmentId(Users governmentId);
+
     List<PresentJob> findByGovernmentIdOrderByIdDesc(Users governmentId);
 
     List<PresentJob> findAllByOrderByIdDesc();

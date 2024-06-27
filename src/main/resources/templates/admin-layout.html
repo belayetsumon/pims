@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title>PIMS | Personal Informations Management System</title>
+        <title>মানব সম্পদ ব্যবস্থাপনা পদ্ধতি</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
         <!-- Bootstrap 3.3.6 -->
@@ -22,7 +22,10 @@
              folder instead of downloading all of them to reduce the load. -->
         <link th:href="@{/webjars/adminlte/2.3.11/dist/css/skins/_all-skins.min.css}" href="/plugins/admin-lte/dist/css/skins/_all-skins.min.css"  rel="stylesheet" type="text/css"  />
 
+        <!--Data Table-->
 
+        <link rel="stylesheet" type="text/css" th:href="@{/plugin/datatable/datatables.min.css}" />
+        <!--        <link th:href="@{/webjars/1.10.12/css/jquery.dataTables.min.css}"  rel="stylesheet" type="text/css"  />-->
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,17 +88,29 @@
         <!-- AdminLTE App -->
         <script th:src="@{/webjars/adminlte/2.3.11/dist/js/app.min.js}">...</script>
 
+        <!--        Data Table-->
+
+        <!--        <script th:src="@{/webjars/1.10.12/js/jquery.dataTables.min.js">...</script>-->
+        <script type="text/javascript" th:src="@{/plugin/datatable/datatables.min.js}"></script>
+        <script type="text/javascript" th:src="@{/plugin/datatable/app_datatable.js}"></script>
+
         <!-- All Date -->
-        
-              <!-- QR Code -->
+
+        <!-- QR Code -->
         <script th:src="@{/js/jquery.qrcode.js}">...</script>
         <script th:src="@{/js/qrcode.js}">...</script>
-        
-        
-        <script th:src="@{/js/bootstrap_date.js}">...</script>
-        <script th:src="@{/js/report_search.js}">...</script>  
-        <script th:src="@{/js/apps.js}">...</script>
 
+        <!--        jspdf-->
+        <!--        <script th:src="@{/webjars/jspdf/2.5.1/jspdf.umd.min.js}">...</script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        
+                <script th:src="@{/js/report_search.js}">...</script>  
 
-    </body>
+    <script th:src="@{/js/bootstrap_date.js}">...</script>
+    <script th:src="@{/js/report_search.js}">...</script>  
+    <script th:src="@{/js/apps.js}">...</script>
+    <script th:src="@{/js/app_datatable.js}"> ...</script>
+    <script th:src="@{/js/jspdf_custom.js}">...</script>
+</body>
 </html>

@@ -10,8 +10,8 @@ import itgarden.repository.PostingDesignationRepository;
 import itgarden.repository.PostingRankRepository;
 import itgarden.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.data.domain.*;
+import org.springframework.security.access.prepost.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +46,7 @@ public class DashboardsController {
     public String index(Model model) {
         model.addAttribute("attribute", "value");
         model.addAttribute("department", departmentRepository.findAll());
-        model.addAttribute("designation", postingDesignationRepository.findAll());
+        model.addAttribute("designation", postingDesignationRepository.findAll(Sort.by(Sort.Direction.ASC, "orderId")));
         model.addAttribute("postingrank", postingRankRepository.findAll());
         model.addAttribute("user", usersRepository.findByGovernmentId(governmentId));
         return "dashboards/index";

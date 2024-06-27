@@ -6,7 +6,6 @@
 package itgarden.controller.selfservice;
 
 import itgarden.model.Users;
-import itgarden.model.enumvalue.Status;
 import itgarden.repository.AcrRepository;
 import itgarden.repository.AdditionalQualificationRepository;
 import itgarden.repository.AddressInformationRepository;
@@ -142,24 +141,6 @@ public class ProfileSelfserviceController {
         return "pims/selfservice/index";
     }
     
-
-//    @RequestMapping("/shortprofile")
-//    public String shortprofile(Model model) {
-//        model.addAttribute("attribute", "value");
-//        return "view.name";
-//    }
-//
-//    @RequestMapping("/newprofile")
-//    public String newprofile(Model model) {
-//        model.addAttribute("alluser", usersRepository.findByStatusAndGeneralInformationIsNullOrderByIdDesc(Status.Active));
-//        return "pims/profile/newprofile";
-//    }
-//
-//    @RequestMapping("/profilelist")
-//    public String profilelist(Model model) {
-//        model.addAttribute("alluser", usersRepository.findByGeneralInformationIsNotNullOrderByIdDesc());
-//        return "pims/profile/profilelist";
-//    }
     @RequestMapping("/fullprofile/{e_id}")
     public String fullprofile(Model model, @PathVariable Long e_id) {
         Users users = new Users();
@@ -231,4 +212,77 @@ public class ProfileSelfserviceController {
         
         return "pims/selfservice/fullprofilePrint";
     }
-}
+    
+    
+    
+    
+    @RequestMapping("/shortprofile/{e_id}")
+    public String shortprofile(Model model, @PathVariable Long e_id) {
+        Users users = new Users();
+        users.setId(e_id);
+        model.addAttribute("employee", usersRepository.getOne(e_id));
+        model.addAttribute("additionalQualification", additionalQualificationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("addressInformation", addressInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("childrenInformation", childrenInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("disciplinaryAction", disciplinaryActionDetailsRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("educationalInformation", educationalInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("foreignTrainingInformation", foreignTrainingInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("generalInformation", generalInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("honorsAndAwardInformation", honorsAndAwardInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("inServiceTrainingInformation", inServiceTrainingInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("languageInformation", languageInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("magisterialPower", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("otherServiceInformation", otherServiceInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("postingAbroadInformation", postingAbroadInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("postingRecordInformation", postingRecordInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("promotionsInformation", promotionsInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("publicationInformation", publicationInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("selectionGrade", selectionGradeRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("serviceHistories", serviceHistoriesRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("jobentryprocess", jobEntryProcessRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("firstjoininginformation", firstJoiningInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("presentjob", presentJobRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("leaveinfo", leaveinfoRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("membership", membershipRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("acr", acrRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("retirementpension", retirementPensionRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("spousName", spousNameRepository.findByGovernmentIdOrderByIdDesc(users));
+        return "pims/profile/short_profile";
+    }
+
+    @RequestMapping("/longprofile/{e_id}")
+    public String longprofile(Model model, @PathVariable Long e_id) {
+        Users users = new Users();
+        users.setId(e_id);
+        model.addAttribute("employee", usersRepository.getOne(e_id));
+        model.addAttribute("additionalQualification", additionalQualificationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("addressInformation", addressInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("childrenInformation", childrenInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("disciplinaryAction", disciplinaryActionDetailsRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("educationalInformation", educationalInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("foreignTrainingInformation", foreignTrainingInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("generalInformation", generalInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("honorsAndAwardInformation", honorsAndAwardInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("inServiceTrainingInformation", inServiceTrainingInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("languageInformation", languageInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("magisterialPower", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("otherServiceInformation", otherServiceInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("postingAbroadInformation", postingAbroadInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("postingRecordInformation", postingRecordInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("promotionsInformation", promotionsInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("publicationInformation", publicationInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("selectionGrade", selectionGradeRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("serviceHistories", serviceHistoriesRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("jobentryprocess", jobEntryProcessRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("firstjoininginformation", firstJoiningInformationRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("presentjob", presentJobRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("leaveinfo", leaveinfoRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("membership", membershipRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("acr", acrRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("retirementpension", retirementPensionRepository.findByGovernmentIdOrderByIdDesc(users));
+        model.addAttribute("spousName", spousNameRepository.findByGovernmentIdOrderByIdDesc(users));
+        return "pims/profile/longprofile";
+    }
+    
+    
+ }

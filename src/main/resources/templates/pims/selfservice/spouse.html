@@ -219,6 +219,17 @@
                                                 </div>                            
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-3 control-label">Contact :<span class="text-red">*</span></label>
+                                                <div class="col-sm-6">                    
+                                                    <textarea   cols="5" rows="5"  class="form-control  "    th:field="*{contact}"  >      </textarea> 
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="text-center" >
                                                 <div class="box-tools">
@@ -267,6 +278,7 @@
                                                 <th>Organization </th>
                                                 <th>Designation </th>
                                                 <th>Location</th>
+                                                <th>Contact</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                                 <th>
@@ -295,6 +307,7 @@
                                             <td th:text="${list.organization}">BCS</td>
                                             <td th:text="${list.designation}">BCS</td>
                                             <td th:text="${list.location}">BCS</td>
+                                             <td th:text="${list.contact}">BCS</td>
 
                                             <td> Created:<span th:text="${list.createdOn}"></span> <br/>
                                                 Created By:<span th:text="${list.createdBy}"></span><br/>

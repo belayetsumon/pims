@@ -7,9 +7,7 @@ package itgarden.model;
 
 import itgarden.model.enumvalue.BirthCountry;
 import itgarden.model.enumvalue.District;
-import itgarden.model.enumvalue.EthnicIdentity;
-
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,6 +15,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,7 +43,7 @@ public class SpousName {
     @Enumerated(EnumType.STRING)
     private District district;
 
-    @NotEmpty(message = "This field cannot be blank.")
+ 
     private String dateofBirth;
 
     private String birthCertificateNumber;
@@ -63,13 +62,12 @@ public class SpousName {
 
     private String passportNo;
 
-    @NotNull(message = "This field cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    private EthnicIdentity ethnicIdentity;
-    
+//    @NotNull(message = "This field cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    private EthnicIdentity ethnicIdentity;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String nationality;
+//    @NotEmpty(message = "This field cannot be blank.")
+//    private String nationality;
 
     private String occupation;
 
@@ -78,6 +76,10 @@ public class SpousName {
     private String designation;
 
     private String location;
+
+    @NotNull(message = "Spous contact cannot be blank.")
+    @Lob
+    private String contact;
 
     private String remarks;
 
@@ -107,7 +109,7 @@ public class SpousName {
     public SpousName() {
     }
 
-    public SpousName(Long id, Users governmentId, String spouseName, District district, String dateofBirth, String birthCertificateNumber, BirthCountry birthCountry, String nid, String dateofMarriage, String marriageRegistrationNo, String passportNo, EthnicIdentity ethnicIdentity, String nationality, String occupation, String organization, String designation, String location, String remarks, long version, String createdBy, String updatedBy) {
+    public SpousName(Long id, Users governmentId, String spouseName, District district, String dateofBirth, String birthCertificateNumber, BirthCountry birthCountry, String nid, String dateofMarriage, String marriageRegistrationNo, String passportNo, String occupation, String organization, String designation, String location, String contact, String remarks, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.spouseName = spouseName;
@@ -119,12 +121,11 @@ public class SpousName {
         this.dateofMarriage = dateofMarriage;
         this.marriageRegistrationNo = marriageRegistrationNo;
         this.passportNo = passportNo;
-        this.ethnicIdentity = ethnicIdentity;
-        this.nationality = nationality;
         this.occupation = occupation;
         this.organization = organization;
         this.designation = designation;
         this.location = location;
+        this.contact = contact;
         this.remarks = remarks;
         this.version = version;
         this.createdBy = createdBy;
@@ -219,22 +220,6 @@ public class SpousName {
         this.passportNo = passportNo;
     }
 
-    public EthnicIdentity getEthnicIdentity() {
-        return ethnicIdentity;
-    }
-
-    public void setEthnicIdentity(EthnicIdentity ethnicIdentity) {
-        this.ethnicIdentity = ethnicIdentity;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
     public String getOccupation() {
         return occupation;
     }
@@ -265,6 +250,14 @@ public class SpousName {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getRemarks() {
@@ -314,6 +307,6 @@ public class SpousName {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
+ 
 
-    
 }

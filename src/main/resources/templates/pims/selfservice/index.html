@@ -6,7 +6,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Self Service Area
+                    কর্মকর্তা/কর্মচারী তথ্য
                 </h1>
             </section>
 
@@ -14,10 +14,12 @@
             <section class="content">
                 <div class="box box-warning ">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Government  ID: <span th:text="${employee.governmentId}"></span> </h3>
+                        <h3 class="box-title"> পরিচিতি নম্বর  (IDN)<span th:text="${employee.governmentId}"></span> </h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/selfservice/fullprofile/{e_id}(e_id=${employee.id})}"  class="btn btn-danger btn-xs"><b>Full Profile</b></a>
+                                <a th:href="@{/selfservice/shortprofile/{e_id}(e_id=${employee.id})}"   target="_blank" class="btn btn-danger btn-xs"><b>সংক্ষিপ্ত তথ্যাবলী   </b></a>
+                                <a th:href="@{/selfservice/longprofile/{e_id}(e_id=${employee.id})}"  target="_blank" class="btn btn-danger btn-xs"><b>সম্পূর্ণ তথ্যাবলী   </b></a>
+                               <!--                                <a th:href="@{/selfservice/fullprofile/{e_id}(e_id=${employee.id})}"  class="btn btn-danger btn-xs"><b>সম্পূর্ণ তথ্যাবলী   </b></a>-->
                             </div>
                         </div>
                     </div>
@@ -35,31 +37,31 @@
 
                             <table class="table table-bordered">
                                 <tr>
-                                    <th> Name </th>
+                                    <th> নাম </th>
                                     <td><span id="emp_name" th:text="${employee.name}"></span></td>
                                 </tr> 
                                 <tr>
-                                    <th> Designation </th>
+                                    <th> পদবী </th>
                                     <td><span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
                                             <span th:text="${employee.presentJob.postingDesignation.name}"></span>
                                         </span></td>
                                 </tr>
 
                                 <tr>
-                                    <th> Department </th>
+                                    <th> বিভাগ </th>
                                     <td><span  th:if="${ not #lists.isEmpty(employee.department.name)}">  
                                             <span th:text="${employee.department.name}"></span>  </span></td>
                                 </tr>
 
                                 <tr>
-                                    <th> Sub-Department </th>
+                                    <th> উপ বিভাগ </th>
                                     <td> <span  th:if="${ not #lists.isEmpty(employee.subDepartment.name)}">  
 
                                             <span th:text="${employee.subDepartment.name}"></span></span></td>
                                 </tr>
 
                                 <tr>
-                                    <th> Posting Location </th>
+                                    <th> পদায়নকৃত কর্মস্থল  </th>
                                     <td>    <span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
 
                                             <span th:text="${employee.presentJob.presentPostingLocation.name}">
@@ -70,7 +72,7 @@
                                 </tr>
 
                                 <tr>
-                                    <th> Employee Status </th>
+                                    <th> চাকরির বর্তমান অবস্থা  </th>
                                     <td>      <span  th:if="${ not #lists.isEmpty(employee.generalInformation)}">
                                             <span th:text="${employee.generalInformation.employeeStatus}">
                                             </span></span>
@@ -80,9 +82,9 @@
 
                         </div>
                         <div class="col-sm-2">
-<!--                            <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>-->
-                       <input type="hidden" id="emp_mobile" name="mobile" class="form-control  "    th:value="${employee.mobile}"  />        
-                        <div  class="profile-user-img " id="exa"></div>
+                            <!--                            <img class="profile-user-img img-responsive" th:src="@{/images/qr.jpg}" alt="User profile picture"/>-->
+                            <input type="hidden" id="emp_mobile" name="mobile" class="form-control  "    th:value="${employee.mobile}"  />        
+                            <div  class="profile-user-img " id="exa"></div>
                         </div>
                     </div>
 
@@ -90,17 +92,17 @@
 
                         <table class="table table-bordered">
                             <tr>
-                                <th> Date of Birth </th>
-                                <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${ employee.generalInformation.dateofBirth}"></span></td>
+                                <th> জন্ম তারিখ </th>
+                                <td><span   th:if="${ not #lists.isEmpty(employee.generalInformation)}"   th:text="${#dates.format(employee.generalInformation.dateofBirth, 'dd/MM/yyyy')}"></span></td>
 
-                                <th> Joining Date </th>
-                                <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${ employee.firstJoiningInformation.dateFirstJoining}"></span></td>
+                                <th> যোগদান তারিখ </th>
+                                <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${#dates.format(employee.firstJoiningInformation.dateFirstJoining, 'dd/MM/yyyy')}"></span></td>
 
-                                <th> LPR Date </th>
-                                <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${employee.generalInformation.lPRDate}"></span></td>
+                                <th> অবসর উত্তর ছুটির তারিখ   </th>
+                                <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${#dates.format(employee.generalInformation.lPRDate, 'dd/MM/yyyy')}"></span></td>
 
-                                <th> Retirement Date </th>
-                                <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}"  th:text="${employee.retirementPension.startDate}"></span> </td>
+                                <th> অবসর গ্রহণের তারিখ  </th>
+                                <td> <span  th:if="${ not #lists.isEmpty(employee.retirementPension)}" th:text="${#dates.format(employee.retirementPension.startDate, 'dd/MM/yyyy')}"></span> </td>
                             </tr>
                         </table>
 
@@ -110,189 +112,189 @@
 
 
                 <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"></h3>
-                        <div class="box-tools pull-right">
-                            <!-- Buttons, labels, and many other things can be placed here! -->
-                            <!-- Here is a label for example -->
-                            <span class="label label-primary"></span>
-                        </div><!-- /.box-tools -->
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                        <a   class="btn btn-app"th:href="@{/selfservice_generalinformation/index/{e_id}(e_id=${employee.id})}"> 
-                            <i class="fas fa-book fa-2x"></i> <br>   1.  General Information
-
-                            <span th:if="${ not #lists.isEmpty(employee.generalInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.generalInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                        </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_profileimage/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.profileImage)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.profileImage)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-user-alt fa-2x"></i><br>
-                            2.Profile Image </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_addressinformation/index/{e_id}(e_id=${employee.id})}" > 
-                            <span th:if="${ not #lists.isEmpty(employee.addressInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.addressInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-map-marker-alt fa-2x"></i><br>
-                            3.  Address  </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_spouse/index/{e_id}(e_id=${employee.id})}">
-
-                            <span th:if="${ not #lists.isEmpty(employee.spousName)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.spousName)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-female fa-2x"></i><br>
-                            4. Spouse </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_childreninformation/index/{e_id}(e_id=${employee.id})}" >
-
-                            <span th:if="${ not #lists.isEmpty(employee.childrenInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.childrenInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-child fa-2x"></i><br>
-                            5. Children</a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_educationalInformation/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.educationalInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.educationalInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-
-                            <i class="fas fa-university fa-2x"></i><br>
-                            6.Education </a>
-
-                        <a class="btn btn-app"  th:href="@{/selfservice_jobentryprocess/index/{e_id}(e_id=${employee.id})}"> 
-                            <span th:if="${ not #lists.isEmpty(employee.jobEntryProcess)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.jobEntryProcess)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-briefcase fa-2x"></i><br>
-                            7. Job Entry Process </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_firstjoininginformation/index/{e_id}(e_id=${employee.id})}"> 
-
-                            <span th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.firstJoiningInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-briefcase fa-2x"></i><br>
-                            8.   First Job  </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_presentjob/index/{e_id}(e_id=${employee.id})}"> 
-                            <span th:if="${ not #lists.isEmpty(employee.presentJob)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.presentJob)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-briefcase fa-2x"></i><br>  
-                            9.  Present Job  </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_postingrecordinformation/index/{e_id}(e_id=${employee.id})}">  
-
-                            <span th:if="${ not #lists.isEmpty(employee.postingRecordInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.postingRecordInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-history fa-2x"></i> <br> 
-                            10. Posting Record Information </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_acr/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.acr)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.acr)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-key fa-2x"></i><br>
-                            11.ACR
-                        </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_promotionsinformation/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.promotionsInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.promotionsInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>           
-                            <i class="fas fa-check-circle fa-2x"></i><br>
-                            12. Promotions Information </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_selectiongrade/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.selectionGrade)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.selectionGrade)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>                     
-                            <i class="fas fa-mouse-pointer fa-2x"></i><br>
-                            13.  Selection Grade </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_leaveinfo/index/{e_id}(e_id=${employee.id})}">
-
-                            <span th:if="${ not #lists.isEmpty(employee.leaveinfo)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.leaveinfo)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-backspace fa-2x"></i><br>
-                            14.  Leave</a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_foreigntraininginformation/index/{e_id}(e_id=${employee.id})}"> 
-
-                            <span th:if="${ not #lists.isEmpty(employee.foreignTrainingInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.foreignTrainingInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-plane-departure fa-2x"></i><br>
-                            15. Foreign Training Information  </a>
-                        <a  class="btn btn-app" th:href="@{/selfservice_inservicetraininginformation/index/{e_id}(e_id=${employee.id})}"> 
-
-                            <span th:if="${ not #lists.isEmpty(employee.inServiceTrainingInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.inServiceTrainingInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
-                            16. In-Service Training </a>
-                        <a class="btn btn-app" th:href="@{/selfservice_postingabroadinformation/index/{e_id}(e_id=${employee.id})}">
-
-                            <span th:if="${ not #lists.isEmpty(employee.postingAbroadInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.postingAbroadInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-plane fa-2x"></i><br>
-                            17.Posting Abroad </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_otherserviceinformation/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.otherServiceInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.otherServiceInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>    
-                            <i class="fas fa-cog fa-2x"></i><br>
-                            18. Other Service  </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_honorsandawardinformation/index/{e_id}(e_id=${employee.id})}"> 
-
-                            <span th:if="${ not #lists.isEmpty(employee.honorsandaward)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.honorsandaward)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-award fa-2x"></i><br>
-                            19. Honours  And Award  </a>
-                        <a class="btn btn-app" th:href="@{/selfservice_additionalqualification/index/{e_id}(e_id=${employee.id})}">
-
-                            <span th:if="${ not #lists.isEmpty(employee.additionalQualification)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.additionalQualification)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-graduation-cap fa-2x"></i><br>
-                            20. Additional Qualifications </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_language/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.languageinfo)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.languageinfo)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>    
-                            <i class="fas fa-language fa-2x"></i><br>
-                            21. Language  </a>
-
-                        <a class="btn btn-app" th:href="@{/selfservice_magisterialpower/index/{e_id}(e_id=${employee.id})}">
-
-                            <span th:if="${ not #lists.isEmpty(employee.magisterialPower)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.magisterialPower)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-balance-scale  fa-2x"></i><br>
-                            22.  Magistrial Power </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_disciplinaryaction/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.disciplinaryActionDetails)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.disciplinaryActionDetails)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-pencil-alt fa-2x"></i><br>
-                            23  Disciplinary Action</a>
-
-
-                        <a class="btn btn-app"  th:href="@{/selfservice_publication/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.publicationInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.publicationInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-book-open fa-2x"></i><br>                           
-                            24.   Publication </a>
-
-                        <a  class="btn btn-app" th:href="@{/selfservice_membership/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.membership)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.membership)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-user-friends fa-2x"></i><br>
-                            25.Professional Organization Membership</a>
-                        <a class="btn btn-app" th:href="@{/selfservice_retirementpension/index/{e_id}(e_id=${employee.id})}">
-                            <span th:if="${ not #lists.isEmpty(employee.retirementPension)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
-                            <span th:if="${#lists.isEmpty(employee.retirementPension)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
-                            <i class="fas fa-handshake fa-2x"></i><br> 
-                            26.Retirement and Pension</a>
-
-                    </div><!-- /.box-body -->
+                    <!--                    <div class="box-header with-border">
+                                            <h3 class="box-title"></h3>
+                                            <div class="box-tools pull-right">
+                                                 Buttons, labels, and many other things can be placed here! 
+                                                 Here is a label for example 
+                                                <span class="label label-primary"></span>
+                                            </div> /.box-tools 
+                                        </div> /.box-header 
+                                        <div class="box-body">
+                                            <a   class="btn btn-app"th:href="@{/selfservice_generalinformation/index/{e_id}(e_id=${employee.id})}"> 
+                                                <i class="fas fa-book fa-2x"></i> <br>   1.  General Information
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.generalInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.generalInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                            </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_profileimage/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.profileImage)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.profileImage)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-user-alt fa-2x"></i><br>
+                                                2.Profile Image </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_addressinformation/index/{e_id}(e_id=${employee.id})}" > 
+                                                <span th:if="${ not #lists.isEmpty(employee.addressInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.addressInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-map-marker-alt fa-2x"></i><br>
+                                                3.  Address  </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_spouse/index/{e_id}(e_id=${employee.id})}">
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.spousName)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.spousName)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-female fa-2x"></i><br>
+                                                4. Spouse </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_childreninformation/index/{e_id}(e_id=${employee.id})}" >
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.childrenInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.childrenInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-child fa-2x"></i><br>
+                                                5. Children</a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_educationalInformation/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.educationalInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.educationalInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                    
+                                                <i class="fas fa-university fa-2x"></i><br>
+                                                6.Education </a>
+                    
+                                            <a class="btn btn-app"  th:href="@{/selfservice_jobentryprocess/index/{e_id}(e_id=${employee.id})}"> 
+                                                <span th:if="${ not #lists.isEmpty(employee.jobEntryProcess)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.jobEntryProcess)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-briefcase fa-2x"></i><br>
+                                                7. Job Entry Process </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_firstjoininginformation/index/{e_id}(e_id=${employee.id})}"> 
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.firstJoiningInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-briefcase fa-2x"></i><br>
+                                                8.   First Job  </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_presentjob/index/{e_id}(e_id=${employee.id})}"> 
+                                                <span th:if="${ not #lists.isEmpty(employee.presentJob)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.presentJob)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-briefcase fa-2x"></i><br>  
+                                                9.  Present Job  </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_postingrecordinformation/index/{e_id}(e_id=${employee.id})}">  
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.postingRecordInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.postingRecordInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-history fa-2x"></i> <br> 
+                                                10. Posting Record Information </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_acr/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.acr)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.acr)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-key fa-2x"></i><br>
+                                                11.ACR
+                                            </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_promotionsinformation/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.promotionsInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.promotionsInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>           
+                                                <i class="fas fa-check-circle fa-2x"></i><br>
+                                                12. Promotions Information </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_selectiongrade/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.selectionGrade)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.selectionGrade)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>                     
+                                                <i class="fas fa-mouse-pointer fa-2x"></i><br>
+                                                13.  Selection Grade </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_leaveinfo/index/{e_id}(e_id=${employee.id})}">
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.leaveinfo)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.leaveinfo)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-backspace fa-2x"></i><br>
+                                                14.  Leave</a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_foreigntraininginformation/index/{e_id}(e_id=${employee.id})}"> 
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.foreignTrainingInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.foreignTrainingInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-plane-departure fa-2x"></i><br>
+                                                15. Foreign Training Information  </a>
+                                            <a  class="btn btn-app" th:href="@{/selfservice_inservicetraininginformation/index/{e_id}(e_id=${employee.id})}"> 
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.inServiceTrainingInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.inServiceTrainingInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
+                                                16. In-Service Training </a>
+                                            <a class="btn btn-app" th:href="@{/selfservice_postingabroadinformation/index/{e_id}(e_id=${employee.id})}">
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.postingAbroadInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.postingAbroadInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-plane fa-2x"></i><br>
+                                                17.Posting Abroad </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_otherserviceinformation/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.otherServiceInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.otherServiceInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>    
+                                                <i class="fas fa-cog fa-2x"></i><br>
+                                                18. Other Service  </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_honorsandawardinformation/index/{e_id}(e_id=${employee.id})}"> 
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.honorsandaward)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.honorsandaward)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-award fa-2x"></i><br>
+                                                19. Honours  And Award  </a>
+                                            <a class="btn btn-app" th:href="@{/selfservice_additionalqualification/index/{e_id}(e_id=${employee.id})}">
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.additionalQualification)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.additionalQualification)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-graduation-cap fa-2x"></i><br>
+                                                20. Additional Qualifications </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_language/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.languageinfo)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.languageinfo)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>    
+                                                <i class="fas fa-language fa-2x"></i><br>
+                                                21. Language  </a>
+                    
+                                            <a class="btn btn-app" th:href="@{/selfservice_magisterialpower/index/{e_id}(e_id=${employee.id})}">
+                    
+                                                <span th:if="${ not #lists.isEmpty(employee.magisterialPower)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.magisterialPower)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-balance-scale  fa-2x"></i><br>
+                                                22.  Magistrial Power </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_disciplinaryaction/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.disciplinaryActionDetails)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.disciplinaryActionDetails)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-pencil-alt fa-2x"></i><br>
+                                                23  Disciplinary Action</a>
+                    
+                    
+                                            <a class="btn btn-app"  th:href="@{/selfservice_publication/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.publicationInformation)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.publicationInformation)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-book-open fa-2x"></i><br>                           
+                                                24.   Publication </a>
+                    
+                                            <a  class="btn btn-app" th:href="@{/selfservice_membership/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.membership)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.membership)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-user-friends fa-2x"></i><br>
+                                                25.Professional Organization Membership</a>
+                                            <a class="btn btn-app" th:href="@{/selfservice_retirementpension/index/{e_id}(e_id=${employee.id})}">
+                                                <span th:if="${ not #lists.isEmpty(employee.retirementPension)}" class="badge bg-green pull-right">  <i class="fa fa-check" aria-hidden="true"></i> </span>
+                                                <span th:if="${#lists.isEmpty(employee.retirementPension)}"  class="badge bg-red pull-right"> <i class="fa fa-times" aria-hidden="true"></i> </span>
+                                                <i class="fas fa-handshake fa-2x"></i><br> 
+                                                26.Retirement and Pension</a>
+                    
+                                        </div> -->
                     <div class="box-footer">
 
                     </div><!-- box-footer -->
                 </div><!-- /.box -->
 
-                   </section>
+            </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

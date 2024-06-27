@@ -46,7 +46,7 @@ public class MagisterialPowerController {
         magisterialPower.setGovernmentId(users);
 
         model.addAttribute("list", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
-        model.addAttribute("magisterial_power", Magisterial_Power.values());
+       // model.addAttribute("magisterial_power", Magisterial_Power.values());
         return "pims/magisterialpower/magisterialpower";
     }
 
@@ -61,7 +61,7 @@ public class MagisterialPowerController {
 
         model.addAttribute("list", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
 
-        model.addAttribute("magisterial_power", Magisterial_Power.values());
+       // model.addAttribute("magisterial_power", Magisterial_Power.values());
 
         return "pims/magisterialpower/magisterialpower";
     }
@@ -79,7 +79,7 @@ public class MagisterialPowerController {
 
             model.addAttribute("list", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
 
-            model.addAttribute("magisterial_power", Magisterial_Power.values());
+           // model.addAttribute("magisterial_power", Magisterial_Power.values());
 
             return "pims/magisterialpower/magisterialpower";
         }

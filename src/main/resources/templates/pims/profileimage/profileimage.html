@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                    ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Profile Image  </h3>
+                        <h3 class="box-title"> </h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/details/detailsinfo/{id} (id=${profileImage.governmentId.id})}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                                <a th:href="@{/details/detailsinfo/{id} (id=${profileImage.governmentId.id})}" type="button" class="btn  btn-warning btn-xs">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <!-- Default box -->
                                 <div class="box box-warning box-solid  ">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title"> Add / Image</h3>
+                                        <h3 class="box-title">ছবি যোগ কর</h3>
                                         <div class="box-tools pull-right">
                                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group">
-                                                    <label for="name" class="col-sm-4 control-label"> Add Image :<span class="text-red">  </span></label>
+                                                    <label for="name" class="col-sm-4 control-label"> ছবি যোগ কর :<span class="text-red">  </span></label>
                                                     <div class="col-sm-7">                    
                                                         <input type="file"  class=""    name="pic" 
                                                                data-validation=" dimension mime size"
@@ -62,12 +62,20 @@
                                                 </div>
                                             </div>
 
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                      <label for="name" class="col-sm-4 control-label"> </label>
+                                                    <div class="col-sm-7">        
+                                                <a href="https://www.resizepixel.com/"  target="_blunk"> Online  image edit  site </a>
+                                            </div>       </div></div>
+
                                             <div class="row">
                                                 <div class="text-center" >
                                                     <div class="box-tools">
                                                         <div class=" text-center">
                                                             <br/>
-                                                            <button type="submit" class="btn  btn-primary btn-xs">Upload</button>
+                                                            <button type="submit" class="btn  btn-primary btn-xs">আপলোড</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -80,67 +88,55 @@
                         </div>
 
                         <div class="col-sm-12 col-md-12col-xs-12">    
-                            <div class="box box-success  box-solid">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Image List</h3>
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="box-body">
-
-                                    <table class="table table-bordered ">
-                                        <thead class=" box box-success  box-solid">
-                                            <tr>  
-
-                                                <th>Image </th>
-                                                <th>Audit  </th>
-                                                <th>
-                                                    Action
-                                                </th>
-                                            </tr>
-                                        </thead>
-
-                                        <tr  th:each="list,status:${list}">
-                                            <td>
-
-                                                <img  class="img-responsive" th:src="@{/files/}+${list.imageName}" width="100px"  height="100px"/>
-
-                                            </td>   
-                                            <td>
-                                                Created: <span th:text="${list.createdOn}"></span><br/>
-                                                Created By: <span th:text="${list.createdBy}"></span><br/>
-                                                Updated: <span th:text="${list.updatedOn}"></span><br/>
-                                                Updated By: <span th:text="${list.updatedBy}"></span>
-                                            </td>
-
-                                            <td>
 
 
-                                                <a class=" btn  btn-xs bg-red" th:href="@{/profileimage/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
-                                            </td>
+                            <table class="table table-bordered ">
+                                <thead class=" box box-success  box-solid">
+                                    <tr>  
 
-                                        </tr>
+                                        <th>ছবি </th>
+
+                                        <th>
+                                            অ্যাকশন
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tr  th:each="list,status:${list}">
+                                    <td>
+
+                                        <img  class="img-responsive" th:src="@{/files/}+${list.imageName}" width="100px"  height="100px"/>
+
+                                    </td>   
+                                    <!--                                            <td>
+                                                                                    Created: <span th:text="${list.createdOn}"></span><br/>
+                                                                                    Created By: <span th:text="${list.createdBy}"></span><br/>
+                                                                                    Updated: <span th:text="${list.updatedOn}"></span><br/>
+                                                                                    Updated By: <span th:text="${list.updatedBy}"></span>
+                                                                                </td>-->
+
+                                    <td>
+
+                                        <a class=" btn  btn-xs bg-red" th:href="@{/profileimage/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                    </td>
+
+                                </tr>
+                            </table>
 
 
-                                    </table>
-                                </div>
-                            </div>                      
-                        </div>  
-                    </div>
-
-
+                        </div>                      
+                    </div>  
                 </div>
-                <!-- /.box -->
 
 
-
-            </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.box -->
+
+
+
+        </section>
+        <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
+</div>
 </div>

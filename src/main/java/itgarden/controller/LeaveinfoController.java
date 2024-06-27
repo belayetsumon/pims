@@ -60,6 +60,8 @@ public class LeaveinfoController {
         model.addAttribute("status", Status.values());
         return "pims/leaveinfo/leaveinfo";
     }
+    
+    
 
     @RequestMapping("/save/{e_id}")
     public String save(Model model, @PathVariable Long e_id, @Valid Leaveinfo leaveinfo, BindingResult bindingResult) {

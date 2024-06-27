@@ -61,11 +61,15 @@ public class AddressInformationController {
 
     @RequestMapping("/edit/{id}")
     public String edit(Model model, @PathVariable Long id, AddressInformation addressInformation) {
-        model.addAttribute("addressInformation", addressInformationRepository.findById(id));
+       
+        addressInformation = addressInformationRepository.getOne(id);
+        
+        model.addAttribute("addressInformation", addressInformation);
+        
         Users users = new Users();
-        users.setId(id);
+        users.setId(addressInformation.getGovernmentId().getId());
 
-        addressInformation.setGovernmentId(users);
+//        addressInformation.setGovernmentId(users);
 
         model.addAttribute("list", addressInformationRepository.findByGovernmentIdOrderByIdDesc(users));
 

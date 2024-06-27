@@ -6,17 +6,17 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    New Employee  List 
+                 এমপ্লয়ী লিস্ট
                 </h1>
             </section>
 
             <!-- Main content -->
 
             <section class="content">
-                Default box 
+
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Detail View </h3>
+                        <h3 class="box-title"> বিস্তারিত  তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
 
@@ -25,12 +25,12 @@
                         </div>
                     </div>
 
-                    <div class="box-body col-md-6 col-sm-offset-3">
+                    <div class="box-body col-md-8">
                         <table class="table table-bordered ">
                             <tr>
                               
-                                <th>Name</th>
-                                <th>Value</th>
+                                <th>শিরোনাম</th>
+                                <th>ডেটা</th>
                             </tr>
                             
 <!--                            <tr>
@@ -41,7 +41,7 @@
                             
                             <tr>
                                 
-                                <td>Government ID/File No</td>
+                                <td>সরকারি আইডি/ফাইল নম্বর</td>
                                 <td>
                                     <span th:inline="text"> [[${users.governmentId}]]</span>
                                 </td>
@@ -49,7 +49,7 @@
                             
                             <tr>
                               
-                                <td>Name </td>
+                                <td>নাম </td>
                                 <td>
                                     <span th:inline="text"> [[${users.name}]]</span>
                                 </td>
@@ -57,7 +57,7 @@
                             
                             <tr>
                                 
-                                <td>Department</td>
+                                <td>বিভাগ</td>
                                 <td>
                                     <span th:inline="text"> [[${users.department.name}]]</span>
                                 </td>
@@ -65,7 +65,7 @@
                             
                             <tr>
                                 
-                                <td>Sub Department</td>
+                                <td>উপ বিভাগ</td>
                                 <td>
                                     <span th:inline="text"> [[${users.subDepartment.name}]]</span>
                                 </td>
@@ -73,7 +73,7 @@
                             </tr>         
                 <tr>
                                
-                                <td>Email </td>
+                                <td>ই-মেইল </td>
                                 <td>
                                   <span th:inline="text"> [[${users.email}]]</span>
                                 </td>
@@ -81,7 +81,7 @@
                             </tr>        
                             <tr>
                                
-                                <td>Mobile Number</td>
+                                <td>মোবাইল নম্বর</td>
                                 <td>
                                     <span th:inline="text"> [[${users.mobile}]]</span>
                                 </td>
@@ -91,7 +91,7 @@
                  
                             <tr>
                                
-                                <td>Remark</td>
+                                <td>মন্তব্য</td>
                                 <td>
                                     <span th:inline="text"> [[${users.remarks}]]</span>
                                 </td>
@@ -100,7 +100,7 @@
                             
                             <tr>
                               
-                                <td>Status</td>
+                                <td>অবস্থা</td>
                                 <td>
                                     <span th:inline="text"> [[${users.status}]]</span>
                                 </td>
@@ -109,7 +109,7 @@
                             
                             <tr>
                                 
-                                <td>Created On</td>
+                                <td>তৈরি</td>
                                 <td>
                                     <span th:inline="text"> [[${users.createdOn}]]</span>
                                 </td>
@@ -117,7 +117,7 @@
                             </tr>
                             <tr>
                                 
-                                <td>Created By</td>
+                                <td>দ্বারা সৃষ্টি</td>
                                 <td>
                                     <span th:inline="text"> [[${users.createdBy}]]</span>
                                 </td>
@@ -126,13 +126,13 @@
                             
                             <tr>
                                
-                                <td>Updated On</td>
+                                <td>আপডেট করা হয়েছে</td>
 
                                 <td>   <span th:inline="text"> [[${users.updatedOn}]]</span></td>
                             </tr>
                             <tr>
                                
-                                <td>Updated By</td>
+                                <td>দ্বারা আপডেট করা হয়েছে</td>
 
                                 <td>   <span th:inline="text"> [[${users.updatedBy}]]</span></td>
                             </tr>

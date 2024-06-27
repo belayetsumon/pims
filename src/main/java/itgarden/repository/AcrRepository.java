@@ -18,6 +18,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AcrRepository extends JpaRepository<Acr, Long> {
 
     List<Acr> findByGovernmentIdOrderByIdDesc(Users governmentId);
+    
+ 
 
     List<Acr> findAllByOrderByIdDesc();
     

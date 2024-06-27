@@ -29,12 +29,10 @@
                                         <thead>
                                             <tr class="bg-green">  
                                                 <th>Sr. no.</th> 
-                                                <th>Posting Rank/Order of precedence : </th>
                                                 <th>Posting Type</th>
                                                 <th>Designation</th>
                                                 <th>Office Location</th>
                                                 <th>Country</th>
-
                                                 <th>Period From</th>
                                                 <th>Period To</th>
                                                 <th>Scale/Grade</th> 
@@ -44,13 +42,10 @@
 
                                         <tr  th:each="list,status:${list}">
                                             <td th:text="${ status.count}">2 </td> 
-                                            <td th:text="${list.postingRank.name}">BCS</td> 
                                             <td th:text="${list.postingType}">BCS</td> 
                                             <td th:text="${list.postingDesignation.name}">BCS</td> 
                                             <td th:text="${list.postingLocation.name}">BCS</td> 
                                             <td th:text="${list.country}">BCS</td> 
-
-
                                             <td th:text="${list.periodFrom}">BCS</td>
                                             <td th:text="${list.periodTo}">BCS</td>
                                             <td th:text="${list.scale}">BCS</td>

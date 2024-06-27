@@ -1,18 +1,14 @@
 package itgarden.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -120,4 +116,5 @@ public class AdditionalQualification {
         this.updatedBy = updatedBy;
     }
 
+  
 }

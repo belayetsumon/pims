@@ -5,12 +5,10 @@
  */
 package itgarden.model;
 
-import itgarden.model.enumvalue.PostingReason;
-import itgarden.model.lookup.PostingDesignation;
-import itgarden.model.lookup.PostingRank;
 import itgarden.model.enumvalue.PostingType;
+import itgarden.model.lookup.PostingDesignation;
 import itgarden.model.lookup.PresentPostingLocation;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,7 +17,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -35,10 +35,8 @@ public class PresentJob {
     @NotNull(message = "Government Id cannot be blank.")
     @ManyToOne(optional = false)
     private Users governmentId;
-    
-    @NotNull(message = " *Posting reason cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    PostingReason  postingReason;
+
+
 
     @NotNull(message = " *Posting type cannot be blank.")
     @Enumerated(EnumType.STRING)
@@ -52,16 +50,16 @@ public class PresentJob {
     @ManyToOne(optional = false)
     private PresentPostingLocation presentPostingLocation;  // DHAKA
 
-    private String dateJoining;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateJoining;
 
-    private String dateofGazetted;
-
-    @NotNull(message = "This field cannot be blank.")
-    @ManyToOne(optional = true)
-    private PostingRank presentPostingRank;  // Present Posting Rank  : DY. SECRETARY
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateofGazetted;
 
     private String grade;
-    
+
     private String remarks;
     /**
      * ***************** Start Auditor ********************************
@@ -84,7 +82,7 @@ public class PresentJob {
 
     @Column(name = "updated_by", insertable = false, updatable = true)
     //@LastModifiedBy
-    private String updatedBy ;
+    private String updatedBy;
 
     /**
      * ***************** End Auditor ********************************
@@ -92,16 +90,14 @@ public class PresentJob {
     public PresentJob() {
     }
 
-    public PresentJob(Long id, Users governmentId, PostingReason postingReason, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation presentPostingLocation, String dateJoining, String dateofGazetted, PostingRank presentPostingRank, String grade, String remarks, long version, String createdBy, String updatedBy) {
+    public PresentJob(Long id, Users governmentId, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation presentPostingLocation, Date dateJoining, Date dateofGazetted, String grade, String remarks, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
-        this.postingReason = postingReason;
         this.postingType = postingType;
         this.postingDesignation = postingDesignation;
         this.presentPostingLocation = presentPostingLocation;
         this.dateJoining = dateJoining;
         this.dateofGazetted = dateofGazetted;
-        this.presentPostingRank = presentPostingRank;
         this.grade = grade;
         this.remarks = remarks;
         this.version = version;
@@ -109,7 +105,7 @@ public class PresentJob {
         this.updatedBy = updatedBy;
     }
 
-   public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -123,14 +119,6 @@ public class PresentJob {
 
     public void setGovernmentId(Users governmentId) {
         this.governmentId = governmentId;
-    }
-
-    public PostingReason getPostingReason() {
-        return postingReason;
-    }
-
-    public void setPostingReason(PostingReason postingReason) {
-        this.postingReason = postingReason;
     }
 
     public PostingType getPostingType() {
@@ -157,30 +145,20 @@ public class PresentJob {
         this.presentPostingLocation = presentPostingLocation;
     }
 
-
-
-    public String getDateJoining() {
+    public Date getDateJoining() {
         return dateJoining;
     }
 
-    public void setDateJoining(String dateJoining) {
+    public void setDateJoining(Date dateJoining) {
         this.dateJoining = dateJoining;
     }
 
-    public String getDateofGazetted() {
+    public Date getDateofGazetted() {
         return dateofGazetted;
     }
 
-    public void setDateofGazetted(String dateofGazetted) {
+    public void setDateofGazetted(Date dateofGazetted) {
         this.dateofGazetted = dateofGazetted;
-    }
-
-    public PostingRank getPresentPostingRank() {
-        return presentPostingRank;
-    }
-
-    public void setPresentPostingRank(PostingRank presentPostingRank) {
-        this.presentPostingRank = presentPostingRank;
     }
 
     public String getGrade() {
@@ -240,8 +218,6 @@ public class PresentJob {
     }
 
     
-    
 
     
-
 }

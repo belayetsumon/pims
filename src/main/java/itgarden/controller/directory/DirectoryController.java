@@ -60,7 +60,7 @@ public class DirectoryController {
         model.addAttribute("presentpostinglocation", presentPostingLocationRepository.findAll());
         
         
-         model.addAttribute("employee", usersRepository.findByGeneralInformationBloodGroupOrPresentJobPresentPostingRankOrPresentJobPresentPostingLocationOrPresentJobPostingDesignation(bloodGroup, presentPostingRank, presentPostingLocation, postingDesignation));
+      //   model.addAttribute("employee", usersRepository.findByGeneralInformationBloodGroupOrPresentJobPresentPostingRankOrPresentJobPresentPostingLocationOrPresentJobPostingDesignation(bloodGroup, presentPostingRank, presentPostingLocation, postingDesignation));
 
         return "directory/directory";
         

@@ -12,8 +12,7 @@ import itgarden.model.lookup.PostingDesignation;
 import itgarden.model.enumvalue.Quota;
 import itgarden.model.enumvalue.SelectionType;
 import itgarden.model.enumvalue.Selectiongrade;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,10 +22,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -333,10 +329,5 @@ public class JobEntryProcess {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
-
-    /**
-     * ***************** End Auditor ********************************
-     */
-
    
 }

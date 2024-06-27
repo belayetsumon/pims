@@ -5,19 +5,15 @@
  */
 package itgarden.model;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -147,6 +143,63 @@ public class Documents {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.governmentId);
+        hash = 37 * hash + Objects.hashCode(this.title);
+        hash = 37 * hash + Objects.hashCode(this.fileName);
+        hash = 37 * hash + (int) (this.version ^ (this.version >>> 32));
+        hash = 37 * hash + Objects.hashCode(this.createdOn);
+        hash = 37 * hash + Objects.hashCode(this.createdBy);
+        hash = 37 * hash + Objects.hashCode(this.updatedOn);
+        hash = 37 * hash + Objects.hashCode(this.updatedBy);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Documents other = (Documents) obj;
+        if (this.version != other.version) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.fileName, other.fileName)) {
+            return false;
+        }
+        if (!Objects.equals(this.createdBy, other.createdBy)) {
+            return false;
+        }
+        if (!Objects.equals(this.updatedBy, other.updatedBy)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.governmentId, other.governmentId)) {
+            return false;
+        }
+        if (!Objects.equals(this.createdOn, other.createdOn)) {
+            return false;
+        }
+        if (!Objects.equals(this.updatedOn, other.updatedOn)) {
+            return false;
+        }
+        return true;
     }
 
     /**

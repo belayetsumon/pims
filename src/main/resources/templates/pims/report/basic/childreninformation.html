@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                           ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Children Information</h3>
+                        <h3 class="box-title"> প্রাপ্ত ও অপ্রাপ্ত বয়স্ক সন্তানের তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -28,32 +28,41 @@
                         <table class="table table-bordered " id="myTableId">
                             <thead>
                                 <tr class="bg-green">  
-                                    <th>Sr. no.</th> 
-                                    <th>Child Name  </th>
-                                    <th>Date of Birth  </th>
-                                    <th> Gender</th>
-                                    <th> Psychical Status</th>
-                                    <th> Schooling </th>
-                                    <th> Education Level</th>
-                                    <th> Marital Status</th>
-                                    <th> Employment</th>
-                                    <th> Remarks</th>
-                                     <th> Details </th>
+                                           <th>নং</th> 
+                                                <th>নাম  </th>
+                                                <th>লিঙ্গ  </th>
+                                                <th> জন্ম তারিখ </th>
+                                                <th> জন্মস্থান </th>
+                                                <th> জন্ম নিবন্ধন নম্বর</th>
+                                                <th> জাতীয় পরিচয়পত্র নম্বর</th>
+                                                <th> পাসপোর্ট নম্বর </th>
+                      
+                                                <th> শারীরিক অবস্থা</th>
+                                                <th> পড়াশোনা করে  </th>
+                                                <th> কোন শ্রেণীতে অধ্যয়নরত </th>
+                               
+                                                <th> মন্তব্য </th>
+                                     <th> বিস্তারিত </th>
 
                                 </tr>
                             </thead>
                             <tr  th:each="list,status:${list}">
-                                <td th:text="${ status.count}">2 </td> 
-                                <td th:text="${list.childName}">BCS</td> 
-                                <td th:text="${list.dateofBirth}">BCS</td>
-                                <td th:text="${list.gender}">BCS</td>
-                                <td th:text="${list.psychicalStatus}">BCS</td>   
-                                <td th:text="${list.schooling}">BCS</td>   
-                                <td th:text="${list.educationLevel}">BCS</td>   
-                                <td th:text="${list.maritalStatus}">BCS</td>   
-                                <td th:text="${list.emplyment}">BCS</td>   
-                                <td th:text="${list.remarks}">BCS</td>  
-                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
+                              <td th:text="${ status.count}">2 </td> 
+
+                                            <td th:text="${list.childName}">BCS</td> 
+                                            <td th:text="${list.gender}">BCS</td>
+                                            <td th:text="${list.dateofBirth}">BCS</td>
+                                            <td th:text="${list.birthCountry}">BCS</td>
+                                            <td th:text="${list.birthCertificateNumber}">BCS</td>   
+                                            <td th:text="${list.nid}">BCS</td>   
+                                            <td th:text="${list.passportNo}">BCS</td>   
+               
+                                            <td th:text="${list.psychicalStatus}">BCS</td>   
+                                            <td th:text="${list.schooling}">BCS</td>
+                                            <td th:text="${list.educationLevel}">BCS</td>  
+                        
+                                            <td th:text="${list.remarks}">BCS</td>  
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">বিস্তারিত</a></td> 
                             </tr>
 
 

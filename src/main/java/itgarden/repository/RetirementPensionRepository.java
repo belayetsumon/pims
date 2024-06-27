@@ -15,8 +15,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Md Belayet Hossin
  */
 public interface RetirementPensionRepository extends JpaRepository<RetirementPension, Long> {
+    
+
+    RetirementPension findByGovernmentId(Users governmentId);
+    
 
     List<RetirementPension> findByGovernmentIdOrderByIdDesc(Users governmentId);
+    
 
     List<RetirementPension> findAllByOrderByIdDesc();
 

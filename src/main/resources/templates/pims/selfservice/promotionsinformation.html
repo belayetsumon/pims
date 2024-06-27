@@ -99,20 +99,7 @@
                                         </div>
 
 
-                                        <div class="row">
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Posting Rank/Order of precedence : <span class="text-red">  </span> </label>
-                                                <div class="col-sm-7">                   
-                                                    <select class="form-control  "   th:field="*{postingRank}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" grade :${postingrank}"
-                                                                th:value=" ${grade.id}" 
-                                                                th:text="${grade.name}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingRank')}" th:errors="*{postingRank}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                        </div>
+                                  
                                         <div class="row">
                                             <div class="form-group ">
                                                 <label for="name" class="col-sm-4 control-label"> Posting Type:<span class="text-red"> * </span> </label>
@@ -223,7 +210,7 @@
                                                 <th>Date of Promotion</th>
                                                 <th>Govt Order Date</th>
                                                 <th>Nature Of Promotions</th>
-                                                <th>Posting Rank/Order of precedence </th>
+                                      
                                                 <th>Posting Type:</th>
                                                 <th>Designation </th>
                                                 <th>Office Location</th>

@@ -15,6 +15,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Md Belayet Hossin
  */
 public interface JobEntryProcessRepository extends JpaRepository<JobEntryProcess, Long> {
+
+    JobEntryProcess findByGovernmentId(Users governmentId);
+
     List<JobEntryProcess> findByGovernmentIdOrderByIdDesc(Users governmentId);
+
     List<JobEntryProcess> findAllByOrderByIdDesc();
 }

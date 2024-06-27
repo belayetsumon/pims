@@ -6,7 +6,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                 ব্যক্তিগত তথ্য ব্যবস্থাপনা সিস্টেম 
                     <small></small>
                 </h1>
             </section>
@@ -15,7 +15,7 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Job Entry Process </h3>
+                        <h3 class="box-title"> চাকরিতে প্রবেশের প্রক্রিয়া</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
                                 <a th:href="@{/details/detailsinfo/{id} (id=${jobEntryProcess.governmentId.id})}" type="button" class="btn  btn-warning btn-xs">Close</a>
@@ -30,7 +30,7 @@
                             <!-- Default box -->
                             <div class="box box-warning box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Job Entry Process </h3>
+                                    <h3 class="box-title"> জব এন্ট্রি প্রক্রিয়া যোগ/সম্পাদনা করুন</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -55,8 +55,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Authority:<span class="text-red"> * </span> </label>
-                                                <div class="col-sm-6">                   
+                                                <label for="name" class="col-sm-5 control-label"> কর্তৃপক্ষ <span class="text-red"> * </span> </label>
+                                                <div class="col-sm-5">                   
                                                     <select class="form-control  "   th:field="*{authority}"  >
                                                         <option value=" "> Select one</option>
                                                         <option th:each =" authority :${authority}"
@@ -72,8 +72,8 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Designation :<span class="text-red"> * </span> </label>
-                                                <div class="col-sm-6">                   
+                                                <label for="name" class="col-sm-5 control-label"> উপাধি :<span class="text-red"> * </span> </label>
+                                                <div class="col-sm-5">                   
                                                     <select class="form-control  "   th:field="*{designation}"  >
                                                         <option value=" "> Select one</option>
                                                         <option th:each =" designation :${designation}"
@@ -88,7 +88,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Post Type:<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-5 control-label"> পোস্টের ধরণ :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{postType}"  >
                                                         <option value=" "> Select one</option>
@@ -104,7 +104,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Exam Type :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-5 control-label"> পরীক্ষার ধরণ  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{examType}"  >
                                                         <option value=" "> Select one</option>
@@ -120,7 +120,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Grade : <span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-5 control-label"> শ্রেণী : <span class="text-red">  </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{grade}"  >
                                                         <option value=" "> Select one</option>
@@ -136,7 +136,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Batch :<span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-5 control-label"> ব্যাচ :<span class="text-red">  </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{batch}"  >
                                                         <option value=" "> Select one</option>
@@ -151,8 +151,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label"> Exam Title :<span class="text-red">  </span></label>
-                                                <div class="col-sm-8">                    
+                                                <label for="name" class="col-sm-5 control-label"> পরীক্ষার শিরোনাম :<span class="text-red">  </span></label>
+                                                <div class="col-sm-6">                    
                                                     <input type="text"  class="form-control  "    th:field="*{examTitle}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('examTitle')}" th:errors="*{examTitle}">First Name Error</span>
                                                 </div>                            
@@ -161,8 +161,8 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label"> Exam Government Order No :<span class="text-red">  </span></label>
-                                                <div class="col-sm-8">                    
+                                                <label for="name" class="col-sm-5 control-label"> সরকারী আদেশ নং :<span class="text-red">  </span></label>
+                                                <div class="col-sm-6">                    
                                                     <input type="text"  class="form-control  "    th:field="*{examGovernmentOrderNo}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('examGovernmentOrderNo')}" th:errors="*{examGovernmentOrderNo}">First Name Error</span>
                                                 </div>                            
@@ -170,8 +170,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">  Exam Date  :<span class="text-red">  </span> </label>
-                                                <div class="col-sm-8">    
+                                                <label for="name" class="col-sm-5 control-label">  পরীক্ষার তারিখ   :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
                                                             <i class="fa fa-calendar"></i>
@@ -184,8 +184,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">  Result Date :<span class="text-red">  </span> </label>
-                                                <div class="col-sm-8">    
+                                                <label for="name" class="col-sm-5 control-label"> ফলাফলের তারিখ  :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
                                                             <i class="fa fa-calendar"></i>
@@ -198,8 +198,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label"> Merit No :<span class="text-red">  </span></label>
-                                                <div class="col-sm-8">                    
+                                                <label for="name" class="col-sm-5 control-label"> মেধা নং  :<span class="text-red">  </span></label>
+                                                <div class="col-sm-6">                    
                                                     <input type="text"  class="form-control  "    th:field="*{meritNo}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('meritNo')}" th:errors="*{meritNo}">First Name Error</span>
                                                 </div>                            
@@ -209,7 +209,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Selection Type :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-5 control-label"> নির্বাচনের ধরণ  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{selectionType}"  >
                                                         <option value=" "> Select one</option>
@@ -223,7 +223,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Quota<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-5 control-label"> কোটা <span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{quota}"  >
                                                         <option value=" "> Select one</option>
@@ -238,8 +238,8 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">  Job Confirmation Date :<span class="text-red">  </span> </label>
-                                                <div class="col-sm-8">    
+                                                <label for="name" class="col-sm-5 control-label">  চাকরির নিশ্চয়তা তারিখ  :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
                                                             <i class="fa fa-calendar"></i>
@@ -252,8 +252,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">  Job Confirmation Serial No :<span class="text-red">  </span> </label>
-                                                <div class="col-sm-8">    
+                                                <label for="name" class="col-sm-5 control-label">  চাকরি নিশ্চিতকরণ সিরিয়াল নং:<span class="text-red">  </span> </label>
+                                                <div class="col-sm-6">    
                                                     <div class="input-group" >
 
                                                         <input type="text"   class="form-control  " th:field="*{jobConfirmationSerialNo}"    />                
@@ -264,8 +264,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label"> Freedom Fighter Certificate No:<span class="text-red"> </span></label>
-                                                <div class="col-sm-8">                    
+                                                <label for="name" class="col-sm-5 control-label"> মুক্তিযোদ্ধা সার্টিফিকেট নাম্বার :<span class="text-red"> </span></label>
+                                                <div class="col-sm-6">                    
                                                     <input type="text"  class="form-control  "    th:field="*{freedomFighterCertificateNo}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('freedomFighterCertificateNo')}" th:errors="*{freedomFighterCertificateNo}">First Name Error</span>
                                                 </div>                            
@@ -290,7 +290,7 @@
                         <div class="col-sm-5">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Job Entry Process  List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>চাকরির প্রবেশ প্রক্রিয়ার তথ্য</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -309,65 +309,66 @@
                                             </tr>
 
                                             <tr>
-                                                <th> Government ID </th>
+                                                <th> আইডি </th>
                                                 <td th:text="${list.governmentId.governmentId}">Chakma</td>
                                             </tr> 
                                             <tr>
-                                                <th> Authority</th>
+                                                <th> কর্তৃপক্ষ *
+</th>
                                                 <td th:text="${list.authority}">Chakma</td>
                                             </tr>  
 
                                             <tr>
-                                                <th> Designation       </th>
+                                                <th> উপাধি       </th>
                                                 <td th:text="${list.designation.name}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>     Exam Type     </th>
+                                                <th>     পোস্টের ধরণ     </th>
                                                 <td th:text="${list.examType}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>  Grade </th>
+                                                <th>  শ্রেণী </th>
                                                 <td th:text="${list.grade}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>     Batch    </th>
+                                                <th>     ব্যাচ    </th>
                                                 <td th:text="${list.batch}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>    Exam Title </th>
+                                                <th>   পরীক্ষার শিরোনাম </th>
                                                 <td th:text="${list.examTitle}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>       Exam Government Order No  </th>
+                                                <th>       সরকারী আদেশ নং  </th>
                                                 <td th:text="${list.examGovernmentOrderNo}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>      Exam Date   </th>
+                                                <th>      পরীক্ষার তারিখ  </th>
                                                 <td th:text="${list.examDate}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>      Result Date   </th>
+                                                <th>     ফলাফলের তারিখ  </th>
                                                 <td th:text="${list.resultDate}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>      Merit No   </th>
+                                                <th>      মেধা নং   </th>
                                                 <td th:text="${list.meritNo}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>    Selection Type   </th>
+                                                <th>    নির্বাচনের ধরণ   </th>
                                                 <td th:text="${list.selectionType}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>      Quota  </th>
+                                                <th>      কোটা  </th>
                                                 <td th:text="${list.quota}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>      Job Confirmation Date:   </th>
+                                                <th>      চাকরির নিশ্চয়তা তারিখ   </th>
                                                 <td th:text="${list.jobConfirmationDate}">Chakma</td>
                                             </tr>
 
                                             <tr>
-                                                <th>   Job Confirmation Order No      </th>
+                                                <th>   চাকরি নিশ্চিতকরণ সিরিয়াল নং      </th>
                                                 <td th:text="${list.jobConfirmationOrderNo}">Chakma</td>
                                             </tr>
                                             <tr>
@@ -375,7 +376,7 @@
                                                 <td th:text="${list.jobConfirmationSerialNo}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>   Freedom Fighter Certificate No    </th>
+                                                <th>   মুক্তিযোদ্ধা সার্টিফিকেট নাম্বার  </th>
                                                 <td th:text="${list.freedomFighterCertificateNo}">Chakma</td>
                                             </tr>
                                                <tr>

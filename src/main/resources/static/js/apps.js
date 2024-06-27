@@ -1,6 +1,6 @@
 ///  Depeartment subdepartment select
 $(document).ready(function () {
-    //alert("Hello");
+
     $('#department').change(function () {
         var department = $('#department').val();
         //alert(district);
@@ -28,8 +28,6 @@ $(document).ready(function () {
 
 });// jquery
 //  End department select
-
-
 
 $(document).ready(function () {
     //alert("Hello");

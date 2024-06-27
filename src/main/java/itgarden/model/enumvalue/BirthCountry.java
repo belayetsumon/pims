@@ -11,12 +11,10 @@ package itgarden.model.enumvalue;
  */
 public enum BirthCountry {
 
-    Afghanistan,
     Albania,
     Algeria,
     Andorra,
     Angola,
-    
     Argentina,
     Armenia,
     Aruba,

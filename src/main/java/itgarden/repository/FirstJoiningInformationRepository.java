@@ -16,6 +16,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface FirstJoiningInformationRepository extends JpaRepository<FirstJoiningInformation, Long> {
 
+    FirstJoiningInformation findByGovernmentId(Users governmentId);
+    
     List<FirstJoiningInformation> findByGovernmentIdOrderByIdDesc(Users governmentId);
 
     List<FirstJoiningInformation> findAllByOrderByIdDesc();

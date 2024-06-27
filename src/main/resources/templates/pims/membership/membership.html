@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                             ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,19 +17,19 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Membership Information</h3>
+                        <h3 class="box-title"> পেশাদার সংগঠনের সদস্য পদের তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/details/detailsinfo/{id} (id=${membership.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/details/detailsinfo/{id} (id=${membership.governmentId.id})}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
                     <div class="box-body  ">
-                        <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+                        <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
                             <!-- Default box -->
                             <div class="box box-warning box-solid  ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Membership Information</h3>
+                                    <h3 class="box-title"> পেশাদার সংগঠনের সদস্য পদের তথ্যযোগ/সম্পাদনা করুন</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -52,7 +52,7 @@
                                         </div>                         
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Regulatory Body :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> নিয়ন্ত্রক কর্তৃপক্ষ:<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{regulatoryBody}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('regulatoryBody')}" th:errors="*{regulatoryBody}">First Name Error</span>
@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label">  Registration No :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label">  নিবন্ধন নম্বর :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{registrationNo}"  />    
 
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">   Registration Date  :<span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-3 control-label">   নিবন্ধনের তারিখ  :<span class="text-red">*   </span> </label>
                                                 <div class="col-sm-8">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label">   Last Renewal Date  :<span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-3 control-label">   সর্বশেষ পুন নিবন্ধনের তারিখ তারিখ   :<span class="text-red">*   </span> </label>
                                                 <div class="col-sm-8">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label">Remarks :<span class="text-red"> </span></label>
+                                                <label for="name" class="col-sm-4 control-label">মন্তব্য  :<span class="text-red"> </span></label>
                                                 <div class="col-sm-7">                    
                                                     <textarea   cols="5" rows="5"  class="form-control  "    th:field="*{remarks}"  >      </textarea> 
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('remarks')}" th:errors="*{remarks}">First Name Error</span>
@@ -124,7 +124,7 @@
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Membership  Information List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> পেশাদার সংগঠনের সদস্য পদের তথ্য</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -135,12 +135,12 @@
                                     <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                <th>Sr. no.</th> 
-                                                <th>Regulatory Body</th>
-                                                <th>Registration No</th>
-                                                <th>Registration Date</th>
-                                                <th>last Renewal Date</th>
-                                                <th>Remarks</th>
+                                                <th>নং </th> 
+                                                <th>নিয়ন্ত্রক কর্তৃপক্ষ</th>
+                                                <th>নিবন্ধন নম্বর </th>
+                                                <th>নিবন্ধনের তারিখ</th>
+                                                <th>সর্বশেষ পুন নিবন্ধনের  তারিখ </th>
+                                                <th>মন্তব্য</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                                 <th>Edit</th>

@@ -1,13 +1,10 @@
 package itgarden.model;
 
+import itgarden.model.enumvalue.Status;
 import itgarden.model.lookup.Department;
 import itgarden.model.lookup.Role;
-import itgarden.model.enumvalue.Status;
 import itgarden.model.lookup.SubDepartment;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,12 +21,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 //@EntityListeners(AuditingEntityListener.class)
@@ -42,20 +37,25 @@ public class Users {
     private Long id;
 
     @NotEmpty(message = "*Please provide an ID")
-    @Column(updatable = false)
+    @Column(updatable = false, unique = true)
+    @Min(value = 6)
+    @Size(max = 10, min = 6)
     private String governmentId;
 
     @Column(name = "name")
     @NotEmpty(message = "*Please provide your name")
+      @Size(min = 3,max = 50)
     private String name;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     @Email(message = "*Please provide a valid Email")
     private String email;
 
-     private String mobile;
+    @Size(max = 11, min = 11)
+    private String mobile;
 
     @Column(length = 60)
+    @Size( min = 6)
     private String password;
 
     @NotNull(message = "Depertment  cannot be blank.")
@@ -63,10 +63,9 @@ public class Users {
     private Department department;
 
     @NotNull(message = " Subdepartment cannot be blank.")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private SubDepartment subDepartment;
 
-    
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -123,15 +122,14 @@ public class Users {
     public GeneralInformation generalInformation;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToOne(mappedBy = "governmentId") 
+    @OneToOne(mappedBy = "governmentId")
     public ProfileImage profileImage;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "governmentId")
     public List<AdditionalQualification> additionalQualification;
 
-
-   @OneToMany(fetch = FetchType.EAGER,mappedBy = "governmentId")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "governmentId")
     public List<AddressInformation> addressInformation = new ArrayList<>();
 
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -147,7 +145,7 @@ public class Users {
     public List<EducationalInformation> educationalInformation;
 //
 //    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToOne(mappedBy = "governmentId",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "governmentId", fetch = FetchType.EAGER)
     public FirstJoiningInformation firstJoiningInformation;
 //
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -198,11 +196,11 @@ public class Users {
     @OneToMany(mappedBy = "governmentId")
     public List<PostingRecordInformation> postingRecordInformation;
 //
-    
-     @LazyCollection(LazyCollectionOption.FALSE)
+
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "governmentId")
     public List<Acr> acr;
-     //
+    //
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToOne(mappedBy = "governmentId")
     public PresentJob presentJob;
@@ -210,6 +208,7 @@ public class Users {
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "governmentId")
     public List<PromotionsInformation> promotionsInformation;
+
 //
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "governmentId")
@@ -228,7 +227,6 @@ public class Users {
     public List<SpousName> spousName;
 
     /*  End Relations */
-
     public Users(Long id, String governmentId, String name, String email, String mobile, String password, Department department, SubDepartment subDepartment, Set<Role> role, Status status, String remarks, Date lastLogin, Date lastLogOut, String createdBy, Date updatedOn, String updatedBy, GeneralInformation generalInformation, ProfileImage profileImage, List<AdditionalQualification> additionalQualification, List<ChildrenInformation> childrenInformation, List<DisciplinaryActionDetails> disciplinaryActionDetails, List<EducationalInformation> educationalInformation, FirstJoiningInformation firstJoiningInformation, List<ForeignTrainingInformation> foreignTrainingInformation, List<ForeignTravel> foreignTravel, List<HonorsAndAwardInformation> honorsandaward, List<InServiceTrainingInformation> inServiceTrainingInformation, JobEntryProcess jobEntryProcess, List<LanguageInformation> languageinfo, List<Leaveinfo> leaveinfo, List<MagisterialPower> magisterialPower, List<Membership> membership, List<OtherServiceInformation> otherServiceInformation, List<PostingAbroadInformation> postingAbroadInformation, List<PostingRecordInformation> postingRecordInformation, List<Acr> acr, PresentJob presentJob, List<PromotionsInformation> promotionsInformation, List<PublicationInformation> publicationInformation, RetirementPension retirementPension, List<SelectionGrade> selectionGrade, List<SpousName> spousName) {
         this.id = id;
         this.governmentId = governmentId;
@@ -636,5 +634,7 @@ public class Users {
     public void setSpousName(List<SpousName> spousName) {
         this.spousName = spousName;
     }
+
+    
 
 }

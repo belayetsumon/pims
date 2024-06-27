@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                 New Registered    Employee  List  <small> </small>
+               নতুন নিবন্ধিত কর্মচারী/কর্মকর্তার তালিকা  <small> </small>
                 </h1>
 
             </section>
@@ -18,7 +18,7 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Total Employee :  <span th:text="${alluser.size()}"></span></h3>
+                        <h3 class="box-title"> মোট কর্মচারী/কর্মকর্তা :  <span th:text="${alluser.size()}"></span></h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
 
@@ -30,15 +30,18 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Govt ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile</th>
-                                <th>Department</th>
-                                <th>Sub Department</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>Details</th>
+                                 <th>সনাক্তকরণ নম্বর</th>
+                                <th>নাম </th>
+                       
+                                    <th>ইমেল </th>
+                                    <th>মুঠোফোন নাম্বার</th>
+                                    <th>বিভাগ</th>
+                                    <th>উপ বিভাগ</th>
+                                  <th>অবস্থা</th>
+                                      <th>স্টেটাস</th>
+                                    <th>বিস্তারিত</th>
+                            
+                                
                             </tr>
                             <tr th:each="alluser,status:${alluser}">
                                 <td th:text="${status.count}">2.</td>
@@ -57,12 +60,10 @@
                                     </td>
                                 <td th:text="${alluser.status}">Chakma</td>                        
                                 <td>
-                                    <a type="button" class="btn  btn-warning btn-xs bg-green" th:href="@{/details/detailsinfo/{e_id} (e_id=${alluser.id})}" >Add Profile  Details</a>
+                                    <a type="button" class="btn  btn-warning btn-xs bg-green" th:href="@{/details/detailsinfo/{e_id} (e_id=${alluser.id})}" >বিস্তারিত যোগ করুন</a>
                                 </td>
                             </tr>                                
                         </table>
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">

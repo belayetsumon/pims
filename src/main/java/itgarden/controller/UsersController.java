@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,6 +37,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/users")
+
 public class UsersController {
 
     @Autowired
@@ -56,6 +58,7 @@ public class UsersController {
     @Autowired
     UserValidator userValidator;
 
+    @PreAuthorize("hasAuthority('users')")
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("alluser", usersRepository.findAll());
@@ -79,6 +82,7 @@ public class UsersController {
         return "pims/users/view";
     }
 
+    @PreAuthorize("hasAuthority('users')")
     @RequestMapping("/registrations")
     public String registrations(Model model, Users users) {
         model.addAttribute("department", departmentRepository.findAll());
@@ -88,6 +92,7 @@ public class UsersController {
         return "pims/users/registrations";
     }
 
+    @PreAuthorize("hasAuthority('users')")
     @RequestMapping("/edit/{id}")
     public String edit(Model model, @PathVariable Long id, Users users) {
         model.addAttribute("users", usersRepository.getOne(id));
@@ -131,7 +136,7 @@ public class UsersController {
 //    }
 //    
 //    
-//    
+    @PreAuthorize("hasAuthority('users')")
     @RequestMapping("/save")
     //@Transactional
     public String save(Model model, @RequestParam(value = "password2", required = false) String password2, @Valid Users users, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
@@ -169,6 +174,7 @@ public class UsersController {
         }
     }
 
+    @PreAuthorize("hasAuthority('users')")
     @RequestMapping("/delete/{id}")
     public String delete(Model model, @PathVariable Long id, Users users) {
         usersRepository.deleteById(id);

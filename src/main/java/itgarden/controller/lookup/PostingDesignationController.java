@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/postingdesignation")
-@PreAuthorize("hasAuthority('module')")
+@PreAuthorize("hasAuthority('postingdesignation')")
 public class PostingDesignationController {
     
 @Autowired

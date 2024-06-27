@@ -52,7 +52,7 @@
                                             <input type="hidden" class="form-control"  th:field="*{id}" />
                                             <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
                                         </div>                         
-                                        <div class="row">
+<!--                                        <div class="row">
                                             <div class="form-group">
                                                 <label for="name" class="col-sm-4 control-label"> Magisterial Power :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
@@ -66,7 +66,7 @@
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('magisterialpower')}" th:errors="*{magisterialpower}">First Name Error</span>
                                                 </div>                            
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="row">
                                             <div class="form-group">
                                                 <label for="name" class="col-sm-4 control-label">  From:<span class="text-red">  </span></label>
@@ -129,7 +129,7 @@
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
                                                 <th>Sr. no.</th> 
-                                                <th>Magisterial Power</th>
+                                     
                                                 <th>From Date</th>
                                                 <th>End Date</th>
                                                 <th>Created</th>
@@ -142,7 +142,7 @@
 
                                         <tr  th:each="list,status:${list}">
                                             <td th:text="${ status.count}">2 </td> 
-                                            <td th:text="${list.magisterialpower}">BCS</td> 
+                                       
                                             <td th:text="${list.fromDate}">BCS</td>
                                             <td th:text="${list.endDate}">BCS</td>
                                             <td>Created:<span th:text="${list.createdOn}"></span><br/>

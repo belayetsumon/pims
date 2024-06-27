@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>সম্পূর্ণ প্রোফাইল</title>
+        <style>
+            body {
+                font-family: SolaimanLipi,Arial, sans-serif;
+                font-size: 10pt;
+                color: #7B7979;
+
+            }
+
+            .header{
+
+
+            }
+
+            .header table{
+
+            }
+
+            .header h1{
+                font-size: 28pt;
+                text-align: center;
+                line-height: 28pt;
+                margin: 0pt;
+                padding: 0pt;
+            }
+
+            .header h2{
+                font-size: 14pt;
+                text-align: center;
+                line-height: 18pt;
+                margin: 0 0 5pt 0;
+            }
+
+
+
+
+
+            table {
+                width: 100%;
+            }
+
+            table, th, td  {
+                border: .5pt solid #EFF5F2;
+                border-spacing: 0;
+                text-align: left;
+            }
+
+            /* Main resume container */
+            .resume {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 800px;
+                padding: 20px;
+            }
+
+            #print_button{
+                float: right;
+
+
+            }
+
+            /* Resume header section */
+            .resume-header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .resume-header h1 {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .resume-header p {
+                font-size: 16px;
+            }
+
+            /* Resume sections */
+            .resume-section {
+                margin-bottom: 20px;
+            }
+
+            .resume-section h2 {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .resume h3 {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .resume-section ul {
+                list-style-type: square;
+                margin-left: 20px;
+            }
+
+            .resume-section p {
+                margin: 10px 0;
+            }
+
+            /* Print media styles */
+            @media print {
+
+                body {
+                    font-family: SolaimanLipi,Arial, sans-serif;
+                    font-size: 9pt;
+                    color: #7B7979;
+
+                }
+
+                .header table{
+                    border: none;
+                }
+
+
+
+
+
+                th, td  {
+                    border: .5pt solid #EFF5F2;
+                    border-spacing: 0;
+                    font-size: 8pt;
+
+                }
+
+                #print_button{
+                    visibility: hidden;
+                }
+                .resume {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .resume-header h1 {
+                    font-size: 28px;
+                }
+
+                .resume-header p {
+                    font-size: 14px;
+                }
+
+                .resume-section h2 {
+                    font-size: 14px;
+                }
+
+                .resume h2 {
+                    font-size: 14px;
+                }
+
+                .resume-section ul {
+                    list-style-type: square;
+                    margin-left: 20px;
+                }
+
+                .resume-section p {
+                    font-size: 14px;
+                    margin: 10px 0;
+                }
+
+                .resume table tr  th{
+                    text-align: left;
+                }
+            }
+        </style>
+    </head>
+    <body  class="resume">
+
+        <button onclick="display()" id="print_button">Click to Print</button><br>
+        <script>
+            function display() {
+                window.print();
+            }
+        </script>
+        <div class="header">
+            <table style=" border: none !important;">
+                <tr>
+                    <td  style=" border: none !important; width: 10%"  rowspan="3"><img th:src="@{/images/dscc-logo.png}" class=" media-object" height="100" width="100"/></td>
+
+                    <td style=" border: none !important;"><h1> ঢাকা দক্ষিণ সিটি কর্পোরেশন </h1></td>
+
+                </tr> 
+                <tr>
+                    <td style=" border: none !important;"><h2>ব্যক্তিগত তথ্য সারণী</h2></td>
+
+                </tr>
+                <tr>
+                    <td style=" border: none !important;"><h2>পরিচিতি নম্বর :  <span th:text="${employee.governmentId}"></span></h2></td>
+                </tr>
+
+            </table>
+            <hr>
+        </div>
+
+        <h3> ১.সাধারণ তথ্য</h3>
+
+        <div th:each="list,status:${generalInformation}">
+            <table class="table table-bordered">
+                <tr>
+                    <th> পরিচিতি নম্বর (IDN):</th>
+                    <td th:text="${list.governmentId.governmentId}">Chakma</td>
+                    <th> নাম (ইংরেজী) :</th>
+                    <td th:text="${list.name}">Chakma</td>
+
+
+                    <td rowspan="4"  colspan="1"style="text-align: center;">        <span  th:if="${ not #lists.isEmpty(employee.profileImage)}">  
+                            <img  class="profile-user-img img-responsive" th:src="@{/files/}+${employee.profileImage.imageName}" width="100px"  height="100px"/>
+                        </span>
+
+                        <span  th:if="${ #lists.isEmpty(employee.profileImage)}">  
+                            <img class="profile-user-img img-responsive" th:src="@{/images/profile.png}" alt="User profile picture" width="100px"  height="100px"/>
+                        </span></td>
+                </tr> 
+                <tr>
+                    <th>      নাম (বাংলা) :    </th>
+                    <td th:text="${list.nameBangla}">Chakma</td>
+
+                    <th>  পিতার নাম (ইংরেজী):       </th>
+                    <td th:text="${list.fathersName}">Chakma</td>
+
+
+
+
+                </tr>
+
+                <tr>
+                    <th>        পিতার নাম (বাংলা) : </th>
+                    <td th:text="${list.fathersNameBangla}">Chakma</td>
+                    <th>     মাতার নাম (ইংরেজী) :    </th>
+                    <td th:text="${list.mothersName}">Chakma</td>
+
+                </tr>
+
+                <tr>
+                    <th>    মাতার নাম (বাংলা) :    </th>
+                    <td th:text="${list.mothersNameBangla}">Chakma</td>
+                    <th>        নিজ জেলা :  </th>
+                    <td th:text="${list.homeDistrict}">Chakma</td>
+
+                </tr>
+
+                <tr>
+                    <th>     জন্ম তারিখ :    </th>
+                   <td  th:text="${#dates.format(employee.generalInformation.dateofBirth, 'dd/MM/yyyy')}">Chakma</td>
+
+                    <th> অবসর উত্তর ছুটির তারিখ :  </th>
+                    <td><span  th:if="${ not #lists.isEmpty(employee.generalInformation)}"  th:text="${#dates.format(employee.generalInformation.lPRDate, 'dd/MM/yyyy')}"></span></td>
+
+                    <td rowspan="10"></td>
+
+                </tr>
+
+                <tr>
+                    <th > পদবি : </th>
+                    <td><span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
+                            <span th:text="${employee.presentJob.postingDesignation.name}"></span>
+                        </span></td>
+                    <th> যোগদান তারিখ :</th>
+                    <td><span   th:if="${ not #lists.isEmpty(employee.firstJoiningInformation)}"  th:text="${#dates.format(employee.firstJoiningInformation.dateFirstJoining, 'dd/MM/yyyy')}"></span></td>
+
+                </tr>
+
+                <tr>
+
+
+                    <th > পদায়নকৃত কর্মস্থল :  </th>
+                    <td>    <span  th:if="${ not #lists.isEmpty(employee.presentJob)}">
+                            <span th:text="${employee.presentJob.presentPostingLocation.name}">
+                            </span>
+                        </span></td>
+
+                    <th > বিভাগ :</th>
+                    <td><span  th:if="${ not #lists.isEmpty(employee.department.name)}">  
+                            <span th:text="${employee.department.name}"></span>  </span></td>
+
+                </tr>
+
+                <tr>      
+
+                    <th > উপ বিভাগ : </th>
+                    <td> <span  th:if="${ not #lists.isEmpty(employee.subDepartment.name)}">  
+
+                            <span th:text="${employee.subDepartment.name}"></span></span></td>
+                    <th>    জন্ম স্থান : </th>
+                    <td th:text="${list.birthCountry}">Chakma</td>
+
+                </tr>
+
+                <tr>
+                    <th>     জন্ম নিবন্ধন নম্বর :  </th>
+                    <td th:text="${list.birthCertificateNumber}">Chakma</td>
+                    <th>      লিঙ্গ   : </th>
+                    <td th:text="${list.gender}">Chakma</td>
+                </tr>
+
+                <tr>
+
+                    <th>      বৈবাহিক অবস্থা : </th>
+                    <td th:text="${list.maritalStatus}">Chakma</td>
+                    <th>      ধর্ম   : </th>
+                    <td th:text="${list.religion}">Chakma</td>
+
+                </tr>
+
+                <tr>
+                    <th>    জাতিগত পরিচয়  : </th>
+                    <td th:text="${list.ethnicIdentity}">Chakma</td>
+                    <th>     জাতীয়তা  :</th>
+                    <td>Chakma</td>
+                </tr>
+
+                <tr>
+                    <th>      রক্তের গ্রুপ:   </th>
+                    <td th:text="${list.bloodGroup}">Chakma</td>
+                    <th>   ড্রাইভিং লাইসেন্স:    </th>
+                    <td th:text="${list.drivingLicence}">Chakma</td>
+                </tr>
+
+                <tr>
+                    <th>     পাসপোর্ট নম্বর : </th>
+                    <td th:text="${list.passportNo}">Chakma</td>
+                    <th>   জাতীয় পরিচয়পত্র নম্বর  :  </th>
+                    <td th:text="${list.nid}">Chakma</td>
+                </tr>
+
+                <tr>
+                    <th>   টিআইএন নং :</th>
+                    <td th:text="${list.tin}">Chakma</td>
+                    <th>     চাকরির বর্তমান অবস্থা  :  </th>
+                    <td th:text="${list.employeeStatus}">Chakma</td>
+                </tr>
+
+            </table>
+        </div>
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>২.ঠিকানা </h3>
+
+        <table >
+            <thead>
+                <tr>  
+                    <th>নং.</th> 
+                    <th>বর্তমান ঠিকানা  </th>
+                    <th>স্থায়ী ঠিকানা  </th>
+                    <!--                            <th> অফিসিয়াল ঠিকানা</th>-->
+                    <!--                                                <th> District</th>
+                                                                    <th> Upzilla / Thana</th>-->
+                    <th> ইমেল:</th>
+
+                    <th> মোবাইল:</th>
+                    <th> টেলিফোন :</th>
+
+
+
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${addressInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.presentAddress}">BCS</td> 
+                <td th:text="${list.permanentAddress}">BCS</td>
+                <!--                        <td th:text="${list.officialAddress}">BCS</td> -->
+                <!--                                            <td th:text="${list.district}">BCS</td> 
+                                                            <td th:text="${list.upazila.name}">BCS</td> -->
+                <td th:text="${list.email}">BCS</td>
+                <!--                        <td th:text="${list.webmail}">BCS</td>-->
+                <td th:text="${list.mobile}">BCS</td>
+                <td th:text="${list.telphone}">BCS</td> 
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ৩.স্বামী / স্ত্রী তথ্য</h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>স্বামী বা স্ত্রী নাম</th>
+                    <th>জন্ম তারিখ </th>
+                    <th>জন্মস্থান </th>
+                    <th>জন্ম নিবন্ধন নম্বর </th>
+                    <th>জাতীয় পরিচয়পত্র নম্বর</th>
+                    <!--                            <th>বিয়ের তারিখ</th>-->
+                    <!--                            <th>বিবাহ নিবন্ধন নং</th>-->
+                    <th>পাসপোর্ট নম্বর </th>
+                    <th>পেশা :</th>
+                    <th>জেলা </th>
+
+                    <th>যোগাযোগ ঠিকানা </th>
+
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${spousName}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.spouseName}">BCS</td> 
+                <td th:text="${list.dateofBirth}">BCS</td> 
+                <td th:text="${list.birthCountry}">BCS</td> 
+                <td th:text="${list.birthCertificateNumber}">BCS</td>
+                <td th:text="${list.nid}">BCS</td>
+                <!--                        <td th:text="${list.dateofMarriage}">BCS</td>-->
+                <!--                        <td th:text="${list.marriageRegistrationNo}">BCS</td>-->
+                <td th:text="${list.passportNo}">BCS</td>
+                <!--                        <td th:text="${list.ethnicIdentity}">BCS</td>-->
+                <!--                <td th:text="${list.nationality}">BCS</td>-->
+                <td th:text="${list.occupation}">BCS</td>               
+                <td th:text="${list.district}">BCS</td>
+
+                <td th:text="${list.contact}">BCS</td>    
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>৪.সন্তানের তথ্য</h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>নাম  </th>
+                    <th>লিঙ্গ  </th>
+                    <th> জন্ম তারিখ </th>
+                    <th> জন্মস্থান </th>
+                    <th> জন্ম নিবন্ধন নম্বর</th>
+                    <th> জাতীয় পরিচয়পত্র নম্বর</th>
+                    <th> পাসপোর্ট নম্বর </th>
+                    <!--                            <th> জাতিগত পরিচয়</th>-->
+                    <!--                    <th> জাতীয়তা</th>-->
+                    <th> শারীরিক অবস্থা</th>
+                    <th> পড়াশোনা করে  </th>
+                    <th> কোন শ্রেণীতে অধ্যয়নরত </th>
+
+                    <th> মন্তব্য </th>
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${childrenInformation}">
+                <td th:text="${ status.count}">2 </td> 
+
+                <td th:text="${list.childName}">BCS</td> 
+                <td th:text="${list.gender}">BCS</td>
+                <td  th:text="${#dates.format(list.dateofBirth, 'dd/MM/yyyy')}">BCS</td>
+                <td th:text="${list.birthCountry}">BCS</td>
+                <td th:text="${list.birthCertificateNumber}">BCS</td>   
+                <td th:text="${list.nid}">BCS</td>   
+                <td th:text="${list.passportNo}">BCS</td>   
+                <!--                        <td th:text="${list.ethnicIdentity}">BCS</td> -->
+                <!--                <td th:text="${list.nationality}">BCS</td> -->
+                <td th:text="${list.psychicalStatus}">BCS</td>   
+                <td th:text="${list.schooling}">BCS</td>
+                <td th:text="${list.educationLevel}">BCS</td>  
+
+                <td th:text="${list.remarks}">BCS</td>  
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>৫.শিক্ষাগত যোগ্যতার তথ্য</h3>
+
+
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং.</th> 
+                    <th>প্রতিষ্ঠানের নাম  </th>
+                    <th> পরীক্ষার নাম</th>
+                    <th>বিষয়</th>
+
+                    <th> পাশের বছর</th>
+                    <th> বোর্ড বা বিশ্ববিদ্যালয়</th>
+                    <th> বিভাগ / শ্রেণি</th>
+                    <th> ফলাফল  </th>
+
+
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${educationalInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.nameOfInstitution}">BCS</td> 
+                <td th:text="${list.certificateDegree}">BCS</td>  
+                <td th:text="${list.principalSubject}">BCS</td>
+
+                <td th:text="${list.year}">BCS</td> 
+                <td th:text="${list.boardoruniversity}">BCS</td>
+                <td th:text="${list.divisionClass}">BCS</td>    
+                <td th:text="${list.gPA}">BCS</td>    
+
+
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>৬.অতিরিক্ত যোগ্যতা </h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং.</th> 
+                    <th>যোগ্যতা </th>
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${additionalQualification}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.qualification}">BCS</td>   
+            </tr>
+        </table>
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>৭.ভাষার যোগ্যতার তথ্য</h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং.</th> 
+                    <th>ভাষার নাম</th>
+                    <th>দক্ষতার নাম</th>
+                    <!--                                                    <th>দক্ষতার লেবেল</th>-->
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${languageInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.language}">BCS</td> 
+                <td th:text="${list.skill}">BCS</td> 
+                <!--                                                <td th:text="${list.proficiency}">BCS</td> -->
+            </tr>
+        </table>
+
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ৮.প্রথম যোগদান তথ্য</h3>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>আইডি </th>
+
+                <th> পদায়নের ধরণ</th>
+                <th> পদবী    </th>
+                <th>     প্রথম অফিসের অবস্থান   </th>
+                <th>   প্রথম যোগদানের তারিখ</th>
+                <th>  অফিস আদেশ তারিখ </th>
+                <th>    স্কেল / গ্রেড </th>
+                <th>   মন্তব্য  </th>
+            </tr>
+            <tr  th:each="list,status:${firstjoininginformation}">
+                <td th:text="${list.governmentId.governmentId}">Chakma</td>
+
+                <td th:text="${list.postingType}">Chakma</td>
+                <td th:text="${list.firstPostingDesignation.name}">Chakma</td>
+                <td th:text="${list.firstJoiningOfficeLocation.name}">Chakma</td>
+                <td  th:text="${#dates.format(list.dateFirstJoining, 'dd/MM/yyyy')}">Chakma</td>
+                <td  th:text="${#dates.format(list.dateofGazetted, 'dd/MM/yyyy')}">Chakma</td>
+                <td th:text="${list.grade}">Chakma</td>
+                <td th:text="${list.remarks}">Chakma</td>
+            </tr> 
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ৯.বর্তমান চাকরী </h3>
+
+        <table class="table table-bordered">
+            <tr >
+
+                <th> আইডি</th>
+
+                <th> পদায়নের ধরণ</th>
+                <th> পদবী  </th>
+                <th>অফিসের অবস্থান </th>
+                <th>বর্তমান পদে যোগদানের তারিখ</th>
+                <th> অফিস আদেশ তারিখ  </th>
+                <th> গ্রেড  </th>
+                <th>মন্তব্য   </th>
+
+            </tr>
+
+            <tr  th:each="list,status:${presentjob}" >
+                <td th:text="${list.governmentId.governmentId}">Chakma</td>
+
+                <td th:text="${list.postingType}">Chakma</td>
+                <td th:text="${list.postingDesignation.name}">Chakma</td>
+                <td th:text="${list.presentPostingLocation.name}">Chakma</td>
+                <td  th:text="${#dates.format(list.dateJoining, 'dd/MM/yyyy')}">Chakma</td>
+                <td  th:text="${#dates.format(list.dateofGazetted, 'dd/MM/yyyy')}">Chakma</td>
+
+                <td th:text="${list.grade}">Chakma</td>
+                <td th:text="${list.remarks}">Chakma</td>
+            </tr> 
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ১০.পদায়ন ও বদলি সংক্রান্ত তথ্য </h3>
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>পদায়নের কারণ : </th>
+
+                    <th>পদায়নের ধরণ </th>
+                    <th>পদবী</th>
+                    <th>অফিসের অবস্থান</th>
+
+
+                    <th>তারিখ থেকে</th>
+                    <th>তারিখ পর্যন্ত </th>
+                    <th>স্কেল / গ্রেড</th>
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${postingRecordInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.postingReason}">Chakma</td>
+                <td th:text="${list.postingType}">BCS</td> 
+                <td th:text="${list.postingDesignation.name}">BCS</td> 
+                <td th:text="${list.postingLocation.name}">BCS</td> 
+                <td th:text="${ #dates.format(list.periodFrom, 'dd/MM/yyyy')}">BCS</td>
+                <td th:text="${ #dates.format(list.periodTo, 'dd/MM/yyyy')}">BCS</td>
+                <td th:text="${list.scale}">BCS</td>
+            </tr>
+        </table>       
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>১১.  পদোন্নতি সংক্রান্ত তথ্য </h3>
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>তারিখ</th>
+                    <th>সরকারী আদেশের তারিখ </th>
+                    <th>পদোন্নতির ধরণ </th>
+
+                    <th>পদায়নের ধরণ:</th>
+                    <th>পদবী </th>
+                    <th>অফিসের অবস্থান</th>
+                    <th>শ্রেণী</th>
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${promotionsInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${ #dates.format(list.dateofPromotion, 'dd/MM/yyyy')}">BCS</td>
+                <td th:text="${ #dates.format(list.govtOrderDate, 'dd/MM/yyyy')}">BCS</td>
+                <td th:text="${list.natureOfPromotions}">BCS</td> 
+                <td th:text="${list.postingType}">BCS</td>
+                <td th:text="${list.postingDesignation.name}">BCS</td>
+                <td th:text="${list.postingLocation.name}">BCS</td>
+                <td th:text="${list.scale}">BCS</td>
+            </tr>
+        </table>
+
+
+
+        <!--                        <div class="col-sm-12 col-md-12col-xs-12">    
+                                    <div class="box box-success  box-solid">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title"><span th:text="${table_name}"> ..</span>13. Magisterial Power </h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="box-body">
+                                            <div>
+                                                <table class="table table-bordered ">
+                                                    <thead class=" box box-success  box-solid">
+                                                        <tr>  
+                                                            <th>Sr. no.</th> 
+        
+                                                            <th>From Date</th>
+                                                            <th>End Date</th>
+        
+                                                        </tr>
+                                                    </thead>
+                                                    <tr  th:each="list,status:${magisterialPower}">
+                                                        <td th:text="${ status.count}">2 </td> 
+        
+                                                        <td th:text="${list.fromDate}">BCS</td>
+                                                        <td th:text="${list.endDate}">BCS</td>
+        
+                                                    </tr>
+                                                </table>
+        
+                                            </div>
+                                        </div>
+                                    </div>                      
+                                </div>   -->
+
+        <!--                        <div class="col-sm-12 col-md-12col-xs-12">    
+                                    <div class="box box-success  box-solid">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title"><span th:text="${table_name}"> ..</span> ১৩.সিলেকশন গ্রেড তথ্য </h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="box-body">
+                                            <div>
+                                                <table class="table table-bordered ">
+                                                    <thead class=" box box-success  box-solid">
+                                                        <tr>  
+                                                            <th>নং</th> 
+                                                            <th>তারিখ</th>
+                                                            <th>অফিস অর্ডার তারিখ</th>
+                                                            <th>পদোন্নতির ধরণ</th>
+        
+                                                            <th>পোস্টিং এর ধরন:</th>
+                                                            <th>উপাধি </th>
+                                                            <th>অফিসের অবস্থান</th>
+                                                            <th>দেশ</th>
+                                                            <th>শ্রেণী</th>
+                                                        </tr>
+                                                    </thead>
+        
+                                                    <tr  th:each="list,status:${selectionGrade}">
+                                                        <td th:text="${ status.count}">2 </td> 
+                                                        <td th:text="${list.dateofPromotion}">BCS</td> 
+                                                        <td th:text="${list.govtOrderDate}">BCS</td> 
+                                                        <td th:text="${list.natureOfPromotions}">BCS</td> 
+        
+                                                        <td th:text="${list.postingType}">BCS</td>
+                                                        <td th:text="${list.postingDesignation.name}">BCS</td>
+                                                        <td th:text="${list.postingLocation.name}">BCS</td>
+                                                        <td th:text="${list.country}">BCS</td>
+                                                        <td th:text="${list.scale}">BCS</td>
+        
+                                                    </tr>
+        
+        
+                                                </table>        
+        
+                                            </div>
+                                        </div>
+                                    </div>                      
+                                </div>   -->
+        <!--                        <div class="col-sm-12 col-md-12col-xs-12">    
+                                    <div class="box box-success  box-solid">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title"><span th:text="${table_name}"> ..</span>১৪. বিদেশে পোস্টিং তথ্য  </h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                </button>
+                                            </div>
+                                        </div>
+        
+                                        <div class="box-body">
+        
+                                            <table class="table table-bordered ">
+                                                <thead class=" box box-success  box-solid">
+                                                    <tr>  
+                                                        <th>নং</th> 
+                                                        <th>পোস্টিং ধরণ</th>
+                                                        <th>উপাধি</th>
+                                                        <th>অফিসের অবস্থান</th>
+                                                        <th>দেশ</th>
+                                                        <th>তারিখ থেকে</th>
+                                                        <th>তারিখ পর্যন্ত</th>
+                                                        <th>স্কেল / গ্রেড</th>
+        
+                                                    </tr>
+                                                </thead>
+        
+                                                <tr  th:each="list,status:${postingAbroadInformation}">
+                                                    <td th:text="${ status.count}">2 </td> 
+                                                    <td th:text="${list.postingType}">BCS</td> 
+                                                    <td th:text="${list.postingDesignation.name}">BCS</td> 
+                                                    <td th:text="${list.postingLocation.name}">BCS</td> 
+                                                    <td th:text="${list.country}">BCS</td> 
+                                                    <td th:text="${list.periodFrom}">BCS</td>
+                                                    <td th:text="${list.periodTo}">BCS</td>
+                                                    <td th:text="${list.scale}">BCS</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>                      
+                                </div>  -->
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>১২.বৈদেশিক প্রশিক্ষনের তথ্য  </h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>প্রশিক্ষণের শিরোনাম  </th>
+                    <th>দেশ</th>
+                    <th> প্রশিক্ষণ ইনস্টিটিউট নাম</th>
+                    <th> অবস্থান</th>
+                    <th> প্রশিক্ষণ শুরুর তারিখ</th>
+                    <th> প্রশিক্ষণ শেষের তারিখ</th>
+
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${foreignTrainingInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.typeofTraining}">BCS</td> 
+                <td th:text="${list.country}">BCS</td>
+                <td th:text="${list.trainingInstitute}">BCS</td>  
+                <td th:text="${list.position}">BCS</td> 
+                <td th:text="${list.periodFrom}">BCS</td>    
+                <td th:text="${list.periodTo}">BCS</td>
+            </tr>
+        </table>
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>১৩ অভ্যান্তরিন প্রশিক্ষনের তথ্য </h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>প্রশিক্ষণের শিরোনাম  </th>
+
+                    <th> প্রশিক্ষণ ইনস্টিটিউট নাম</th>
+                    <th> অবস্থান</th>
+                    <th> প্রশিক্ষণ শুরুর তারিখ</th>
+                    <th> প্রশিক্ষণ শেষের তারিখ</th>
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${inServiceTrainingInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.trainingTitle}">BCS</td> 
+
+                <td th:text="${list.trainingInstitute}">BCS</td>
+                <td th:text="${list.position}">BCS</td>
+                <td th:text="${list.periodFrom}">BCS</td>
+                <td th:text="${list.periodTo}">BCS</td>
+            </tr>
+
+
+        </table>
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ১৪.অন্যান্য চাকরির তথ্য</h3>
+
+
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>নিয়োগকর্তার নাম</th>
+                    <th>ঠিকানা</th>
+                    <th>সেবার ধরণ </th>
+                    <th>পদবি</th>
+                    <th>তারিখ থেকে</th>
+                    <th>তারিখ পর্যন্ত</th>
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${otherServiceInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.nameoftheEmployer}">BCS</td> 
+                <td th:text="${list.address}">BCS</td> 
+                <td th:text="${list.typeofService}">BCS</td> 
+                <td th:text="${list.position}">BCS</td> 
+                <td th:text="${ #dates.format(list.periodFrom, 'dd/MM/yyyy')}">BCS</td>
+                <td th:text="${ #dates.format(list.periodTo, 'dd/MM/yyyy')}">BCS</td>
+            </tr>
+        </table>
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>১৫.সম্মাননা এবং পুরস্কারের তথ্য </h3>
+
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>পুরস্কারের শিরোনাম </th>
+                    <th>ক্ষেত্র</th>
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${honorsAndAwardInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.titleOfAward}">BCS</td> 
+                <td th:text="${list.ground}">BCS</td>
+            </tr>
+        </table>
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>১৬.বিভাগীয় ব্যবস্থা </h3>
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>অপরাধ প্রকৃতি</th>
+                    <th>শাস্তির প্রকৃতি</th>
+                    <th> শাস্তি :</th>
+                    <th> অর্ডারের তারিখ:</th>
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${disciplinaryAction}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.natureofOffence}">BCS</td> 
+                <td th:text="${list.punishmentNature}">BCS</td>
+                <td th:text="${list.punishment}">BCS</td>  
+                <td th:text="${ #dates.format(list.oderDate, 'dd/MM/yyyy')}">BCS</td>  
+            </tr>
+        </table>
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ১৭.ছুটির তথ্য </h3>
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>
+                    <th>নং</th> 
+                    <th>অফিস আদেশ নং </th>
+                    <th>ছুটির ধরন</th>
+                    <th>অনুমোদিত ছুটির কাল </th>
+                    <th>ছুটি ভোগ শুরুর তারিখ</th>
+                    <th>অফিস যোগ দেওয়ার তারিখ</th>
+                    <th>অবস্থা</th>
+                    <th>মন্তব্য</th>
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${leaveinfo}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.governmentOrderNo}">BCS</td> 
+                <td th:text="${list.leaveType}">BCS</td> 
+                <td th:text="${list.leaveApprovedLength}">BCS</td> 
+                <td th:text="${ #dates.format(list.leaveStartDate, 'dd/MM/yyyy')}">BCS</td>  
+                <td th:text="${ #dates.format(list.joinDate, 'dd/MM/yyyy')}">BCS</td>  
+
+
+                <td th:text="${list.status}">BCS</td>
+                <td th:text="${list.remark}">BCS</td>
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ১৮.প্রকাশনার তথ্য </h3>
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>প্রকাশনার ধরণ</th>
+                    <th>নাম </th>
+                    <th>প্রকাশের বছর </th>
+                </tr>
+            </thead>
+
+            <tr  th:each="list,status:${publicationInformation}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.publicationType}">BCS</td> 
+                <td th:text="${list.title}">BCS</td> 
+                <td th:text="${list.publicationYear}">BCS</td> 
+            </tr>
+        </table>
+
+
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span>১৯.পেশাদার সংগঠনের সদস্য পদের তথ্য </h3>
+
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>নিয়ন্ত্রক কর্তৃপক্ষ</th>
+                    <th>নিবন্ধন নম্বর </th>
+                    <th>নিবন্ধনের তারিখ</th>
+                    <th>সর্বশেষ পুনর্নবীকরণের তারিখ </th>
+                    <th>মন্তব্য</th>
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${membership}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.regulatoryBody}">BCS</td> 
+                <td th:text="${list.registrationNo}">BCS</td> 
+                <td th:text="${list.registrationDate}">BCS</td> 
+                <td th:text="${list.lastRenewaalDate}">BCS</td> 
+                <td th:text="${list.remarks}">BCS</td> 
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ২০.বার্ষিক গোপনীয় অনুবেদন (এ সি আর)  </h3>
+
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  
+                    <th>নং</th> 
+                    <th>পদায়নের ধরণ  </th>
+                    <th>পদবি   </th>
+                    <th>অফিসের অবস্থান  </th> 
+                    <th>সাল   </th>
+                    <th>তারিখ থেকে</th>
+                    <th>তারিখ পর্যন্ত </th>
+                    <th>অনুস্বাক্ষরকারী কর্মকর্তার পদবি  </th>
+                    <th>অনুস্বাক্ষরকারী কর্মকর্তার নাম </th>
+                    <th>প্রতিস্বাক্ষরকারি কর্মকর্তার পদবি  </th>
+                    <th>প্রতিস্বাক্ষরকারি কর্মকর্তার নাম</th>
+                    <th>মার্ক   </th>
+                    <th>মন্তব্য  </th>
+
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${acr}">
+                <td th:text="${ status.count}">2 </td> 
+                <td th:text="${list.postingType}">BCS</td>   
+                <td th:text="${list.postingDesignation.name}">BCS</td>   
+                <td th:text="${list.postingLocation.name}">BCS</td>   
+                <td th:text="${list.year}">BCS</td>   
+                <td th:text="${list.periodFrom}">BCS</td>   
+                <td th:text="${list.periodTo}">BCS</td>   
+                <td th:text="${list.mark}">BCS</td>   
+                <td th:text="${list.remarks}">BCS</td>                                             
+                <td>
+                </td>
+            </tr>
+        </table>
+
+
+
+        <h3 class="box-title"><span th:text="${table_name}"> ..</span> ২১.অবসরকালীন পেনশনের তথ্য</h3>
+
+        <table class="table table-bordered ">
+            <thead class=" box box-success  box-solid">
+                <tr>  <th>নং</th> 
+                    <th>অবসর উত্তর ছুটির তারিখ : </th>
+                    <th>অবসর গ্রহণের ধরণ</th>
+                    <th>অবসর গ্রহণ শুরুর তারিখ  </th>
+
+                    <th>মন্তব্য</th>
+                </tr>
+            </thead>
+            <tr  th:each="list,status:${retirementpension}">
+                <td th:text="${ status.count}">2 </td> 
+
+                <td th:text="${ #dates.format(list.lprDate, 'dd/MM/yyyy')}">BCS</td>  
+                <td th:text="${list.retirementType}">BCS</td> 
+                <td th:text="${ #dates.format(list.startDate, 'dd/MM/yyyy')}">BCS</td>  
+                <td th:text="${list.remarks}">BCS</td> 
+            </tr>
+        </table>
+        <script   type="text/javascript"  th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>  
+        <script th:src="@{/js/jquery.qrcode.js}">...</script>
+        <script th:src="@{/js/qrcode.js}">...</script>
+    </body>
+</html>

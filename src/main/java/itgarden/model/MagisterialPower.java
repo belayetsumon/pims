@@ -33,9 +33,9 @@ public class MagisterialPower {
     @ManyToOne(optional = true)
     private Users governmentId;
 
-    @NotNull(message = "This field cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    private Magisterial_Power magisterialpower;
+//    @NotNull(message = "This field cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    private Magisterial_Power magisterialpower;
 
     @NotEmpty(message = "This field cannot be blank.")
     private String fromDate;
@@ -71,10 +71,9 @@ public class MagisterialPower {
     public MagisterialPower() {
     }
 
-    public MagisterialPower(Long id, Users governmentId, Magisterial_Power magisterialpower, String fromDate, String endDate, long version, String createdBy, String updatedBy) {
+    public MagisterialPower(Long id, Users governmentId, String fromDate, String endDate, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
-        this.magisterialpower = magisterialpower;
         this.fromDate = fromDate;
         this.endDate = endDate;
         this.version = version;
@@ -96,14 +95,6 @@ public class MagisterialPower {
 
     public void setGovernmentId(Users governmentId) {
         this.governmentId = governmentId;
-    }
-
-    public Magisterial_Power getMagisterialpower() {
-        return magisterialpower;
-    }
-
-    public void setMagisterialpower(Magisterial_Power magisterialpower) {
-        this.magisterialpower = magisterialpower;
     }
 
     public String getFromDate() {
@@ -160,6 +151,7 @@ public class MagisterialPower {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
-    } 
+    }
+
 
 }

@@ -7,7 +7,6 @@ package itgarden.model;
 
 import itgarden.model.enumvalue.PostingType;
 import itgarden.model.lookup.PostingDesignation;
-import itgarden.model.lookup.PostingRank;
 import itgarden.model.lookup.PresentPostingLocation;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -35,10 +34,6 @@ public class Acr {
     @NotNull(message = "This field cannot be blank.")
     @ManyToOne(optional = true)
     private Users governmentId;
-
-    @NotNull(message = "This field cannot be blank.")
-    @ManyToOne(optional = true)
-    private PostingRank postingRank;  // Present Posting Rank  : DY. SECRETARY
 
     @NotNull(message = " *Posting type cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
@@ -96,10 +91,9 @@ public class Acr {
     public Acr() {
     }
 
-    public Acr(Long id, Users governmentId, PostingRank postingRank, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, int year, String periodFrom, String periodTo, String signatoryOfficer, String signatoryOfficerName, String authorizedOfficer, String authorizedOfficerName, String mark, String fileName, String remarks, String createdBy, String updatedBy) {
+    public Acr(Long id, Users governmentId, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, int year, String periodFrom, String periodTo, String signatoryOfficer, String signatoryOfficerName, String authorizedOfficer, String authorizedOfficerName, String mark, String fileName, String remarks, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
-        this.postingRank = postingRank;
         this.postingType = postingType;
         this.postingDesignation = postingDesignation;
         this.postingLocation = postingLocation;
@@ -116,10 +110,6 @@ public class Acr {
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
     }
-
- 
-
- 
 
     public Long getId() {
         return id;
@@ -153,14 +143,6 @@ public class Acr {
         this.postingDesignation = postingDesignation;
     }
 
-    public PostingRank getPostingRank() {
-        return postingRank;
-    }
-
-    public void setPostingRank(PostingRank postingRank) {
-        this.postingRank = postingRank;
-    }
-
     public PresentPostingLocation getPostingLocation() {
         return postingLocation;
     }
@@ -191,46 +173,6 @@ public class Acr {
 
     public void setPeriodTo(String periodTo) {
         this.periodTo = periodTo;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public LocalDate getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDate created) {
-        this.created = created;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDate getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(LocalDate updated) {
-        this.updated = updated;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
     }
 
     public String getSignatoryOfficer() {
@@ -279,6 +221,46 @@ public class Acr {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public LocalDate getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(LocalDate updated) {
+        this.updated = updated;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
 }

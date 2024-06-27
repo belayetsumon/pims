@@ -21,8 +21,7 @@ body {
 }
 .page {
     width: 8.5in;
-    /*  min-height: 29.7cm;*/
-    //padding: .5in;
+
     margin: .5in auto;
     border: 1px #D3D3D3 solid;
     border-radius: 1px;

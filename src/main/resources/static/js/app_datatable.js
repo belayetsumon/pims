@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function() {
+$(document).ready( function () {
     $('#myTableId').DataTable({
-         //"ordering": false
-            
-    } );
+        
+          "pageLength": 10
+
+    });
 } );

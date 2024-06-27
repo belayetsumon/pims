@@ -6,12 +6,10 @@
 package itgarden.model;
 
 import itgarden.model.enumvalue.BirthCountry;
-import itgarden.model.enumvalue.EthnicIdentity;
 import itgarden.model.enumvalue.Gender;
-import itgarden.model.enumvalue.MaritalStatus;
 import itgarden.model.enumvalue.PsychicalStatus;
 import itgarden.model.enumvalue.YesNo;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,9 +18,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -42,8 +41,11 @@ public class ChildrenInformation {
     @NotEmpty(message = "This field cannot be blank.")
     private String childName;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String dateofBirth;
+     @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "Date of birth cannot be blank.")
+    private Date dateofBirth;
 
     private String birthCertificateNumber;
 
@@ -51,17 +53,17 @@ public class ChildrenInformation {
     @Enumerated(EnumType.STRING)
     private BirthCountry birthCountry;
 
-    @Size(min = 13, max = 17, message = " Please provide value Minimum 13 digit maximum 17 digit")
+//    @Size(min = 13, max = 17, message = " Please provide value Minimum 13 digit maximum 17 digit")
     private String nid;
 
     private String passportNo;
 
-    @NotNull(message = "This field cannot be blank.")
-   @Enumerated(EnumType.STRING)
-    private EthnicIdentity ethnicIdentity;
+//    @NotNull(message = "This field cannot be blank.")
+//   @Enumerated(EnumType.STRING)
+//    private EthnicIdentity ethnicIdentity;
 
   
-    private String nationality;
+//    private String nationality;
 
     @NotNull(message = "This field cannot be blank.")
     @Enumerated(EnumType.STRING)
@@ -75,16 +77,16 @@ public class ChildrenInformation {
     @Enumerated(EnumType.STRING)
     YesNo schooling;
 
-    @NotEmpty(message = "This field cannot be blank.")
+
     private String educationLevel;
 
-    @NotNull(message = "This field cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    MaritalStatus maritalStatus;
-
-    @NotNull(message = "This field cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    YesNo emplyment;
+//    @NotNull(message = "This field cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    MaritalStatus maritalStatus;
+//
+//    @NotNull(message = "This field cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    YesNo emplyment;
 
     private String remarks;
 
@@ -110,12 +112,11 @@ public class ChildrenInformation {
     @Column(name = "updated_by", insertable = false, updatable = true)
     //@LastModifiedBy
     private String updatedBy ;
-    
-     /**
-     * ***************** End Auditor ********************************
-     */
 
-    public ChildrenInformation(Long id, Users governmentId, String childName, String dateofBirth, String birthCertificateNumber, BirthCountry birthCountry, String nid, String passportNo, EthnicIdentity ethnicIdentity, String nationality, Gender gender, PsychicalStatus psychicalStatus, YesNo schooling, String educationLevel, MaritalStatus maritalStatus, YesNo emplyment, String remarks, long version, String createdBy, String updatedBy) {
+    public ChildrenInformation() {
+    }
+
+    public ChildrenInformation(Long id, Users governmentId, String childName, Date dateofBirth, String birthCertificateNumber, BirthCountry birthCountry, String nid, String passportNo, Gender gender, PsychicalStatus psychicalStatus, YesNo schooling, String educationLevel, String remarks, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.childName = childName;
@@ -124,21 +125,14 @@ public class ChildrenInformation {
         this.birthCountry = birthCountry;
         this.nid = nid;
         this.passportNo = passportNo;
-        this.ethnicIdentity = ethnicIdentity;
-        this.nationality = nationality;
         this.gender = gender;
         this.psychicalStatus = psychicalStatus;
         this.schooling = schooling;
         this.educationLevel = educationLevel;
-        this.maritalStatus = maritalStatus;
-        this.emplyment = emplyment;
         this.remarks = remarks;
         this.version = version;
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
-    }
-
-    public ChildrenInformation() {
     }
 
     public Long getId() {
@@ -165,11 +159,11 @@ public class ChildrenInformation {
         this.childName = childName;
     }
 
-    public String getDateofBirth() {
+    public Date getDateofBirth() {
         return dateofBirth;
     }
 
-    public void setDateofBirth(String dateofBirth) {
+    public void setDateofBirth(Date dateofBirth) {
         this.dateofBirth = dateofBirth;
     }
 
@@ -205,22 +199,6 @@ public class ChildrenInformation {
         this.passportNo = passportNo;
     }
 
-    public EthnicIdentity getEthnicIdentity() {
-        return ethnicIdentity;
-    }
-
-    public void setEthnicIdentity(EthnicIdentity ethnicIdentity) {
-        this.ethnicIdentity = ethnicIdentity;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
     public Gender getGender() {
         return gender;
     }
@@ -251,22 +229,6 @@ public class ChildrenInformation {
 
     public void setEducationLevel(String educationLevel) {
         this.educationLevel = educationLevel;
-    }
-
-    public MaritalStatus getMaritalStatus() {
-        return maritalStatus;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-    public YesNo getEmplyment() {
-        return emplyment;
-    }
-
-    public void setEmplyment(YesNo emplyment) {
-        this.emplyment = emplyment;
     }
 
     public String getRemarks() {
@@ -316,5 +278,7 @@ public class ChildrenInformation {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
+
+   
 
 }

@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Users/Employee
+                কর্মকর্তা/কর্মচারী
                 </h1>
             </section>
             <!-- Main content -->
@@ -15,11 +15,11 @@
                 <!-- Default box -->
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title">  Employee Registrations</h3>
+                        <h3 class="box-title">  ব্যবহারকারীদের নিবন্ধন</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
 
-                                <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                                <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-xs">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
 
                                 <div class="row"> 
                                     <div class="form-group">
-                                        <label  class="col-sm-3 control-label" for="name"> Government ID/File No <span class="text-red"> *</span> :</label>
+                                        <label  class="col-sm-3 control-label" for="name"> সনাক্তকরণ নম্বর (IDN)<span class="text-red"> *</span> :</label>
                                         <div class="col-sm-5">
                                             <input type="hidden" class="form-control"  th:field="*{id}" />
                                             <input type="text" class="form-control"    th:field="*{governmentId}"   />
@@ -45,7 +45,7 @@
 
                                 <div class="row"> 
                                     <div class="form-group">
-                                        <label  class="col-sm-3 control-label" for="name">Name<span class="text-red"> *</span> :</label>
+                                        <label  class="col-sm-3 control-label" for="name">নাম<span class="text-red"> *</span> :</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control"    th:field="*{name}"   />
                                             <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Book Name</span>
@@ -54,7 +54,7 @@
                                 </div> 
                                 <div class="row"> 
                                     <div class="form-group ">
-                                        <label for="name" class="col-sm-3 control-label"> Department<span class="text-red"> * </span> </label>
+                                        <label for="name" class="col-sm-3 control-label"> বিভাগ<span class="text-red"> * </span> </label>
                                         <div class="col-sm-5">                   
                                             <select class="form-control  "   th:field="*{department}" >
                                                 <option value=" "> Select one</option>
@@ -69,7 +69,7 @@
                                 <div class="row"> 
 
                                     <div class="form-group ">
-                                        <label for="name" class="col-sm-3 control-label"> Sub Department<span class="text-red"> * </span> </label>
+                                        <label for="name" class="col-sm-3 control-label"> উপ বিভাগ<span class="text-red"> * </span> </label>
                                         <div class="col-sm-5">                   
                                             <select class="form-control  "   th:field="*{subDepartment}" >
                                                 <option value=" "> Select one</option>
@@ -84,7 +84,7 @@
                                 <div class="row"> 
 
                                     <div class="form-group ">
-                                        <label for="name" class="col-sm-3 control-label">Role<span class="text-red"> * </span> </label>
+                                        <label for="name" class="col-sm-3 control-label">ব্যবহারকারীর ধরণ  <span class="text-red"> * </span> </label>
                                         <div class="col-sm-5">     
                                             <!--                                             <select class="form-control  "   th:field="*{role}" multiple="multiple" >-->
                                             <select class="form-control  "   th:field="*{role}" >
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="row"> 
                                     <div class="form-group">
-                                        <label  class="col-sm-3 control-label" for="name">Email<span class="text-red"> </span> :</label>
+                                        <label  class="col-sm-3 control-label" for="name">ই-মেইল<span class="text-red"> </span> :</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control"    th:field="*{email}"   />
                                             <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Book Name</span>
@@ -111,7 +111,7 @@
 
                                 <div class="row"> 
                                     <div class="form-group">
-                                        <label  class="col-sm-3 control-label" for="mobile">Mobile Number<span class="text-red"> </span> :</label>
+                                        <label  class="col-sm-3 control-label" for="mobile">মুঠোফোন নাম্বার <span class="text-red"> </span> :</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control"   th:field="*{mobile}" />
                                             <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Book Name</span>
@@ -121,7 +121,7 @@
 
                                 <div class="row"> 
                                     <div class="form-group">
-                                        <label  class="col-sm-3 control-label" for="password">Password<span class="text-red"> </span> :</label>
+                                        <label  class="col-sm-3 control-label" for="password">পাসওয়ার্ড<span class="text-red"> *</span> :</label>
                                         <div class="col-sm-5">
                                             <!-- <input type="password" class="form-control"   th:field="*{password}" />-->
 
@@ -150,7 +150,7 @@
 
                                 <div class="row"> 
                                     <div class="form-group ">
-                                        <label for="name" class="col-sm-3 control-label">Status<span class="text-red"> * </span> </label>
+                                        <label for="name" class="col-sm-3 control-label">ব্যবহারকারীর অবস্থা<span class="text-red"> * </span> </label>
                                         <div class="col-sm-5">    
                                             <select class="form-control  "   th:field="*{status}" >
                                                 <option value=" "> Select one</option>
@@ -165,7 +165,7 @@
 
                                 <div class="row"> 
                                     <div class="form-group ">
-                                        <label for="name" class="col-sm-3 control-label">Remark<span class="text-red">  </span> </label>
+                                        <label for="name" class="col-sm-3 control-label">মন্তব্য<span class="text-red">  </span> </label>
                                         <div class="col-sm-5">
                                             <textarea class="form-control"   th:field="*{remarks}" ></textarea>
                                         </div>

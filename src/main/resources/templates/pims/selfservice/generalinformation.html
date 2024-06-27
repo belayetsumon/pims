@@ -62,11 +62,33 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Employee Name Bangla :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{nameBangla}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nameBangla')}" th:errors="*{nameBangla}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="form-group">
 
                                                 <label for="name" class="col-sm-4 control-label"> Father's Name :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{fathersName}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+
+                                                <label for="name" class="col-sm-4 control-label"> Father's Name Bangla:<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{fathersNameBangla}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('fathersNameBangla')}" th:errors="*{fathersNameBangla}">First Name Error</span>
                                                 </div>                            
                                             </div>
                                         </div>
@@ -79,6 +101,17 @@
                                                 </div>                            
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Mother's Name Bangla :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{mothersNameBangla}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('mothersNameBangla')}" th:errors="*{mothersNameBangla}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
 
                                         <div class="row">
                                             <div class="form-group ">
@@ -114,7 +147,7 @@
                                                 <label for="name" class="col-sm-4 control-label"> Country Of Birth:<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{birthCountry}"  >
-<!--                                                        <option value=" "> Select one</option>-->
+                                                        <option value="Bangladesh" selected="true">Bangladesh</option>
                                                         <option th:each =" birthCountry :${birthcountry}"
                                                                 th:value=" ${birthCountry}" 
                                                                 th:text="${birthCountry}"> Select one</option>
@@ -206,7 +239,7 @@
                                                 <label for="name" class="col-sm-4 control-label">Blood Group:<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-6">                   
                                                     <select class="form-control  "   th:field="*{bloodGroup}"  >
-<!--                                                        <option value=" "> Select one </option>-->
+                                                        <!--                                                        <option value=" "> Select one </option>-->
                                                         <option th:each =" bloodgroupes :${bloodgroups}" th:value=" ${bloodgroupes}"  th:text="${bloodgroupes}"> Select one </option>
                                                     </select>
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('bloodGroup')}" th:errors="*{bloodGroup}">First Name Error</span>
@@ -240,8 +273,8 @@
                                                 </div>                            
                                             </div>
                                         </div>
-                                        
-                                             <div class="row">
+
+                                        <div class="row">
                                             <div class="form-group">
                                                 <label for="name" class="col-sm-4 control-label"> TIN No :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">                    
@@ -252,7 +285,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label">  L. P .R .Date  :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label">  P.R.L .Date  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -325,15 +358,32 @@
                                             <tr>
                                                 <th> Name</th>
                                                 <td th:text="${list.name}">Chakma</td>
-                                            </tr>  
+                                            </tr> 
+
+                                            <tr>
+                                                <th> Name Bangla</th>
+                                                <td th:text="${list.nameBangla}">Chakma</td>
+                                            </tr>
 
                                             <tr>
                                                 <th>  Father's Name        </th>
                                                 <td th:text="${list.fathersName}">Chakma</td>
                                             </tr>
+                                            
+                                            
+
+                                            <tr>
+                                                <th>  Father's Name Bangla       </th>
+                                                <td th:text="${list.fathersNameBangla}">Chakma</td>
+                                            </tr>
                                             <tr>
                                                 <th>     Mother's Name     </th>
                                                 <td th:text="${list.mothersName}">Chakma</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>     Mother's Name   Bangla  </th>
+                                                <td th:text="${list.mothersNameBangla}">Chakma</td>
                                             </tr>
                                             <tr>
                                                 <th>        Home District  </th>
@@ -388,12 +438,12 @@
                                                 <th>   National Id No    </th>
                                                 <td th:text="${list.nid}">Chakma</td>
                                             </tr>
-                                                <tr>
+                                            <tr>
                                                 <th>   TIN   No </th>
                                                 <td th:text="${list.tin}">Chakma</td>
                                             </tr>
                                             <tr>
-                                                <th>     L. . R. Date     </th>
+                                                <th>     P.R.L Date     </th>
                                                 <td th:text="${list.lPRDate}">Chakma</td>
                                             </tr>
                                             <tr>

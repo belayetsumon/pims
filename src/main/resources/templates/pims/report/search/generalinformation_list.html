@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                মানব সম্পদ ব্যাবস্থাপনা 
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">  ফলাফল <span th:text="${list.size()}"> </span> </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/missearch/index}" type="button" class="btn  btn-success">আবার অনুসন্ধান করুন</a>
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">বন্ধ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body  "style="overflow-x: scroll">
+
+                        <table   class="table table-bordered " id="myTableId" >
+                            <thead class=" box box-success  box-solid">
+                                <tr class="bg-green">  
+                                    <th>সনাক্তকরণ নম্বর (IDN)</th>
+                                    <th>ছবি. </th>
+                                    <th>নাম </th>
+                                    <th>পিতার নাম</th>
+                                    <th>পদবী </th>
+                                    <th>বিভাগ  </th>
+                                    <th>উপ বিভাগ  </th>
+                                    <th>পদায়নকৃত কর্মস্থল </th>
+                                    <th>চাকরির বর্তমান অবস্থা </th>
+                                    <th> নিজ জেলা </th>
+                                    <th> জন্ম তারিখ :</th>
+                                    <th> যোগদান তারিখ  </th>
+                                    <th> অবসর উত্তর ছুটির তারিখ </th>
+                                    <th> জাতীয় পরিচয়পত্র নম্বর </th>
+                                    <th> অবসর  তারিখ </th>
+                                    <th> বিস্তারিত </th>
+                                </tr>
+                            </thead>
+                            <tbody>                                         
+                                <tr th:each="list,status:${list}">
+                                    <td th:text="${list.governmentId.governmentId}"> </td> 
+
+                                    <td>
+
+                                        <span  th:if="${ not #lists.isEmpty(list.governmentId.profileImage)}">  
+                                            <img  class="profile-user-img img-responsive" th:src="@{/files/}+${list.governmentId.profileImage.imageName}" width="100px"  height="100px"/>
+                                        </span>
+
+                                        <span  th:if="${ #lists.isEmpty(list.governmentId.profileImage)}">  
+                                            <img class="profile-user-img img-responsive" th:src="@{/images/profile.png}" alt="User profile picture"/>
+                                        </span>    
+
+                                    </td>
+
+                                    <td th:text="${list.name}"></td> 
+
+                                    <td th:text="${list.fathersName}"></td> 
+                                    <td><span  th:if="${ not #lists.isEmpty(list.governmentId.presentJob)}">
+                                            <span th:text="${list.governmentId.presentJob.postingDesignation.name}"></span>
+                                        </span></td>
+                                    <td><span  th:if="${ not #lists.isEmpty(list.governmentId.department.name)}">  
+                                            <span th:text="${list.governmentId.department.name}"></span>  </span></td>
+                                    <td> <span  th:if="${ not #lists.isEmpty(list.governmentId.subDepartment.name)}">  
+
+                                            <span th:text="${list.governmentId.subDepartment.name}"></span></span></td>
+                                    <td><span  th:if="${ not #lists.isEmpty(list.governmentId.presentJob)}">
+
+                                            <span th:text="${list.governmentId.presentJob.presentPostingLocation.name}">
+
+                                            </span>
+
+                                        </span></td>
+                                    <td th:text="${list.employeeStatus}"></td>
+                                    <td th:text="${list.homeDistrict}"> </td> 
+                                    <td th:text="${list.dateofBirth}"></td> 
+                                  <td><span   th:if="${ not #lists.isEmpty(list.governmentId.firstJoiningInformation)}"  th:text="${ list.governmentId.firstJoiningInformation.dateFirstJoining}"></span></td>
+
+                                    <td th:text="${list.lPRDate}"></td> 
+                                    <td th:text="${list.nid}"></td> 
+
+                                 <td> <span  th:if="${ not #lists.isEmpty(list.governmentId.retirementPension)}"  th:text="${list.governmentId.retirementPension.startDate}"></span> </td>
+                                    <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">বিস্তারিত</a></td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

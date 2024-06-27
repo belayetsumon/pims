@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                    ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Children Information </h3>
+                        <h3 class="box-title"> প্রাপ্ত ও অপ্রাপ্ত বয়স্ক সন্তানের তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/details/detailsinfo/{id} (id=${childrenInformation.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/details/detailsinfo/{id} (id=${childrenInformation.governmentId.id})}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <!-- Default box -->
                             <div class="box box-warning box-solid  ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Children Information </h3>
+                                    <h3 class="box-title"> প্রাপ্ত ও অপ্রাপ্ত বয়স্ক সন্তানের তথ্য তথ্য যোগ/সম্পাদনা করুন </h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -55,7 +55,7 @@
                                         </div>                         
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Name :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> নাম  :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{childName}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('childName')}" th:errors="*{childName}">First Name Error</span>
@@ -65,7 +65,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Gender :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> লিঙ্গ  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{gender}"  >
                                                         <option value=" "> Select one</option>
@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Date of Birth :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> জন্ম তারিখ  :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Country Of Birth:<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> জন্মস্থান  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{birthCountry}"  >
                                                         <option value=" "> Select one</option>
@@ -109,7 +109,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Birth Certificate/ Reg  No :<span class="text-red">  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> জন্ম নিবন্ধন নম্বর :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{birthCertificateNumber}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('birthCertificateNumber')}" th:errors="*{birthCertificateNumber}">First Name Error</span>
@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> National Id No :<span class="text-red">*  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> জাতীয় পরিচয়পত্র নম্বর:<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{nid}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}">First Name Error</span>
@@ -127,16 +127,16 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Passport No :<span class="text-red">  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> পাসপোর্ট নম্বর :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{passportNo}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('passportNo')}" th:errors="*{passportNo}">First Name Error</span>
                                                 </div>                            
                                             </div>
                                         </div>
-                                        <div class="row">
+<!--                                        <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Ethnic Identity:<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> জাতিগত পরিচয়: <span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{ethnicIdentity}"  >
                                                         <option value=" "> Select one</option>
@@ -147,21 +147,21 @@
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('ethnicIdentity')}" th:errors="*{ethnicIdentity}">First Name Error</span>
                                                 </div>                            
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Nationality:<span class="text-red"> * </span></label>
-                                                <div class="col-sm-7">                    
-                                                    <input type="text"  class="form-control  "    th:field="*{nationality}"  />        
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                        </div>
+                                        </div>-->
+                                        <!--                                        <div class="row">
+                                                                                    <div class="form-group">
+                                                                                        <label for="name" class="col-sm-4 control-label"> জাতীয়তা: <span class="text-red"> * </span></label>
+                                                                                        <div class="col-sm-7">                    
+                                                                                            <input type="text"  class="form-control  "    th:field="*{nationality}"  />        
+                                                                                            <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}">First Name Error</span>
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                </div>-->
 
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Psychical Status :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> শারীরিক অবস্থা  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{psychicalStatus}"  >
                                                         <option value=" "> Select one</option>
@@ -176,7 +176,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Schooling :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> পড়াশোনা করে  :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{schooling}"  >
                                                         <option value=" "> Select one</option>
@@ -190,7 +190,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Education Level :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> কোন শ্রেণীতে অধ্যয়নরত :<span class="text-red">  </span></label>
                                                 <div class="col-sm-7">                    
                                                     <input type="text"  class="form-control  "    th:field="*{educationLevel}"  />        
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('educationLevel')}" th:errors="*{educationLevel}">First Name Error</span>
@@ -198,35 +198,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Marital Status :<span class="text-red"> * </span> </label>
-                                                <div class="col-sm-7">                   
-                                                    <select class="form-control  "   th:field="*{maritalStatus}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" maritalStatus :${maritalStatus}"
-                                                                th:value=" ${maritalStatus}" 
-                                                                th:text="${maritalStatus}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('maritalStatus')}" th:errors="*{maritalStatus}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Employment  :<span class="text-red"> * </span> </label>
-                                                <div class="col-sm-7">                   
-                                                    <select class="form-control  "   th:field="*{emplyment}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" yesno :${yesno}"
-                                                                th:value=" ${yesno}" 
-                                                                th:text="${yesno}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('emplyment')}" th:errors="*{emplyment}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                        </div>
+
+
+
+
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label">Remarks :<span class="text-red"> </span></label>
+                                                <label for="name" class="col-sm-4 control-label">মন্তব্য  :<span class="text-red"> </span></label>
                                                 <div class="col-sm-7">                    
                                                     <textarea   cols="5" rows="5"  class="form-control  "    th:field="*{remarks}"  >      </textarea> 
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('remarks')}" th:errors="*{remarks}">First Name Error</span>
@@ -252,7 +230,7 @@
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Children List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>সন্তানদের তালিকা </h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -265,28 +243,24 @@
                                     <table class="table table-bordered" style="overflow-x: scroll;">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                <th>Sr. no.</th> 
-                                                <th>Name  </th>
-                                                <th>Gender  </th>
-                                                <th> Date of Birth </th>
-                                                <th> Country Of Birth</th>
-                                                <th> Birth Certificate/ Reg No </th>
-                                                <th> National Id No</th>
-                                                <th> Passport No </th>
-                                                <th> Ethnic Identity</th>
-                                                <th> Nationality</th>
-                                                <th> Psychical Status</th>
-                                                <th> Schooling </th>
-                                                <th> Education Level</th>
-                                                <th> Marital Status</th>
-                                                <th> Employment </th>
-                                                <th> Remarks </th>
-
+                                                <th>নং</th> 
+                                                <th>নাম  </th>
+                                                <th>লিঙ্গ  </th>
+                                                <th> জন্ম তারিখ </th>
+                                                <th> জন্মভূমি</th>
+                                                <th> জন্ম সনদ নং</th>
+                                                <th> জাতীয় পরিচয়পত্র নং</th>
+                                                <th> পাসপোর্ট নম্বর </th>
+<!--                                                <th> জাতিগত পরিচয়</th>-->
+                                                <!--                                            <th> জাতীয়তা</th>-->
+                                                <th> শারীরিক অবস্থা</th>
+                                                <th> পড়াশোনা করে</th>
+                                                <th> কোন শ্রেণীতে অধ্যয়নরত</th>                                  
+                                                <th> মন্তব্য </th>
                                                 <th> Created</th>
                                                 <th> Updated</th>
                                                 <th> Edit</th>
                                                 <th> Delete</th>
-
                                             </tr>
                                         </thead>
 
@@ -299,13 +273,12 @@
                                             <td th:text="${list.birthCertificateNumber}">BCS</td>   
                                             <td th:text="${list.nid}">BCS</td>   
                                             <td th:text="${list.passportNo}">BCS</td>   
-                                            <td th:text="${list.ethnicIdentity}">BCS</td> 
-                                            <td th:text="${list.nationality}">BCS</td> 
+<!--                                            <td th:text="${list.ethnicIdentity}">BCS</td> -->
+                                            <!--                                        <td th:text="${list.nationality}">BCS</td> -->
                                             <td th:text="${list.psychicalStatus}">BCS</td>   
                                             <td th:text="${list.schooling}">BCS</td>
                                             <td th:text="${list.educationLevel}">BCS</td>  
-                                            <td th:text="${list.maritalStatus}">BCS</td>  
-                                            <td th:text="${list.emplyment}">BCS</td>  
+
                                             <td th:text="${list.remarks}">BCS</td>  
 
                                             <td>Created:<span th:text="${list.createdOn}"></span><br/>

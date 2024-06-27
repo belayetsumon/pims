@@ -7,8 +7,8 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Welcome 
-                    <small>to Personal Management Informations System</small>
+                 মানব সম্পদ ব্যবস্থাপনা
+
                 </h1>
 
             </section>
@@ -20,20 +20,30 @@
 
                         <div class="box box-success box-solid">
                             <div class="box-header with-border">
-                                <h3 class="box-title"> Employee By Designations </h3>
+                                <h3 class="box-title"> পদবি  অনুযায়ী  </h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <td >Sr.no</td> 
-                                        <td >Name</td> 
-                                    </tr>
-                                    <tr  th:each="designation,status:${designation}">
-                                        <td th:text="${ status.count}">2 </td> 
-                                        <td th:text="${designation.name}">BCS</td> 
-                                        <td > <span class="label label-success" th:text="${designation.presentjob.size()}">BCS</span></td>
-                                    </tr>
+
+
+
+                                <table class="table table-bordered" id="myTableId">
+                                    <thead>
+                                        <tr>
+                                            <td >#</td> 
+                                            <td>নাম </td> 
+                                            <td>ক্রমিক নং  </td> 
+                                            <td></td> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  th:each="designation,status:${designation}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${designation.name}">BCS</td> 
+                                            <td th:text="${designation.orderId}">BCS</td> 
+                                            <td > <span class="label label-success" th:text="${designation.presentjob.size()}">BCS</span></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.box-body -->
@@ -43,79 +53,79 @@
                         </div>
                         <!-- /.box -->
 
-<!--                        <div class="box  box-warning box-solid">
-                            <div class="box-header">
-                                <h3 class="box-title"> Employee By Post/Rank </h3>
-                            </div>
-                             /.box-header 
-                            <div class="box-body no-padding">
-                                <table class="table table-condensed">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Name</th>
-                                    </tr>
-                                    <tr  th:each="postingrank,status:${postingrank}">
-                                        <td th:text="${ status.count}">2 </td> 
-                                        <td th:text="${postingrank.name}">BCS</td> 
-                                    </tr>
-                                    <tr >
-
-                                    </tr>
-
-                                </table>
-                            </div>
-                             /.box-body 
-                        </div>-->
-                        <!-- /.box -->
-
-<!--                        <div class="box  box-success box-solid">
-                            <div class="box-header">
-                                <h3 class="box-title"> Employee By Grade </h3>
-                            </div>
-                             /.box-header 
-                            <div class="box-body no-padding">
-                                <table class="table table-condensed">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Name</th>
-                                    </tr>
-                                    <tr  th:each="postingrank,status:${postingrank}">
-                                        <td th:text="${ status.count}">2 </td> 
-                                        <td th:text="${postingrank.name}">BCS</td> 
-                                    </tr>
-                                    <tr >
-
-                                    </tr>
-
-                                </table>
-                            </div>
-                             /.box-body 
-                        </div>-->
-                        <!-- /.box -->
+                        <!--                        <div class="box  box-warning box-solid">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title"> Employee By Post/Rank </h3>
+                                                    </div>
+                                                     /.box-header 
+                                                    <div class="box-body no-padding">
+                                                        <table class="table table-condensed">
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Name</th>
+                                                            </tr>
+                                                            <tr  th:each="postingrank,status:${postingrank}">
+                                                                <td th:text="${ status.count}">2 </td> 
+                                                                <td th:text="${postingrank.name}">BCS</td> 
+                                                            </tr>
+                                                            <tr >
                         
-<!--                        <div class="box  box-warning box-solid">
-                            <div class="box-header">
-                                <h3 class="box-title"> Employee By Gender </h3>
-                            </div>
-                             /.box-header 
-                            <div class="box-body no-padding">
-                                <table class="table table-condensed">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Name</th>
-                                    </tr>
-                                    <tr  th:each="postingrank,status:${postingrank}">
-                                        <td th:text="${ status.count}">2 </td> 
-                                        <td th:text="${postingrank.name}">BCS</td> 
-                                    </tr>
-                                    <tr >
+                                                            </tr>
+                        
+                                                        </table>
+                                                    </div>
+                                                     /.box-body 
+                                                </div>-->
+                        <!-- /.box -->
 
-                                    </tr>
+                        <!--                        <div class="box  box-success box-solid">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title"> Employee By Grade </h3>
+                                                    </div>
+                                                     /.box-header 
+                                                    <div class="box-body no-padding">
+                                                        <table class="table table-condensed">
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Name</th>
+                                                            </tr>
+                                                            <tr  th:each="postingrank,status:${postingrank}">
+                                                                <td th:text="${ status.count}">2 </td> 
+                                                                <td th:text="${postingrank.name}">BCS</td> 
+                                                            </tr>
+                                                            <tr >
+                        
+                                                            </tr>
+                        
+                                                        </table>
+                                                    </div>
+                                                     /.box-body 
+                                                </div>-->
+                        <!-- /.box -->
 
-                                </table>
-                            </div>
-                             /.box-body 
-                        </div>-->
+                        <!--                        <div class="box  box-warning box-solid">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title"> Employee By Gender </h3>
+                                                    </div>
+                                                     /.box-header 
+                                                    <div class="box-body no-padding">
+                                                        <table class="table table-condensed">
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Name</th>
+                                                            </tr>
+                                                            <tr  th:each="postingrank,status:${postingrank}">
+                                                                <td th:text="${ status.count}">2 </td> 
+                                                                <td th:text="${postingrank.name}">BCS</td> 
+                                                            </tr>
+                                                            <tr >
+                        
+                                                            </tr>
+                        
+                                                        </table>
+                                                    </div>
+                                                     /.box-body 
+                                                </div>-->
                         <!-- /.box -->
 
 
@@ -124,36 +134,42 @@
                     <div class="col-md-6">
                         <div class="box box-solid box-primary">
                             <div class="box-header">
-                                <h3 class="box-title"> Employee by Department </h3>
+                                <h3 class="box-title"> বিভাগ অনুযায়ী  </h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
-                                <table class="table">
-                                    <tr>
-                                        <td >#</td> 
-                                        <td >Department</td>
-                                        <td >&nbsp;</td>
-                                        <td >Subdepartment</td> 
+                                <table class="table table-bordered"  id="myTableId">
+                                    <thead>
+                                        <tr>
+                                            <td >#</td> 
+                                            <td >বিভাগ </td>
+                                            <td >&nbsp;</td>
+                                            <td >উপ বিভাগ </td> 
 
-                                    </tr>
-                                    <tr  th:each="department,status:${department}">
-                                        <td th:text="${ status.count}">2 </td> 
-                                        <td th:text="${department.name}">BCS</td> 
-                                        <td  ><span class="label label-success" th:text="${department.department.size()}"></span></td> 
-                                        <td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  th:each="department,status:${department}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                            <td th:text="${department.name}">BCS</td> 
+                                            <td> <span class="label label-success" th:text="${department.department.size()}"></span></td> 
+                                            <td>
 
-                                            <ul  class="list-unstyled" th:each="sublist,status:${department.subDepartment}">
+                                                <ul  class="list-unstyled" th:each="sublist,status:${department.subDepartment}">
 
-                                                <li> <span th:text="${sublist.name}"></span><span class=" label label-danger badge pull-right" th:text="${sublist.subDepartment.size()}">5</span> </li>
+                                                    <li> <span th:text="${sublist.name}"></span><span class=" label label-danger badge pull-right" th:text="${sublist.subDepartment.size()}">5</span> </li>
 
-                                            </ul>
+                                                </ul>
 
 
-                                        </td> 
+                                            </td> 
 
-                                    </tr>
-
+                                        </tr>
+                                    </tbody>
                                 </table>
+
+
+
                             </div>
                             <!-- /.box-body -->
                         </div>

@@ -45,7 +45,7 @@ public class MagisterialPowerSelfserviceController {
         magisterialPower.setGovernmentId(users);
 
         model.addAttribute("list", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
-        model.addAttribute("magisterial_power", Magisterial_Power.values());
+        //model.addAttribute("magisterial_power", Magisterial_Power.values());
         return "pims/selfservice/magisterialpower";
     }
 
@@ -60,7 +60,7 @@ public class MagisterialPowerSelfserviceController {
 
         model.addAttribute("list", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
 
-        model.addAttribute("magisterial_power", Magisterial_Power.values());
+       // model.addAttribute("magisterial_power", Magisterial_Power.values());
 
         return "pims/selfservice/magisterialpower";
     }
@@ -78,7 +78,7 @@ public class MagisterialPowerSelfserviceController {
 
             model.addAttribute("list", magisterialPowerRepository.findByGovernmentIdOrderByIdDesc(users));
 
-            model.addAttribute("magisterial_power", Magisterial_Power.values());
+            //model.addAttribute("magisterial_power", Magisterial_Power.values());
 
             return "pims/selfservice/magisterialpower";
         }

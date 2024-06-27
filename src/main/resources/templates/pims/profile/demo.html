@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main resume container */
+        .resume {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        /* Resume header section */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .resume-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .resume-header p {
+            font-size: 16px;
+        }
+
+        /* Resume sections */
+        .resume-section {
+            margin-bottom: 20px;
+        }
+
+        .resume-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .resume-section ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        .resume-section p {
+            margin: 10px 0;
+        }
+
+        /* Print media styles */
+        @media print {
+            .resume {
+                padding: 0;
+                margin: 0;
+            }
+
+            .resume-header h1 {
+                font-size: 28px;
+            }
+
+            .resume-header p {
+                font-size: 20px;
+            }
+
+            .resume-section h2 {
+                font-size: 22px;
+            }
+
+            .resume-section ul {
+                list-style-type: square;
+                margin-left: 20px;
+            }
+
+            .resume-section p {
+                font-size: 16px;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <div class="resume-header">
+            <h1>John Doe</h1>
+            <p>Web Developer</p>
+        </div>
+        
+        <div class="resume-section">
+            <h2>Contact Information</h2>
+            <p>Email: johndoe@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>LinkedIn: linkedin.com/in/johndoe</p>
+        </div>
+        
+        <div class="resume-section">
+            <h2>Summary</h2>
+            <p>Results-driven web developer with 5 years of experience in front-end and back-end development. Skilled in HTML, CSS, JavaScript, and various web frameworks. Proven track record of delivering high-quality websites and web applications.</p>
+        </div>
+        
+        <div class="resume-section">
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor of Science in Computer Science</li>
+                <li>University Name</li>
+                <li>Graduation Year: 20XX</li>
+            </ul>
+        </div>
+        
+        <div class="resume-section">
+            <h2>Skills</h2>
+            <p>HTML, CSS, JavaScript, React, Node.js, PHP, SQL, Git, Responsive Web Design</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Administration
+                    প্রশাসনিক এলাকা
 
                     <small></small>
                 </h1>
@@ -20,10 +20,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Settings </h3>
+                        <h3 class="box-title"> সেটিংস </h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/settings/lookupindex}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                                <a th:href="@{/settings/lookupindex}" type="button" class="btn  btn-warning btn-xs">বন্ধো</a>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <!-- Default box -->
                             <div class="box box-warning">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Sub Department </h3>
+                                    <h3 class="box-title"> উপ বিভাগ </h3>
 
                                     <div class="box-tools pull-right">
                                         <div class="btn-group">
@@ -48,7 +48,7 @@
                                         <input type="hidden" class="form-control"  th:field="*{id}" />
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Department<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> বিভাগ<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-8">                   
                                                     <select class="form-control " th:field="*{department}" id="departments" >
                                                         <option value=" "> Select one</option>
@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="row">
                                             <br/>
-                                            <label for="name" class=" col-sm-4  control-label"> Sub Department<span class="text-red"> * </span></label>
+                                            <label for="name" class=" col-sm-4  control-label"> উপ বিভাগ<span class="text-red"> * </span></label>
                                             <div class="col-sm-8">
                                             <input type="text" class="form-control "  th:field="*{name}"   />
 
@@ -96,26 +96,26 @@
                         <div class="col-sm-12">    
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>Sub Department  List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span>উপ বিভাগ</h3>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <table class="table table-bordered">
                                         <tr>
                                             <th style="width: 10px">#</th>
-                                            <th>Department</th>
-                                            <th>Sub Department</th>
-                                            <th>Edit</th>
-                                            <th style="width: 40px">Delete</th>
+                                            <th>বিভাগ</th>
+                                            <th>উপ বিভাগ<</th>
+                                            <th>সম্পাদনা</th>
+                                            <th style="width: 40px">মুছে ফেলা </th>
                                         </tr>
                                         <tr th:each="lists,status:${list}">
                                             <td th:text="${status.count}">2.</td>
                                              <td th:text="${lists.department.name}">Chakma</td>
                                             <td th:text="${lists.name}">Chakma</td>
                                             <td>
-                                                <a th:href="@{/subdepartment/edit/{id} (id=${lists.id})}" > Edit</a>
+                                                <a th:href="@{/subdepartment/edit/{id} (id=${lists.id})}" > সম্পাদনা</a>
                                             </td>
-                                            <td> <a th:href="@{/subdepartment/delete/{id} (id=${lists.id})}" > Delete </a></td>
+                                            <td> <a th:href="@{/subdepartment/delete/{id} (id=${lists.id})}" > মুছে ফেলা  </a></td>
                                         </tr>                                
                                     </table>
                                 </div>

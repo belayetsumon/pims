@@ -15,5 +15,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Md Belayet Hossin
  */
 public interface ProfileImageRepository extends JpaRepository<ProfileImage, Long> {
-      List<ProfileImage> findByGovernmentIdOrderByIdDesc(Users governmentId);
+
+    ProfileImage findByGovernmentId(Users governmentId);
+
+    List<ProfileImage> findByGovernmentIdOrderByIdDesc(Users governmentId);
 }

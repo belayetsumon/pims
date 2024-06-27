@@ -6,7 +6,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Report
+      রিপোর্ট
                 </h1>
             </section>
 
@@ -15,75 +15,86 @@
                 <!-- Default box -->
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Report List</h3>
+                        <h3 class="box-title"> রিপোর্ট তালিকা</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
 
-                                <a th:href="@{/users/index}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                                <a th:href="@{/dashboards/index}" type="button" class="btn  btn-warning btn-xs">বন্ধ</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="box-body">
 
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            <a  th:href="@{/missearch/index}" class="btn btn-success btn-block "><b> অনুসন্ধান</b></a>
+
+                            <br>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="box box-primary box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Basic Report</h3>
+                                    <h3 class="box-title"> রিপোর্ট</h3>
                                     <div class="box-tools pull-right">
                                         <div class="btn-group">
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="box-body">
-                                    <a  th:href="@{/basicreport/generalinformation}" class="btn btn-danger btn-block "><b> 1.General Information  </b> <span class="  badge badge bg-light pull-right" th:text="${profile_null}">null</span></a>
+                                    <a  th:href="@{/basicreport/generalinformation}" class="btn btn-danger btn-block "><b> ১.সাধারণ তথ্য </b> <span class="  badge badge bg-light pull-right" th:text="${profile_null}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/addressinformation}" class="btn btn-success  btn-block"><b>2.Address </b><span class="  badge badge bg-light pull-right" th:text="${address}">null</span></a>
+                                    <a  th:href="@{/basicreport/addressinformation}" class="btn btn-success  btn-block"><b>২.ঠিকানা </b><span class="  badge badge bg-light pull-right" th:text="${address}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/spouse}"  class="btn btn-danger  btn-block"><b> 3.Spouse </b><span class="  badge badge bg-light pull-right" th:text="${spouse}">null</span></a>
+                                    <a  th:href="@{/basicreport/spouse}"  class="btn btn-danger  btn-block"><b> ৩.পত্নী </b><span class="  badge badge bg-light pull-right" th:text="${spouse}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/childreninformation}" class="btn btn-success  btn-block"><b>4.Children </b><span class="  badge badge bg-light pull-right" th:text="${children}">null</span></a>
+                                    <a  th:href="@{/basicreport/childreninformation}" class="btn btn-success  btn-block"><b>৪.সন্তান </b><span class="  badge badge bg-light pull-right" th:text="${children}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/educationalInformation}"  class="btn btn-danger  btn-block"><b> 5. Educational </b><span class="  badge badge bg-light pull-right" th:text="${educational}">null</span></a>
+                                    <a  th:href="@{/basicreport/educationalInformation}"  class="btn btn-danger  btn-block"><b> ৫. শিক্ষা </b><span class="  badge badge bg-light pull-right" th:text="${educational}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/additionalqualification}" class="btn btn-success  btn-block"><b> 6.Additional Qualifications </b><span class="  badge badge bg-light pull-right" th:text="${additionalQualifications}">null</span></a>
+                                    <a  th:href="@{/basicreport/additionalqualification}" class="btn btn-success  btn-block"><b> ৬.অতিরিক্ত যোগ্যতা</b><span class="  badge badge bg-light pull-right" th:text="${additionalQualifications}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/language}" class="btn btn-danger  btn-block"><b> 7.Language  </b><span class="  badge badge bg-light pull-right" th:text="${language}">null</span></a>
+                                    <a  th:href="@{/basicreport/language}" class="btn btn-danger  btn-block"><b> ৭.ভাষা  </b><span class="  badge badge bg-light pull-right" th:text="${language}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/jobentryprocess}" class="btn btn-success  btn-block"><b>8.Job Entry Process </b><span class="  badge badge bg-light pull-right" th:text="${job_entry_process}">null</span></a>
+<!--                                    <a  th:href="@{/basicreport/jobentryprocess}" class="btn btn-success  btn-block"><b>8.চাকরির এণ্ট্রি প্রক্রিয়া  </b><span class="  badge badge bg-light pull-right" th:text="${job_entry_process}">null</span></a>-->
 
-                                    <a  th:href="@{/basicreport/firstjoininginformation}" class="btn btn-danger  btn-block"><b> 9. First Job  </b><span class="  badge badge bg-light pull-right" th:text="${first_job}">null</span></a>
+                                    <a  th:href="@{/basicreport/firstjoininginformation}" class="btn btn-danger  btn-block"><b> ৮. প্রথম চাকরী   </b><span class="  badge badge bg-light pull-right" th:text="${first_job}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/presentjob}" class="btn btn-success  btn-block"><b>10.Present Job </b><span class="  badge badge bg-light pull-right" th:text="${present_job}">null</span></a>
+                                    <a  th:href="@{/basicreport/presentjob}" class="btn btn-success  btn-block"><b>৯.বর্তমান চাকরী  </b><span class="  badge badge bg-light pull-right" th:text="${present_job}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/postingrecordinformation}"  class="btn btn-danger  btn-block"><b> 11. Posting Record Information </b><span class="  badge badge bg-light pull-right" th:text="${posting_record_information}">null</span></a>
+                                    <a  th:href="@{/basicreport/postingrecordinformation}"  class="btn btn-danger  btn-block"><b> ১০. পদায়ন ও বদলি সংক্রান্ত তথ্য </b><span class="  badge badge bg-light pull-right" th:text="${posting_record_information}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/promotionsinformation}" class="btn btn-success  btn-block"><b>12.Promotions Information </b><span class="  badge badge bg-light pull-right" th:text="${promotions_information}">null</span></a>
+                                    <a  th:href="@{/basicreport/promotionsinformation}" class="btn btn-success  btn-block"><b>১১.পদোন্নতি সংক্রান্ত তথ্য  </b><span class="  badge badge bg-light pull-right" th:text="${promotions_information}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/magisterialpower}" class="btn btn-success  btn-block"><b>14.Magistrial Power</b><span class="  badge badge bg-light pull-right" th:text="${magistrial_power}">null</span></a> 
+<!--                                    <a  th:href="@{/basicreport/magisterialpower}" class="btn btn-success  btn-block"><b>14.Magistrial Power</b><span class="  badge badge bg-light pull-right" th:text="${magistrial_power}">null</span></a> -->
 
-                                    <a  th:href="@{/basicreport/selectiongrade}"  class="btn btn-danger  btn-block"><b> 15. Selection Grade </b><span class="  badge badge bg-light pull-right" th:text="${selection_grade}">null</span></a>
+<!--                                    <a  th:href="@{/basicreport/selectiongrade}"  class="btn btn-danger  btn-block"><b> 15. সিলেকশন গ্রেড </b><span class="  badge badge bg-light pull-right" th:text="${selection_grade}">null</span></a>-->
 
-                                    <a  th:href="@{/basicreport/postingabroadinformation}"  class="btn btn-success  btn-block"><b>16.Posting Abroad</b><span class="  badge badge bg-light pull-right" th:text="${posting_abroad}">null</span></a>  
+<!--                                    <a  th:href="@{/basicreport/postingabroadinformation}"  class="btn btn-success  btn-block"><b>16.বিদেশে পোস্টিং </b><span class="  badge badge bg-light pull-right" th:text="${posting_abroad}">null</span></a>  -->
 
-                                    <a  th:href="@{/basicreport/foreigntraininginformation}"   class="btn btn-danger  btn-block"><b> 17. Foreign Training Information  </b><span class="  badge badge bg-light pull-right" th:text="${foreign_training_information}">null</span></a>
+                                    <a  th:href="@{/basicreport/foreigntraininginformation}"   class="btn btn-danger  btn-block"><b> ১২. বৈদেশিক প্রশিক্ষনের তথ্য </b><span class="  badge badge bg-light pull-right" th:text="${foreign_training_information}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/inservicetraininginformation}"  class="btn btn-success  btn-block"><b>18.In-Service Training</b><span class="  badge badge bg-light pull-right" th:text="${in_service_training}">null</span></a>  
+                                    <a  th:href="@{/basicreport/inservicetraininginformation}"  class="btn btn-success  btn-block"><b>১৩.  অভ্যান্তরিন প্রশিক্ষনের তথ্য</b><span class="  badge badge bg-light pull-right" th:text="${in_service_training}">null</span></a>  
 
-                                    <a  th:href="@{/basicreport/otherserviceinformation}"  class="btn btn-danger  btn-block"><b> 19. Other Service  </b><span class="  badge badge bg-light pull-right" th:text="${other_service}">null</span></a>
+<!--                                    <a  th:href="@{/basicreport/otherserviceinformation}"  class="btn btn-danger  btn-block"><b> 19.  অন্যান্য চাকরি  </b><span class="  badge badge bg-light pull-right" th:text="${other_service}">null</span></a>-->
 
-                                    <a  th:href="@{/basicreport/honorsandawardinformation}" class="btn btn-success  btn-block"><b>20.Honours And Award </b><span class="  badge badge bg-light pull-right" th:text="${honours_award}">null</span></a>  
+                                    <a  th:href="@{/basicreport/honorsandawardinformation}" class="btn btn-success  btn-block"><b>১৪.সম্মাননা এবং পুরস্কারের তথ্য </b><span class="  badge badge bg-light pull-right" th:text="${honours_award}">null</span></a>  
 
-                                    <a  th:href="@{/basicreport/disciplinaryaction}"  class="btn btn-danger  btn-block"><b> 21. Disciplinary Action </b><span class="  badge badge bg-light pull-right" th:text="${disciplinary_action}">null</span></a>
+                                    <a  th:href="@{/basicreport/disciplinaryaction}"  class="btn btn-danger  btn-block"><b> ১৫. বিভাগীয় ব্যবস্থা </b><span class="  badge badge bg-light pull-right" th:text="${disciplinary_action}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/leaveinfo}" class="btn btn-success  btn-block"><b>22.Leave</b><span class="  badge badge bg-light pull-right" th:text="${leave}">null</span></a> 
+                                    <a  th:href="@{/basicreport/leaveinfo}" class="btn btn-success  btn-block"><b>১৬.ছুটি </b><span class="  badge badge bg-light pull-right" th:text="${leave}">null</span></a> 
 
-                                    <a  th:href="@{/basicreport/publication}" class="btn btn-danger  btn-block"><b> 23. Publication  </b><span class="  badge badge bg-light pull-right" th:text="${publication}">null</span></a>
+                                    <a  th:href="@{/basicreport/publication}" class="btn btn-danger  btn-block"><b> ১৭. প্রকাশনা    </b><span class="  badge badge bg-light pull-right" th:text="${publication}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/membership}" class="btn btn-success  btn-block"><b>24.Professional  Membership</b><span class="  badge badge bg-light pull-right" th:text="${professional_Organization_membership}">null</span></a>
+                                    <a  th:href="@{/basicreport/membership}" class="btn btn-success  btn-block"><b>১৮.পেশাদার সংগঠনের সদস্য পদের তথ্য</b><span class="  badge badge bg-light pull-right" th:text="${professional_Organization_membership}">null</span></a>
 
-                                    <a  th:href="@{/basicreport/retirementpension}"  class="btn btn-danger  btn-block"><b> 25. Retirement and Pension </b><span class="  badge badge bg-light pull-right" th:text="${retirement_pension}">null</span></a>
-                                    <a  th:href="@{/basicreport/acr}"  class="btn btn-success btn-block"><b> 26.ACR </b><span class="  badge badge bg-light pull-right" th:text="${acr}">null</span></a>                      
+                                    <a  th:href="@{/basicreport/retirementpension}"  class="btn btn-danger  btn-block"><b> ১৯. অবসর ও পেনশন</b><span class="  badge badge bg-light pull-right" th:text="${retirement_pension}">null</span></a>
+                                    <a  th:href="@{/basicreport/acr}"  class="btn btn-success btn-block"><b> ২০.বার্ষিক গোপনীয় অনুবেদন (এ সি আর)  </b><span class="  badge badge bg-light pull-right" th:text="${acr}">null</span></a>   
+                                    <a  th:href="@{/basicreport/lprbyyear}"  class="btn btn-danger btn-block"><b> ২১.বছর অনুযায়ী অবসর উত্তর ছুটির তালিকা </b></a> 
+                                    <a  th:href="@{/basicreport/lastpromotion}"  class="btn btn-success btn-block"><b> ২২.সর্বশেষ পদোন্নতির তালিকা </b></a> 
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
@@ -98,10 +109,10 @@
 
                             <!-- Default box -->
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="box box-primary  box-solid ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Basic Report(Empty)</h3>
+                                    <h3 class="box-title"> তথ্য যোগ করা হয়নি যাদের  </h3>
                                     <div class="box-tools pull-right">
                                         <div class="btn-group">
                                         </div>
@@ -109,100 +120,100 @@
                                 </div>
                                 <div class="box-body">
                                     <!--<a  th:href="@{/basicempty/generalinformation}" class="btn btn-danger  btn-block"> <b> 1.General Information  </b></a>-->
-                                    <a    class="btn btn-danger  btn-block"><b>Profile Image</b><span class="  badge badge bg-yellow pull-right" th:text="${profile_null}">null</span></a>
+                                    <a    class="btn btn-danger btn-block  text-left"><b>১ প্রোফাইল ছবি</b><span class="  badge badge bg-yellow pull-right" th:text="${profile_null}">null</span></a>
                                     <!--                                     <a  th:href="@{/basicempty/addressinformation}"  class="btn btn-danger  btn-block"><b>Profile Image</b><span class="  badge badge bg-yellow pull-right" th:text="${profile_null}">null</span></a>-->
-                                    <a    class="btn btn-success  btn-block"><b>2.Address </b><span class="  badge badge bg-yellow pull-right" th:text="${address_null}">nullgg</span></a>
+                                    <a   th:href="@{/emptyreport/addressinformation}"  class="btn btn-success  btn-block"><b>২. ঠিকানা  </b><span class="  badge badge bg-yellow pull-right" th:text="${address_null}">nullgg</span></a>
                                     <!--                                    <a  th:href="@{/basicempty/addressinformation}"  class="btn btn-success  btn-block"><b>2.Address </b><span class="  badge badge bg-yellow pull-right" th:text="${address_null}">nullgg</span></a>-->
-                                    <a    class="btn btn-danger  btn-block"><b> 3.Spouse </b><span class="  badge badge bg-yellow pull-right" th:text="${spouse_null}">null</span></a>
-<!--                                     <a  th:href="@{/basicempty/spouse}"   class="btn btn-danger  btn-block"><b> 3.Spouse </b><span class="  badge badge bg-yellow pull-right" th:text="${spouse_null}">null</span></a>-->
-                                    <a  class="btn btn-success  btn-block"><b>4.Children </b><span class="  badge badge bg-yellow pull-right" th:text="${children_null}">null</span></a>
-<!--                                    <a  th:href="@{/basicempty/childreninformation}" class="btn btn-success  btn-block"><b>4.Children </b><span class="  badge badge bg-yellow pull-right" th:text="${children_null}">null</span></a>-->
-                                    <a   class="btn btn-danger  btn-block"><b> 5. Educational </b><span class="  badge badge bg-yellow pull-right" th:text="${educational_null}">null</span></a>
-                                    
-<!--                                     <a  th:href="@{/basicempty/educationalInformation}"  class="btn btn-danger  btn-block"><b> 5. Educational </b><span class="  badge badge bg-yellow pull-right" th:text="${educational_null}">null</span></a>-->
-                                     
-                                    <a   class="btn btn-success  btn-block"><b> 6.Additional Qualifications </b><span class="  badge badge bg-yellow pull-right" th:text="${additionalQualifications_null}">null</span></a>
-                                   
-<!--                                    <a  th:href="@{/basicempty/additionalqualification}" class="btn btn-success  btn-block"><b> 6.Additional Qualifications </b><span class="  badge badge bg-yellow pull-right" th:text="${additionalQualifications_null}">null</span></a>-->
-                                    
-                                    <a    class="btn btn-danger  btn-block"><b> 7.Language  </b><span class="  badge badge bg-yellow pull-right" th:text="${language_null}">null</span></a>
-                                   
-<!--                                       <a  th:href="@{/basicempty/language}"  class="btn btn-danger  btn-block"><b> 7.Language  </b><span class="  badge badge bg-yellow pull-right" th:text="${language_null}">null</span></a>-->
-                                    
-                                    <a   class="btn btn-success  btn-block"><b>8.Job Entry Process </b><span class="  badge badge bg-yellow pull-right" th:text="${job_entry_process_null}">null</span></a>
-                                    
-<!--                                    <a  th:href="@{/basicempty/jobentryprocess}" class="btn btn-success  btn-block"><b>8.Job Entry Process </b><span class="  badge badge bg-yellow pull-right" th:text="${job_entry_process_null}">null</span></a>-->
-                                   
-                                    <a    class="btn btn-danger  btn-block"><b> 9. First Job  </b><span class="  badge badge bg-yellow pull-right" th:text="${first_job_null}">null</span></a>
-                                    
-<!--                                       <a  th:href="@{/basicempty/firstjoininginformation}"  class="btn btn-danger  btn-block"><b> 9. First Job  </b><span class="  badge badge bg-yellow pull-right" th:text="${first_job_null}">null</span></a>-->
-                                  
-                                    <a   class="btn btn-success  btn-block"><b>10.Present Job </b><span class="  badge badge bg-yellow pull-right" th:text="${present_job_null}">null</span></a>
-                                    
-<!--                                      <a  th:href="@{/basicempty/presentjob}" class="btn btn-success  btn-block"><b>10.Present Job </b><span class="  badge badge bg-yellow pull-right" th:text="${present_job_null}">null</span></a>-->
-                                   
-                                    <a    class="btn btn-danger  btn-block"><b> 11. Posting Record Information </b><span class="  badge badge bg-yellow pull-right" th:text="${posting_record_information_null}">null</span></a>
-                                    
-<!--                                    <a  th:href="@{/basicempty/postingrecordinformation}"  class="btn btn-danger  btn-block"><b> 11. Posting Record Information </b><span class="  badge badge bg-yellow pull-right" th:text="${posting_record_information_null}">null</span></a>-->
-                                   
-                                    <a   class="btn btn-success  btn-block"><b>12.Promotions Information </b><span class="  badge badge bg-yellow pull-right" th:text="${promotions_information_null}">null</span></a>
-                                    
-<!--                                     <a  th:href="@{/basicempty/promotionsinformation}" class="btn btn-success  btn-block"><b>12.Promotions Information </b><span class="  badge badge bg-yellow pull-right" th:text="${promotions_information_null}">null</span></a>-->
-                                   
-                                    <a   class="btn btn-success  btn-block"><b>14.Magistrial Power</b><span class="  badge badge bg-yellow pull-right" th:text="${magistrial_power_null}">null</span></a> 
-                                    
-<!--                                     <a  th:href="@{/basicempty/magisterialpower}" class="btn btn-success  btn-block"><b>14.Magistrial Power</b><span class="  badge badge bg-yellow pull-right" th:text="${magistrial_power_null}">null</span></a> -->
-                                   
-                                    <a   class="btn btn-danger  btn-block"><b> 15. Selection Grade </b><span class="  badge badge bg-yellow pull-right" th:text="${selection_grade_null}">null</span></a>
-                                   
-<!--                                    <a  th:href="@{/basicempty/selectiongrade}"  class="btn btn-danger  btn-block"><b> 15. Selection Grade </b><span class="  badge badge bg-yellow pull-right" th:text="${selection_grade_null}">null</span></a>-->
-                                    
-                                    <a   class="btn btn-success  btn-block"><b>16.Posting Abroad</b><span class="  badge badge bg-yellow pull-right" th:text="${posting_abroad_null}">null</span></a>  
-                                    
-<!--                                     <a  th:href="@{/basicempty/postingabroadinformation}" class="btn btn-success  btn-block"><b>16.Posting Abroad</b><span class="  badge badge bg-yellow pull-right" th:text="${posting_abroad_null}">null</span></a>  -->
-                                     
-                                    <a    class="btn btn-danger  btn-block"><b> 17. Foreign Training Information  </b><span class="  badge badge bg-yellow pull-right" th:text="${foreign_training_information_null}">null</span></a>
-                                    
-<!--                                     <a  th:href="@{/basicempty/foreigntraininginformation}"  class="btn btn-danger  btn-block"><b> 17. Foreign Training Information  </b><span class="  badge badge bg-yellow pull-right" th:text="${foreign_training_information_null}">null</span></a>-->
-                                   
-                                    <a   class="btn btn-success  btn-block"><b>18.In-Service Training</b><span class="  badge badge bg-yellow pull-right" th:text="${in_service_training_null}">null</span></a>  
-                                    
-<!--                                      <a  th:href="@{/basicempty/inservicetraininginformation}" class="btn btn-success  btn-block"><b>18.In-Service Training</b><span class="  badge badge bg-yellow pull-right" th:text="${in_service_training_null}">null</span></a>  -->
-                                    
-                                    <a    class="btn btn-danger  btn-block"><b> 19. Other Service  </b><span class="  badge badge bg-yellow pull-right" th:text="${other_service_null}">null</span></a>
-                                    
-<!--                                     <a  th:href="@{/basicempty/otherserviceinformation}"  class="btn btn-danger  btn-block"><b> 19. Other Service  </b><span class="  badge badge bg-yellow pull-right" th:text="${other_service_null}">null</span></a>-->
-                                   
-                                    <a  class="btn btn-success  btn-block"> <b>20.Honours And Award </b><span class="  badge badge bg-yellow pull-right" th:text="${honours_award_null}">null</span></a>  
-                                  
-<!--                                     <a  th:href="@{/basicempty/honorsandawardinformation}"  class="btn btn-success  btn-block"> <b>20.Honours And Award </b><span class="  badge badge bg-yellow pull-right" th:text="${honours_award_null}">null</span></a>  -->
-                                    
-                                    
-                                    <a    class="btn btn-danger  btn-block"><b> 21. Disciplinary Action </b><span class="  badge badge bg-yellow pull-right" th:text="${disciplinary_action_null}">null</span></a>
-                                  
-<!--                                  <a  th:href="@{/basicempty/disciplinaryaction}"  class="btn btn-danger  btn-block"><b> 21. Disciplinary Action </b><span class="  badge badge bg-yellow pull-right" th:text="${disciplinary_action_null}">null</span></a>-->
-                                    
-                                    <a   class="btn btn-success  btn-block"><b>22.Leave</b><span class="  badge badge bg-yellow pull-right" th:text="${leave_null}">null</span></a> 
-                                  
-<!--                                     <a  th:href="@{/basicempty/leaveinfo}" class="btn btn-success  btn-block"><b>22.Leave</b><span class="  badge badge bg-yellow pull-right" th:text="${leave_null}">null</span></a> -->
-                                    
-                                    
-                                    <a    class="btn btn-danger  btn-block"><b> 23. Publication  </b><span class="  badge badge bg-yellow pull-right" th:text="${publication_null}">null</span></a>
-                                    
-<!--                                     <a  th:href="@{/basicempty/publication}"  class="btn btn-danger  btn-block"><b> 23. Publication  </b><span class="  badge badge bg-yellow pull-right" th:text="${publication_null}">null</span></a>-->
-                                   
-                                    <a   class="btn btn-success  btn-block"><b>24.Professional  Membership</b><span class="  badge badge bg-yellow pull-right" th:text="${professional_Organization_membership_null}">null</span></a>
-                                  
-<!--                                     <a  th:href="@{/basicempty/membership}" class="btn btn-success  btn-block"><b>24.Professional Organization Membership</b><span class="  badge badge bg-yellow pull-right" th:text="${professional_Organization_membership_null}">null</span></a>-->
-                                    
-                                    <a   class="btn btn-danger  btn-block"><b> 25. Retirement and Pension </b><span class="  badge badge bg-yellow pull-right" th:text="${retirement_pension_null}">null</span></a>                        
-                                   
-<!--                                    <a  th:href="@{/basicempty/retirementpension}" class="btn btn-danger  btn-block"><b> 25. Retirement and Pension </b><span class="  badge badge bg-yellow pull-right" th:text="${retirement_pension_null}">null</span></a>                        -->
-                                    
-                                    
-                                    <a   class="btn btn-success   btn-block"><b> 26. ACR </b><span class="  badge badge bg-yellow pull-right" th:text="${acr_null}">null</span></a>     
-                                    
-<!--                                     <a  th:href="@{/basicempty/acr}" class="btn btn-success   btn-block"><b> 26. ACR </b><span class="  badge badge bg-yellow pull-right" th:text="${retirement_pension_null}">null</span></a>                        -->
+                                 <a  th:href="@{/emptyreport/spouse}"     class="btn btn-danger  btn-block"><b> ৩.পত্নী </b><span class="  badge badge bg-yellow pull-right" th:text="${spouse_null}">null</span></a>
+                                    <!--                                     <a  th:href="@{/basicempty/spouse}"   class="btn btn-danger  btn-block"><b> 3.Spouse </b><span class="  badge badge bg-yellow pull-right" th:text="${spouse_null}">null</span></a>-->
+                               <a  th:href="@{/emptyreport/childreninformation}" class="btn btn-success  btn-block"><b>৪.সন্তান </b><span class="  badge badge bg-yellow pull-right" th:text="${children_null}">null</span></a>
+                                    <!--                                    <a  th:href="@{/basicempty/childreninformation}" class="btn btn-success  btn-block"><b>4.Children </b><span class="  badge badge bg-yellow pull-right" th:text="${children_null}">null</span></a>-->
+                                   <a  th:href="@{/emptyreport/educationalInformation}"  class="btn btn-danger  btn-block"><b> ৫. শিক্ষা </b><span class="  badge badge bg-yellow pull-right" th:text="${educational_null}">null</span></a>
+
+                                    <!--                                     <a  th:href="@{/basicempty/educationalInformation}"  class="btn btn-danger  btn-block"><b> 5. Educational </b><span class="  badge badge bg-yellow pull-right" th:text="${educational_null}">null</span></a>-->
+
+                              <a  th:href="@{/emptyreport/additionalqualification}"  class="btn btn-success  btn-block"><b> ৬.অতিরিক্ত যোগ্যতা</b><span class="  badge badge bg-yellow pull-right" th:text="${additionalQualifications_null}">null</span></a>
+
+                                    <!--                                    <a  th:href="@{/basicempty/additionalqualification}" class="btn btn-success  btn-block"><b> 6.Additional Qualifications </b><span class="  badge badge bg-yellow pull-right" th:text="${additionalQualifications_null}">null</span></a>-->
+
+                              <a  th:href="@{/emptyreport/language}"   class="btn btn-danger  btn-block"><b> ৭.ভাষা  </b><span class="  badge badge bg-yellow pull-right" th:text="${language_null}">null</span></a>
+
+                                    <!--                                       <a  th:href="@{/basicempty/language}"  class="btn btn-danger  btn-block"><b> 7.Language  </b><span class="  badge badge bg-yellow pull-right" th:text="${language_null}">null</span></a>-->
+
+<!--                                 <a  th:href="@{/emptyreport/jobentryprocess}"   class="btn btn-success  btn-block"><b>8.চাকরির এণ্ট্রি প্রক্রিয়া </b><span class="  badge badge bg-yellow pull-right" th:text="${job_entry_process_null}">null</span></a>-->
+
+                                    <!--                                    <a  th:href="@{/basicempty/jobentryprocess}" class="btn btn-success  btn-block"><b>8.Job Entry Process </b><span class="  badge badge bg-yellow pull-right" th:text="${job_entry_process_null}">null</span></a>-->
+
+                                  <a  th:href="@{/emptyreport/firstjoininginformation}"    class="btn btn-danger  btn-block"><b> ৮. প্রথম চাকরী </b><span class="  badge badge bg-yellow pull-right" th:text="${first_job_null}">null</span></a>
+
+                                    <!--                                       <a  th:href="@{/basicempty/firstjoininginformation}"  class="btn btn-danger  btn-block"><b> 9. First Job  </b><span class="  badge badge bg-yellow pull-right" th:text="${first_job_null}">null</span></a>-->
+
+                               <a  th:href="@{/emptyreport/presentjob}"   class="btn btn-success  btn-block"><b>৯.বর্তমান চাকরী  </b><span class="  badge badge bg-yellow pull-right" th:text="${present_job_null}">null</span></a>
+
+                                    <!--                                      <a  th:href="@{/basicempty/presentjob}" class="btn btn-success  btn-block"><b>10.Present Job </b><span class="  badge badge bg-yellow pull-right" th:text="${present_job_null}">null</span></a>-->
+
+                              <a  th:href="@{/emptyreport/postingrecordinformation}"   class="btn btn-danger  btn-block"><b> ১০. পদায়ন ও বদলি সংক্রান্ত তথ্</b><span class="  badge badge bg-yellow pull-right" th:text="${posting_record_information_null}">null</span></a>
+
+                                    <!--                                    <a  th:href="@{/basicempty/postingrecordinformation}"  class="btn btn-danger  btn-block"><b> 11. Posting Record Information </b><span class="  badge badge bg-yellow pull-right" th:text="${posting_record_information_null}">null</span></a>-->
+
+                                <a  th:href="@{/emptyreport/promotionsinformation}"   class="btn btn-success  btn-block"><b>১১.পদ উন্নতি তথ্য</b><span class="  badge badge bg-yellow pull-right" th:text="${promotions_information_null}">null</span></a>
+
+                                    <!--                                     <a  th:href="@{/basicempty/promotionsinformation}" class="btn btn-success  btn-block"><b>12.Promotions Information </b><span class="  badge badge bg-yellow pull-right" th:text="${promotions_information_null}">null</span></a>-->
+
+<!--                                    <a   class="btn btn-success  btn-block"><b>14.Magistrial Power</b><span class="  badge badge bg-yellow pull-right" th:text="${magistrial_power_null}">null</span></a> -->
+
+                                    <!--                                     <a  th:href="@{/basicempty/magisterialpower}" class="btn btn-success  btn-block"><b>14.Magistrial Power</b><span class="  badge badge bg-yellow pull-right" th:text="${magistrial_power_null}">null</span></a> -->
+<!--
+                               <a  th:href="@{/emptyreport/selectiongrade}"   class="btn btn-danger  btn-block"><b> 15. সিলেকশন গ্রেড</b><span class="  badge badge bg-yellow pull-right" th:text="${selection_grade_null}">null</span></a>-->
+
+                                    <!--                                    <a  th:href="@{/basicempty/selectiongrade}"  class="btn btn-danger  btn-block"><b> 15. Selection Grade </b><span class="  badge badge bg-yellow pull-right" th:text="${selection_grade_null}">null</span></a>-->
+
+                          <a  th:href="@{/emptyreport/foreigntraininginformation}"   class="btn btn-success  btn-block"><b>১২.বিদেশী প্রশিক্ষণের তথ্য </b><span class="  badge badge bg-yellow pull-right" th:text="${posting_abroad_null}">null</span></a>  
+
+                                    <!--                                     <a  th:href="@{/basicempty/postingabroadinformation}" class="btn btn-success  btn-block"><b>16.Posting Abroad</b><span class="  badge badge bg-yellow pull-right" th:text="${posting_abroad_null}">null</span></a>  -->
+
+<!--                         <a  th:href="@{/emptyreport/postingabroadinformation}"   class="btn btn-danger  btn-block"><b> 17. বিদেশে পোস্টিং   </b><span class="  badge badge bg-yellow pull-right" th:text="${foreign_training_information_null}">null</span></a>-->
+
+                                    <!--                                     <a  th:href="@{/basicempty/foreigntraininginformation}"  class="btn btn-danger  btn-block"><b> 17. Foreign Training Information  </b><span class="  badge badge bg-yellow pull-right" th:text="${foreign_training_information_null}">null</span></a>-->
+
+                             <a  th:href="@{/emptyreport/inservicetraininginformation}"   class="btn btn-success  btn-block"><b>১৩.দেশে প্রশিক্ষণের তথ্য </b><span class="  badge badge bg-yellow pull-right" th:text="${in_service_training_null}">null</span></a>  
+
+                                    <!--                                      <a  th:href="@{/basicempty/inservicetraininginformation}" class="btn btn-success  btn-block"><b>18.In-Service Training</b><span class="  badge badge bg-yellow pull-right" th:text="${in_service_training_null}">null</span></a>  -->
+
+<!--                                                <a  th:href="@{/emptyreport/otherserviceinformation}"     class="btn btn-danger  btn-block"><b> 19. অন্যান্য চাকরি </b><span class="  badge badge bg-yellow pull-right" th:text="${other_service_null}">null</span></a>-->
+
+                                    <!--                                     <a  th:href="@{/basicempty/otherserviceinformation}"  class="btn btn-danger  btn-block"><b> 19. Other Service  </b><span class="  badge badge bg-yellow pull-right" th:text="${other_service_null}">null</span></a>-->
+
+                                   <a  th:href="@{/emptyreport/honorsandawardinformation}" class="btn btn-success  btn-block"> <b>১৪.সম্মান ও পুরস্কার </b><span class="  badge badge bg-yellow pull-right" th:text="${honours_award_null}">null</span></a>  
+
+                                    <!--                                     <a  th:href="@{/basicempty/honorsandawardinformation}"  class="btn btn-success  btn-block"> <b>20.Honours And Award </b><span class="  badge badge bg-yellow pull-right" th:text="${honours_award_null}">null</span></a>  -->
+
+
+                            <a  th:href="@{/emptyreport/disciplinaryaction}"    class="btn btn-danger  btn-block"><b> ১৫. শাস্তিমূলক ব্যবস্থা </b><span class="  badge badge bg-yellow pull-right" th:text="${disciplinary_action_null}">null</span></a>
+
+                                    <!--                                  <a  th:href="@{/basicempty/disciplinaryaction}"  class="btn btn-danger  btn-block"><b> 21. Disciplinary Action </b><span class="  badge badge bg-yellow pull-right" th:text="${disciplinary_action_null}">null</span></a>-->
+
+                           <a  th:href="@{/emptyreport/leaveinfo}"   class="btn btn-success  btn-block"><b>১৬. ছুটি</b><span class="  badge badge bg-yellow pull-right" th:text="${leave_null}">null</span></a> 
+
+                                    <!--                                     <a  th:href="@{/basicempty/leaveinfo}" class="btn btn-success  btn-block"><b>22.Leave</b><span class="  badge badge bg-yellow pull-right" th:text="${leave_null}">null</span></a> -->
+
+
+                              <a  th:href="@{/emptyreport/publication}"    class="btn btn-danger  btn-block"><b> ১৭. প্রকাশনা   </b><span class="  badge badge bg-yellow pull-right" th:text="${publication_null}">null</span></a>
+
+                                    <!--                                     <a  th:href="@{/basicempty/publication}"  class="btn btn-danger  btn-block"><b> 23. Publication  </b><span class="  badge badge bg-yellow pull-right" th:text="${publication_null}">null</span></a>-->
+
+                                <a  th:href="@{/emptyreport/membership}"    class="btn btn-success  btn-block"><b>১৮.পেশাগত অর্গানাইজেশন সদস্যপদ</b><span class="  badge badge bg-yellow pull-right" th:text="${professional_Organization_membership_null}">null</span></a>
+
+                                    <!--                                     <a  th:href="@{/basicempty/membership}" class="btn btn-success  btn-block"><b>24.Professional Organization Membership</b><span class="  badge badge bg-yellow pull-right" th:text="${professional_Organization_membership_null}">null</span></a>-->
+
+                         <a  th:href="@{/emptyreport/retirementpension}"  class="btn btn-danger  btn-block"><b> ১৯. অবসর ও পেনশন </b><span class="  badge badge bg-yellow pull-right" th:text="${retirement_pension_null}">null</span></a>                        
+
+                                    <!--                                    <a  th:href="@{/basicempty/retirementpension}" class="btn btn-danger  btn-block"><b> 25. Retirement and Pension </b><span class="  badge badge bg-yellow pull-right" th:text="${retirement_pension_null}">null</span></a>                        -->
+
+
+                       <a  th:href="@{/emptyreport/acr}"  class="btn btn-success   btn-block"><b> ২০.বার্ষিক গোপনীয় প্রতিবেদন(এ সি আর)  </b><span class="  badge badge bg-yellow pull-right" th:text="${acr_null}">null</span></a>     
+
+                                    <!--                                     <a  th:href="@{/basicempty/acr}" class="btn btn-success   btn-block"><b> 26. ACR </b><span class="  badge badge bg-yellow pull-right" th:text="${retirement_pension_null}">null</span></a>                        -->
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
@@ -215,72 +226,7 @@
                                 <!-- /.box-footer-->
                             </div>
 
-                            <!-- Default box -->
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="box box-primary box-solid">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"> Classified Report</h3>
-                                    <div class="box-tools pull-right">
-                                        <div class="btn-group">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box-body">
-                                    <a  th:href="@{/classified/departmentindex}"   class="btn btn-danger btn-block "><b> 1.Employee by Department  </b></a>
-                                    <a  th:href="@{/classified/departmentindex}"   class="btn btn-success  btn-block"><b>2.Employee by Sub department</b></a>
-                                    <a  th:href="@{/classified/districtindex}"   class="btn btn-danger  btn-block"><b> 3.Employee by District</b></a>
-                                    <a  th:href="@{/classified/religionindex}"  class="btn btn-success  btn-block"><b>4.Employee by religion</b></a>
-                                    <a  th:href="@{/classified/designationindex}" class="btn btn-danger  btn-block"><b> 5. Employee by Designation </b></a>
-                                    <!--                                    <a  th:href="@{/classified/postindex}" class="btn btn-success  btn-block"><b> 6. Employee by post/rank</b></a>-->
-                                    <a  th:href="@{/classified/locationindex}"   class="btn btn-danger  btn-block"><b> 7.Employee by posting location  </b></a>
-                                    <a  href="#" class="btn btn-success  btn-block"><b>8.Employee by batch</b></a>
-                                    <a  th:href="@{/classified/lprindex}" class="btn btn-danger  btn-block"><b> 9. Employee by LPR(Year) </b></a>
-                                    <!--                                  <a  th:href="@{/classified/leaveindex}" class="btn btn-success  btn-block"><b>10.Employee by Present Leave</b></a>-->
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer">
-                                    <div class="box-tools pull-right">
-                                        <div class="btn-group">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-footer-->
-                            </div>
-
-                            <!-- Default box -->
-                        </div>
-
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="box box-primary box-solid">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"> User/Employee</h3>
-                                    <div class="box-tools pull-right">
-                                        <div class="btn-group">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <a href=""  class="btn btn-danger btn-block "><b> 1.Active </b></a>
-                                    <a href="#" class="btn btn-success  btn-block"><b>2.Pending </b></a>
-                                    <a href=""  class="btn btn-danger  btn-block"><b> 3.Block </b></a>                      
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer">
-                                    <div class="box-tools pull-right">
-                                        <div class="btn-group">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-footer-->
-                            </div>
-
-                            <!-- Default box -->
-                        </div>
-                    </div>
+                     </div>
 
                     <!-- /.box-body -->
                     <div class="box-footer">

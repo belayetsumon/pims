@@ -73,10 +73,11 @@ public class GeneralInformationSelfserviceController {
     @Autowired
     LoggedUserService loggedUserService;
 
+    @PreAuthorize("hasAuthority('selfservice_generalinformation')")
     @RequestMapping("/index/{e_id}")
     public String index(Model model, @PathVariable Long e_id, GeneralInformation generalInformation) {
 
-        model.addAttribute("list", generalInformationRepository.findAll());
+  
 
         model.addAttribute("gender", Gender.values());
 
@@ -115,7 +116,7 @@ public class GeneralInformationSelfserviceController {
         generalInformation.setGovernmentId(users);
 
         Optional<Users> username = usersRepository.findById(e_id);
-        
+
         generalInformation.setName(username.get().getName());
 
         return "pims/selfservice/generalinformation";
@@ -125,10 +126,8 @@ public class GeneralInformationSelfserviceController {
     public String edit(Model model, @PathVariable Long id, GeneralInformation generalInformation) {
 
         model.addAttribute("generalInformation", generalInformationRepository.getOne(id));
-        
-        
 
-        model.addAttribute("list", generalInformationRepository.findAll());
+    
 
         model.addAttribute("gender", Gender.values());
 
@@ -165,7 +164,7 @@ public class GeneralInformationSelfserviceController {
     public String save(Model model, @PathVariable Long e_id, @Valid GeneralInformation generalInformation, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("list", generalInformationRepository.findAll());
+       
 
             model.addAttribute("gender", Gender.values());
 
@@ -201,7 +200,7 @@ public class GeneralInformationSelfserviceController {
             users.setId(e_id);
 
             generalInformation.setGovernmentId(users);
-           users = usersRepository.getOne(e_id);
+            users = usersRepository.getOne(e_id);
             generalInformation.setName(generalInformation.getName());
             return "pims/selfservice/generalinformation";
         }

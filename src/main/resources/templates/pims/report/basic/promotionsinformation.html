@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                    ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,47 +17,44 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Promotions Information</h3>
+                        <h3 class="box-title"> পদোন্নতির তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
                     <div class="box-body  ">
                         <table class="table table-bordered " id="myTableId">
-                                        <thead >
-                                            <tr class="bg-green">  
-                                                <th>Sr. no.</th> 
-                                                <th>Date of Promotion</th>
-                                                <th>Govt Order Date</th>
-                                                <th>Nature Of Promotions</th>
-                                                <th>Posting Rank/Order of precedence </th>
-                                                <th>Posting Type:</th>
-                                                <th>Designation </th>
-                                                <th>Office Location</th>
-                                                <th>Country</th>
-                                                <th>Scale / Grade</th> 
-                                                 <th> Details </th>
-                                            </tr>
-                                        </thead>
+                            <thead >
+                                <tr class="bg-green">  
+                                    <th>নং</th> 
+                                    <th>তারিখ</th>
+                                    <th>সরকারী আদেশের তারিখ </th>
+                                    <th>পদোন্নতির ধরণ </th>
 
-                                        <tr  th:each="list,status:${list}">
-                                            <td th:text="${ status.count}">2 </td> 
-                                            <td th:text="${list.dateofPromotion}">BCS</td> 
-                                            <td th:text="${list.govtOrderDate}">BCS</td> 
-                                            <td th:text="${list.natureOfPromotions}">BCS</td> 
-                                            <td th:text="${list.postingRank.name}">BCS</td>
-                                            <td th:text="${list.postingType}">BCS</td>
-                                            <td th:text="${list.postingDesignation.name}">BCS</td>
-                                            <td th:text="${list.postingLocation.name}">BCS</td>
-                                            <td th:text="${list.country}">BCS</td>
-                                            <td th:text="${list.scale}">BCS</td>
-                                            <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
-                                        </tr>
+                                    <th>পদায়নের ধরণ:</th>
+                                    <th>পদবী </th>
+                                    <th>অফিসের অবস্থান</th>
+                                    <th>শ্রেণী</th>
+                                    <th> বিস্তারিত </th>
+                                </tr>
+                            </thead>
+
+                            <tr  th:each="list,status:${list}">
+                                                  <td th:text="${ status.count}">2 </td> 
+                                                <td th:text="${list.dateofPromotion}">BCS</td> 
+                                                <td th:text="${list.govtOrderDate}">BCS</td> 
+                                                <td th:text="${list.natureOfPromotions}">BCS</td> 
+                                                <td th:text="${list.postingType}">BCS</td>
+                                                <td th:text="${list.postingDesignation.name}">BCS</td>
+                                                <td th:text="${list.postingLocation.name}">BCS</td>
+                                                                              <td th:text="${list.scale}">BCS</td>
+                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">বিস্তারিত</a></td> 
+                            </tr>
 
 
-                                    </table>
+                        </table>
                     </div>
 
 

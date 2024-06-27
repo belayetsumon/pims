@@ -7,8 +7,7 @@ package itgarden.model;
 
 
 import itgarden.model.enumvalue.Retirement;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,12 +15,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -39,18 +35,24 @@ public class RetirementPension {
     @OneToOne(optional = true)
     private Users governmentId;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String lprDate;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date lprDate;
 
     @NotNull(message = "This field cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
     private Retirement retirementType;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String startDate;
+     @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date startDate;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String nominee;
+//    @NotEmpty(message = "This field cannot be blank.")
+//    private String nominee;
 
     private String remarks;
     /**
@@ -82,13 +84,12 @@ public class RetirementPension {
     public RetirementPension() {
     }
 
-    public RetirementPension(Long id, Users governmentId, String lprDate, Retirement retirementType, String startDate, String nominee, String remarks, long version, String createdBy, String updatedBy) {
+    public RetirementPension(Long id, Users governmentId, Date lprDate, Retirement retirementType, Date startDate, String remarks, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.lprDate = lprDate;
         this.retirementType = retirementType;
         this.startDate = startDate;
-        this.nominee = nominee;
         this.remarks = remarks;
         this.version = version;
         this.createdBy = createdBy;
@@ -111,11 +112,11 @@ public class RetirementPension {
         this.governmentId = governmentId;
     }
 
-    public String getLprDate() {
+    public Date getLprDate() {
         return lprDate;
     }
 
-    public void setLprDate(String lprDate) {
+    public void setLprDate(Date lprDate) {
         this.lprDate = lprDate;
     }
 
@@ -127,20 +128,12 @@ public class RetirementPension {
         this.retirementType = retirementType;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
-    }
-
-    public String getNominee() {
-        return nominee;
-    }
-
-    public void setNominee(String nominee) {
-        this.nominee = nominee;
     }
 
     public String getRemarks() {
@@ -192,4 +185,5 @@ public class RetirementPension {
     }
 
     
+   
 }

@@ -5,12 +5,11 @@
  */
 package itgarden.model;
 
-import itgarden.model.lookup.PostingDesignation;
 import itgarden.model.enumvalue.PostingType;
 import itgarden.model.enumvalue.Selectiongrade;
-import itgarden.model.lookup.PostingRank;
+import itgarden.model.lookup.PostingDesignation;
 import itgarden.model.lookup.PresentPostingLocation;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,7 +19,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -37,9 +38,7 @@ public class FirstJoiningInformation {
     @OneToOne(optional = false)
     private Users governmentId;
 
-    @NotNull(message = "Rank cannot be blank.")
-    @ManyToOne(optional = false)
-    private PostingRank postingRank;
+    
 
     @NotNull(message = " *Posting type cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
@@ -53,9 +52,15 @@ public class FirstJoiningInformation {
     @ManyToOne(optional = false)
     private PresentPostingLocation firstJoiningOfficeLocation;
 
-    private String dateFirstJoining;
+   
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    
+    private Date dateFirstJoining;
 
-    private String dateofGazetted;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateofGazetted;
 
     @NotNull(message = " *Grade  cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
@@ -67,8 +72,8 @@ public class FirstJoiningInformation {
      * ***************** Start Auditor ********************************
      */
 //   @Version
-    @Column(name = "version")
-    private long version;
+//    @Column(name = "version")
+//    private long version;
 
     @Column(name = "created_on", nullable = false, insertable = true, updatable = false)
     //@CreatedDate
@@ -86,10 +91,9 @@ public class FirstJoiningInformation {
     //@LastModifiedBy
     private String updatedBy;
 
-    public FirstJoiningInformation(Long id, Users governmentId, PostingRank postingRank, PostingType postingType, PostingDesignation firstPostingDesignation, PresentPostingLocation firstJoiningOfficeLocation, String dateFirstJoining, String dateofGazetted, Selectiongrade grade, String remarks, long version, String createdBy, String updatedBy) {
+    public FirstJoiningInformation(Long id, Users governmentId, PostingType postingType, PostingDesignation firstPostingDesignation, PresentPostingLocation firstJoiningOfficeLocation, Date dateFirstJoining, Date dateofGazetted, Selectiongrade grade, String remarks, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
-        this.postingRank = postingRank;
         this.postingType = postingType;
         this.firstPostingDesignation = firstPostingDesignation;
         this.firstJoiningOfficeLocation = firstJoiningOfficeLocation;
@@ -97,12 +101,9 @@ public class FirstJoiningInformation {
         this.dateofGazetted = dateofGazetted;
         this.grade = grade;
         this.remarks = remarks;
-        this.version = version;
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
     }
-
-    
 
     public FirstJoiningInformation() {
     }
@@ -147,19 +148,19 @@ public class FirstJoiningInformation {
         this.firstJoiningOfficeLocation = firstJoiningOfficeLocation;
     }
 
-    public String getDateFirstJoining() {
+    public Date getDateFirstJoining() {
         return dateFirstJoining;
     }
 
-    public void setDateFirstJoining(String dateFirstJoining) {
+    public void setDateFirstJoining(Date dateFirstJoining) {
         this.dateFirstJoining = dateFirstJoining;
     }
 
-    public String getDateofGazetted() {
+    public Date getDateofGazetted() {
         return dateofGazetted;
     }
 
-    public void setDateofGazetted(String dateofGazetted) {
+    public void setDateofGazetted(Date dateofGazetted) {
         this.dateofGazetted = dateofGazetted;
     }
 
@@ -177,14 +178,6 @@ public class FirstJoiningInformation {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
-
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
     }
 
     public Date getCreatedOn() {
@@ -219,17 +212,5 @@ public class FirstJoiningInformation {
         this.updatedBy = updatedBy;
     }
 
-    public PostingRank getPostingRank() {
-        return postingRank;
-    }
-
-    public void setPostingRank(PostingRank postingRank) {
-        this.postingRank = postingRank;
-    }
-
-   
-
-    /**
-     * ***************** End Auditor ********************************
-     */
+    
 }

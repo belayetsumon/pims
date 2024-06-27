@@ -40,11 +40,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/users/front-registrations", "/users/front-registrations-save", "/users/userforgotpassword", "/forgotpassword/**","/subdepartment/bydepartment/{department}").permitAll()
 //                .antMatchers("/dashboards/index").hasRole("admin")
+              
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/users/login")
-                .defaultSuccessUrl("/",true)
+                .defaultSuccessUrl("/selfservice/index",true)
                 .usernameParameter("username")
                 .passwordParameter("password")
                 //                .failureUrl("/login?error=true")
@@ -75,6 +76,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 //    @Autowired
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+//        auth.inMemoryAuthentication().withUser("user").password("user").roles("administrator");
 //    }
 }

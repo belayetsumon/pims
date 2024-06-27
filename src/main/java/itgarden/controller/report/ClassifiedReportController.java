@@ -88,5 +88,14 @@ public class ClassifiedReportController {
         return "/pims/report/classified/leave_index";
 
     }
+    
+    
+      @RequestMapping("/promotioneligibility")
+    public String promotionEligibility(Model model) {
+
+        return "/pims/report/classified/promotioneligibility";
+
+    }
+    
 
 }

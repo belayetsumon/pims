@@ -52,20 +52,7 @@
                                             <input type="hidden" class="form-control display"  th:field="*{governmentId}" />
                                         </div>                         
 
-                                        <div class="row">
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Posting Rank/Order of precedence : <span class="text-red">  </span> </label>
-                                                <div class="col-sm-6">                   
-                                                    <select class="form-control  "   th:field="*{postingRank}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" grade :${postingrank}"
-                                                                th:value=" ${grade.id}" 
-                                                                th:text="${grade.name}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingRank')}" th:errors="*{postingRank}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                        </div>
+
                                         <div class="row">
                                             <div class="form-group ">
                                                 <label for="name" class="col-sm-3 control-label"> Posting Type:<span class="text-red"> * </span> </label>
@@ -200,12 +187,10 @@
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
                                                 <th>Sr. no.</th> 
-                                                <th>Posting Rank/Order of precedence : </th>
                                                 <th>Posting Type</th>
                                                 <th>Designation</th>
                                                 <th>Office Location</th>
                                                 <th>Country</th>
-
                                                 <th>Period From</th>
                                                 <th>Period To</th>
                                                 <th>Scale/Grade</th>
@@ -218,7 +203,6 @@
 
                                         <tr  th:each="list,status:${list}">
                                             <td th:text="${ status.count}">2 </td> 
-                                            <td th:text="${list.postingRank.name}">BCS</td> 
                                             <td th:text="${list.postingType}">BCS</td> 
                                             <td th:text="${list.postingDesignation.name}">BCS</td> 
                                             <td th:text="${list.postingLocation.name}">BCS</td> 

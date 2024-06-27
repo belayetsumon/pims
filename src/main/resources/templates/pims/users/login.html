@@ -19,10 +19,13 @@
                     <div class="col-sm-12">
                     
                     <div class="box box-success ">
-                        <div class="box-header with-border">
-                            <h3 class="box-title"> Login </h3>
+                        <div class="box-header with-border text-center">
+                            <h1 class="box-title"><span class="text-success">আমাদের </span><span class="text-danger">ঢাকা, আমাদের </span><span class="text-success">ঐতিহ্য</span></h1>
                             <div class="box-tools pull-right">
                                 <div class="btn-group">
+<!--                                    <div sec:authorize="!isAuthenticated()">
+                          hi
+                        </div>-->
                                 </div>
                             </div>
                         </div>
@@ -34,10 +37,22 @@
                             <div class="col-sm-6">
                                  <img th:src="@{/images/dscc-building.jpg}"  class="img-thumbnail " />
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
+                                
+                                <div class="box box-success box-solid">
+                                        <div class="box-header box-success">
+                                            <h3 class="box-title text-center"> অনুগ্রহপূর্বক আপনার আইডি এবং পাসওয়ার্ড প্রদান  করুন </h3>
+                                            <div class="box-tools pull-right">
+                                                <div class="btn-group">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-body">
+                              
                                 
                           
-                                <h3 class="box-title text-center"> Please provide your user name  and password </h3>
+<!--                                <h3 class="box-title text-center"> Please provide your user name  and password </h3>-->
                                 <!--    <p class="login-box-msg">Sign in to start your session</p>-->
                                 <div class="alert alert-danger" th:if="${param.error}">
                                     Invalid User Name or Password. Please try again.   
@@ -48,41 +63,35 @@
                                 </div>
                                 <form th:action="@{/users/login}"  method="post">
                                     <div class="form-group has-feedback">
-                                        <input type="text"  name="username"   required class="form-control" placeholder="Govt. Id" />
+                                        <input type="text"  name="username"   required class="form-control" placeholder="আই ডি" />
 
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <input type="password" name="password"  class="form-control" placeholder="Password" required />
+                                        <input type="password" name="password"  class="form-control" placeholder="পাসওয়ার্ড" required />
                                         
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     </div>
-                                    <div class="row">
+                                   
 
-                                        <div class="col-xs-4">
-                                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                                        </div>
+                                       <div class="form-group has-feedback">
+                                           <button type="submit" class="btn btn-primary btn-block btn-flat">প্রবেশ করুন</button>
+                                       
+                                   </div>
+                                            
+                                     
 
-                                    </div>
+                               
                                 </form>
 
-                                <div class="social-auth-links text-center">
-                                    <p>- OR -</p>
+<!--                                <div class="social-auth-links text-center">
+                                    <p>- অথবা -</p>
                                 </div>
-                                <!-- /.social-auth-links -->
+                                 /.social-auth-links 
 
-<!--                                <a th:href="@{/forgotpassword/userforgotpassword}"  class="btn btn-block btn-social btn-facebook btn-flat"> I forgot my password</a><br/>-->
-                                <a th:href="@{/users/front-registrations}" class="btn btn-block btn-social btn-google btn-flat"> Register a new employee</a>
+                                <a th:href="@{/forgotpassword/userforgotpassword}"  class="btn btn-block btn-social btn-facebook btn-flat"> I forgot my password</a><br/>
+                                <a th:href="@{/users/front-registrations}" class="btn btn-google btn-block btn-flat">নতুন সদস্য নিবন্ধন করুন </a>-->
                             </div>   
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer">
-                            <div class="box-tools pull-right">
-                                <div class="btn-group">
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-footer-->
+                        </div> </div>  </div>          
                     </div>           
                     </div>
 

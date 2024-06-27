@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    মানব সম্পদ ব্যাবস্থাপনা 
+                    <small></small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> নিম্নের যেকোন ঘরে আপনার প্রয়োজনীয় ভ্যালু দিয়ে খুজুন। </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning btn-xs">বন্ধ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">
+                        </div>
+
+                        <div class="col-sm-12">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid">
+                                <div class="box-body">
+
+                                    <form  th:action="@{/missearch/ginforlist}"  method="GET" class="form-horizontal" >
+
+                                        <div class="row"> 
+                                            <div class="form-group">
+                                                <label  class="col-sm-4 control-label" for="name"> সনাক্তকরণ নম্বর (IDN) <span class="text-red"> </span> :</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control"     name="governmentId"   />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> বিভাগ  <span class="text-red">  </span>: </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="department" >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" department: ${department}"
+                                                                th:value="${department.id} " 
+                                                                th:text="${department.name}"> Select one</option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> উপ বিভাগ <span class="text-red">  </span>: </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="subDepartment" >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" subDepartment : ${subDepartment}"
+                                                                th:value="${subDepartment.id} " 
+                                                                th:text="${subDepartment.name}"> Select one</option>
+                                                    </select>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row"> 
+                                            <div class="form-group">
+                                                <label  class="col-sm-4 control-label" for="name">ইমেল <span class="text-red"> </span> :</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control"     name="email"   />
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row"> 
+                                            <div class="form-group">
+                                                <label  class="col-sm-4 control-label" for="mobile"> মুঠো ফোন<span class="text-red"> </span> :</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control"    name="mobile" />
+
+                                                </div>
+                                            </div>    </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> নাম (ইংরেজী) :<span class="text-red">  </span></label>
+                                                <div class="col-sm-5">                    
+                                                    <input type="text"  class="form-control  "    name="name"  />        
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> নাম (বাংলা):<span class="text-red">  </span></label>
+                                                <div class="col-sm-5">                    
+                                                    <input type="text"  class="form-control  "    name="nameBangla"  />        
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+
+                                        <!--                                        <div class="row">
+                                                                                    <div class="form-group">
+                                        
+                                                                                        <label for="name" class="col-sm-4 control-label"> à¦¬à¦¾à¦¬à¦¾à¦° à¦¨à¦¾à¦® :<span class="text-red">  </span></label>
+                                                                                        <div class="col-sm-5">                    
+                                                                                            <input type="text"  class="form-control  "    name="fathersName"  />        
+                                        
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                </div>
+                                        
+                                                                                <div class="row">
+                                                                                    <div class="form-group">
+                                        
+                                                                                        <label for="name" class="col-sm-4 control-label"> à¦¬à¦¾à¦¬à¦¾à¦° à¦¨à¦¾à¦® à¦¬à¦¾à¦‚à¦²à¦¾ :<span class="text-red"> * </span></label>
+                                                                                        <div class="col-sm-5">                    
+                                                                                            <input type="text"  class="form-control  "    name="fathersNameBangla"  />        
+                                        
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                </div>-->
+
+                                        <!--                                        <div class="row">
+                                                                                    <div class="form-group">
+                                                                                        <label for="name" class="col-sm-4 control-label"> à¦®à¦¾à¦¯à¦¼à§‡à¦° à¦¨à¦¾à¦® :<span class="text-red"> * </span></label>
+                                                                                        <div class="col-sm-5">                    
+                                                                                            <input type="text"  class="form-control  "    name="mothersName"  />        
+                                        
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                </div>
+                                        
+                                                                                <div class="row">
+                                                                                    <div class="form-group">
+                                                                                        <label for="name" class="col-sm-4 control-label"> à¦®à¦¾à¦¯à¦¼à§‡à¦° à¦¨à¦¾à¦® à¦¬à¦¾à¦‚à¦²à¦¾  :<span class="text-red"> * </span></label>
+                                                                                        <div class="col-sm-5">                    
+                                                                                            <input type="text"  class="form-control  "     name="mothersNameBangla"  />        
+                                        
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                </div>-->
+
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> নিজ জেলা :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="homeDistrict"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" district :${district}"
+                                                                th:value=" ${district}" 
+                                                                th:text="${district}"> Select one</option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">  জন্ম তারিখ :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">    
+                                                    <div class="input-group date" >
+                                                        <div class="input-group-addon" > 
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" placeholder="dd/mm/yyyy" class="form-control  "  name="dateofBirth"    />                
+                                                    </div>  
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                        <div class="row">
+                                                                                    <div class="form-group ">
+                                                                                        <label for="name" class="col-sm-4 control-label"> à¦œà¦¨à§�à¦®à¦­à§‚à¦®à¦¿ :<span class="text-red"> * </span> </label>
+                                                                                        <div class="col-sm-5">                   
+                                                                                            <select class="form-control  "    name="birthCountry"  >
+                                                                                                <option value=" "> Select one</option>
+                                                                                                <option th:each =" birthCountry :${birthcountry}"
+                                                                                                        th:value=" ${birthCountry}" 
+                                                                                                        th:text="${birthCountry}"> Select one</option></select>
+                                        
+                                                                                        </div>                            
+                                                                                    </div>
+                                                                                </div>-->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> জন্ম নিবন্ধন নম্বর:<span class="text-red">  </span></label>
+                                                <div class="col-sm-5">                    
+                                                    <input type="text"  class="form-control  "     name="birthCertificateNumber"  />        
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> লিঙ্গঃ <span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="gender"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" gender :${gender}"
+                                                                th:value=" ${gender}" 
+                                                                th:text="${gender}"> Select one</option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> বৈবাহিক অবস্থা:<span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="maritalStatus"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" maritalStatus :${maritalStatus}"
+                                                                th:value=" ${maritalStatus}" 
+                                                                th:text="${maritalStatus}"> Select one</option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> ধর্ম: <span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="religion">
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" religion :${religion}"
+                                                                th:value=" ${religion}" 
+                                                                th:text="${religion}"> Select one</option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> জাতিগত পরিচয়: <span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="ethnicIdentity"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each ="ethnicIdentitys:${ethnicIdentitys}"
+                                                                th:value=" ${ethnicIdentitys}" 
+                                                                th:text="${ethnicIdentitys}"> Select one</option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <!--                                            <div class="row">
+                                                                                        <div class="form-group">
+                                                                                            <label for="name" class="col-sm-4 control-label"> à¦œà¦¾à¦¤à§€à¦¯à¦¼à¦¤à¦¾: <span class="text-red"> * </span></label>
+                                                                                            <div class="col-sm-5">                    
+                                                                                                <input type="text"  class="form-control  "     name="nationality"  />        
+                                        
+                                                                                            </div>                            
+                                                                                        </div>
+                                                                                    </div>-->
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label">রক্তের গ্রুপ: <span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="bloodGroup"  >
+                                                        <option value=" "> Select one </option>-->
+                                                        <option th:each =" bloodgroupes :${bloodgroups}" th:value=" ${bloodgroupes}"  th:text="${bloodgroupes}"> Select one </option>
+                                                    </select>
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <!--                                            <div class="row">
+                                                                                        <div class="form-group">
+                                                                                            <label for="name" class="col-sm-4 control-label"> à¦¡à§�à¦°à¦¾à¦‡à¦­à¦¿à¦‚ à¦²à¦¾à¦‡à¦¸à§‡à¦¨à§�à¦¸  : <span class="text-red">  </span></label>
+                                                                                            <div class="col-sm-5">                    
+                                                                                                <input type="text"  class="form-control  "     name="drivingLicence"  />        
+                                        
+                                                                                            </div>                            
+                                                                                        </div>
+                                                                                    </div>-->
+
+                                        <!--                                            <div class="row">
+                                                                                        <div class="form-group">
+                                                                                            <label for="name" class="col-sm-4 control-label"> à¦ªà¦¾à¦¸à¦ªà§‹à¦°à§�à¦Ÿ à¦¨à¦®à§�à¦¬à¦° :<span class="text-red">  </span></label>
+                                                                                            <div class="col-sm-5">                    
+                                                                                                <input type="text"  class="form-control  "     name="passportNo"  />        
+                                        
+                                                                                            </div>                            
+                                                                                        </div>
+                                                                                    </div>-->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> জাতীয় পরিচয়পত্র নম্বর:<span class="text-red">  </span></label>
+                                                <div class="col-sm-5">                    
+                                                    <input type="text"  class="form-control  "     name="nid"  />        
+
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <!--                                            <div class="row">
+                                                                                        <div class="form-group">
+                                                                                            <label for="name" class="col-sm-4 control-label"> à¦Ÿà¦¿à¦†à¦‡à¦�à¦¨ à¦¨à¦‚  :<span class="text-red">  </span></label>
+                                                                                            <div class="col-sm-5">                    
+                                                                                                <input type="text"  class="form-control  "     name="tin"  />        
+                                        
+                                                                                            </div>                            
+                                                                                        </div>
+                                                                                    </div>-->
+                                        <!--                                            <div class="row">
+                                                                                        <div class="form-group">
+                                                                                            <label for="name" class="col-sm-4 control-label">  অবসর উত্তর ছুটির তারিখ শুরু :<span class="text-red">  </span> </label>
+                                                                                            <div class="col-sm-5">    
+                                                                                                <div class="input-group date" >
+                                                                                                    <div class="input-group-addon" > 
+                                                                                                        <i class="fa fa-calendar"></i>
+                                                                                                    </div>
+                                                                                                    <input type="text"    class="form-control  "  id="glPRDate"  name="lPRStartDate"    />                
+                                                                                                </div>  
+                                        
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>-->
+
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label">  অবসর উত্তর ছুটির বছর:<span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">   
+
+
+                                                    <select class="form-control  "    name="lpryear" >
+                                                        <option value=0> Select one</option>
+                                                        <option th:each =" years : ${year}"
+                                                                th:value="${years.year} " 
+                                                                th:text="${years.year}"> Select one</option>
+                                                    </select>
+
+                                                    <!--                                                    <select class="form-control  "    name="lpryear"  >
+                                                                                                            <option value="2023 ">2023</option>
+                                                                                                            <option value="2024"> 2024</option> comment 
+                                                                                                            <option value="2025">2025</option> comment 
+                                                                                                            <option value="2026"> 2026</option>
+                                                                                                            <option value="2027"> 2027</option>
+                                                                                                            <option value="2028"> 2028</option>
+                                                                                                            <option value="2029"> 2029</option>
+                                                                                                            <option value="2030"> 2030</option>
+                                                                                                            <option value="2031"> 2031</option>
+                                                                                                            <option value="2032"> 2032</option>
+                                                                                                            <option value="2033"> 2033</option>
+                                                                                                            <option value="2034"> 2034</option>
+                                                                                                            <option value="2035"> 2035</option>
+                                                                                                            <option value="2036"> 2036</option>
+                                                                                                            <option value="2037 "> 2037</option>
+                                                                                                            <option value="2038"> 2038</option>
+                                                                                                            <option value="2039"> 2039</option>
+                                                                                                            <option value="2040"> 2040</option>
+                                                                                                            <option value="2041 "> 2041</option>
+                                                                                                            <option value="2041">2042</option>
+                                                                                                            <option value="2042"> 2042</option>
+                                                                                                            <option value="2043"> 2043</option>
+                                                                                                            <option value="2044"> 2044</option>
+                                                                                                            <option value="2045"> 2045</option>
+                                                    
+                                                                                                        </select>-->
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label for="name" class="col-sm-4 control-label"> চাকরির বর্তমান অবস্থা :<span class="text-red">  </span> </label>
+                                                <div class="col-sm-5">                   
+                                                    <select class="form-control  "    name="employeeStatus"  >
+                                                        <option value=" "> Select one</option>
+                                                        <option th:each =" employeestatus :${employeestatus}"
+                                                                th:value=" ${employeestatus}" 
+                                                                th:text="${employeestatus}"> Select one</option>
+                                                    </select>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class="btn-group text-center">
+
+                                                        <button type="submit" class="btn  btn-warning">Search</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>            
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

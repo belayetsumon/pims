@@ -33,7 +33,7 @@ public class PrivilegeController {
     @Autowired
     ModuleRepository moduleRepository;
 
-    @RequestMapping("/index")
+    @RequestMapping(value = {"", "/", "/index"})
 
     public String index(Model model, Privilege privilege) {
 
@@ -68,7 +68,7 @@ public class PrivilegeController {
 
             return "/pims/lookup/privilege";
         }
-        
+
         privilegeRepository.save(privilege);
 
         return "redirect:/privilege/index";

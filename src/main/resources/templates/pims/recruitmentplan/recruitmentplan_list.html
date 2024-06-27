@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                   নিয়োগ পরিকল্পনা 
+                    <small></small>
+                </h1>
+          
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                <a th:href="@{/recruitmentplan/index}" class="btn  btn-success btn-xs">নতুন যোগ করুন </a>
+                            <button type="button" class="btn  btn-warning btn-xs">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        
+                        
+                        <table class="table table-bordered ">
+                                        <thead class=" box box-success  box-solid">
+                                            <tr>  
+                                                <th>Sr. no.</th> 
+                                                <th>বিভাগ </th>
+                                                <th>উপ বিভাগ</th>
+                                                <th>উপাধি </th>
+                                                <th>সংখ্যা  </th>
+<!--                                                <th>Created</th>
+                                                <th>Updated</th>-->
+                                                <th>সম্পাদনা</th>
+                                                <th>মুছে ফেলুন</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tr  th:each="list,status:${list}">
+                                            <td th:text="${ status.count}">2 </td> 
+                                           
+                                            <td th:text="${list.department.name}">BCS</td> 
+                                        
+                                            <td th:text="${list.subDepartment.name}">BCS</td> 
+                                            
+                                             <td th:text="${list.postingDesignation.name}">BCS</td> 
+                                             
+                                              <td th:text="${list.qty}">BCS</td> 
+                                                <td th:text="${list.remanrk}">BCS</td> 
+                                             
+                                             
+                                             
+                                            <td>Created:<span th:text="${list.createdOn}"></span><br/>
+                                                Created By:<span th:text="${list.createdBy}"></span>
+                                            </td>
+                                            <td>
+                                                Updated:<span th:text="${list.updatedOn}"></span><br/>
+                                                Updated By:<span th:text="${list.updatedBy}"></span>
+                                            </td>
+                                            <td> <!--  <button class=" btn  btn-xs bg-orange"> <i class="fa fa-eye" aria-hidden="true"></i> </button> -->
+                                                <a  class=" btn  btn-xs bg-maroon" th:href="@{/recruitmentplan/edit/{id} (id=${list.id})}" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+
+                                                <a class=" btn  btn-xs bg-red" th:href="@{/recruitmentplan/delete/{id} (id=${list.id})}" > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                            </td>
+
+                                        </tr>
+
+
+                                    </table> 
+                        
+                        
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>

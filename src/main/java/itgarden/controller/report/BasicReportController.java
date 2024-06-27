@@ -5,6 +5,7 @@
  */
 package itgarden.controller.report;
 
+import itgarden.report.services.*;
 import itgarden.repository.AcrRepository;
 import itgarden.repository.AdditionalQualificationRepository;
 import itgarden.repository.AddressInformationRepository;
@@ -123,158 +124,176 @@ public class BasicReportController {
 
     @Autowired
     UsersRepository usersRepository;
-    
-     @Autowired
+
+    @Autowired
     AcrRepository acrRepository;
+
+    @Autowired
+    PlrService plrService;
+
+    @Autowired
+    PromotionsService promotionsService;
 
     @RequestMapping("/generalinformation")
     public String generalinformation(Model model) {
         model.addAttribute("list", generalInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/generalinformation";
+        return "pims/report/basic/generalinformation";
     }
 
     @RequestMapping("/addressinformation")
     public String addressinformation(Model model) {
         model.addAttribute("list", addressInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/addressinformation";
+        return "pims/report/basic/addressinformation";
     }
 
     @RequestMapping("/spouse")
     public String spouse(Model model) {
         model.addAttribute("list", spousNameRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/spouse";
+        return "pims/report/basic/spouse";
     }
 
     @RequestMapping("/childreninformation")
     public String childreninformation(Model model) {
         model.addAttribute("list", childrenInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/childreninformation";
+        return "pims/report/basic/childreninformation";
     }
 
     @RequestMapping("/educationalInformation")
     public String educationalInformation(Model model) {
         model.addAttribute("list", educationalInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/educationalInformation";
+        return "pims/report/basic/educationalInformation";
     }
 
     @RequestMapping("/additionalqualification")
     public String additionalqualification(Model model) {
         model.addAttribute("list", additionalQualificationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/additionalqualification";
+        return "pims/report/basic/additionalqualification";
     }
 
     @RequestMapping("/language")
     public String language(Model model) {
         model.addAttribute("list", languageInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/language";
+        return "pims/report/basic/language";
     }
 
     @RequestMapping("/jobentryprocess")
     public String jobentryprocess(Model model) {
         model.addAttribute("list", jobEntryProcessRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/jobentryprocess";
+        return "pims/report/basic/jobentryprocess";
     }
 
     @RequestMapping("/firstjoininginformation")
     public String firstjoininginformation(Model model) {
         model.addAttribute("list", firstJoiningInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/firstjoininginformation";
+        return "pims/report/basic/firstjoininginformation";
     }
 
     @RequestMapping("/presentjob")
     public String presentjob(Model model) {
         model.addAttribute("list", presentJobRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/presentjob";
+        return "pims/report/basic/presentjob";
     }
 
     @RequestMapping("/postingrecordinformation")
     public String postingrecordinformation(Model model) {
         model.addAttribute("list", postingRecordInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/postingrecordinformation";
+        return "pims/report/basic/postingrecordinformation";
     }
 
     @RequestMapping("/promotionsinformation")
     public String promotionsinformation(Model model) {
         model.addAttribute("list", promotionsInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/promotionsinformation";
+        return "pims/report/basic/promotionsinformation";
     }
 
     @RequestMapping("/magisterialpower")
     public String magisterialpower(Model model) {
         model.addAttribute("list", magisterialPowerRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/magisterialpower";
+        return "pims/report/basic/magisterialpower";
     }
 
     @RequestMapping("/selectiongrade")
     public String selectiongrade(Model model) {
         model.addAttribute("list", selectionGradeRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/selectiongrade";
+        return "pims/report/basic/selectiongrade";
     }
 
     @RequestMapping("/postingabroadinformation")
     public String postingabroadinformation(Model model) {
         model.addAttribute("list", postingAbroadInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/postingabroadinformation";
+        return "pims/report/basic/postingabroadinformation";
     }
 
     @RequestMapping("/foreigntraininginformation")
     public String foreigntraininginformation(Model model) {
         model.addAttribute("list", foreignTrainingInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/foreigntraininginformation";
+        return "pims/report/basic/foreigntraininginformation";
     }
 
     @RequestMapping("/inservicetraininginformation")
     public String inservicetraininginformation(Model model) {
         model.addAttribute("list", inServiceTrainingInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/inservicetraininginformation";
+        return "pims/report/basic/inservicetraininginformation";
     }
 
     @RequestMapping("/otherserviceinformation")
     public String otherserviceinformation(Model model) {
         model.addAttribute("list", otherServiceInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/otherserviceinformation";
+        return "pims/report/basic/otherserviceinformation";
     }
 
     @RequestMapping("/honorsandawardinformation")
     public String honorsandawardinformation(Model model) {
         model.addAttribute("list", honorsAndAwardInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/honorsandawardinformation";
+        return "pims/report/basic/honorsandawardinformation";
     }
 
     @RequestMapping("/disciplinaryaction")
     public String disciplinaryaction(Model model) {
         model.addAttribute("list", disciplinaryActionDetailsRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/disciplinaryaction";
+        return "pims/report/basic/disciplinaryaction";
     }
 
     @RequestMapping("/leaveinfo")
     public String leaveinfo(Model model) {
         model.addAttribute("list", leaveinfoRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/leaveinfo";
+        return "pims/report/basic/leaveinfo";
     }
 
     @RequestMapping("/publication")
     public String publication(Model model) {
         model.addAttribute("list", publicationInformationRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/publication";
+        return "pims/report/basic/publication";
     }
 
     @RequestMapping("/membership")
     public String membership(Model model) {
         model.addAttribute("list", membershipRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/membership";
+        return "pims/report/basic/membership";
     }
 
     @RequestMapping("/acr")
     public String acr(Model model) {
         model.addAttribute("list", acrRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/acr";
+        return "pims/report/basic/acr";
     }
-    
+
     @RequestMapping("/retirementpension")
     public String retirementpension(Model model) {
         model.addAttribute("list", retirementPensionRepository.findAllByOrderByIdDesc());
-        return "/pims/report/basic/retirementpension";
+        return "pims/report/basic/retirementpension";
+    }
+
+    @RequestMapping("/lprbyyear")
+    public String lprByYear(Model model) {
+        model.addAttribute("list", plrService.plrByYearList());
+        return "pims/report/basic/plr_By_year";
+    }
+
+    @RequestMapping("/lastpromotion")
+    public String lastpromotion(Model model) {
+        model.addAttribute("list", promotionsService.lastPromotions());
+        return "pims/report/basic/lastpromotionsr";
     }
 
 }

@@ -10,6 +10,7 @@ $(document).ready(function () {
     $(function () {   // Star date of birth
 
         $("#dateofBirth").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:+nn",
             changeYear: true,
             changeMonth: true
@@ -20,7 +21,22 @@ $(document).ready(function () {
 
     $(function () {
 
+        $("#glPRDate").datepicker({
+            dateFormat: 'dd/mm/yy',
+            yearRange: "1940:+nn",
+            changeYear: true,
+            changeMonth: true
+
+        });
+
+    });
+
+
+
+    $(function () {
+
         $("#cadreDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:+nn",
             changeYear: true,
             changeMonth: true
@@ -31,6 +47,7 @@ $(document).ready(function () {
     $(function () {
 
         $("#joinDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:+nn",
             changeYear: true,
             changeMonth: true
@@ -41,6 +58,7 @@ $(document).ready(function () {
     $(function () {
 
         $("#confirmationGODate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:+nn",
             changeYear: true,
             changeMonth: true
@@ -49,200 +67,210 @@ $(document).ready(function () {
     });
 
 
- $(function () {
 
-        $("#lPRDate").datepicker({
-            yearRange: "1940:2050",
-            changeYear: true,
-            changeMonth: true
-        });
 
-    });
-    
-    
-     $(function () {
+
+    $(function () {
 
         $("#dateofMarriage").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
-    
-     $(function () {
+
+
+
+    $(function () {
 
         $("#oderDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
-         $(function () {
+
+
+    $(function () {
 
         $("#dateFirstJoining").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
-        
-         $(function () {
+
+
+
+    $(function () {
 
         $("#dateofGazetted").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
-      $(function () {
+
+
+    $(function () {
 
         $("#examDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
+
+
     $(function () {
 
         $("#resultDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
+
     $(function () {
 
         $("#jobConfirmationDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-     $(function () {
+
+    $(function () {
 
         $("#dateJoining").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
+
     $(function () {
 
         $("#leaveStartDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
-     $(function () {
+
+
+    $(function () {
 
         $("#dateofPromotion").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
-     $(function () {
+
+
+    $(function () {
 
         $("#govtOrderDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
 
-$(function () {
+
+    $(function () {
 
         $("#periodFrom").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
+
     $(function () {
 
         $("#periodTo").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-    
+
+
     $(function () {
 
         $("#fromDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
     });
-    
+
     $(function () {
 
         $("#endDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
+
     $(function () {
 
         $("#registrationDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
+
     $(function () {
 
         $("#lastRenewaalDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
         });
 
     });
-    
-     $(function () {
+
+    $(function () {
 
         $("#lprDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true
@@ -250,9 +278,10 @@ $(function () {
 
     });
 
- $(function () {
+    $(function () {
 
         $("#startDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             yearRange: "1940:2050",
             changeYear: true,
             changeMonth: true

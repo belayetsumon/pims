@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                 ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Disciplinary Action Report</h3>
+                        <h3 class="box-title"> শাস্তিমূলক ব্যবস্থা</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -29,12 +29,12 @@
                                     <table class="table table-bordered " id="myTableId">
                                         <thead >
                                             <tr class="bg-green">  
-                                                <th>Sr. no.</th> 
-                                                <th>Nature of Offence  </th>
-                                                <th>Punishment Nature</th>
-                                                <th> Punishment:</th>
-                                                <th> Order Date:</th>
-                                                 <th> Details </th>
+                                                     <th>নং</th> 
+                                                <th>অপরাধ প্রকৃতি</th>
+                                                <th>শাস্তির প্রকৃতি</th>
+                                                <th> শাস্তি :</th>
+                                                <th> অর্ডারের তারিখ:</th>
+                                                 <th> বিস্তারিত </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -44,7 +44,7 @@
                                                 <td th:text="${list.punishmentNature}">BCS</td>
                                                 <td th:text="${list.punishment}">BCS</td>  
                                                 <td th:text="${list.oderDate}">BCS</td> 
-                                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
+                                                <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">বিস্তারিত</a></td> 
                                             </tr>
 
                                         </tbody>

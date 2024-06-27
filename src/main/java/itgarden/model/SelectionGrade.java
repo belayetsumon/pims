@@ -9,7 +9,6 @@ import itgarden.model.enumvalue.BirthCountry;
 import itgarden.model.enumvalue.PostingType;
 import itgarden.model.enumvalue.PromotionNature;
 import itgarden.model.lookup.PostingDesignation;
-import itgarden.model.lookup.PostingRank;
 import itgarden.model.lookup.PresentPostingLocation;
 import java.util.Date;
 import javax.persistence.Column;
@@ -20,8 +19,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -38,19 +38,23 @@ public class SelectionGrade {
     @ManyToOne(optional = true)
     private Users governmentId;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String dateofPromotion;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date dateofPromotion;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String govtOrderDate;
+     @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date govtOrderDate;
 
     @NotNull(message = " * Nature Of Promotions reason cannot be blank.")
     @Enumerated(EnumType.STRING)
     private PromotionNature  natureOfPromotions;
 
-    @NotNull(message = "This field cannot be blank.")
-    @ManyToOne(optional = true)
-    private PostingRank postingRank;  // Present Posting Rank  : DY. SECRETARY
+
 
     @NotNull(message = " *Posting type cannot be blank.")
     @Enumerated(EnumType.ORDINAL)
@@ -99,13 +103,12 @@ public class SelectionGrade {
     public SelectionGrade() {
     }
 
-    public SelectionGrade(Long id, Users governmentId, String dateofPromotion, String govtOrderDate, PromotionNature natureOfPromotions, PostingRank postingRank, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, BirthCountry country, String scale, long version, String createdBy, String updatedBy) {
+    public SelectionGrade(Long id, Users governmentId, Date dateofPromotion, Date govtOrderDate, PromotionNature natureOfPromotions, PostingType postingType, PostingDesignation postingDesignation, PresentPostingLocation postingLocation, BirthCountry country, String scale, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.dateofPromotion = dateofPromotion;
         this.govtOrderDate = govtOrderDate;
         this.natureOfPromotions = natureOfPromotions;
-        this.postingRank = postingRank;
         this.postingType = postingType;
         this.postingDesignation = postingDesignation;
         this.postingLocation = postingLocation;
@@ -115,8 +118,6 @@ public class SelectionGrade {
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
     }
-
-
 
     public Long getId() {
         return id;
@@ -134,19 +135,19 @@ public class SelectionGrade {
         this.governmentId = governmentId;
     }
 
-    public String getDateofPromotion() {
+    public Date getDateofPromotion() {
         return dateofPromotion;
     }
 
-    public void setDateofPromotion(String dateofPromotion) {
+    public void setDateofPromotion(Date dateofPromotion) {
         this.dateofPromotion = dateofPromotion;
     }
 
-    public String getGovtOrderDate() {
+    public Date getGovtOrderDate() {
         return govtOrderDate;
     }
 
-    public void setGovtOrderDate(String govtOrderDate) {
+    public void setGovtOrderDate(Date govtOrderDate) {
         this.govtOrderDate = govtOrderDate;
     }
 
@@ -156,16 +157,6 @@ public class SelectionGrade {
 
     public void setNatureOfPromotions(PromotionNature natureOfPromotions) {
         this.natureOfPromotions = natureOfPromotions;
-    }
-
- 
-
-    public PostingRank getPostingRank() {
-        return postingRank;
-    }
-
-    public void setPostingRank(PostingRank postingRank) {
-        this.postingRank = postingRank;
     }
 
     public PostingType getPostingType() {
@@ -248,6 +239,4 @@ public class SelectionGrade {
         this.updatedBy = updatedBy;
     }
 
-   
-  
 }

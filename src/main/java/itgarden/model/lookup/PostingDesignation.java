@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
@@ -32,6 +33,17 @@ public class PostingDesignation {
 
     @NotEmpty(message = "This field cannot be blank.")
     public String name;
+    
+    public int orderId;
+
+    @Lob
+    public String jobDescription;
+
+    @Lob
+    public String requiredTraining;
+
+    @Lob
+    public String employeeBenefits;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "postingDesignation")
@@ -41,9 +53,13 @@ public class PostingDesignation {
     public PostingDesignation() {
     }
 
-    public PostingDesignation(Long id, String name, List<PresentJob> presentjob) {
+    public PostingDesignation(Long id, String name, int orderId, String jobDescription, String requiredTraining, String employeeBenefits, List<PresentJob> presentjob) {
         this.id = id;
         this.name = name;
+        this.orderId = orderId;
+        this.jobDescription = jobDescription;
+        this.requiredTraining = requiredTraining;
+        this.employeeBenefits = employeeBenefits;
         this.presentjob = presentjob;
     }
 
@@ -63,6 +79,38 @@ public class PostingDesignation {
         this.name = name;
     }
 
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getJobDescription() {
+        return jobDescription;
+    }
+
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
+    }
+
+    public String getRequiredTraining() {
+        return requiredTraining;
+    }
+
+    public void setRequiredTraining(String requiredTraining) {
+        this.requiredTraining = requiredTraining;
+    }
+
+    public String getEmployeeBenefits() {
+        return employeeBenefits;
+    }
+
+    public void setEmployeeBenefits(String employeeBenefits) {
+        this.employeeBenefits = employeeBenefits;
+    }
+
     public List<PresentJob> getPresentjob() {
         return presentjob;
     }
@@ -71,4 +119,5 @@ public class PostingDesignation {
         this.presentjob = presentjob;
     }
 
+    
 }

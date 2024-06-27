@@ -54,21 +54,7 @@
                                             <input type="hidden" class="form-control"  th:field="*{governmentId}" />
                                         </div>
 
-                                        <div class="row">
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label">Post Rank/Order of precedence :<span class="text-red"> * </span> </label>
-                                                <div class="col-sm-6">                   
-                                                    <select class="form-control  "   th:field="*{postingRank}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" postingrank :${postingrank}"
-                                                                th:value=" ${postingrank.id}" 
-                                                                th:text="${postingrank.name}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingType')}" th:errors="*{postingType}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-
-                                        </div>
+                                     
 
 
                                         <div class="row">
@@ -214,10 +200,7 @@
                                                 <th> Government ID </th>
                                                 <td th:text="${list.governmentId.governmentId}">Chakma</td>
                                             </tr> 
-                                            <tr>
-                                                <th> Post Rank/Order of precedence</th>
-                                                <td th:text="${list.postingRank.name}">Chakma</td>
-                                            </tr> 
+                                        
                                             <tr>
                                                 <th> Posting Type</th>
                                                 <td th:text="${list.postingType}">Chakma</td>

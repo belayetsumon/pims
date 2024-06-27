@@ -9,6 +9,7 @@ import itgarden.model.RetirementPension;
 import itgarden.model.Users;
 import itgarden.model.enumvalue.Retirement;
 import itgarden.repository.RetirementPensionRepository;
+import itgarden.repository.UsersRepository;
 import itgarden.service.LoggedUserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class RetirementPensionController {
     @Autowired
     LoggedUserService loggedUserService;
 
+    @Autowired
+    UsersRepository usersRepository;
+
     @RequestMapping("/index/{e_id}")
     public String index(Model model, @PathVariable Long e_id, RetirementPension retirementPension) {
 
@@ -44,6 +48,8 @@ public class RetirementPensionController {
         users.setId(e_id);
 
         retirementPension.setGovernmentId(users);
+
+        model.addAttribute("name", usersRepository.getOne(e_id));
 
         model.addAttribute("list", retirementPensionRepository.findByGovernmentIdOrderByIdDesc(users));
 

@@ -12,8 +12,8 @@ package itgarden.model.enumvalue;
 public enum Quota {
     Merit, 
     Freedom_Fighter, 
-    Female, 
-    Tribal, 
+    Female,
+    Minority,
     disability, 
     Others, 
     NA,

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title>PIMS | Personal Informations Management System</title>
+        <title>মানব সম্পদ ব্যবস্থাপনা</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
         <!-- Bootstrap 3.3.6 -->
@@ -15,6 +15,7 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href=" https://fonts.google.com/share?selection.family=Hind%2BSiliguri:wght@300;400;600;700"/>
         <!-- Theme style -->
         <link th:href="@{/webjars/adminlte/2.3.11/dist/css/AdminLTE.min.css}"   rel="stylesheet" type="text/css"  />
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -83,28 +84,32 @@
         <!-- JQuery Form Validator-->
         <script th:src="@{/webjars/adminlte/2.3.11/dist/js/app.min.js}">...</script>
 
-        <script th:src="@{/webjars/datatables/1.10.6/datatables.js}"></script>
+        <script th:src="@{/webjars/datatables/1.10.12/datatables.js}"></script>
 
 
         <!-- jsPDF -->
 
+        <script th:src="@{/webjars/jspdf/2.5.1/jspdf.umd.min.js}"></script>
 
         <!-- QR Code -->
         <script th:src="@{/js/jquery.qrcode.js}">...</script>
         <script th:src="@{/js/qrcode.js}">...</script>
 
-        <script th:src="@{/js/apps.js}">...</script>
+   
 
         <script th:src="@{/js/bootstrap_date.js}">...</script>
 
         <script th:src="@{/js/ajax.js}"> ...</script>
 
+        <script th:src="@{/js/app_datatable.js}"> ...</script>
+        
+             <script th:src="@{/js/apps.js}">...</script>
+             <script th:src="@{/js/jspdf_custom.js}">...</script>
         <script>
-                    CKEDITOR.replace('editor1', {
-                        uiColor: '#9AB8F3'
-                    });
+            CKEDITOR.replace('editor1', {
+                uiColor: '#9AB8F3'
+            });
         </script>
-
 
     </body>
 </html>

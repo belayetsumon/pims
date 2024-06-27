@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                     ব্যক্তিগত তথ্য ব্যবস্থাপনা সিস্টেম 
                     <small></small>
                 </h1>
             </section>
@@ -17,7 +17,7 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Selection Grade  Information</h3>
+                        <h3 class="box-title"> সিলেকশন গ্রেড তথ্য</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
                                 <a th:href="@{/details/detailsinfo/{id} (id=${selectionGrade.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
@@ -29,7 +29,7 @@
                             <!-- Default box -->
                             <div class="box box-warning box-solid  ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Selection Grade Information</h3>
+                                    <h3 class="box-title">সিলেকশন গ্রেড তথ্য যোগ/সম্পাদনা করুন</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -55,7 +55,7 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label">  Date of Promotion:<span class="text-red">*  </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> তারিখ  :<span class="text-red">*  </span></label>
                                                 <div class="col-sm-7">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Govt Order Date:<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> অফিস অর্ডার তারিখ :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">    
                                                     <div class="input-group date" >
                                                         <div class="input-group-addon" > 
@@ -85,7 +85,7 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Nature Of Promotions :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> প্রকৃতি :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                    
                                                     <select class="form-control  "   th:field="*{natureOfPromotions}"  >
                                                         <option value=" "> Select one</option>
@@ -98,23 +98,10 @@
                                             </div>
                                         </div>
 
+                                  
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Posting Rank/Order of precedence : <span class="text-red">  </span> </label>
-                                                <div class="col-sm-7">                   
-                                                    <select class="form-control  "   th:field="*{postingRank}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" grade :${postingrank}"
-                                                                th:value=" ${grade.id}" 
-                                                                th:text="${grade.name}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('postingRank')}" th:errors="*{postingRank}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Posting Type:<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> পোস্টিং প্রকার :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{postingType}"  >
                                                         <option value=" "> Select one</option>
@@ -129,7 +116,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Designation :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> উপাধি :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{postingDesignation}">
                                                         <option value=" "> Select one</option>
@@ -143,7 +130,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Office Location :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> অফিসে অবস্থান :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{postingLocation}"  >
                                                         <option value=" "> Select one</option>
@@ -159,7 +146,7 @@
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-4 control-label"> Country :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-4 control-label"> দেশ  :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{country}"  >
                                                         <!--                                                        <option value=" "> Select one</option>-->
@@ -174,7 +161,7 @@
 
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-4 control-label"> Scale / Grade : <span class="text-red">  </span> </label>
+                                                <label for="name" class="col-sm-4 control-label"> স্কেল / গ্রেড  : <span class="text-red">  </span> </label>
                                                 <div class="col-sm-7">                   
                                                     <select class="form-control  "   th:field="*{scale}"  >
                                                         <option value=" "> Select one</option>
@@ -204,7 +191,7 @@
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Selection Grade List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> সিলেকশন গ্রেড তথ্য</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -215,16 +202,16 @@
                                     <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                <th>Sr. no.</th> 
-                                                <th>Date of Promotion</th>
-                                                <th>Gov't Order Date</th>
-                                                <th>Nature Of Promotions</th>
-                                                <th>Posting Rank/Order of precedence </th>
-                                                <th>Posting Type:</th>
-                                                <th>Designation </th>
-                                                <th>Office Location</th>
-                                                <th>Country</th>
-                                                <th>Scale / Grade</th>
+                                                <th>no.</th> 
+                                                <th>তারিখ</th>
+                                                <th>অফিস অর্ডার তারিখ</th>
+                                                <th>পদোন্নতির ধরণ</th>
+                                           
+                                                <th>পোস্টিং এর ধরন:</th>
+                                                <th>উপাধি </th>
+                                                <th>অফিসের অবস্থান</th>
+                                                <th>দেশ</th>
+                                                <th>শ্রেণী</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                                 <th>Edit</th>
@@ -237,7 +224,7 @@
                                             <td th:text="${list.dateofPromotion}">BCS</td> 
                                             <td th:text="${list.govtOrderDate}">BCS</td> 
                                             <td th:text="${list.natureOfPromotions}">BCS</td> 
-                                            <td th:text="${list.postingRank.name}">BCS</td>
+                                    
                                             <td th:text="${list.postingType}">BCS</td>
                                             <td th:text="${list.postingDesignation.name}">BCS</td>
                                             <td th:text="${list.postingLocation.name}">BCS</td>

@@ -7,7 +7,7 @@ package itgarden.model;
 
 import itgarden.model.enumvalue.LeaveType;
 import itgarden.model.enumvalue.Status;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,8 +16,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -42,12 +44,18 @@ public class Leaveinfo {
     private LeaveType leaveType;
 
     private String leaveApprovedLength;  // Day
+    
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date leaveStartDate;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String leaveStartDate;
-
-    @NotEmpty(message = "This field cannot be blank.")
-    private String joinDate;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*This field cannot be blank.")
+    private Date joinDate;
 
     private String totalEnjoyDay;
 
@@ -83,7 +91,7 @@ public class Leaveinfo {
     public Leaveinfo() {
     }
 
-    public Leaveinfo(Long id, Users governmentId, String governmentOrderNo, LeaveType leaveType, String leaveApprovedLength, String leaveStartDate, String joinDate, String totalEnjoyDay, Status status, String remark, long version, String createdBy, String updatedBy) {
+    public Leaveinfo(Long id, Users governmentId, String governmentOrderNo, LeaveType leaveType, String leaveApprovedLength, Date leaveStartDate, Date joinDate, String totalEnjoyDay, Status status, String remark, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.governmentOrderNo = governmentOrderNo;
@@ -139,19 +147,19 @@ public class Leaveinfo {
         this.leaveApprovedLength = leaveApprovedLength;
     }
 
-    public String getLeaveStartDate() {
+    public Date getLeaveStartDate() {
         return leaveStartDate;
     }
 
-    public void setLeaveStartDate(String leaveStartDate) {
+    public void setLeaveStartDate(Date leaveStartDate) {
         this.leaveStartDate = leaveStartDate;
     }
 
-    public String getJoinDate() {
+    public Date getJoinDate() {
         return joinDate;
     }
 
-    public void setJoinDate(String joinDate) {
+    public void setJoinDate(Date joinDate) {
         this.joinDate = joinDate;
     }
 
@@ -219,11 +227,5 @@ public class Leaveinfo {
         this.updatedBy = updatedBy;
     }
 
-    /**
-     * ***************** End Auditor ********************************
-     */
-
-    
-    
     
 }

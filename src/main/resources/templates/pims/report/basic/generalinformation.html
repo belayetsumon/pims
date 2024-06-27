@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                 ব্যক্তিগত তথ্য ব্যবস্থাপনা 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Generale Information. Total:<span th:text="${list.size()}"></span></h3>
+                        <h3 class="box-title"> সাধারণ তথ্য. মোট:<span th:text="${list.size()}"></span></h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/report/index}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -29,27 +29,27 @@
                         <table   class="table table-bordered " id="myTableId" >
                             <thead class=" box box-success  box-solid">
                                 <tr class="bg-green">  
-                                    <th>G.ID </th>
-                                    <th>Name</th>
-                                    <th>Father's Name</th>
-                                    <th>Mother's Name  </th>
-                                    <th> Home District </th>
-                                    <th> Date Of Birth </th>
-                                    <th> Country Of Birth </th>
-                                    <th>Birth Certificate No  </th>
-                                    <th> Gender </th>
-                                    <th> Marital Status </th>
-                                    <th> Religion  </th>
-                                    <th> Ethnic Identity</th>
-                                    <th> Nationality </th>
-                                    <th> Blood Group </th>
-                                    <th> Driving licence  </th>
-                                    <th> Passport No   </th>
-                                    <th> National Id No   </th>
-                                    <th>  TIN No    </th>
-                                    <th> L. . R. Date    </th>
-                                    <th> Employee Status    </th>
-                                     <th> Details </th>
+                                    <th>সনাক্তকরণ নম্বর (IDN) </th>
+                                    <th>নাম  </th>
+                                    <th>পিতার নাম   </th>
+                                    <th>মাতার নাম  </th>
+                                    <th> নিজ জেলা </th>
+                                    <th> জন্ম তারিখ  </th>
+                                    <th> জন্ম স্থান </th>
+                                    <th>   জন্ম নিবন্ধন নম্বর  </th>
+                                    <th> লিঙ্গ </th>
+                                    <th> বৈবাহিক অবস্থা  </th>
+                                    <th> ধর্ম  </th>
+                                    <th>  জাতিগত পরিচয় </th>
+<!--                                    <th> জাতীয়তা </th>-->
+                                    <th> রক্তের গ্রুপ:</th>
+                                    <th>  ড্রাইভিং লাইসেন্স:  </th>
+                                    <th> পাসপোর্ট নম্বর :  </th>
+                                    <th> জাতীয় পরিচয়পত্র নম্বর   </th>
+                                    <th>  টিআইএন নং </th>
+                                    <th> অবসর উত্তর ছুটির তারিখ  </th>
+                                    <th> চাকরির বর্তমান অবস্থা   </th>
+                                     <th> বিস্তারিত </th>
                                 </tr>
                             </thead>
                             <tbody>                                         
@@ -66,7 +66,7 @@
                                     <td th:text="${list.maritalStatus}"></td> 
                                     <td  th:text="${list.religion}"> </td> 
                                     <td th:text="${list.ethnicIdentity}"></td> 
-                                    <td  th:text="${list.nationality}"> </td> 
+<!--                                    <td  th:text="${list.nationality}"> </td> -->
                                     <td th:text="${list.bloodGroup}"> </td> 
                                     <td th:text="${list.drivingLicence}"> </td> 
                                     <td th:text="${list.passportNo}"></td> 
@@ -74,7 +74,7 @@
                                      <td th:text="${list.tin}"></td> 
                                      <td th:text="${list.lPRDate}"></td> 
                                     <td th:text="${list.employeeStatus}"></td>
-                                    <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">Details</a></td> 
+                                    <td> <a  class="btn  btn-danger btn-sm"th:href="@{/profile/fullprofile/{e_id}(e_id=${list.governmentId.id})}">বিস্তারিত</a></td> 
                                 </tr>
                             </tbody>
                         </table>

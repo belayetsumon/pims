@@ -10,6 +10,6 @@ package itgarden.model.enumvalue;
  * @author Md Belayet Hossin
  */
 public enum Authority {
-    PSC,Others,NA
+    DSCC,PSC,Others,NA
     
 }

@@ -5,21 +5,16 @@
  */
 package itgarden.model;
 
-import itgarden.model.enumvalue.AddressType;
-import itgarden.model.enumvalue.District;
-import itgarden.model.lookup.Thana;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -36,23 +31,34 @@ public class AddressInformation {
     @ManyToOne
     private Users governmentId;
 
-    @NotNull(message = "Address type field cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    private AddressType addressType;
+//    @NotNull(message = "Address type field cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    private AddressType addressType;
+//
+//    @NotEmpty(message = "Village field cannot be blank.")
+//    private String village;
+//
+//    @NotEmpty(message = "Post office field cannot be blank.")
+//    private String postOffice;
+//
+//    @NotNull(message = " District field cannot be blank.")
+//    @Enumerated(EnumType.STRING)
+//    private District district;
+//
+//    @NotNull(message = "Upazila field cannot be blank.")
+//    @ManyToOne(optional = false)
+//    private Thana upazila;
+    
+    
+    @NotNull(message = " Present address field cannot be blank.")
+    @Lob
+    private String presentAddress;
 
-    @NotEmpty(message = "Village field cannot be blank.")
-    private String village;
+    @Lob
+    private String permanentAddress;
 
-    @NotEmpty(message = "Post office field cannot be blank.")
-    private String postOffice;
-
-    @NotNull(message = " District field cannot be blank.")
-    @Enumerated(EnumType.STRING)
-    private District district;
-
-    @NotNull(message = "Upazila field cannot be blank.")
-    @ManyToOne(optional = false)
-    private Thana upazila;
+    @Lob
+    private String officialAddress;
 
     @Email(message = "Please provide a valid email.")
     private String email;
@@ -103,14 +109,12 @@ public class AddressInformation {
     public AddressInformation() {
     }
 
-    public AddressInformation(Long id, Users governmentId, AddressType addressType, String village, String postOffice, District district, Thana upazila, String email, String webmail, String mobile, String telphone, String fax, String pabx, String facebookId, String linkdin, String whatup, long version, String createdBy, String updatedBy) {
+    public AddressInformation(Long id, Users governmentId, String presentAddress, String permanentAddress, String officialAddress, String email, String webmail, String mobile, String telphone, String fax, String pabx, String facebookId, String linkdin, String whatup, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
-        this.addressType = addressType;
-        this.village = village;
-        this.postOffice = postOffice;
-        this.district = district;
-        this.upazila = upazila;
+        this.presentAddress = presentAddress;
+        this.permanentAddress = permanentAddress;
+        this.officialAddress = officialAddress;
         this.email = email;
         this.webmail = webmail;
         this.mobile = mobile;
@@ -141,44 +145,28 @@ public class AddressInformation {
         this.governmentId = governmentId;
     }
 
-    public AddressType getAddressType() {
-        return addressType;
+    public String getPresentAddress() {
+        return presentAddress;
     }
 
-    public void setAddressType(AddressType addressType) {
-        this.addressType = addressType;
+    public void setPresentAddress(String presentAddress) {
+        this.presentAddress = presentAddress;
     }
 
-    public String getVillage() {
-        return village;
+    public String getPermanentAddress() {
+        return permanentAddress;
     }
 
-    public void setVillage(String village) {
-        this.village = village;
+    public void setPermanentAddress(String permanentAddress) {
+        this.permanentAddress = permanentAddress;
     }
 
-    public String getPostOffice() {
-        return postOffice;
+    public String getOfficialAddress() {
+        return officialAddress;
     }
 
-    public void setPostOffice(String postOffice) {
-        this.postOffice = postOffice;
-    }
-
-    public District getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(District district) {
-        this.district = district;
-    }
-
-    public Thana getUpazila() {
-        return upazila;
-    }
-
-    public void setUpazila(Thana upazila) {
-        this.upazila = upazila;
+    public void setOfficialAddress(String officialAddress) {
+        this.officialAddress = officialAddress;
     }
 
     public String getEmail() {
@@ -293,4 +281,7 @@ public class AddressInformation {
         this.updatedBy = updatedBy;
     }
 
+    
+
+    
 }

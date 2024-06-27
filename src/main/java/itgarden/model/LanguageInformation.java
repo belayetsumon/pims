@@ -7,28 +7,20 @@ package itgarden.model;
 
 import itgarden.model.enumvalue.LanguageName;
 import itgarden.model.enumvalue.LanguageSkill;
-import itgarden.model.enumvalue.Proficiency;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -55,9 +47,9 @@ public class LanguageInformation {
     @Enumerated(EnumType.ORDINAL)
     private List<LanguageSkill> skill;
 
-    @NotNull(message = "Proficiency cannot be blank.")
-    @Enumerated(EnumType.ORDINAL)
-    private Proficiency proficiency;
+//    @NotNull(message = "Proficiency cannot be blank.")
+//    @Enumerated(EnumType.ORDINAL)
+//    private Proficiency proficiency;
 
     /**
      * ***************** Start Auditor ********************************
@@ -89,12 +81,11 @@ public class LanguageInformation {
     public LanguageInformation() {
     }
 
-    public LanguageInformation(Long id, Users governmentId, LanguageName language, List<LanguageSkill> skill, Proficiency proficiency, long version, String createdBy, String updatedBy) {
+    public LanguageInformation(Long id, Users governmentId, LanguageName language, List<LanguageSkill> skill, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.language = language;
         this.skill = skill;
-        this.proficiency = proficiency;
         this.version = version;
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
@@ -130,14 +121,6 @@ public class LanguageInformation {
 
     public void setSkill(List<LanguageSkill> skill) {
         this.skill = skill;
-    }
-
-    public Proficiency getProficiency() {
-        return proficiency;
-    }
-
-    public void setProficiency(Proficiency proficiency) {
-        this.proficiency = proficiency;
     }
 
     public long getVersion() {
@@ -180,5 +163,7 @@ public class LanguageInformation {
         this.updatedBy = updatedBy;
     }
 
-   
+  
+
+    
 }

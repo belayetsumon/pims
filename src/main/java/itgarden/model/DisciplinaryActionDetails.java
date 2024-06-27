@@ -5,8 +5,7 @@
  */
 package itgarden.model;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,7 +21,6 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author Md Belayet Hossin
  */
-
 @Entity
 public class DisciplinaryActionDetails {
 
@@ -35,8 +32,11 @@ public class DisciplinaryActionDetails {
     @ManyToOne(optional = true)
     private Users governmentId;
 
-    @NotEmpty(message = "This field cannot be blank.")
-    private String oderDate;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = " Order date cannot be blank.")
+    private Date oderDate;
 
     @NotEmpty(message = "This field cannot be blank.")
     private String natureofOffence;
@@ -46,7 +46,7 @@ public class DisciplinaryActionDetails {
 
     @NotEmpty(message = "This field cannot be blank.")
     private String punishment;
-    
+
     /**
      * ***************** Start Auditor ********************************
      */
@@ -68,12 +68,12 @@ public class DisciplinaryActionDetails {
 
     @Column(name = "updated_by", insertable = false, updatable = true)
     //@LastModifiedBy
-    private String updatedBy ;
+    private String updatedBy;
 
     public DisciplinaryActionDetails() {
     }
 
-    public DisciplinaryActionDetails(Long id, Users governmentId, String oderDate, String natureofOffence, String punishmentNature, String punishment, long version, String createdBy, String updatedBy) {
+    public DisciplinaryActionDetails(Long id, Users governmentId, Date oderDate, String natureofOffence, String punishmentNature, String punishment, long version, String createdBy, String updatedBy) {
         this.id = id;
         this.governmentId = governmentId;
         this.oderDate = oderDate;
@@ -101,11 +101,11 @@ public class DisciplinaryActionDetails {
         this.governmentId = governmentId;
     }
 
-    public String getOderDate() {
+    public Date getOderDate() {
         return oderDate;
     }
 
-    public void setOderDate(String oderDate) {
+    public void setOderDate(Date oderDate) {
         this.oderDate = oderDate;
     }
 
@@ -173,7 +173,5 @@ public class DisciplinaryActionDetails {
         this.updatedBy = updatedBy;
     }
 
-    
-    
     
 }

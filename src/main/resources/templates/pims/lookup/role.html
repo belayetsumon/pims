@@ -69,7 +69,7 @@
 
                                                         <label  th:text="${modulelist.name}">Admin</label>
 
-                                                        <ul class="list-unstyled" style="margin-left: 30px;">
+                                                        <ul class="list-unstyled" >
 
                                                             <li th:each="modulelisprivilege : ${modulelist.privilege}" >
 
@@ -135,9 +135,13 @@
                                             
                                             <td th:text="${list.slug}">Chakma</td>
                                             <td>
-                                                <ul class="list-unstyled" th:each="listprivilege :${list.privilege}">
+                                                <ul class="list-inline" >
                                                     
-                                                  <li th:text="${listprivilege.name}+' ,'">  </li>
+                                                  <li th:each="listprivilege :${list.privilege}" > 
+                                                  
+                                                      <span th:text="${listprivilege.name}+' ,'"></span>
+                                                  
+                                                  </li>
                                                     
                                                     
                                                 </ul>

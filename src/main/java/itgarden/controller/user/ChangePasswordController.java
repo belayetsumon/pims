@@ -37,14 +37,16 @@ public class ChangePasswordController {
 
     public String changepassword(Model model) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Users users = usersRepository.findByGovernmentId(auth.getName());
+     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+     Users users = usersRepository.findByGovernmentId(auth.getName());
         model.addAttribute("govt_id", users.getGovernmentId());
 
-        model.addAttribute("user_name", users.getName());
+        model.addAttribute("user_name", 123456);
 
         return "/pims/users/change_password";
     }
+    
+    
 
     @RequestMapping("/update")
 

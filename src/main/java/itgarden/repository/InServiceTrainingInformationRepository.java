@@ -5,7 +5,6 @@
  */
 package itgarden.repository;
 
-import itgarden.model.HonorsAndAwardInformation;
 import itgarden.model.InServiceTrainingInformation;
 import itgarden.model.Users;
 import java.util.List;
@@ -16,6 +15,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Md Belayet Hossin
  */
 public interface InServiceTrainingInformationRepository extends JpaRepository<InServiceTrainingInformation, Long> {
+
+    InServiceTrainingInformation findByGovernmentId(Users governmentId);
 
     List<InServiceTrainingInformation> findByGovernmentIdOrderByIdDesc(Users governmentId);
 

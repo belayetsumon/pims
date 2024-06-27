@@ -67,20 +67,7 @@
                                                 </div>                            
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Posting Rank/Order of precedence : <span class="text-red">  </span> </label>
-                                                <div class="col-sm-6">                   
-                                                    <select class="form-control  "   th:field="*{presentPostingRank}"  >
-                                                        <option value=" "> Select one</option>
-                                                        <option th:each =" grade :${postingrank}"
-                                                                th:value=" ${grade.id}" 
-                                                                th:text="${grade.name}"> Select one</option>
-                                                    </select>
-                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('presentPostingRank')}" th:errors="*{presentPostingRank}">First Name Error</span>
-                                                </div>                            
-                                            </div>
-                                        </div>
+
                                         <div class="row">
                                             <div class="form-group ">
                                                 <label for="name" class="col-sm-3 control-label"> Posting Type:<span class="text-red"> * </span> </label>
@@ -218,11 +205,11 @@
                                             <th> Posting Reason</th>
                                             <th> Posting Type</th>
                                             <th> Designation     </th>
-                                             <th>Present Posting Rank </th>
+
                                             <th>Office Location    </th>
                                             <th>Joining Date</th>
                                             <th>Date of Gazetted  </th>
-                                           
+
                                             <th>Grade </th>
                                             <th>Remarks  </th>
                                             <th>Created </th>
@@ -234,22 +221,20 @@
 
                                         <tr  th:each="list,status:${list}" >
                                             <td th:text="${list.governmentId.governmentId}">Chakma</td>
-                                             <td th:text="${list.postingReason}">Chakma</td>
+                                            <td th:text="${list.postingReason}">Chakma</td>
                                             <td th:text="${list.postingType}">Chakma</td>
                                             <td th:text="${list.postingDesignation.name}">Chakma</td>
-                                                 <td th:text="${list.presentPostingRank.name}">Chakma</td>
                                             <td th:text="${list.presentPostingLocation.name}">Chakma</td>
                                             <td th:text="${list.dateJoining}">Chakma</td>
                                             <td th:text="${list.dateofGazetted}">Chakma</td>
-                                       
                                             <td th:text="${list.grade}">Chakma</td>
                                             <td th:text="${list.remarks}">Chakma</td>
-                                                <td>Created:<span th:text="${list.createdOn}"></span><br/>
+                                            <td>Created:<span th:text="${list.createdOn}"></span><br/>
                                                 Created By:<span th:text="${list.createdBy}"></span>
                                             </td><td>
                                                 Updated:<span th:text="${list.updatedOn}"></span><br/>
                                                 Updated By:<span th:text="${list.updatedBy}"></span></td>
-                                            
+
                                             <td> <a th:href="@{/selfservice_presentjob/edit/{id} (id=${list.id})}" > Edit</a> </td>
                                             <td> <a th:href="@{/selfservice_presentjob/delete/{id} (id=${list.id})}" > Delete </a> </td>
                                         </tr> 

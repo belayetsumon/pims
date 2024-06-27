@@ -7,7 +7,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Personal Information Management System
+                       ব্যক্তিগত তথ্য ব্যবস্থাপনা সিস্টেম 
                     <small></small>
                 </h1>
             </section>
@@ -17,10 +17,10 @@
                 <!-- Default box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Language Information</h3>
+                        <h3 class="box-title"> ভাষার জ্ঞান</h3>
                         <div class="box-tools pull-right">
                             <div class="btn-group">
-                                <a th:href="@{/details/detailsinfo/{id} (id=${languageInformation.governmentId.id})}" type="button" class="btn  btn-warning ">Close</a>
+                                <a th:href="@{/details/detailsinfo/{id} (id=${languageInformation.governmentId.id})}" type="button" class="btn  btn-warning ">বন্ধ</a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <!-- Default box -->
                             <div class="box box-warning box-solid  ">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"> Add/ Edit Language</h3>
+                                    <h3 class="box-title"> ভাষার জ্ঞান যোগ/সম্পাদনা করুন</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -55,7 +55,7 @@
                                         </div>                         
                                         <div class="row">
                                             <div class="form-group ">
-                                                <label for="name" class="col-sm-3 control-label"> Language Name :<span class="text-red"> * </span> </label>
+                                                <label for="name" class="col-sm-3 control-label"> ভাষার নাম :<span class="text-red"> * </span> </label>
                                                 <div class="col-sm-4">                   
                                                     <select class="form-control  "   th:field="*{language}"  >
                                                         <option value=" "> Select one</option>
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label"> Skill :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-3 control-label"> দক্ষতার নাম   :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-8">
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}">First Name Error</span>
                                                     <ul class="list-inline">
@@ -81,9 +81,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+<!--                                        <div class="row">
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-3 control-label"> Proficiency :<span class="text-red"> * </span></label>
+                                                <label for="name" class="col-sm-3 control-label"> দক্ষতার লেবেল  :<span class="text-red"> * </span></label>
                                                 <div class="col-sm-4">                   
                                                     <select class="form-control "   th:field="*{proficiency}" >
 
@@ -98,7 +98,7 @@
                                                     <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('proficiency')}" th:errors="*{proficiency}">First Name Error</span>
                                                 </div>  
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="row">
                                             <div class="text-center" >
                                                 <div class="box-tools">
@@ -117,7 +117,7 @@
                         <div class="col-sm-12 col-md-12col-xs-12">    
                             <div class="box box-success  box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> Language Information List</h3>
+                                    <h3 class="box-title"><span th:text="${table_name}"> ..</span> ভাষার জ্ঞান</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -128,10 +128,10 @@
                                     <table class="table table-bordered ">
                                         <thead class=" box box-success  box-solid">
                                             <tr>  
-                                                <th>Sr. no.</th> 
-                                                <th>Language</th>
-                                                <th>Skill</th>
-                                                <th>Proficiency</th>
+                                                <th>নং.</th> 
+                                                <th>ভাষার নাম</th>
+                                                <th>দক্ষতার নাম</th>
+<!--                                                <th>দক্ষতার লেবেল</th>-->
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                                 <th>Edit</th>
@@ -142,7 +142,7 @@
                                             <td th:text="${ status.count}">2 </td> 
                                             <td th:text="${list.language}">BCS</td> 
                                             <td th:text="${list.skill}">BCS</td> 
-                                            <td th:text="${list.proficiency}">BCS</td> 
+<!--                                            <td th:text="${list.proficiency}">BCS</td> -->
                                             <td>Created:<span th:text="${list.createdOn}"></span><br/>
                                                 Created By:<span th:text="${list.createdBy}"></span>
                                             </td>

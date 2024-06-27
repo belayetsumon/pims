@@ -17,8 +17,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface GeneralInformationRepository extends JpaRepository<GeneralInformation, Long> {
 
-    List<GeneralInformation> findByGovernmentIdOrderByIdDesc(Users governmentId);
+    GeneralInformation findByGovernmentIdOrderByIdDesc(Users governmentId);
 
     List<GeneralInformation> findAllByOrderByIdDesc();
-    
+
 }

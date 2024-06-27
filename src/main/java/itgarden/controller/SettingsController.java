@@ -5,7 +5,6 @@
  */
 package itgarden.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/settings")
-@PreAuthorize("hasAuthority('settings')")
+//@PreAuthorize("hasAuthority('settings')")
 public class SettingsController {
     
     @RequestMapping("/lookupindex")
